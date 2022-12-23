@@ -8,7 +8,7 @@ function Main() {
   return (
     <Provider store={store}>
       <div className="mainScript">
-        Main(test)
+        {/* Main(test) */}
         <MapSection />
       </div>
     </Provider>
