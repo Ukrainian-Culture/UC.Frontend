@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { store } from '../../redux-store/reduxStore'
+import Header from '../header/Header'
 import '../main/main.scss'
 import MapSection from '../mapSection/MapSection'
 
@@ -9,6 +10,7 @@ function Main() {
     <Provider store={store}>
       <div className="mainScript">
         {/* Main(test) */}
+        <Header/>
         <MapSection />
       </div>
     </Provider>
