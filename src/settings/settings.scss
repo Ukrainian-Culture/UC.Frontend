@@ -1,2 +1,28 @@
+
+#root, body, html{
+    margin: 0px;
+    padding: 0px;
+}
+
+.App{
+    height: 100vh;
+}
+
+// ========================================================
+
+// * test code *
 $c_1: pink;
-$c_2: greenyellow;
+$c_2: rgb(99, 134, 47);
+$c_3: #e8e8e8;
+
+// * test code *
+
+//========================================================
+
+$header_height: 55px;
+
+// make background of block blury kind of like glass
+@mixin glass_background{
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(100px);
+}
