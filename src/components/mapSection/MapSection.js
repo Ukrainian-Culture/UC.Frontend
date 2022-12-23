@@ -95,6 +95,7 @@ function MapSection() {
 
   return (
     <div className="mapSection">
+
       <Canvas>
 
         {/* component that handle position of camera */}

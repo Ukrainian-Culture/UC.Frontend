@@ -1,6 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useSpring, a } from '@react-spring/three'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  CHANGE_SIDEHEIGHT,
+  NO_SIDEHEIGHT,
+  SIDEHEIGHT,
+} from '../../redux-store/sideHeight/sideHeightConst'
+import { CHANGE_OBLAST } from '../../redux-store/selectedOblast/selectedOblastConst'
 
 const path = '/uk_map/UC.glb'
 
@@ -8,10 +15,23 @@ export function UC(props) {
   const { nodes, materials } = useGLTF(path)
   const { camReset, setcamReset } = props
 
+  //-------------------------------------------------------------
+  // hook used for sending action to reducer
+  const dispatch = useDispatch()
+  // function which send action to change sideHeight variable
+  const changeSideHeight = (param) => {
+    dispatch({ type: CHANGE_SIDEHEIGHT, payload: `${param}` })
+  }
+  // function which send action to change selectedOblast variable
+  const changeOblast = (param) =>{
+    dispatch({type: CHANGE_OBLAST, payload: `${param}`})
+  }
+  //-------------------------------------------------------------
+
   // variable contain last clickable oblast
-  const [cState, setcState] = useState("")
+  const [cState, setcState] = useState('')
   // pressed right now
-  const [cNow, setcNow] = useState("")
+  const [cNow, setcNow] = useState('')
 
   // basic color of oblast
   const [baseColor, setbaseColor] = useState('#e8e8e8')
@@ -73,65 +93,37 @@ export function UC(props) {
     { color: selectColor },
     { color: selectColor },
   ])
-  // array with colors of each oblast
-  // const [oblColor, setoblColor] = useState([
-  //   useSpring({color: cNow == "1_lviv" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "2_volun" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "3_rivne" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "4_ternopil" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "5_ivano-frankivsk" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "6_zakarpattya" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "7_chernivtsi" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "8_hmelnytsk" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "9_jytomyr" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "10_kyiv" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "11_vinnytsa" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "12_odessa" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "13_mikolaiv" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "14_kirovograd" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "15_cherkasy" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "16_chernigiv" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "17_poltava" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "18_dnipro" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "19_herson" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "20_krym" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "21_zaporizzya" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "22_sumy" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "23_harkiv" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "24_donetsk" ? selectColor : baseColor}),
-  //   useSpring({color: cNow == "25_lugansk" ? selectColor : baseColor}),
-  // ])
 
   const oblColor = [
-      useSpring({color: cNow == "1_lviv" ? selectColor : baseColor}),
-      useSpring({color: cNow == "2_volun" ? selectColor : baseColor}),
-      useSpring({color: cNow == "3_rivne" ? selectColor : baseColor}),
-      useSpring({color: cNow == "4_ternopil" ? selectColor : baseColor}),
-      useSpring({color: cNow == "5_ivano-frankivsk" ? selectColor : baseColor}),
-      useSpring({color: cNow == "6_zakarpattya" ? selectColor : baseColor}),
-      useSpring({color: cNow == "7_chernivtsi" ? selectColor : baseColor}),
-      useSpring({color: cNow == "8_hmelnytsk" ? selectColor : baseColor}),
-      useSpring({color: cNow == "9_jytomyr" ? selectColor : baseColor}),
-      useSpring({color: cNow == "10_kyiv" ? selectColor : baseColor}),
-      useSpring({color: cNow == "11_vinnytsa" ? selectColor : baseColor}),
-      useSpring({color: cNow == "12_odessa" ? selectColor : baseColor}),
-      useSpring({color: cNow == "13_mikolaiv" ? selectColor : baseColor}),
-      useSpring({color: cNow == "14_kirovograd" ? selectColor : baseColor}),
-      useSpring({color: cNow == "15_cherkasy" ? selectColor : baseColor}),
-      useSpring({color: cNow == "16_chernigiv" ? selectColor : baseColor}),
-      useSpring({color: cNow == "17_poltava" ? selectColor : baseColor}),
-      useSpring({color: cNow == "18_dnipro" ? selectColor : baseColor}),
-      useSpring({color: cNow == "19_herson" ? selectColor : baseColor}),
-      useSpring({color: cNow == "20_krym" ? selectColor : baseColor}),
-      useSpring({color: cNow == "21_zaporizzya" ? selectColor : baseColor}),
-      useSpring({color: cNow == "22_sumy" ? selectColor : baseColor}),
-      useSpring({color: cNow == "23_harkiv" ? selectColor : baseColor}),
-      useSpring({color: cNow == "24_donetsk" ? selectColor : baseColor}),
-      useSpring({color: cNow == "25_lugansk" ? selectColor : baseColor}),
-    ]
+    useSpring({ color: cNow == '1_lviv' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '2_volun' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '3_rivne' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '4_ternopil' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '5_ivano-frankivsk' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '6_zakarpattya' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '7_chernivtsi' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '8_hmelnytsk' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '9_jytomyr' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '10_kyiv' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '11_vinnytsa' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '12_odessa' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '13_mikolaiv' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '14_kirovograd' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '15_cherkasy' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '16_chernigiv' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '17_poltava' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '18_dnipro' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '19_herson' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '20_krym' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '21_zaporizzya' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '22_sumy' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '23_harkiv' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '24_donetsk' ? selectColor : baseColor }),
+    useSpring({ color: cNow == '25_lugansk' ? selectColor : baseColor }),
+  ]
 
   // position to which the oblast should move
-  const toPlace = [-0.5, 0.5, 1.66]
+  const toPlace = [-0.65, 0.5, 1.66]
   // array with animation of mooving from original position to particular point <toPlace>
   const oblMove = [
     useSpring({
@@ -211,24 +203,13 @@ export function UC(props) {
     }),
   ]
 
-  // function that change color of choosen oblast
-  function changeColorOnClick(materialName) {
-    console.log('changeColorOnClick------------')
+  // this function return number of oblast in array
+  function getNumberOfSelectedOblast(p_oblast){
+    let temp = p_oblast.slice(0, p_oblast.indexOf("_"))
 
-    var some = oblColor.map((el, index) => {
-      if (index + 1 == materialName.slice(0, materialName.indexOf('_'))){
-        return { color: selectColor }
-      }
-      return {color: cNow == "1_lviv" ? selectColor : baseColor}
-    })
-
-    // console.log("shit", some)
-    // setoblColor(some)
+    return parseInt(temp) - 1
   }
 
-
-
- 
   return (
     <a.group
       {...props}
@@ -242,14 +223,16 @@ export function UC(props) {
 
         // initializing oblast which should be animated
         setcNow(materialName)
-        if (materialName === cState){
+        if (materialName === cState) { // if selected same oblast move this oblast to original position
           setcState(null)
           setcNow(null)
+          changeSideHeight(NO_SIDEHEIGHT)
+          changeOblast("")
+        } else { // if selected oblast
+          setcState(materialName)
+          changeSideHeight(SIDEHEIGHT)
+          changeOblast(getNumberOfSelectedOblast(materialName))
         }
-        else setcState(materialName)
-
-        // function that change color of choosen oblast
-        changeColorOnClick(materialName)
 
         // starting camera to reset
         camReset ? setcamReset(false) : setcamReset(true)
