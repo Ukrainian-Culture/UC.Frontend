@@ -1,5 +1,61 @@
 
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-Thin.ttf');
+    font-style: normal;
+    font-weight: 100;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-ExtraLight.ttf');
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-Light.ttf');
+    font-style: normal;
+    font-weight: 300;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-Medium.ttf');
+    font-style: normal;
+    font-weight: 500;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-SemiBold.ttf');
+    font-style: normal;
+    font-weight: 600;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-Bold.ttf');
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-ExtraBold.ttf');
+    font-style: normal;
+    font-weight: 800;
+}
+@font-face {
+    font-family: Fixel;
+    src: url('../../public/font/MacPawFixelDisplay-Black.ttf');
+    font-style: normal;
+    font-weight: 900;
+}
+
 #root, body, html{
+    font-family: Fixel;
     margin: 0px;
     padding: 0px;
 }
@@ -13,8 +69,11 @@
 // * test code *
 $c_1: pink;
 $c_2: rgb(99, 134, 47);
-$c_3: #e8e8e8;
+$c_3: #8a3434;
 
+@mixin border_test{
+    border: 1px solid black;
+}
 // * test code *
 
 //========================================================
