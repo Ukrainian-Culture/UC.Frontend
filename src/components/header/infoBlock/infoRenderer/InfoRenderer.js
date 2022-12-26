@@ -8,9 +8,8 @@ function InfoRenderer(props) {
   
   return (
     <div className='infoRenderer'>
-      infoRenderer {selectedCategory}
       {
-        selectedCategory === "history"
+        selectedCategory == "history"
         ?
         <HistoryRenderer/>
         :
