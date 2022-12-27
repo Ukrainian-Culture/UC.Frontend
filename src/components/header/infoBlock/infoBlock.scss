@@ -25,7 +25,6 @@ $width_of_main_info: 45vw;
             
             display: flex;
             justify-content: center;
-            // background-color: aquamarine;
 
             .infoBlock_wrapper_categories_el{
                 padding: 10px $padding_categories_el;
@@ -36,7 +35,7 @@ $width_of_main_info: 45vw;
                 cursor: pointer;
             }
             .active_iwce{
-                background-color: white;
+                background-color: $g_0;
             }
         }
 
@@ -45,24 +44,28 @@ $width_of_main_info: 45vw;
             display: flex;
             justify-content: center;
             .infoBlock_wrapper_main_view{
+                display: flex;
+                justify-content: center;
                 clip-path: inset(0px 0px);
                 display: flex;
                 overflow-y: scroll;
+                overflow-x: hidden;
+
                 
                 // background-color: aquamarine;
                 height: 80vh;
                 width: $width_of_main_info;
                 
-                transition: 1s all ease-in;
+                transition: 0.3s all ease-in;
                 
             }
             ::-webkit-scrollbar{
                 width: 8px;
-                background-color: rgb(232, 232, 232);
+                background-color: $g_3;
                 
             }
             ::-webkit-scrollbar-thumb{
-                background-color: black;
+                background-color: $g_1;
                 
                
             }           

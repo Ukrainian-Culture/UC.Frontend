@@ -2,12 +2,22 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { CHANGE_CATEGORY } from '../../../redux-store/selectedCategory/selectedCategoryConst'
 import { SIDEHEIGHT } from '../../../redux-store/sideHeight/sideHeightConst'
 import './infoBlock.scss'
 import InfoRenderer from './infoRenderer/InfoRenderer'
 
 function InfoBlock() {
+  //-------------------------------------------------------------
+  // hook used for sending action to reducer
+  const dispatch = useDispatch()
+  // function which send action to change selected category
+  const changeCategory = (param) => {
+    dispatch({ type: CHANGE_CATEGORY, payload: `${param}` })
+  }
+  //-------------------------------------------------------------
+
   // state which we get from redux store ando this value contain all states in redux store
   const selectorState = useSelector((state) => state)
   // variable used for move side block with info
@@ -36,7 +46,9 @@ function InfoBlock() {
 
     e.target.className = `${e.target.className} ${activeWord}`
     setcurrentCategory(e.target.innerText)
-    // console.log("currentCategory", e.target.innerText)
+    console.log("currentCategory", e.target.innerText)
+
+    changeCategory(e.target.innerText)
   }
 
 
@@ -59,12 +71,12 @@ function InfoBlock() {
 
         for (let i = 0; i < childrenClasses.length; i++) {
           if (childrenClasses[i].className.includes(activeWord)) {
-            // console.log('gacha', childrenClasses[i].innerText)
+            console.log('gacha', childrenClasses[i].innerText)
             setSelected(childrenClasses[i].innerText)
           }
         }
       }
-    }, [currentCategory])
+    })
 
     return <InfoRenderer selectedCategory={selected} />
   }

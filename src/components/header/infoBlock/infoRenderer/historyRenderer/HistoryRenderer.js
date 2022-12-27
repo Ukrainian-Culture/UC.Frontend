@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import gsap from 'gsap'
 import '../historyRenderer/historyRenderer.scss'
+import { useState } from 'react'
 
 //==============================================
 
@@ -30,7 +31,8 @@ function createTestJson(num) {
 function HistoryRenderer() {
   const test_json = [
     {
-      shortDesc: '1 some description',
+      shortDesc:
+        '1 some sdfsdf sdf sdf sdf esdsdf sdf sdf sdf sdf description sdsdfdsdfsdfsds dfsdfd fsdfsfsdfsdfsdfsdfsdfffffffff sdf sdf sdf dfsd sdfsdfsdf ',
       date: '04.02.1574',
     },
     {
@@ -261,6 +263,7 @@ function HistoryRenderer() {
   const tl_enter = useRef() // another timeline for history lines animation on enter hover
   const tl_exit = useRef() // another timeline for history lines animation on exit hover
   const moveLineToRight = 4 // distance of movind history info to right
+  // const [isHistoryAnimationEnd, setIsHistoryAnimationEnd] = useState(false)
 
   // element which render all history lines
   function FormingHistoryOrder() {
@@ -310,7 +313,7 @@ function HistoryRenderer() {
             '-=0.5',
           )
           .from(
-            '.historyRenderer_wrapper_section_mainContainer_sub_subText',
+            '.historyRenderer_wrapper_section_mainContainer_wrap',
             {
               x: -30,
               stagger: 0.03,
@@ -352,12 +355,14 @@ function HistoryRenderer() {
                         <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap">
                           <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine"></div>
                         </div>
-                        <div
-                          className="historyRenderer_wrapper_section_mainContainer_sub_subText"
-                          onMouseEnter={(e) => animateEnterHover(e)}
-                          onMouseLeave={(e) => animateExitHover(e)}
-                        >
-                          {`${arr[el_2].shortDesc} ${arr[el_2].date}`}
+                        <div className='historyRenderer_wrapper_section_mainContainer_wrap'>
+                          <div
+                            className="historyRenderer_wrapper_section_mainContainer_wrap_sub_subText"
+                            onMouseEnter={(e) => animateEnterHover(e)}
+                            onMouseLeave={(e) => animateExitHover(e)}
+                          >
+                            {`${arr[el_2].shortDesc} ${arr[el_2].date}`}
+                          </div>
                         </div>
                       </div>
                     )
