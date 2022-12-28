@@ -1,5 +1,5 @@
 const initialState = {
-  categories: ['history', 'people', 'culture', 'documents', 'science'],
+  categories: ['history', 'people', 'culture', 'documents', 'science']
 }
 
 const categoriesInfoBlockReducer = (state = initialState, action) => {

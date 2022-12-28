@@ -1,0 +1,9 @@
+@import "../../../../../settings/settings.scss";
+
+.otherRenderer{
+    display: grid;
+    // padding-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 20px;
+}
