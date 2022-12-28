@@ -8,15 +8,22 @@ $font_size_of_year: 16px;
 
 $border_width_of_branch: 3px;
 
+
+$max_width_of_subText: 70%;
+
 //=============================================
 
 .historyRenderer{
 
+    width: 100%;
+    // background-color: rgb(92, 36, 45);
     .historyRenderer_wrapper{
         width: 100%;
         margin-bottom: 20px;
-        margin-left: 30%;
+        margin-left: 13%;
         margin-top: 30px;
+        
+
 
         .historyRenderer_wrapper_year{
             display: flex;
@@ -24,10 +31,11 @@ $border_width_of_branch: 3px;
             justify-content: center;
             width: $width_of_year;
             height: $height_of_year;
-            background-color: black;
+            background-color: $g_1;
             
             border-radius: 100px;
-            color: white;
+            color: $g_0;
+
             font-size: $font_size_of_year;  
             font-weight: 500;
             text-align: center;
@@ -38,17 +46,23 @@ $border_width_of_branch: 3px;
             
             .historyRenderer_wrapper_section_sideContainer{
                 // background-color: yellow;
+                resize: none;
+
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
                 width: $width_of_year /2 - 2;
-                border: $border_width_of_branch solid black;
+                border: $border_width_of_branch solid $g_1;
+
                 border-top: none;
                 border-bottom: none;    
                 border-left: none;
             }
 
             .historyRenderer_wrapper_section_mainContainer{
+
+                max-width: $max_width_of_subText;
+
 
                 .historyRenderer_wrapper_section_mainContainer_sub{
                     display: flex;
@@ -61,22 +75,28 @@ $border_width_of_branch: 3px;
                         .historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine{
                             width: $width_of_year * 1/8;
                             height: 50%;
-                            border: $border_width_of_branch solid black;
+
+                            border: $border_width_of_branch solid $g_1;
                             border-top: none;
                             border-right: none;
                             border-left: none;
                         }
                     }
 
-                    .historyRenderer_wrapper_section_mainContainer_sub_subText{
-                        background-color: white;
-                        border-radius: 4px;
-                        padding: 2px 10px;
-                        padding-top: 4px;
-                        margin-left: 10px;
-                        font-size: 14px;
-                        font-weight: 500;
-                        cursor: pointer;
+                    .historyRenderer_wrapper_section_mainContainer_wrap{
+                        .historyRenderer_wrapper_section_mainContainer_wrap_sub_subText{
+                            width: fit-content;
+                            overflow-wrap: break-word;
+                            background-color: $g_0;
+                            border-radius: 4px;
+                            padding: 2px 10px;
+                            padding-top: 4px;
+                            margin-left: 10px;
+                            font-size: 14px;
+                            font-weight: 500;
+                            cursor: pointer;
+                        }
+
                     }
                 }
 

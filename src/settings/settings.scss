@@ -54,19 +54,9 @@
     font-weight: 900;
 }
 
-#root, body, html{
-    font-family: Fixel;
-    margin: 0px;
-    padding: 0px;
-}
-
-.App{
-    height: 100vh;
-}
-
 // ========================================================
 
-// * test code *
+// * test code * ---------------
 $c_1: pink;
 $c_2: rgb(99, 134, 47);
 $c_3: #8a3434;
@@ -74,9 +64,18 @@ $c_3: #8a3434;
 @mixin border_test{
     border: 1px solid black;
 }
-// * test code *
+// * test code * ---------------
 
 //========================================================
+$g_0: white;
+$g_1: black;
+$g_2:#BABABA;
+$g_3:rgb(232, 232, 232);
+
+$b_1: #0294A9;
+$b_2: #12AFC2;
+$b_3: #4acdf9;
+$b_4: #dbfbff;
 
 $g_0: black;
 
@@ -86,4 +85,19 @@ $header_height: 55px;
 @mixin glass_background{
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(100px);
+}
+
+#root, body, html{
+    font-family: Fixel;
+    margin: 0px;
+    padding: 0px;
+    ::selection{
+        // color:  $b_1;
+        background-color: $b_3;
+        
+    }
+}
+
+.App{
+    height: 100vh;
 }

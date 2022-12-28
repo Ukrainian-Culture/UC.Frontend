@@ -1,0 +1,46 @@
+@import "../../settings/settings.scss";
+
+$height_of_card: 70px;
+$min_width_of_card: 230px;
+$max_width_of_card: 250px;
+$border_radius_of_card: 10px;
+
+$width_of_emoji: 100px;
+
+.cardBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $g_0;
+    width:  $max_width_of_card;
+    height: $height_of_card;
+    border-radius: $border_radius_of_card;
+    padding: 25px 0px;
+    padding-left: 25px;
+    padding-right: 24px;
+
+    .cardBlock_title{
+        // background-color: yellow;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .cardBlock_bottomWrapper{
+        display: flex;
+
+        .cardBlock_bottomWrapper_subText{
+            font-size: 13px;
+            font-weight: 600;
+            color: $g_2;
+            // background-color: pink;
+        }
+
+        .cardBlock_bottomWrapper_categoryEmoji{
+            text-align: center;
+            align-items: center;
+            font-size: 23px;
+            width: $width_of_emoji;
+            // background-color: rgb(126, 56, 67);
+        }
+    }
+}
