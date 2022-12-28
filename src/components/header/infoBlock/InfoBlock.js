@@ -16,7 +16,7 @@ function InfoBlock() {
   const categoriesArr = selectorState.categoriesInfoBlock.categories
 
   // variable which contain selected category
-  const [currentCategory, setcurrentCategory] = useState(null)
+  const [currentCategory, setcurrentCategory] = useState(categoriesArr[0])
   // variable which contains reference on the parent of categories
   const parentCategories = useRef(null)
   // constant subclass name of active category
@@ -35,21 +35,23 @@ function InfoBlock() {
     }
 
     e.target.className = `${e.target.className} ${activeWord}`
-    setcurrentCategory(e.target)
-    // console.log("currentCategory", currentCategory)
+    setcurrentCategory(e.target.innerText)
+    // console.log("currentCategory", e.target.innerText)
   }
+
 
   useEffect(() => {
     if (parentCategories.current != null) {
       // set first variant in categories active
       parentCategories.current.children[0].className = `${parentCategories.current.children[0].className} ${activeWord}`
     }
+
   }, [sideHeight])
 
   // component to render view of selected information
   function SelectInfoCategory() {
     // variable which we pass to InfoRenderer component
-    const [selected, setSelected] = useState("none")
+    const [selected, setSelected] = useState(currentCategory)
 
     useEffect(() => {
       if (parentCategories.current != null) {

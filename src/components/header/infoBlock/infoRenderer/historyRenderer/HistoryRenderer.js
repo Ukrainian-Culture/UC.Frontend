@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react'
+import gsap from 'gsap'
 import '../historyRenderer/historyRenderer.scss'
 
 //==============================================
@@ -206,7 +207,7 @@ function HistoryRenderer() {
 
     for (let i = 0; i < arr.length; i++) {
       for (let j = 0; j < arr.length; j++) {
-        if (parseInt(getYear(arr[i].date)) < parseInt(getYear(arr[j].date))) {
+        if (parseInt(getYear(arr[i].date)) > parseInt(getYear(arr[j].date))) {
           let temp = arr[i]
           arr[i] = arr[j]
           arr[j] = temp
@@ -254,25 +255,115 @@ function HistoryRenderer() {
     return arr
   }
 
+  const historyWrapper = useRef()
+  const tl = useRef() // timeline for gsap animation
+  const tl_2 = useRef() // another timeline for gsap animation
+  const tl_enter = useRef() // another timeline for history lines animation on enter hover
+  const tl_exit = useRef() // another timeline for history lines animation on exit hover
+  const moveLineToRight = 4 // distance of movind history info to right
+
+  // element which render all history lines
   function FormingHistoryOrder() {
     let arr = sortByDate(test_json)
     let grouped_arr = makeGroupsByYear(arr)
 
+    // function which calls when mouse hover enter history line
+    function animateEnterHover(e) {
+      const ctx = gsap.context(() => {
+        tl_enter.current = gsap.timeline().to(e.target, {
+          x: moveLineToRight,
+          delay: 0.1,
+          duration: 0.5,
+        })
+      })
+      return () => ctx.revert()
+    }
+
+    // function which calls when mouse hover leave history line
+    function animateExitHover(e) {
+      const ctx = gsap.context(() => {
+        tl_enter.current.reverse()
+      })
+      return () => ctx.revert()
+    }
+
+    useEffect(() => {
+      // animation with gsap
+      const ctx = gsap.context(() => {
+        // console.log('creating timeline')
+        tl.current && tl.current.progress(0).kill()
+        tl_2.current && tl_2.current.progress(0).kill()
+
+        tl.current = gsap
+          .timeline()
+          .from('.historyRenderer_wrapper_section_sideContainer', {
+            scaleY: 0,
+            transformOrigin: 'top',
+          })
+          .from(
+            '.historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine',
+            {
+              scaleX: 0,
+              transformOrigin: 'left',
+              stagger: 0.04,
+            },
+            '-=0.5',
+          )
+          .from(
+            '.historyRenderer_wrapper_section_mainContainer_sub_subText',
+            {
+              x: -30,
+              stagger: 0.03,
+              opacity: 0,
+            },
+            '',
+          )
+
+        tl_2.current = gsap.timeline().from('.historyRenderer_wrapper_year', {
+          opacity: 0.5,
+          stagger: 0.04,
+        })
+      }, historyWrapper)
+      return () => ctx.revert()
+    }, [])
     return (
       <>
         {grouped_arr.map((el, index) => {
           return (
-            <div key={`fho_${index}`}>
-              <div key={`fho_2_${index}`}>{`${el.year}00`}</div>
-              
-              {el.list.map((el_2, index_2) => {
-                return (
-                  <div
-                    key={`fho_3_${index_2}`}
-                  >{`${arr[el_2].shortDesc} ${arr[el_2].date}`}</div>
-                )
-              })}
-              <div>=====================</div>
+            <div key={`fho_${index}`} className="historyRenderer_wrapper">
+              <div className="historyRenderer_wrapper_year">
+                <div className="historyRenderer_wrapper_year_text">{`${el.year}00`}</div>
+              </div>
+
+              <div className="historyRenderer_wrapper_section">
+                <div className="historyRenderer_wrapper_section_sideContainer"></div>
+
+                <div className="historyRenderer_wrapper_section_mainContainer">
+                  <div className="historyRenderer_wrapper_section_mainContainer_sub">
+                    <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap"></div>
+                  </div>
+
+                  {el.list.map((el_2, index_2) => {
+                    return (
+                      <div
+                        className="historyRenderer_wrapper_section_mainContainer_sub"
+                        key={`fho_3_${index_2}`}
+                      >
+                        <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap">
+                          <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine"></div>
+                        </div>
+                        <div
+                          className="historyRenderer_wrapper_section_mainContainer_sub_subText"
+                          onMouseEnter={(e) => animateEnterHover(e)}
+                          onMouseLeave={(e) => animateExitHover(e)}
+                        >
+                          {`${arr[el_2].shortDesc} ${arr[el_2].date}`}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
           )
         })}
@@ -285,8 +376,7 @@ function HistoryRenderer() {
   //   }, [])
 
   return (
-    <div className="historyRenderer">
-      HistoryRenderer
+    <div className="historyRenderer" ref={historyWrapper}>
       <FormingHistoryOrder />
     </div>
   )
