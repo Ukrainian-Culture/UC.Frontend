@@ -8,6 +8,7 @@ $border_radius_of_card: 10px;
 $width_of_emoji: 100px;
 
 .cardBlock{
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -21,6 +22,7 @@ $width_of_emoji: 100px;
 
     .cardBlock_title{
         // background-color: yellow;
+        color: $g_1;
         font-size: 17px;
         font-weight: 700;
     }
