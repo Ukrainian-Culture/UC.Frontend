@@ -8,6 +8,7 @@ $font_size_of_year: 16px;
 
 $border_width_of_branch: 3px;
 
+
 $max_width_of_subText: 70%;
 
 //=============================================
@@ -23,6 +24,7 @@ $max_width_of_subText: 70%;
         margin-top: 30px;
         
 
+
         .historyRenderer_wrapper_year{
             display: flex;
             align-items: center;
@@ -33,6 +35,7 @@ $max_width_of_subText: 70%;
             
             border-radius: 100px;
             color: $g_0;
+
             font-size: $font_size_of_year;  
             font-weight: 500;
             text-align: center;
@@ -44,31 +47,35 @@ $max_width_of_subText: 70%;
             .historyRenderer_wrapper_section_sideContainer{
                 // background-color: yellow;
                 resize: none;
+
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
                 width: $width_of_year /2 - 2;
                 border: $border_width_of_branch solid $g_1;
+
                 border-top: none;
                 border-bottom: none;    
                 border-left: none;
             }
 
             .historyRenderer_wrapper_section_mainContainer{
+
                 max-width: $max_width_of_subText;
+
 
                 .historyRenderer_wrapper_section_mainContainer_sub{
                     display: flex;
                     align-items: center;
                     margin-top: 8px;
                     // border: 2px solid pink;
-                    
 
                     .historyRenderer_wrapper_section_mainContainer_sub_subWrap{
 
                         .historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine{
                             width: $width_of_year * 1/8;
                             height: 50%;
+
                             border: $border_width_of_branch solid $g_1;
                             border-top: none;
                             border-right: none;
@@ -89,6 +96,7 @@ $max_width_of_subText: 70%;
                             font-weight: 500;
                             cursor: pointer;
                         }
+
                     }
                 }
 
