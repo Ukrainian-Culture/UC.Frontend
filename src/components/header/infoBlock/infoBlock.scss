@@ -1,14 +1,107 @@
 @import "../../../settings/settings.scss";
 
+$speed_of_sideHeight: 250ms;
+$margin_horizontal_categories: 80px;
+$padding_categories_el: 25px;
+$width_of_main_info: 45vw;
+
 .infoBlock{
-    margin-top: 55px;
+    margin-top: $header_height;
     position: fixed;
     height: 100vh;
     width: 50vw;
-    z-index: 100;
     right: 0px;
 
-    
+    animation-name: sideHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
 
-    @include glass_background;
+    .infoBlock_wrapper{
+
+        .infoBlock_wrapper_categories{
+            padding: 20px 0px;
+            margin: 0px $margin_horizontal_categories;
+            
+            display: flex;
+            justify-content: center;
+            // background-color: aquamarine;
+
+            .infoBlock_wrapper_categories_el{
+                padding: 10px $padding_categories_el;
+                text-align: center;
+                font-size: 13px;
+                font-weight: 700;
+                border-radius: 100px;
+                cursor: pointer;
+            }
+            .active_iwce{
+                background-color: white;
+            }
+        }
+
+        .infoBlock_wrapper_main{
+            padding-bottom: 200px;
+            display: flex;
+            justify-content: center;
+            .infoBlock_wrapper_main_view{
+                clip-path: inset(0px 0px);
+                display: flex;
+                overflow-y: scroll;
+                
+                // background-color: aquamarine;
+                height: 80vh;
+                width: $width_of_main_info;
+                
+                transition: 1s all ease-in;
+                
+            }
+            ::-webkit-scrollbar{
+                width: 8px;
+                background-color: rgb(232, 232, 232);
+                
+            }
+            ::-webkit-scrollbar-thumb{
+                background-color: black;
+                
+               
+            }           
+        }   
+    }
+}
+
+// animation of moving infoBlock to start position
+.infoBlock_no_sideHeight{
+    animation-name: no_sideHeight_2;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+}
+@keyframes no_sideHeight_2{
+    0%{
+        transform: translateY(0px);
+        z-index: 100;
+    }
+    100%{
+        transform: translateY(-100vh);
+        z-index: 85;
+    }
+}
+
+// animation of moving infoBlock to open position
+.infoBlock_sideHeight{
+    animation-name: sideHeight_2;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+}
+@keyframes sideHeight_2{
+    0%{
+        transform: translateY(-100vh);
+        z-index: 85;
+    }
+    100%{
+        transform: translateY(0px);
+        z-index: 100;
+    }
 }
