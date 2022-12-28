@@ -264,6 +264,7 @@ function HistoryRenderer() {
   const moveLineToRight = 4 // distance of movind history info to right
   // const [isHistoryAnimationEnd, setIsHistoryAnimationEnd] = useState(false)
 
+
   // element which render all history lines
   function FormingHistoryOrder() {
     let arr = sortByDate(test_json)
@@ -313,6 +314,7 @@ function HistoryRenderer() {
           )
           .from(
             '.historyRenderer_wrapper_section_mainContainer_wrap',
+
             {
               x: -30,
               stagger: 0.03,
@@ -354,7 +356,9 @@ function HistoryRenderer() {
                         <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap">
                           <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine"></div>
                         </div>
+
                         <Link className='historyRenderer_wrapper_section_mainContainer_wrap' to={`/article/${arr[el_2].date}`} state={arr[el_2].shortDesc}>
+
                           <div
                             className="historyRenderer_wrapper_section_mainContainer_wrap_sub_subText"
                             onMouseEnter={(e) => animateEnterHover(e)}
@@ -362,7 +366,9 @@ function HistoryRenderer() {
                           >
                             {`${arr[el_2].shortDesc} ${arr[el_2].date}`}
                           </div>
+
                         </Link>
+
                       </div>
                     )
                   })}
