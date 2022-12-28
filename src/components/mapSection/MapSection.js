@@ -1,10 +1,11 @@
-import React, {useEffect, useState, useRef} from 'react'
-import {Canvas, useThree, useFrame} from '@react-three/fiber'
-import { Float, OrbitControls, PerspectiveCamera  } from '@react-three/drei'
-import * as THREE from "three";
+import React, { useEffect, useState, useRef } from 'react'
+import { Canvas, useThree, useFrame } from '@react-three/fiber'
+import { Float, OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import * as THREE from 'three'
 import { UC } from './UC'
 import '../mapSection/mapSection.scss'
-
+import { useSelector } from 'react-redux'
+import { NO_SIDEHEIGHT, SIDEHEIGHT } from '../../redux-store/sideHeight/sideHeightConst'
 
 function CustomCamControll(props) {
   const { camReset, setcamReset } = props
@@ -12,15 +13,13 @@ function CustomCamControll(props) {
   const vec = new THREE.Vector3()
 
   // default position of camera
-  const defPosX = 0;
-  const defPosY = 0.5;
-  const defPosZ = 3;
-
+  const defPosX = 0
+  const defPosY = 0.5
+  const defPosZ = 3
 
   const [posX, setposX] = useState({ pos: 0, is: true })
   const [posY, setposY] = useState({ pos: 0, is: true })
   const [posZ, setposZ] = useState({ pos: 0, is: true })
-
 
   // move camera till start position
   function simpleReset() {
@@ -41,22 +40,20 @@ function CustomCamControll(props) {
   useFrame((state) => {
     if (!camRef.current) return
 
-
     // x axies border of camera movings
     if (state.camera.position.x > 1.5) state.camera.position.x -= 0.05
     if (state.camera.position.x > 0.6) state.camera.position.x -= 0.01
     if (state.camera.position.x < -1.5) state.camera.position.x += 0.05
     if (state.camera.position.x < -0.6) state.camera.position.x += 0.01
     // y axies border of camera movings
-    if(state.camera.position.y > 1.5) state.camera.position.y -= 0.05
-    if(state.camera.position.y > 0.6) state.camera.position.y -= 0.01
-    if(state.camera.position.y < -1.5) state.camera.position.y += 0.05
-    if(state.camera.position.y < -0.6) state.camera.position.y += 0.01
+    if (state.camera.position.y > 1.5) state.camera.position.y -= 0.05
+    if (state.camera.position.y > 0.6) state.camera.position.y -= 0.01
+    if (state.camera.position.y < -1.5) state.camera.position.y += 0.05
+    if (state.camera.position.y < -0.6) state.camera.position.y += 0.01
     // z axies border of camera movings
     if (state.camera.position.z < 0) state.camera.position.z += 0.07
     if (state.camera.position.z < 2.5) state.camera.position.z += 0.01
     if (state.camera.position.z > 3) state.camera.position.z -= 0.05
-
 
     if (camReset) {
       state.camera.rotation.x = 0
@@ -86,32 +83,37 @@ function CustomCamControll(props) {
   }, [])
 
   return (
-    <PerspectiveCamera ref={camRef} makeDefault position={[defPosX, defPosY, defPosZ]} />
+    <PerspectiveCamera
+      ref={camRef}
+      makeDefault
+      position={[defPosX, defPosY, defPosZ]}
+    />
   )
 }
 
 function MapSection() {
+  //-------------------------------------------------------------
+  const sideHeight = useSelector((state) => state.sideHeight.class)
+  //-------------------------------------------------------------
   const [camReset, setcamReset] = useState(false)
 
   return (
     <div className="mapSection">
-
       <Canvas>
-
         {/* component that handle position of camera */}
         <CustomCamControll camReset={camReset} setcamReset={setcamReset} />
 
         {/* light */}
-        <ambientLight intensity={0.2} />
+        <ambientLight intensity={0.6} />
         <pointLight position={[0, 0, 5]} intensity={0.2} />
 
-
         {/* component which controll view position */}
-        <OrbitControls zoomSpeed={0.5} panSpeed={0.5} rotateSpeed={0.5} />
+        {sideHeight === NO_SIDEHEIGHT || sideHeight === ""  ? (
+          <OrbitControls zoomSpeed={0.5} panSpeed={0.5} rotateSpeed={0.5} />
+        ) : null}
 
         {/* map of ukraine */}
-        <UC camReset={camReset} setcamReset={setcamReset}/>
-        
+        <UC camReset={camReset} setcamReset={setcamReset} />
       </Canvas>
     </div>
   )

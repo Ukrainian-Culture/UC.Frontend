@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import '../card/card.scss'
+import {Link} from "react-router-dom" 
 
 function Card(props) {
   const { title, subText, category } = props
@@ -17,14 +18,14 @@ function Card(props) {
   }
   return (
     <>
-      <div className="cardBlock">
+      <Link className="cardBlock" to={`/article/${title}`}>
         <div className="cardBlock_title">{title}</div>
 
         <div className="cardBlock_bottomWrapper">
           <div className="cardBlock_bottomWrapper_subText">{croppedText(subText)}</div>
           <div className="cardBlock_bottomWrapper_categoryEmoji">{emojiCategory[category]}</div>
         </div>
-      </div>
+      </Link>
     </>
   )
 }

@@ -1,8 +1,7 @@
-import React, { useRef } from 'react'
-import { useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import '../historyRenderer/historyRenderer.scss'
-import { useState } from 'react'
+import {Link} from "react-router-dom" 
 
 //==============================================
 
@@ -355,7 +354,7 @@ function HistoryRenderer() {
                         <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap">
                           <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine"></div>
                         </div>
-                        <div className='historyRenderer_wrapper_section_mainContainer_wrap'>
+                        <Link className='historyRenderer_wrapper_section_mainContainer_wrap' to={`/article/${arr[el_2].date}`} state={arr[el_2].shortDesc}>
                           <div
                             className="historyRenderer_wrapper_section_mainContainer_wrap_sub_subText"
                             onMouseEnter={(e) => animateEnterHover(e)}
@@ -363,7 +362,7 @@ function HistoryRenderer() {
                           >
                             {`${arr[el_2].shortDesc} ${arr[el_2].date}`}
                           </div>
-                        </div>
+                        </Link>
                       </div>
                     )
                   })}

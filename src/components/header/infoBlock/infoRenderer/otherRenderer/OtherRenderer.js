@@ -27,57 +27,57 @@ function OtherRenderer() {
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
+        category="dishes"
+      />
+      <Card
+        title="Shchedryk"
+        subText="Ukrainian Cristmas song"
         category="music"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
       <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
-      />
-      <Card
-        title="Ukrainian borsch"
-        subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="music"
+        category="dishes"
       />
     </div>
   )
