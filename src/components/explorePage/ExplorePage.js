@@ -21,7 +21,7 @@ function ExplorePage() {
   }, [])
 
   return (
-    <div>
+    <div className='explorePage'>
       <h1>EXPLORE PAGE</h1>
     </div>
   )

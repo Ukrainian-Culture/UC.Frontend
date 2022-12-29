@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
   NO_SIDEHEIGHT,
   CHANGE_SIDEHEIGHT,
@@ -17,10 +17,20 @@ function ArticlePage() {
   }
   //-------------------------------------------------------------
 
+  // hook that handle navigation between pages
+  const navigate = useNavigate()
+
   // parameter which we pass throught url
   const { id } = useParams()
   // state variable which we pass throught Link element
   const location = useLocation()
+
+  // ===========================================================
+
+  // redirect to previous page when button "back" pressed
+  function backClick(){
+    navigate(-1);
+  }
 
   useEffect(() => {
     changeSideHeight(NO_SIDEHEIGHT)
@@ -30,7 +40,7 @@ function ArticlePage() {
     <div className="articlePage">
       <div className="articlePage_wrap">
         <div className="articlePage_wrap_navigation">
-          <div className="articlePage_wrap_navigation_back">back</div>
+          <div className="articlePage_wrap_navigation_back" onClick={()=>backClick()}>back</div>
           <div className="articlePage_wrap_navigation_title">
             ARTICLE PAGE - {id}
           </div>

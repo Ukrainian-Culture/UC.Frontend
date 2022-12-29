@@ -1,0 +1,1 @@
+Make category scroll more adaptive. Prepage InfoBlock for language change. Create variable in redux for change language. 

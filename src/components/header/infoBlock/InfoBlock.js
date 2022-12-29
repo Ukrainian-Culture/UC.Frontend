@@ -24,6 +24,8 @@ function InfoBlock() {
   const sideHeight = selectorState.sideHeight.class
   // variable used for displying categories
   const categoriesArr = selectorState.categoriesInfoBlock.categories
+  const categories_ukArr = selectorState.categoriesInfoBlock.categories_uk
+  const categoriesCorelation = selectorState.categoriesInfoBlock.corelation
 
   // variable which contain selected category
   const [currentCategory, setcurrentCategory] = useState(categoriesArr[0])
@@ -50,6 +52,7 @@ function InfoBlock() {
     console.log("currentCategory", e.target.innerText)
 
     changeCategory(e.target.innerText)
+
   }
 
 

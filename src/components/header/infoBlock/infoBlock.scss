@@ -1,7 +1,7 @@
 @import "../../../settings/settings.scss";
 
 $speed_of_sideHeight: 250ms;
-$margin_horizontal_categories: 80px;
+$margin_horizontal_categories: 15%;
 $padding_categories_el: 25px;
 $width_of_main_info: 45vw;
 
@@ -18,13 +18,13 @@ $width_of_main_info: 45vw;
     animation-fill-mode: forwards;
 
     .infoBlock_wrapper{
-
+        
+        
         .infoBlock_wrapper_categories{
+            display: flex;
             padding: 20px 0px;
             margin: 0px $margin_horizontal_categories;
-            
-            display: flex;
-            justify-content: center;
+            overflow-x: auto;
 
             .infoBlock_wrapper_categories_el{
                 padding: 10px $padding_categories_el;
@@ -37,7 +37,15 @@ $width_of_main_info: 45vw;
             .active_iwce{
                 background-color: $g_0;
             }
+            
         }
+        ::-webkit-scrollbar{
+            height: 8px;
+            background-color: $g_3;
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: $g_1;
+        }  
 
         .infoBlock_wrapper_main{
             padding-bottom: 200px;
