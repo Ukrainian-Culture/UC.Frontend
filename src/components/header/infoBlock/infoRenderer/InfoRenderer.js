@@ -19,6 +19,7 @@ function InfoRenderer(props) {
           <OtherRenderer />
         </div>
       )}
+
     </div>
   )
 }

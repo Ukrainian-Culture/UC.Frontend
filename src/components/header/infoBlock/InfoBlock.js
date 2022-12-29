@@ -48,6 +48,7 @@ function InfoBlock() {
 
     e.target.className = `${e.target.className} ${activeWord}`
     setcurrentCategory(e.target.innerText)
+    
     console.log("currentCategory", e.target.innerText)
 
     changeCategory(e.target.innerText)

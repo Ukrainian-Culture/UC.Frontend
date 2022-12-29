@@ -63,8 +63,9 @@ $width_of_main_info: 45vw;
                 // background-color: aquamarine;
                 height: 80vh;
                 width: $width_of_main_info;
-                
+
                 transition: 0.3s all ease-in;
+
                 
             }
             ::-webkit-scrollbar{
@@ -74,6 +75,7 @@ $width_of_main_info: 45vw;
             }
             ::-webkit-scrollbar-thumb{
                 background-color: $g_1;
+
                 
                
             }           
