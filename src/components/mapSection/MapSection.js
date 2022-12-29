@@ -104,7 +104,7 @@ function MapSection() {
         <CustomCamControll camReset={camReset} setcamReset={setcamReset} />
 
         {/* light */}
-        <ambientLight intensity={0.6} />
+        <ambientLight intensity={0.4} />
         <pointLight position={[0, 0, 5]} intensity={0.2} />
 
         {/* component which controll view position */}
