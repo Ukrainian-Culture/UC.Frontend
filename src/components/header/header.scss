@@ -1,6 +1,7 @@
 @import "../../settings/settings.scss";
 
 $speed_of_sideHeight: 250ms;
+$width_of_logo: 26px;
 
 // ====================================
 
@@ -16,6 +17,51 @@ $speed_of_sideHeight: 250ms;
   @include glass_background;
   clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
 
+  .mainHeader{
+    width: 100vw;
+    box-sizing: border-box;
+    height: $header_height;
+    // box-shadow: 0px 0px 30px 1px #A6A6A6;
+    // background-color: pink;
+    padding: 0 $header_padding;
+
+    .headerLeft{
+
+
+      .headerLeft_logo{
+        text-decoration: none;
+        
+        width: $width_of_logo;
+
+        .headerLeft_logo_svg{
+          color: $g_1;
+        }
+      }
+
+      .headerLeft_map_navs{
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        color: $g_2;
+      } 
+
+      .activePage{
+        color: $g_1;
+      }
+    }
+
+    .mainHeader_oblastName{
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      
+      .mainHeader_oblastName_name{
+        margin-right: 8px;
+        margin-left: 2px;
+      }
+    }
+  }
 }
 
 .mainHeader,
@@ -24,15 +70,6 @@ $speed_of_sideHeight: 250ms;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.mainHeader {
-  width: 100vw;
-  box-sizing: border-box;
-  height: 55px;
-  box-shadow: 0px 0px 30px 1px #A6A6A6;
-  background-color: pink;
-  padding: 0 50px;
 }
 
 .headerLeft,

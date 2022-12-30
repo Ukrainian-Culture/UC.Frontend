@@ -10,6 +10,7 @@ $height_of_navigation: 70px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: $header_height;
         // background-color: rgb(187, 255, 155);
 
         .articlePage_wrap_navigation{

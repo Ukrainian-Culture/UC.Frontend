@@ -1,1 +1,1 @@
-Make category scroll more adaptive. Prepage InfoBlock for language change. Create variable in redux for change language. 
+Header: add logo on header; add navigation in header; make changes in header block styles; add oblast name in header; add emoji to each oblast. | Create folder and files for searchSection.
