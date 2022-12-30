@@ -4,6 +4,7 @@ import Header from '../header/Header'
 import InfoBlock from '../header/infoBlock/InfoBlock'
 import MapSection from '../mapSection/MapSection'
 import Explore from '../explorePage/ExplorePage'
+import StatisticSection from '../statisticSection/StatisticSection'
 
 function MainPage() {
   return (
@@ -11,6 +12,7 @@ function MainPage() {
       <Header />
       <InfoBlock />
       <MapSection />
+      <StatisticSection/>
     </div>
   )
 }
