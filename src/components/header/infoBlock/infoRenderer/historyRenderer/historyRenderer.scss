@@ -84,6 +84,7 @@ $max_width_of_subText: 70%;
                     }
 
                     .historyRenderer_wrapper_section_mainContainer_wrap{
+                        text-decoration: none;
                         .historyRenderer_wrapper_section_mainContainer_wrap_sub_subText{
                             width: fit-content;
                             overflow-wrap: break-word;
@@ -94,6 +95,7 @@ $max_width_of_subText: 70%;
                             margin-left: 10px;
                             font-size: 14px;
                             font-weight: 500;
+                            color: $g_1;
                             cursor: pointer;
                         }
 

@@ -1,0 +1,56 @@
+@import "../../settings/settings.scss";
+
+$width_of_content: 8fr;
+$width_of_sides_of_content: 2fr;
+$height_of_navigation: 70px;
+
+.articlePage{
+
+    .articlePage_wrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // background-color: rgb(187, 255, 155);
+
+        .articlePage_wrap_navigation{
+            display: grid;
+            align-items: center;
+            grid-template-columns: $width_of_sides_of_content $width_of_content $width_of_sides_of_content;
+            width: 100%;
+            height: $height_of_navigation;
+
+            .articlePage_wrap_navigation_back{
+                // background-color: aqua;
+                display: flex;
+                justify-content: center;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            .articlePage_wrap_navigation_title{
+                // background-color: bisque;
+                display: flex;
+                justify-content: center;
+                width: $width_of_content;
+                font-weight: 700;
+            }
+            .articlePage_wrap_navigation_helpers{
+                // background-color: chocolate;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        .articlePage_wrap_content{
+            // background-color: pink;
+            width: 100%;
+            display: grid;
+            grid-template-columns: $width_of_sides_of_content $width_of_content $width_of_sides_of_content;
+            
+
+            .articlePage_wrap_content_text{
+                // background-color: brown;
+                font-weight: 400;
+            }
+        }
+    }
+}
