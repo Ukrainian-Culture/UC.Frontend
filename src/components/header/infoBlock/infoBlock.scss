@@ -39,13 +39,7 @@ $width_of_main_info: 45vw;
             }
             
         }
-        ::-webkit-scrollbar{
-            height: 8px;
-            background-color: $g_3;
-        }
-        ::-webkit-scrollbar-thumb{
-            background-color: $g_1;
-        }  
+        @include scroll_thumb_horizontal;
 
         .infoBlock_wrapper_main{
             padding-bottom: 200px;
@@ -68,17 +62,7 @@ $width_of_main_info: 45vw;
 
                 
             }
-            ::-webkit-scrollbar{
-                width: 8px;
-                background-color: $g_3;
-                
-            }
-            ::-webkit-scrollbar-thumb{
-                background-color: $g_1;
-
-                
-               
-            }           
+           @include scroll_thumb_vartical     
         }   
     }
 }

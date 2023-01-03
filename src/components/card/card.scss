@@ -5,7 +5,7 @@ $min_width_of_card: 230px;
 $max_width_of_card: 250px;
 $border_radius_of_card: 10px;
 
-$width_of_emoji: 100px;
+$width_of_emoji: 40px;
 
 .cardBlock{
     text-decoration: none;
@@ -29,6 +29,8 @@ $width_of_emoji: 100px;
 
     .cardBlock_bottomWrapper{
         display: flex;
+        justify-content: space-between;
+        // background-color: pink;
 
         .cardBlock_bottomWrapper_subText{
             font-size: 13px;
