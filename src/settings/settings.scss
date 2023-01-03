@@ -79,7 +79,8 @@ $b_2: #12AFC2;
 $b_3: #4acdf9;
 $b_4: #dbfbff;
 
-$header_height: 55px;
+$header_height: 60px;
+$header_padding: 4%;
 
 // make background of block blury kind of like glass
 @mixin glass_background{

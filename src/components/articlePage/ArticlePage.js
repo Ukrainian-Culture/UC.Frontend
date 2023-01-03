@@ -6,6 +6,7 @@ import {
   CHANGE_SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
 import '../articlePage/articlePage.scss'
+import Header from '../header/Header'
 
 function ArticlePage() {
   //-------------------------------------------------------------
@@ -38,6 +39,7 @@ function ArticlePage() {
 
   return (
     <div className="articlePage">
+      <Header/>
       <div className="articlePage_wrap">
         <div className="articlePage_wrap_navigation">
           <div className="articlePage_wrap_navigation_back" onClick={()=>backClick()}>back</div>

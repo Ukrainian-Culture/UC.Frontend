@@ -5,6 +5,7 @@ import {
   NO_SIDEHEIGHT,
   CHANGE_SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
+import Header from '../header/Header'
 
 function ExplorePage() {
   //-------------------------------------------------------------
@@ -22,6 +23,7 @@ function ExplorePage() {
 
   return (
     <div className='explorePage'>
+      <Header/>
       <h1>EXPLORE PAGE</h1>
     </div>
   )
