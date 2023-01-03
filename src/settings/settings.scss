@@ -73,6 +73,7 @@ $g_0: white;
 $g_1: black;
 $g_2:#BABABA;
 $g_3:rgb(232, 232, 232);
+$g_4:rgb(242, 242, 242);
 
 $b_1: #0294A9;
 $b_2: #12AFC2;
@@ -88,15 +89,38 @@ $header_padding: 4%;
     -webkit-backdrop-filter: blur(100px);
 }
 
+@mixin scroll_thumb_horizontal{
+    ::-webkit-scrollbar{
+        height: 8px;
+        background-color: $g_3;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: $g_1;
+    }  
+}
+@mixin scroll_thumb_vartical{
+    // scrollbar road
+    ::-webkit-scrollbar{
+        width: 8px;
+        background-color: $g_0;
+    }
+    //scrollbar slider
+    ::-webkit-scrollbar-thumb{
+        background-color: $g_3;
+    }  
+}
+
+// ================================================================
+
 #root, body, html{
     font-family: Fixel;
     margin: 0px;
     padding: 0px;
     ::selection{
         // color:  $b_1;
-        background-color: $b_3;
-        
+        background-color: $b_3;    
     }
+    @include scroll_thumb_vartical;
 }
 
 .App{

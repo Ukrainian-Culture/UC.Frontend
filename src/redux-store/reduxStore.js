@@ -8,6 +8,7 @@ import categoriesInfoBlockReducer from "./categoriesInfoBlock/categoriesInfoBloc
 import selectedCategoryReducer from "./selectedCategory/selectedCategoryReducer"
 import emojiCategoryReducer from "./emojiCategory/emojiCategoryReducer"
 import changeLanguageReducer from "./changeLanguage/changeLanguageReducer"
+import fetchExploreReducer from "./fetchExplore/fetchExploreReducer"
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     categoriesInfoBlock: categoriesInfoBlockReducer,
     selectedCategory: selectedCategoryReducer,
     emojiCategory: emojiCategoryReducer,
-    changeLanguage: changeLanguageReducer
+    changeLanguage: changeLanguageReducer,
+    fetchExplore: fetchExploreReducer
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())
