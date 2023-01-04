@@ -17,7 +17,7 @@ function Header() {
   const selectedOblast = stateRedux.selectedOblast.selectedOblast
   // this is array which contain
   const aboutOblast = stateRedux.aboutOblast.aboutOblast
-  console.log('aboutOblast', aboutOblast[0].en_name)
+  // console.log('aboutOblast', aboutOblast[0].en_name)
   // ===========================================================
   //word used in class when user on particular page
   const activeWord = 'activePage'
@@ -51,7 +51,8 @@ function Header() {
 
       tl.current = gsap.timeline().from('.mainHeader_oblastName_el', {
         y: -25,
-        stagger: 0.05,
+        opacity:0,
+        // stagger: 0.05,
       })
     }, wrapHead)
 

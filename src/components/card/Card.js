@@ -9,7 +9,7 @@ function Card(props) {
     
   // function that make text shorter to accomodate
   function croppedText(p_text){
-    const maxLength = 48;
+    const maxLength = 23;
 
     if(p_text.length > maxLength){
         return `${p_text.slice(0, maxLength)}...`

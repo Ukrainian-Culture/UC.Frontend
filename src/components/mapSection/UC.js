@@ -7,7 +7,9 @@ import {
   NO_SIDEHEIGHT,
   SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
+import stopScroll from "../../hooks/scrolHandler"
 import { CHANGE_OBLAST } from '../../redux-store/selectedOblast/selectedOblastConst'
+import { useLocation } from 'react-router-dom'
 
 const path = '/uk_map/UC.glb'
 
@@ -16,6 +18,7 @@ export function UC(props) {
   const { camReset, setcamReset } = props
 
   //-------------------------------------------------------------
+  const location = useLocation()
   // hook used for sending action to reducer
   const dispatch = useDispatch()
   // function which send action to change sideHeight variable
@@ -23,8 +26,8 @@ export function UC(props) {
     dispatch({ type: CHANGE_SIDEHEIGHT, payload: `${param}` })
   }
   // function which send action to change selectedOblast variable
-  const changeOblast = (param) =>{
-    dispatch({type: CHANGE_OBLAST, payload: `${param}`})
+  const changeOblast = (param) => {
+    dispatch({ type: CHANGE_OBLAST, payload: `${param}` })
   }
   //-------------------------------------------------------------
 
@@ -204,11 +207,21 @@ export function UC(props) {
   ]
 
   // this function return number of oblast in array
-  function getNumberOfSelectedOblast(p_oblast){
-    let temp = p_oblast.slice(0, p_oblast.indexOf("_"))
+  function getNumberOfSelectedOblast(p_oblast) {
+    let temp = p_oblast.slice(0, p_oblast.indexOf('_'))
 
     return parseInt(temp) - 1
   }
+
+  // // stop scroll when selected some region
+  // function stopScroll(prop) {
+  //   if (location.pathname == '/')
+  //     document.getElementsByTagName('html')[0].style.position = prop
+  // }
+
+  // useEffect(()=>{
+
+  // },[])
 
   return (
     <a.group
@@ -223,14 +236,25 @@ export function UC(props) {
 
         // initializing oblast which should be animated
         setcNow(materialName)
-        if (materialName === cState) { // if selected same oblast move this oblast to original position
+        if (materialName === cState) {
+          // if selected same oblast move this oblast to original position
           setcState(null)
           setcNow(null)
+
           changeSideHeight(NO_SIDEHEIGHT)
-          changeOblast("")
-        } else { // if selected oblast
+          // resume scroll when selected some region
+          stopScroll('static')
+
+          changeOblast('')
+        } else {
+          // if selected oblast
+
           setcState(materialName)
+
           changeSideHeight(SIDEHEIGHT)
+          // stop scroll when selected some region
+          stopScroll('fixed')
+
           changeOblast(getNumberOfSelectedOblast(materialName))
         }
 

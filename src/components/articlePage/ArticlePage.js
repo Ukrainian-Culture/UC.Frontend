@@ -5,6 +5,7 @@ import {
   NO_SIDEHEIGHT,
   CHANGE_SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
+import stopScroll from "../../hooks/scrolHandler"
 import '../articlePage/articlePage.scss'
 import Header from '../header/Header'
 
@@ -34,7 +35,8 @@ function ArticlePage() {
   }
 
   useEffect(() => {
-    changeSideHeight(NO_SIDEHEIGHT)
+    changeSideHeight("")
+    stopScroll("static")
   }, [])
 
   return (

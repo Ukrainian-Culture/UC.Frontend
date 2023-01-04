@@ -1,5 +1,33 @@
 @import "../../settings/settings.scss";
 
+$padding_horizontal: 10%;
+$gap_cards: 1vw;
+
+//====================================
+
 .explorePage{
-    margin-top: $header_height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: $header_height;
+    background-color: $g_4;
+    padding-bottom: $header_height * 2;
+    min-height: 100vh;
+
+    .explorePage_header{
+        width: 100%;
+    }
+
+    .explorePage_scrollCategory{
+        width: 100%;
+        padding: 10px 0px;
+    }
+
+    .explorePage_mainPlates{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: $gap_cards;
+        row-gap: $gap_cards;
+    }
 }

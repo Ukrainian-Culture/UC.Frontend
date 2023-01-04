@@ -22,10 +22,11 @@ function InfoBlock() {
   const selectorState = useSelector((state) => state)
   // variable used for move side block with info
   const sideHeight = selectorState.sideHeight.class
+  // current language
+  const language = selectorState.changeLanguage.lang
   // variable used for displying categories
-  const categoriesArr = selectorState.categoriesInfoBlock.categories
-  const categories_ukArr = selectorState.categoriesInfoBlock.categories_uk
-  const categoriesCorelation = selectorState.categoriesInfoBlock.corelation
+  const categoriesArr = selectorState.categoriesInfoBlock[language]
+  const corelateCategories = selectorState.categoriesInfoBlock.corelate;
 
   // variable which contain selected category
   const [currentCategory, setcurrentCategory] = useState(categoriesArr[0])
@@ -33,6 +34,7 @@ function InfoBlock() {
   const parentCategories = useRef(null)
   // constant subclass name of active category
   const activeWord = 'active_iwce'
+  // ---------------------------------------------------------------
 
   // function which add active subclass to selected category and remove active subclass from previous category
   const clickOnCategory = (e) => {
@@ -47,11 +49,12 @@ function InfoBlock() {
     }
 
     e.target.className = `${e.target.className} ${activeWord}`
-    setcurrentCategory(e.target.innerText)
+    const temp_category_name = corelateCategories(e.target.innerText, language)
+    setcurrentCategory(temp_category_name)
     
-    console.log("currentCategory", e.target.innerText)
+    console.log("currentCategory",corelateCategories(e.target.innerText, language))
 
-    changeCategory(e.target.innerText)
+    changeCategory(temp_category_name)
 
   }
 
@@ -76,7 +79,8 @@ function InfoBlock() {
         for (let i = 0; i < childrenClasses.length; i++) {
           if (childrenClasses[i].className.includes(activeWord)) {
             console.log('gacha', childrenClasses[i].innerText)
-            setSelected(childrenClasses[i].innerText)
+            // setSelected(childrenClasses[i].innerText)
+            setSelected(corelateCategories(childrenClasses[i].innerText, language))
           }
         }
       }

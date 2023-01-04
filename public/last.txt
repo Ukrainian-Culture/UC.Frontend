@@ -1,1 +1,13 @@
-Header: add logo on header; add navigation in header; make changes in header block styles; add oblast name in header; add emoji to each oblast. | Create folder and files for searchSection.
+Change names of oblasts. 
+
+ExplodePage: 
+-add explore plates. 
+-add explore scroller. 
+-setup reducer for fetching article from api. 
+-add filtering by category. 
+-add a little bit of animation.
+
+Fix: 
+-card element. 
+-header height side animation. 
+-global scroll when region is selected. 
