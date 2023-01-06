@@ -1,7 +1,7 @@
 @import "../../settings/settings.scss";
 
 $speed_of_sideHeight: 250ms;
-$width_of_logo: 26px;
+$width_of_logo: 24px;
 
 // ====================================
 
@@ -39,11 +39,16 @@ $width_of_logo: 26px;
       }
 
       .headerLeft_map_navs{
+        display: flex;
+        flex-direction: column;
         text-decoration: none;
         font-size: 14px;
-        font-weight: 700;
+        width: fit-content;
+        font-weight: 600;
         color: $g_2;
+        // transition: all 1s ease-in-out;
       } 
+
 
       .activePage{
         color: $g_1;
