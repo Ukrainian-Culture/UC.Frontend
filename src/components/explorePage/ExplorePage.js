@@ -15,6 +15,10 @@ function ExplorePage() {
   const state = useSelector((state) => state)
   // fetched array with articles
   const [articleArr, setArticleArr] = useState(state.fetchExplore.arr)
+  // current language
+  const language = state.changeLanguage.lang
+  // corelated category name
+  // const corelateCategories = state.categoriesInfoBlock.corelate
   // filter category
   const [filterCategory, setFilterCategory] = useState(
     state.selectedCategory.filter,
@@ -66,7 +70,7 @@ function ExplorePage() {
   return (
     <div className="explorePage" ref={exploreWrap}>
       <div className="explorePage_header">
-        <Header />
+        <Header centreText={filterCategory} explore={true}/>
       </div>
 
       <div className="explorePage_scrollCategory">

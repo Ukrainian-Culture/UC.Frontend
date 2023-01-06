@@ -7,10 +7,17 @@ import { useRef } from 'react'
 import useClearSelectedOblast from '../../hooks/useClearSelectedOblast'
 import gsap from 'gsap'
 
-function Header() {
+function Header(props) {
+  const { centreText, main, explore } = props
   const location = useLocation()
-
+  
   const stateRedux = useSelector((state) => state)
+  // current language
+  const language = stateRedux.changeLanguage.lang
+  // corelated emoji to category
+  const emojiCategory = stateRedux.emojiCategory.emoji
+  const corelateCategories = stateRedux.categoriesInfoBlock.corelate
+  const corelateToCurrentLang = stateRedux.categoriesInfoBlock.corelateToCurrentLang
   // variable used for move side block with info
   const sideHeight = stateRedux.sideHeight.class
   // variable which contain selected oblast
@@ -28,6 +35,45 @@ function Header() {
   const wrapHead = useRef()
   // timeline for animation
   const tl = useRef()
+
+  // component which render text in the middle of header
+  function CentreTextRenderer() {
+    // if header on main page
+    if (main && centreText !== '') {
+      return (
+        <>
+          <div className="mainHeader_oblastName">
+            <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
+              {aboutOblast[selectedOblast].emoji}
+            </div>
+            <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
+              {aboutOblast[selectedOblast].en_name}
+            </div>
+            <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
+              region
+            </div>
+          </div>
+        </>
+      )
+    } else if (explore) {
+      return (
+        <>
+          <div className="mainHeader_oblastName">
+            <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
+              {emojiCategory[centreText]}
+            </div>
+            <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
+              {corelateToCurrentLang(centreText, language)}
+            </div>
+          </div>
+        </>
+      )
+    } else {
+      return <></>
+    }
+  }
+
+  // -----------------------------------------------------------
 
   useClearSelectedOblast()
   useEffect(() => {
@@ -49,15 +95,15 @@ function Header() {
     const ctx = gsap.context(() => {
       tl.current && tl.current.progress(0).kill()
 
-      tl.current = gsap.timeline().from('.mainHeader_oblastName_el', {
-        y: -25,
-        opacity:0,
+      tl.current = gsap.timeline().from('.mainHeader_oblastName', {
+        y: -10,
+        opacity: 0,
         // stagger: 0.05,
       })
     }, wrapHead)
 
     return () => ctx.revert()
-  }, [selectedOblast])
+  }, [centreText])
 
   return (
     <div className={`headerSection ${sideHeight}`} ref={wrapHead}>
@@ -80,17 +126,7 @@ function Header() {
           </Link>
         </div>
 
-        {selectedOblast !== '' ? (
-          <div className="mainHeader_oblastName">
-            <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
-              {aboutOblast[selectedOblast].emoji}
-            </div>
-            <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
-              {aboutOblast[selectedOblast].en_name}
-            </div>
-            <div className="mainHeader_oblastName_region mainHeader_oblastName_el">region</div>
-          </div>
-        ) : null}
+        <CentreTextRenderer />
 
         <div className="headerRight">
           {/* <div>en</div>
