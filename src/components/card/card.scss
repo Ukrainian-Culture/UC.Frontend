@@ -36,6 +36,12 @@ $width_of_emoji: 40px;
             font-size: 13px;
             font-weight: 600;
             color: $g_2;
+            width: 80%;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
             // background-color: pink;
         }
 

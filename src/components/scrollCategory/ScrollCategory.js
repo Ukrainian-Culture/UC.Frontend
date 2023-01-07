@@ -16,20 +16,22 @@ function ScrollCategory() {
   const store = useSelector((state) => state)
   // current id of language
   const language = store.changeLanguage.lang
-  // corelated emoji
+  // corelated emoji to category
   const emojiCategory = store.emojiCategory.emoji
   const corelateCategories = store.categoriesInfoBlock.corelate
   const [categories, setCategories] = useState([
-    'all',
+    
     ...store.categoriesInfoBlock[language],
   ])
   // filter category name
-  const [filterCategory, setFilterCategory] = useState('all')
+  // const [filterCategory, setFilterCategory] = useState('all')s
 
   const tl = useRef()
   const wrapScrollCategory = useRef()
   // =====================================
 
+
+  // ------------------------------------
   useEffect(() => {
     const ctx = gsap.context(() => {
       tl.current && tl.current.progress(0).kill()
@@ -52,12 +54,12 @@ function ScrollCategory() {
           return (
             <div
               onClick={() => {
-                changeFilter(el)
+                changeFilter(corelateCategories(el, language))
               }}
               className="scrollCategory_el"
               key={`srccat_${index}`}
             >
-              <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${emojiCategory[el]}`}</p>
+              <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${emojiCategory[corelateCategories(el, language)]}`}</p>
               <p className="scrollCategory_el_p scrollCategory_el_category">{`${el}`}</p>
             </div>
           )

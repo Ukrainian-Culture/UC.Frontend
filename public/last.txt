@@ -1,13 +1,15 @@
-Change names of oblasts. 
+Header: 
+- add possibility to pass different text in centre of header.
+- implement correct translation of categories.
 
-ExplodePage: 
--add explore plates. 
--add explore scroller. 
--setup reducer for fetching article from api. 
--add filtering by category. 
--add a little bit of animation.
+mainPage:
+- add gradient background.
 
-Fix: 
--card element. 
--header height side animation. 
--global scroll when region is selected. 
+Card:
+- add text limatation in shortDesc.
+
+MapSection: 
+- slightly change light intensity
+
+IntroducingCategory:
+- create main files for this component

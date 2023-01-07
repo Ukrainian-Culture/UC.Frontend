@@ -26,7 +26,7 @@ function InfoBlock() {
   const language = selectorState.changeLanguage.lang
   // variable used for displying categories
   const categoriesArr = selectorState.categoriesInfoBlock[language]
-  const corelateCategories = selectorState.categoriesInfoBlock.corelate;
+  const corelateCategories = selectorState.categoriesInfoBlock.corelate
 
   // variable which contain selected category
   const [currentCategory, setcurrentCategory] = useState(categoriesArr[0])
@@ -51,20 +51,20 @@ function InfoBlock() {
     e.target.className = `${e.target.className} ${activeWord}`
     const temp_category_name = corelateCategories(e.target.innerText, language)
     setcurrentCategory(temp_category_name)
-    
-    console.log("currentCategory",corelateCategories(e.target.innerText, language))
+
+    console.log(
+      'currentCategory',
+      corelateCategories(e.target.innerText, language),
+    )
 
     changeCategory(temp_category_name)
-
   }
-
 
   useEffect(() => {
     if (parentCategories.current != null) {
       // set first variant in categories active
       parentCategories.current.children[0].className = `${parentCategories.current.children[0].className} ${activeWord}`
     }
-
   }, [sideHeight])
 
   // component to render view of selected information
@@ -80,7 +80,9 @@ function InfoBlock() {
           if (childrenClasses[i].className.includes(activeWord)) {
             console.log('gacha', childrenClasses[i].innerText)
             // setSelected(childrenClasses[i].innerText)
-            setSelected(corelateCategories(childrenClasses[i].innerText, language))
+            setSelected(
+              corelateCategories(childrenClasses[i].innerText, language),
+            )
           }
         }
       }
@@ -99,15 +101,17 @@ function InfoBlock() {
               ref={parentCategories}
             >
               {categoriesArr.map((el, index) => {
-                return (
-                  <div
-                    onClick={clickOnCategory}
-                    className="infoBlock_wrapper_categories_el"
-                    key={`categoty_info_${index}`}
-                  >
-                    {el}
-                  </div>
-                )
+                if (index != 0) {
+                  return (
+                    <div
+                      onClick={clickOnCategory}
+                      className="infoBlock_wrapper_categories_el"
+                      key={`categoty_info_${index}`}
+                    >
+                      {el}
+                    </div>
+                  )
+                }
               })}
             </div>
 
