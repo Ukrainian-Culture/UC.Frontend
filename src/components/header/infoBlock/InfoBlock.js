@@ -25,11 +25,11 @@ function InfoBlock() {
   // current language
   const language = selectorState.changeLanguage.lang
   // variable used for displying categories
-  const categoriesArr = selectorState.categoriesInfoBlock[language]
+  const categoriesArr = selectorState.categoriesInfoBlock[1]
   const corelateCategories = selectorState.categoriesInfoBlock.corelate
 
   // variable which contain selected category
-  const [currentCategory, setcurrentCategory] = useState(categoriesArr[0])
+  const [currentCategory, setcurrentCategory] = useState("history")
   // variable which contains reference on the parent of categories
   const parentCategories = useRef(null)
   // constant subclass name of active category
@@ -86,7 +86,7 @@ function InfoBlock() {
           }
         }
       }
-    })
+    }, [])
 
     return <InfoRenderer selectedCategory={selected} />
   }

@@ -12,13 +12,34 @@ $padding_brick: 80px;
     width: 100%;
     // background-color: pink;
 
+    ::-webkit-scrollbar{
+        visibility: hidden;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb{
+        visibility: hidden;
+    }  
+
+    &:hover{
+        // @include scroll_thumb_horizontal;
+        ::-webkit-scrollbar{
+            visibility: visible;
+            height: 8px;
+            background-color: $g_0;
+        }
+        ::-webkit-scrollbar-thumb{
+            visibility: visible;
+            background-color: $g_3;
+        }  
+    }
+
     .scrollCategory_wrap{
         display: flex;
         gap: 20px;
         overflow-x: auto;
         padding: 0px 40px;
         padding-top: 10px;
-        padding-bottom: 30px;
+        padding-bottom: 25px;
 
         .scrollCategory_el{
             display: flex;
@@ -44,5 +65,4 @@ $padding_brick: 80px;
             
         }
     }
-    @include scroll_thumb_horizontal;
 }

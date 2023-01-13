@@ -8,14 +8,18 @@ import { useSelector } from 'react-redux'
 function OtherRenderer() {
   const store = useSelector((state) => state)
   // -----------------------------------------
-  const [platesArr, setPlatesArr] = useState(store.fetchOtherCategory.data.data)
+  // const [platesArr, setPlatesArr] = useState(store.fetchOtherCategory.data.data)
+  const [platesArr, setPlatesArr] = useState([{"articleId":1,"type":"file","region":"hmelnytsk","subText":"About Bohdan Khmelnytsky","title":"About Bohdan Khmelnytsky","category":"People"},{"articleId":2,"type":"file","region":"Kyiv","subText":"About Ivan Mazepa","title":"About Ivan Mazepa","category":"People"}])
   const otherWrapper = useRef()
   const tl = useRef()
 
-  useEffect(() => {
-    setPlatesArr(store.fetchOtherCategory.data.data)
-    console.log(store.fetchOtherCategory.data.data)
-  }, [])
+  // useEffect(() => {
+
+  //   axios.get("https://localhost:7219/api/4fd5d8c1-f34b-4824-b252-69910285e681/ArticlesTile").then(response => {
+  //     console.log(response)
+  //   })
+
+  // }, [])
 
   useEffect(() => {
     // animation with gsap

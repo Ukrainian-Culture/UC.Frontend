@@ -8,11 +8,14 @@ $gap_cards: 1vw;
 .explorePage{
     display: flex;
     flex-direction: column;
+    height: 100vh;
     align-items: center;
     padding-top: $header_height;
     background-color: $g_4;
     padding-bottom: $header_height * 2;
     min-height: 100vh;
+
+    
 
     .explorePage_header{
         width: 100%;
@@ -29,5 +32,9 @@ $gap_cards: 1vw;
         grid-template-columns: repeat(4, 1fr);
         gap: $gap_cards;
         row-gap: $gap_cards;
-    }
+        padding: 0px 20px;
+    
+        overflow-y: auto;
+    } 
+    @include scroll_thumb_vartical;
 }
