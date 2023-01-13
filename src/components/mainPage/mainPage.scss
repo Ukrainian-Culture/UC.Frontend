@@ -6,6 +6,24 @@
   width: 100%;
   height: 100%;
 
+  .mainPage_scrollWrap {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type:y proximity;
+
+
+    .mainPage_scrollWrap_el {
+      width: 100%;
+      height: 100%;
+      scroll-snap-align: center;
+    }
+  }
+  @include scroll_thumb_vartical;
+}
+
+.mainPage {
   //* GRADIENT BACKGROUND *//
   *,
   *:before,
@@ -30,7 +48,6 @@
   .container div {
     position: absolute;
     border-radius: 50%;
-    
   }
   .container div:nth-child(1) {
     height: 70%;
@@ -80,8 +97,8 @@
   }
   @keyframes gradient_2 {
     40% {
-        transform: scaleX(1.4) translate(50px);
-        border-radius: 0px;
+      transform: scaleX(1.4) translate(50px);
+      border-radius: 0px;
     }
 
     70% {
@@ -96,7 +113,7 @@
     }
     50% {
       transform: scale(1.2) translate(50px);
-      
+
       border-radius: 100%;
     }
   }

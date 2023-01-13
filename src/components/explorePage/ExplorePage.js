@@ -5,7 +5,6 @@ import {
   NO_SIDEHEIGHT,
   CHANGE_SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
-import stopScroll from '../../hooks/scrolHandler'
 import Header from '../header/Header'
 import Card from '../card/Card'
 import ScrollCategory from '../scrollCategory/ScrollCategory'
@@ -49,7 +48,6 @@ function ExplorePage() {
 
   useEffect(() => {
     changeSideHeight('')
-    stopScroll('static')
   }, [])
 
   // animation
