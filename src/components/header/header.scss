@@ -1,4 +1,4 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
 $speed_of_sideHeight: 250ms;
 $width_of_logo: 24px;
@@ -12,12 +12,18 @@ $width_of_logo: 24px;
   top: 0px;
   z-index: 100;
 
-  // background-color: $c_1;
-  //background-color: pink;
+  // background-color: pink;
   @include glass_background;
-  clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% $header_height,
+    50% $header_height,
+    50% $header_height,
+    0 $header_height
+  );
 
-  .mainHeader{
+  .mainHeader {
     width: 100vw;
     box-sizing: border-box;
     height: $header_height;
@@ -25,20 +31,18 @@ $width_of_logo: 24px;
     // background-color: pink;
     padding: 0 $header_padding;
 
-    .headerLeft{
-
-
-      .headerLeft_logo{
+    .headerLeft {
+      .headerLeft_logo {
         text-decoration: none;
-        
+
         width: $width_of_logo;
 
-        .headerLeft_logo_svg{
+        .headerLeft_logo_svg {
           color: $g_1;
         }
       }
 
-      .headerLeft_map_navs{
+      .headerLeft_map_navs {
         display: flex;
         flex-direction: column;
         text-decoration: none;
@@ -47,21 +51,20 @@ $width_of_logo: 24px;
         font-weight: 600;
         color: $g_2;
         // transition: all 1s ease-in-out;
-      } 
+      }
 
-
-      .activePage{
+      .activePage {
         color: $g_1;
       }
     }
 
-    .mainHeader_oblastName{
+    .mainHeader_oblastName {
       display: flex;
       align-items: center;
       font-size: 14px;
       font-weight: 700;
-      
-      .mainHeader_oblastName_name{
+
+      .mainHeader_oblastName_name {
         margin-right: 8px;
         margin-left: 2px;
       }
@@ -71,17 +74,16 @@ $width_of_logo: 24px;
 
 .mainHeader,
 .headerLeft,
-.headerRight{
+.headerRight {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .headerLeft,
-.headerRight{
+.headerRight {
   width: 180px;
 }
-
 
 // animation of moving sideHeight to start position
 .no_sideHeight {
@@ -93,10 +95,24 @@ $width_of_logo: 24px;
 
 @keyframes no_sideHeight {
   0% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      50% 100%,
+      50% $header_height,
+      0 $header_height
+    );
   }
   100% {
-    clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% $header_height,
+      50% $header_height,
+      50% $header_height,
+      0 $header_height
+    );
   }
 }
 
@@ -110,9 +126,68 @@ $width_of_logo: 24px;
 
 @keyframes sideHeight {
   0% {
-    clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% $header_height,
+      50% $header_height,
+      50% $header_height,
+      0 $header_height
+    );
   }
   100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      50% 100%,
+      50% $header_height,
+      0 $header_height
+    );
+  }
+}
+
+// ==============================================
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  // animation of moving sideHeight to start position
+  .no_sideHeight {
+    animation-name: no_sideHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+  }
+  @keyframes no_sideHeight {
+    0% {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% $header_height_mobile,
+        0 $header_height_mobile
+      );
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% $header_height, 0 $header_height);
+    }
+  }
+
+  // animation of moving sideHeight to open position
+  .sideHeight {
+    animation-name: sideHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+  }
+  @keyframes sideHeight {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% $header_height, 0 $header_height);
+    }
+    100% {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% $header_height_mobile,
+        0 $header_height_mobile
+      );
+    }
   }
 }

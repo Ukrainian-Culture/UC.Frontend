@@ -4,6 +4,7 @@ $speed_of_sideHeight: 250ms;
 $margin_horizontal_categories: 15%;
 $padding_categories_el: 25px;
 $width_of_main_info: 45vw;
+$width_of_main_info_mobile: 100vw;
 
 .infoBlock {
   margin-top: $header_height;
@@ -124,5 +125,49 @@ $width_of_main_info: 45vw;
   100% {
     transform: translateY(0px);
     z-index: 100;
+  }
+}
+
+// =============================================
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .infoBlock {
+    margin-top: $header_height;
+    height: $header_height_mobile;
+    width: 100vw;
+    right: 0px;
+    overflow: hidden;
+
+    .infoBlock_wrapper {
+      .infoBlock_wrapper_categories {
+        padding: 20px 0px;
+        margin: 0px $margin_horizontal_categories;
+
+        .infoBlock_wrapper_categories_el {
+          padding: 10px $padding_categories_el;
+        }
+        .active_iwce {
+          background-color: $g_0;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        visibility: hidden;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        visibility: hidden;
+      }
+
+      .infoBlock_wrapper_main {
+
+        .infoBlock_wrapper_main_view {
+          height: 50vh;
+          width: $width_of_main_info_mobile;
+
+          // background-color: aquamarine;
+        }
+      }
+    }
   }
 }

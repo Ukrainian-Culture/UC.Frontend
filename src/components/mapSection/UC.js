@@ -238,29 +238,34 @@ export function UC(props) {
       setFromPlaceZ(-2) 
       setToPlace([-0.53, 0.5, 0.8])
     }
-    else if(screenWidth >= 615) {
+
+    else if(screenWidth >= 781) {
       setFromPlaceZ(-4.35)
       setToPlace([-0.55, 0.5, 0.1])
     }
+    else if(screenWidth >= 615) {
+      setFromPlaceZ(-4.35)
+      setToPlace([0, -0.55, -0.5])
+    }
     else if(screenWidth >= 480) {
       setFromPlaceZ(-4.35)
-      setToPlace([-0.5, 0.5, 0.1])
+      setToPlace([0, -0.55, -0.5])
     }
     else if(screenWidth >= 370) {
       setFromPlaceZ(-8.35)
-      setToPlace([-0.65, 0.5, 1.66])
+      setToPlace([0, -0.55, -0.5])
     }
     else if(screenWidth >= 320) {
       setFromPlaceZ(-9.35)
-      setToPlace([-0.65, 0.5, 1.66])
+      setToPlace([0, -0.55, -0.5])
     }
     else if(screenWidth >= 280) {
       setFromPlaceZ(-10.35)
-      setToPlace([-0.65, 0.5, 1.66])
+      setToPlace([0, -0.55, -0.5])
     }
     else if(screenWidth >= 150) {
       setFromPlaceZ(-15.35)
-      setToPlace([-0.65, 0.5, 1.66])
+      setToPlace([0, -0.55, -0.5])
     }
     else{
       
