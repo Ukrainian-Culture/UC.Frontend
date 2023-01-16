@@ -8,6 +8,7 @@ import StatisticSection from '../statisticSection/StatisticSection'
 import { useDispatch, useSelector } from 'react-redux'
 import IntroducingCategory from '../introdusingCategory/IntroducingCategory'
 import { CHANGE_SCREENWIDTH } from '../../redux-store/screenWidth/screenWidthConst'
+import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -20,29 +21,10 @@ function MainPage() {
   const selectedOblast = state.selectedOblast.selectedOblast
 
 
-  // variable which contain referense on main screen block
+  // variable which contain referense on main screen blocks
   const refWidth = useRef()
-
-  useEffect(() => {
-    const screenWidth = state.screenWidth.width
-    if (screenWidth === 0) changeScreenWidth(refWidth.current.offsetWidth)
-
-    const changeEvent = () => {
-
-      if (screenWidth === 0) changeScreenWidth(refWidth.current.offsetWidth)
-      else {
-        // console.log(screenWidth, '%%%%%%%%%%%%%%%%%')
-        changeScreenWidth(refWidth.current.offsetWidth)
-      }
-      
-    }
-
-    window.addEventListener('resize', changeEvent)
-
-    return () => {
-      window.removeEventListener('resize', changeEvent)
-    }
-  }, [state])
+  // getting screen size from current page
+  useGetScreenWidth({refWidth: refWidth})
 
   return (
     <div className="mainPage" ref={refWidth}>
@@ -52,7 +34,7 @@ function MainPage() {
         <div></div>
         <div></div>
       </div>
-
+      
       <Header centreText={selectedOblast} main={true} />
       <InfoBlock />
 
@@ -62,7 +44,7 @@ function MainPage() {
         </div>
         {/* <div className='mainPage_scrollWrap_el'><IntroducingCategory /></div> */}
         <div className="mainPage_scrollWrap_el">
-          <h1>{state.screenWidth.width}</h1>
+          {/* <h1>{state.screenWidth.width}</h1> */}
           <StatisticSection />
         </div>
       </div>

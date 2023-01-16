@@ -140,7 +140,9 @@ $width_of_main_info_mobile: 100vw;
 
     .infoBlock_wrapper {
       .infoBlock_wrapper_categories {
-        padding: 20px 0px;
+        
+        padding-top: 20px;
+        padding-bottom: 0px;
         margin: 0px $margin_horizontal_categories;
 
         .infoBlock_wrapper_categories_el {
@@ -160,11 +162,14 @@ $width_of_main_info_mobile: 100vw;
       }
 
       .infoBlock_wrapper_main {
+        padding-top: 0px;
+        margin-top: 0px;
 
         .infoBlock_wrapper_main_view {
           height: 50vh;
           width: $width_of_main_info_mobile;
-
+          padding-top: 0px;
+          margin-top: 0px;
           // background-color: aquamarine;
         }
       }
