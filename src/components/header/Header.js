@@ -12,6 +12,7 @@ import {
   NO_SIDEHEIGHT,
   SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
+import { useLayoutEffect } from 'react'
 
 function Header(props) {
   const dispatch = useDispatch()
@@ -135,9 +136,62 @@ function Header(props) {
 
   // header template for mobile size
   function ScreenMobileSize() {
+    const burgerWrapp = useRef()
+    // second timeline for animation
+    const tl_burger = useRef()
+    const tl_burger_2 = useRef()
+
+    function animationOfBurger(e) {
+      console.log(e.target.children)
+      const ctx = gsap.context(() => {
+        tl_burger.current = gsap.timeline().from('.headerRight_lineTop', {
+          rotateZ: 90,
+        })
+      }, e.target)
+      return () => ctx.revert()
+    }
+
+    useLayoutEffect(() => {
+      tl_burger.current && tl_burger.current.progress(0).kill()
+      tl_burger_2.current && tl_burger_2.current.progress(0).kill()
+
+      const ctx = gsap.context(() => {
+        tl_burger.current = gsap
+          .timeline()
+          .to('.headerRight_lineTop_burgerHeight', {
+            rotateZ: 45,
+            duration: 0.3,
+          })
+          .to(
+            '.headerRight_lineBotttom_burgerHeight',
+            {
+              rotateZ: -45,
+              duration: 0.3,
+              y: -11.5,
+            },
+            '-=0.3',
+          )
+          .from('.headerRight_lineTop_no_burgerHeight', {
+            rotateZ: 45,
+            duration: 0.5,
+          },"-=.5")
+          .from(
+            '.headerRight_lineBotttom_no_burgerHeight',
+            {
+              rotateZ: -45,
+              duration: 0.5,
+              y: -11.5,
+            },
+            '-=0.5',
+          )
+      }, burgerWrapp)
+
+      return () => ctx.revert()
+    }, [])
+
     return (
       <>
-        <div className="mainHeader">
+        <div className="mainHeader" ref={burgerWrapp}>
           <div className="headerLeft">
             <Link className="headerLeft_logo" to="/" reloadDocument>
               <LOGO className="headerLeft_logo_svg" />
@@ -147,9 +201,18 @@ function Header(props) {
           <CentreTextRenderer />
 
           <div className="headerRight">
-            <div className="innerBurgerButton" onClick={() => burgetClick()}>
-              <div className="headerRight_lineTop headerRight_el"></div>
-              <div className="headerRight_lineBotttom headerRight_el"></div>
+            <div
+              className={`innerBurgerButton innerBurgerButton_${burgerHeight}`}
+              onClick={(e) => {
+                burgetClick()
+              }}
+            >
+              <div
+                className={`headerRight_lineTop headerRight_el headerRight_lineTop_${burgerHeight}`}
+              ></div>
+              <div
+                className={`headerRight_lineBotttom headerRight_el headerRight_lineBotttom_${burgerHeight}`}
+              ></div>
             </div>
           </div>
         </div>
@@ -162,8 +225,9 @@ function Header(props) {
   function burgetClick() {
     if (burgerHeight === BURGERHEIGHT && burgerHeight !== '')
       setBurgerHeight(NO_BURGERHEIGHT)
-    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '')
+    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '') {
       setBurgerHeight(BURGERHEIGHT)
+    }
   }
 
   useClearSelectedOblast()

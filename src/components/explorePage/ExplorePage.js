@@ -71,30 +71,32 @@ function ExplorePage() {
 
   return (
     <div className="explorePage" ref={exploreWrap}>
-      <div className="explorePage_header">
-        <Header centreText={filterCategory} explore={true} />
-      </div>
+      <div className=" explorePage_wrap">
+        <div className="explorePage_header">
+          <Header centreText={filterCategory} explore={true} />
+        </div>
 
-      <div className="explorePage_scrollCategory">
-        <ScrollCategory />
-      </div>
+        <div className="explorePage_scrollCategory">
+          <ScrollCategory />
+        </div>
 
-      <div className="explorePage_mainPlates">
-        {articleArr.map((el, index) => {
-          if (
-            categoryToDisplay().includes(el.category) ||
-            filterCategory == 'all'
-          ) {
-            return (
-              <Card
-                key={`epmp_${index}`}
-                title={el.date}
-                subText="Ukrainian dumplings made from potato and wheet dought with creem"
-                category={el.category}
-              />
-            )
-          }
-        })}
+        <div className="explorePage_mainPlates">
+          {articleArr.map((el, index) => {
+            if (
+              categoryToDisplay().includes(el.category) ||
+              filterCategory == 'all'
+            ) {
+              return (
+                <Card
+                  key={`epmp_${index}`}
+                  title={el.date}
+                  subText="Ukrainian dumplings made from potato and wheet dought with creem"
+                  category={el.category}
+                />
+              )
+            }
+          })}
+        </div>
       </div>
     </div>
   )
