@@ -4,6 +4,7 @@ MapSection:
 |
 Header:
 -add adaptation for header.
+-add burger animation.
 |
 MainPage: 
 - add snap to section.
@@ -14,6 +15,5 @@ IntroducingCategory:
 ExplorePage: 
 - fix bug with scroll in explorePage. 
 - show scroll bar on hover.
+- add adaptation for ExplorePage
 |
-
-MapSection:- create redux store file for fetching data when selected region.-Create hook for tracking width of screen.|Header:-add adaptation for header.|MainPage: - add snap to section.|IntroducingCategory:- add basic markup.|ExplorePage: - fix bug with scroll in explorePage. - show scroll bar on hover.|

@@ -1,40 +1,90 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
+$height_of_card: 120px;
 $padding_horizontal: 10%;
 $gap_cards: 1vw;
+$gap_vertical_cards: 2vh;
+$gap_vertical_cards_mobile: 2vh;
+
 
 //====================================
 
-.explorePage{
+.explorePage {
+  height: 100vh;
+  background-color: $g_4;
+
+  .explorePage_wrap {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    justify-content: flex-start;
+    height: 90%;
+    // min-height: 100vh;
     align-items: center;
     padding-top: $header_height;
-    background-color: $g_4;
-    padding-bottom: $header_height * 2;
-    min-height: 100vh;
 
-    
+    // padding-bottom: 10vh;
+    overflow-y: auto;
 
-    .explorePage_header{
-        width: 100%;
+    .explorePage_header {
+      width: 100%;
     }
 
-    .explorePage_scrollCategory{
-        width: 100%;
-        padding: 10px 0px;
+    .explorePage_scrollCategory {
+      width: 100%;
+      padding: 10px 0px;
     }
 
-    .explorePage_mainPlates{
-        margin-top: 20px;
-        display: grid;
+    .explorePage_mainPlates {
+      height: fit-content;
+      margin-top: 20px;
+      // padding-bottom: 60vh;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: $gap_cards;
+      // row-gap: $gap_cards;
+      padding: 0px 20px;
+    }
+  }
+  @include scroll_thumb_vartical;
+}
+
+// ======================================================================================
+@media screen and (max-width: $ADAPTIVE_M_-1) {
+  .explorePage {
+    .explorePage_wrap {
+      .explorePage_mainPlates {
         grid-template-columns: repeat(4, 1fr);
-        gap: $gap_cards;
-        row-gap: $gap_cards;
-        padding: 0px 20px;
-    
-        overflow-y: auto;
-    } 
-    @include scroll_thumb_vartical;
+      }
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_M_1) {
+  .explorePage {
+    .explorePage_wrap {
+      .explorePage_mainPlates {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_M_2) {
+  .explorePage {
+    .explorePage_wrap {
+      .explorePage_mainPlates {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .explorePage {
+    .explorePage_wrap {
+      height: 83%;
+
+      .explorePage_mainPlates {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: $gap_vertical_cards_mobile;
+      }
+    }
+  }
 }
