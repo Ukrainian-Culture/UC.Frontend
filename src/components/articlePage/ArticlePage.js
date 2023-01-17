@@ -36,7 +36,8 @@ function ArticlePage() {
 
   useEffect(() => {
     changeSideHeight("")
-    stopScroll("static")
+    // resume scroll when selected some region
+    // stopScroll("scroll") 
   }, [])
 
   return (

@@ -9,6 +9,7 @@ import Header from '../header/Header'
 import Card from '../card/Card'
 import ScrollCategory from '../scrollCategory/ScrollCategory'
 import gsap from 'gsap'
+import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 
 function ExplorePage() {
   const state = useSelector((state) => state)
@@ -42,9 +43,9 @@ function ExplorePage() {
   }
 
   // change do filtration when selected filtration category
-  useEffect(()=>{
+  useEffect(() => {
     setFilterCategory(state.selectedCategory.filter)
-  },[state.selectedCategory.filter])
+  }, [state.selectedCategory.filter])
 
   useEffect(() => {
     changeSideHeight('')
@@ -57,7 +58,7 @@ function ExplorePage() {
 
       tl.current = gsap.timeline().from('.cardBlock', {
         y: -20,
-        opacity:0,
+        opacity: 0,
         stagger: 0.02,
       })
     }, exploreWrap)
@@ -65,10 +66,13 @@ function ExplorePage() {
     return () => ctx.revert()
   }, [])
 
+  // getting screen size from current page
+  useGetScreenWidth({ refWidth: exploreWrap })
+
   return (
     <div className="explorePage" ref={exploreWrap}>
       <div className="explorePage_header">
-        <Header centreText={filterCategory} explore={true}/>
+        <Header centreText={filterCategory} explore={true} />
       </div>
 
       <div className="explorePage_scrollCategory">
@@ -77,7 +81,10 @@ function ExplorePage() {
 
       <div className="explorePage_mainPlates">
         {articleArr.map((el, index) => {
-          if (categoryToDisplay().includes(el.category) || filterCategory == 'all') {
+          if (
+            categoryToDisplay().includes(el.category) ||
+            filterCategory == 'all'
+          ) {
             return (
               <Card
                 key={`epmp_${index}`}

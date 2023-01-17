@@ -78,8 +78,7 @@ function InfoBlock() {
 
         for (let i = 0; i < childrenClasses.length; i++) {
           if (childrenClasses[i].className.includes(activeWord)) {
-            console.log('gacha', childrenClasses[i].innerText)
-            // setSelected(childrenClasses[i].innerText)
+            // console.log('gacha', childrenClasses[i].innerText)
             setSelected(
               corelateCategories(childrenClasses[i].innerText, language),
             )

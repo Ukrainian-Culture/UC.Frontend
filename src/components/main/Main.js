@@ -9,6 +9,9 @@ import ArticlePage from '../articlePage/ArticlePage'
 import NotFoundPage from '../notFoundPage/NotFoundPage'
 
 function Main() {
+
+
+  
   return (
     <>
       <Provider store={store}>

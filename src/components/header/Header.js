@@ -1,30 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import '../header/header.scss'
 import { ReactComponent as LOGO } from '../../logo.svg'
 import { Link, useLocation } from 'react-router-dom'
 import { useRef } from 'react'
 import useClearSelectedOblast from '../../hooks/useClearSelectedOblast'
 import gsap from 'gsap'
+import { ADAPTIVE_M_1, ADAPTIVE_S_1 } from '../../settings/screenSizes'
+import {
+  CHANGE_SIDEHEIGHT,
+  NO_SIDEHEIGHT,
+  SIDEHEIGHT,
+} from '../../redux-store/sideHeight/sideHeightConst'
 
 function Header(props) {
+  const dispatch = useDispatch()
+  const changeSideHeight = (prop) => {
+    dispatch({ type: CHANGE_SIDEHEIGHT, payload: prop })
+  }
+  //=============================================================
+  //handle header central text format and content
   const { centreText, main, explore } = props
   const location = useLocation()
-  
+
   const stateRedux = useSelector((state) => state)
   // current language
   const language = stateRedux.changeLanguage.lang
   // corelated emoji to category
   const emojiCategory = stateRedux.emojiCategory.emoji
   const corelateCategories = stateRedux.categoriesInfoBlock.corelate
-  const corelateToCurrentLang = stateRedux.categoriesInfoBlock.corelateToCurrentLang
+  const corelateToCurrentLang =
+    stateRedux.categoriesInfoBlock.corelateToCurrentLang
   // variable used for move side block with info
   const sideHeight = stateRedux.sideHeight.class
   // variable which contain selected oblast
   const selectedOblast = stateRedux.selectedOblast.selectedOblast
   // this is array which contain
   const aboutOblast = stateRedux.aboutOblast.aboutOblast
-  // console.log('aboutOblast', aboutOblast[0].en_name)
+  // width of screen
+  const screenWidth = stateRedux.screenWidth.width
+
   // ===========================================================
   //word used in class when user on particular page
   const activeWord = 'activePage'
@@ -36,10 +51,19 @@ function Header(props) {
   // timeline for animation
   const tl = useRef()
 
+  const BURGERHEIGHT = 'burgerHeight'
+  const NO_BURGERHEIGHT = 'no_burgerHeight'
+  // is burger menu active
+  const [burgerHeight, setBurgerHeight] = useState('')
+  // -----------------------------------------------------------
+
   // component which render text in the middle of header
   function CentreTextRenderer() {
     // if header on main page
-    if (main && centreText !== '') {
+
+    if (burgerHeight === BURGERHEIGHT) {
+      return <></>
+    } else if (main && centreText !== '') {
       return (
         <>
           <div className="mainHeader_oblastName">
@@ -56,6 +80,7 @@ function Header(props) {
         </>
       )
     } else if (explore) {
+      console.log('explore', explore)
       return (
         <>
           <div className="mainHeader_oblastName">
@@ -73,10 +98,78 @@ function Header(props) {
     }
   }
 
+  // header template for basic(big) size
+  function ScreenBasicSize() {
+    return (
+      <>
+        <div className="mainHeader">
+          <div className="headerLeft">
+            <Link className="headerLeft_logo" to="/" reloadDocument>
+              <LOGO className="headerLeft_logo_svg" />
+            </Link>
+            <Link
+              className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
+              to="/"
+            >
+              Map
+            </Link>
+            <Link
+              className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
+              to="/explore"
+            >
+              Explore
+            </Link>
+          </div>
+
+          <CentreTextRenderer />
+
+          <div className="headerRight">
+            {/* <div>en</div>
+          <div>theme</div>
+          <div>user</div> */}
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  // header template for mobile size
+  function ScreenMobileSize() {
+    return (
+      <>
+        <div className="mainHeader">
+          <div className="headerLeft">
+            <Link className="headerLeft_logo" to="/" reloadDocument>
+              <LOGO className="headerLeft_logo_svg" />
+            </Link>
+          </div>
+
+          <CentreTextRenderer />
+
+          <div className="headerRight">
+            <div className="innerBurgerButton" onClick={() => burgetClick()}>
+              <div className="headerRight_lineTop headerRight_el"></div>
+              <div className="headerRight_lineBotttom headerRight_el"></div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   // -----------------------------------------------------------
+
+  function burgetClick() {
+    if (burgerHeight === BURGERHEIGHT && burgerHeight !== '')
+      setBurgerHeight(NO_BURGERHEIGHT)
+    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '')
+      setBurgerHeight(BURGERHEIGHT)
+  }
 
   useClearSelectedOblast()
   useEffect(() => {
+    setBurgerHeight('')
+
     // add to className "activeWord" on current page
     if (location.pathname === '/') {
       setHeaderLeft_map(activeWord)
@@ -106,35 +199,37 @@ function Header(props) {
   }, [centreText])
 
   return (
-    <div className={`headerSection ${sideHeight}`} ref={wrapHead}>
-      <div className="mainHeader">
-        <div className="headerLeft">
-          <Link className="headerLeft_logo" to="/" reloadDocument>
-            <LOGO className="headerLeft_logo_svg" />
-          </Link>
-          <Link
-            className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
-            to="/"
-          >
-            Map
-          </Link>
-          <Link
-            className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
-            to="/explore"
-          >
-            Explore
-          </Link>
-        </div>
-
-        <CentreTextRenderer />
-
-        <div className="headerRight">
-          {/* <div>en</div>
-          <div>theme</div>
-          <div>user</div> */}
-        </div>
+    <>
+      <div
+        className={`headerSection ${sideHeight} headerSection_${burgerHeight}`}
+        ref={wrapHead}
+      >
+        {screenWidth >= ADAPTIVE_S_1 ? (
+          <ScreenBasicSize />
+        ) : (
+          <ScreenMobileSize />
+        )}
       </div>
-    </div>
+
+      {screenWidth >= 780 ? null : (
+        <div className={`headerSection_burgerBackground ${burgerHeight}`}>
+          <div className="headerSection_burgerBackground_navigation">
+            <Link
+              className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
+              to="/"
+            >
+              Map
+            </Link>
+            <Link
+              className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
+              to="/explore"
+            >
+              Explore
+            </Link>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
