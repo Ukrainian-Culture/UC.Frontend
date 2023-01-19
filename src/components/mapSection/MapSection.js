@@ -108,9 +108,9 @@ function MapSection() {
         <pointLight position={[0, 0, 5]} intensity={0.6} />
 
         {/* component which controll view position */}
-        {sideHeight === NO_SIDEHEIGHT || sideHeight === ""  ? (
+        {/* {sideHeight === NO_SIDEHEIGHT || sideHeight === ""  ? (
           <OrbitControls zoomSpeed={0.5} panSpeed={0.5} rotateSpeed={0.5} />
-        ) : null}
+        ) : null} */}
 
         {/* map of ukraine */}
         <UC camReset={camReset} setcamReset={setcamReset} />

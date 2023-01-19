@@ -1,15 +1,19 @@
-Header: 
-- add possibility to pass different text in centre of header.
-- implement correct translation of categories.
-
-mainPage:
-- add gradient background.
-
-Card:
-- add text limatation in shortDesc.
-
-MapSection: 
-- slightly change light intensity
-
+MapSection:
+- create redux store file for fetching data when selected region.
+-Create hook for tracking width of screen.
+|
+Header:
+-add adaptation for header.
+-add burger animation.
+|
+MainPage: 
+- add snap to section.
+|
 IntroducingCategory:
-- create main files for this component
+- add basic markup.
+|
+ExplorePage: 
+- fix bug with scroll in explorePage. 
+- show scroll bar on hover.
+- add adaptation for ExplorePage
+|

@@ -1,4 +1,4 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
 $speed_of_sideHeight: 250ms;
 $width_of_logo: 24px;
@@ -12,33 +12,38 @@ $width_of_logo: 24px;
   top: 0px;
   z-index: 100;
 
-  // background-color: $c_1;
-  //background-color: pink;
+  // background-color: pink;
   @include glass_background;
-  clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
+  transition: all 0.7s;
+  transition: backdrop-filter 0s;
 
-  .mainHeader{
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% $header_height,
+    50% $header_height,
+    50% $header_height,
+    0 $header_height
+  );
+
+  .mainHeader {
     width: 100vw;
     box-sizing: border-box;
     height: $header_height;
-    // box-shadow: 0px 0px 30px 1px #A6A6A6;
-    // background-color: pink;
     padding: 0 $header_padding;
 
-    .headerLeft{
-
-
-      .headerLeft_logo{
+    .headerLeft {
+      .headerLeft_logo {
         text-decoration: none;
-        
+
         width: $width_of_logo;
 
-        .headerLeft_logo_svg{
+        .headerLeft_logo_svg {
           color: $g_1;
         }
       }
 
-      .headerLeft_map_navs{
+      .headerLeft_map_navs {
         display: flex;
         flex-direction: column;
         text-decoration: none;
@@ -47,41 +52,43 @@ $width_of_logo: 24px;
         font-weight: 600;
         color: $g_2;
         // transition: all 1s ease-in-out;
-      } 
+      }
 
-
-      .activePage{
+      .activePage {
         color: $g_1;
       }
     }
 
-    .mainHeader_oblastName{
+    .mainHeader_oblastName {
       display: flex;
       align-items: center;
       font-size: 14px;
       font-weight: 700;
-      
-      .mainHeader_oblastName_name{
+
+      .mainHeader_oblastName_name {
         margin-right: 8px;
         margin-left: 2px;
       }
     }
   }
+
+  .headerRight {
+    transition: all 0.7s ease-in-out;
+  }
 }
 
 .mainHeader,
 .headerLeft,
-.headerRight{
+.headerRight {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .headerLeft,
-.headerRight{
+.headerRight {
   width: 180px;
 }
-
 
 // animation of moving sideHeight to start position
 .no_sideHeight {
@@ -93,10 +100,24 @@ $width_of_logo: 24px;
 
 @keyframes no_sideHeight {
   0% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      50% 100%,
+      50% $header_height,
+      0 $header_height
+    );
   }
   100% {
-    clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% $header_height,
+      50% $header_height,
+      50% $header_height,
+      0 $header_height
+    );
   }
 }
 
@@ -110,9 +131,185 @@ $width_of_logo: 24px;
 
 @keyframes sideHeight {
   0% {
-    clip-path: polygon(0 0, 100% 0, 100% $header_height, 50% $header_height, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% $header_height,
+      50% $header_height,
+      50% $header_height,
+      0 $header_height
+    );
   }
   100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 50% $header_height, 0 $header_height);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      50% 100%,
+      50% $header_height,
+      0 $header_height
+    );
+  }
+}
+
+// ==================================================================================================
+
+$burger_menu_width: 25px;
+$burger_menu_height: 13px;
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .headerSection {
+    .mainHeader {
+      padding: 0 $header_padding_mobile;
+
+      .headerRight {
+        // background-color: pink;
+        display: flex;
+        justify-content: flex-end;
+        width: 180px;
+
+        .innerBurgerButton {
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          width: $burger_menu_width;
+          height: $burger_menu_height;
+
+          .headerRight_el {
+            background-color: $g_1;
+            height: 2px;
+            width: 100%;
+          }
+
+          .headerRight_lineBotttom {
+            width: 80%;
+          }
+        }
+        .innerBurgerButton_burgerHeight{
+          .headerRight_lineBotttom {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .headerSection_burgerBackground {
+    position: absolute;
+    // background-color: $g_0;
+    width: 100vw;
+    height: 100vh;
+    transform: translateY(-120%);
+    z-index: 101;
+
+    .headerSection_burgerBackground_navigation {
+      position: absolute;
+      margin-top: $header_height * 2;
+      padding: 0 $header_padding_mobile;
+      z-index: 109;
+
+      .headerLeft_map_navs {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        font-size: 34px;
+        width: fit-content;
+        font-weight: 600;
+        color: $g_2;
+        margin-top: 30px;
+      }
+
+      .activePage {
+        color: $g_1;
+      }
+    }
+  }
+
+  .headerSection_burgerHeight {
+    height: $header_height;
+    z-index: 102;
+      background-color: $g_0;
+  }
+
+  .burgerHeight {
+    
+    transform-origin: top;
+    animation-name: burgerHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+  }
+  @keyframes burgerHeight {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0%);
+      background-color: $g_0;
+    }
+  }
+
+  .no_burgerHeight {
+    z-index: 99;
+    transform-origin: top;
+    animation-name: no_burgerHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+  }
+  @keyframes no_burgerHeight {
+    0% {
+      transform: translateY(0%);
+      background-color: $g_0;
+    }
+    100% {
+      transform: translateY(-100%);
+      
+    }
+  }
+
+  // ================================================ animation for header when region selected
+
+  // animation of moving sideHeight to start position
+  .no_sideHeight {
+    animation-name: no_sideHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+  }
+  @keyframes no_sideHeight {
+    0% {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% $header_height_mobile,
+        0 $header_height_mobile
+      );
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% $header_height, 0 $header_height);
+    }
+  }
+
+  // animation of moving sideHeight to open position
+  .sideHeight {
+    animation-name: sideHeight;
+    animation-timing-function: ease-in-out;
+    animation-duration: $speed_of_sideHeight;
+    animation-fill-mode: forwards;
+  }
+  @keyframes sideHeight {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% $header_height, 0 $header_height);
+    }
+    100% {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% $header_height_mobile,
+        0 $header_height_mobile
+      );
+    }
   }
 }

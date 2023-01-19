@@ -1,104 +1,178 @@
-@import "../../../settings/settings.scss";
+@import '../../../settings/settings.scss';
 
 $speed_of_sideHeight: 250ms;
 $margin_horizontal_categories: 15%;
 $padding_categories_el: 25px;
 $width_of_main_info: 45vw;
+$width_of_main_info_mobile: 100vw;
 
-.infoBlock{
-    margin-top: $header_height;
-    position: fixed;
-    height: 100vh;
-    width: 50vw;
-    right: 0px;
+.infoBlock {
+  margin-top: $header_height;
+  position: fixed;
+  height: 100vh;
+  width: 50vw;
+  right: 0px;
 
-    animation-name: sideHeight;
-    animation-timing-function: ease-in-out;
-    animation-duration: $speed_of_sideHeight;
-    animation-fill-mode: forwards;
+  animation-name: sideHeight;
+  animation-timing-function: ease-in-out;
+  animation-duration: $speed_of_sideHeight;
+  animation-fill-mode: forwards;
 
-    .infoBlock_wrapper{
-        
-        
-        .infoBlock_wrapper_categories{
-            display: flex;
-            padding: 20px 0px;
-            margin: 0px $margin_horizontal_categories;
-            overflow-x: auto;
+  .infoBlock_wrapper {
+    .infoBlock_wrapper_categories {
+      display: flex;
+      padding: 20px 0px;
+      margin: 0px $margin_horizontal_categories;
+      overflow-x: auto;
 
-            .infoBlock_wrapper_categories_el{
-                padding: 10px $padding_categories_el;
-                text-align: center;
-                font-size: 13px;
-                font-weight: 700;
-                border-radius: 100px;
-                cursor: pointer;
-            }
-            .active_iwce{
-                background-color: $g_0;
-            }
-            
-        }
-        @include scroll_thumb_horizontal;
-
-        .infoBlock_wrapper_main{
-            padding-bottom: 200px;
-            display: flex;
-            justify-content: center;
-            .infoBlock_wrapper_main_view{
-                display: flex;
-                justify-content: center;
-                clip-path: inset(0px 0px);
-                display: flex;
-                overflow-y: scroll;
-                overflow-x: hidden;
-
-                
-                // background-color: aquamarine;
-                height: 80vh;
-                width: $width_of_main_info;
-
-                transition: 0.3s all ease-in;
-
-                
-            }
-           @include scroll_thumb_vartical     
-        }   
+      .infoBlock_wrapper_categories_el {
+        padding: 10px $padding_categories_el;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 100px;
+        cursor: pointer;
+      }
+      .active_iwce {
+        background-color: $g_0;
+      }
     }
+
+    ::-webkit-scrollbar {
+      visibility: hidden;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      visibility: hidden;
+    }
+
+    .infoBlock_wrapper_main {
+      padding-bottom: 200px;
+      display: flex;
+      justify-content: center;
+      .infoBlock_wrapper_main_view {
+        display: flex;
+        justify-content: center;
+        clip-path: inset(0px 0px);
+        display: flex;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        // background-color: aquamarine;
+        height: 80vh;
+        width: $width_of_main_info;
+
+        transition: 0.3s all ease-in;
+      }
+      &:hover {
+        ::-webkit-scrollbar {
+          visibility: visible;
+          height: 8px;
+          background-color: $g_0;
+        }
+        ::-webkit-scrollbar-thumb {
+          visibility: visible;
+          background-color: $g_3;
+        }
+      }
+      @include scroll_thumb_vartical;
+    }
+  }
+}
+
+.infoBlock_wrapper_categories:hover {
+  &::-webkit-scrollbar {
+    visibility: visible;
+    height: 8px;
+    background-color: $g_0;
+  }
+  &::-webkit-scrollbar-thumb {
+    visibility: visible;
+    background-color: $g_3;
+  }
 }
 
 // animation of moving infoBlock to start position
-.infoBlock_no_sideHeight{
-    animation-name: no_sideHeight_2;
-    animation-timing-function: ease-in-out;
-    animation-duration: $speed_of_sideHeight;
-    animation-fill-mode: forwards;
+.infoBlock_no_sideHeight {
+  animation-name: no_sideHeight_2;
+  animation-timing-function: ease-in-out;
+  animation-duration: $speed_of_sideHeight;
+  animation-fill-mode: forwards;
 }
-@keyframes no_sideHeight_2{
-    0%{
-        transform: translateY(0px);
-        z-index: 100;
-    }
-    100%{
-        transform: translateY(-100vh);
-        z-index: 85;
-    }
+@keyframes no_sideHeight_2 {
+  0% {
+    transform: translateY(0px);
+    z-index: 100;
+  }
+  100% {
+    transform: translateY(-100vh);
+    z-index: 85;
+  }
 }
 
 // animation of moving infoBlock to open position
-.infoBlock_sideHeight{
-    animation-name: sideHeight_2;
-    animation-timing-function: ease-in-out;
-    animation-duration: $speed_of_sideHeight;
-    animation-fill-mode: forwards;
+.infoBlock_sideHeight {
+  animation-name: sideHeight_2;
+  animation-timing-function: ease-in-out;
+  animation-duration: $speed_of_sideHeight;
+  animation-fill-mode: forwards;
 }
-@keyframes sideHeight_2{
-    0%{
-        transform: translateY(-100vh);
-        z-index: 85;
+@keyframes sideHeight_2 {
+  0% {
+    transform: translateY(-100vh);
+    z-index: 85;
+  }
+  100% {
+    transform: translateY(0px);
+    z-index: 100;
+  }
+}
+
+// =============================================
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .infoBlock {
+    margin-top: $header_height;
+    height: $header_height_mobile;
+    width: 100vw;
+    right: 0px;
+    overflow: hidden;
+
+    .infoBlock_wrapper {
+      .infoBlock_wrapper_categories {
+        
+        padding-top: 20px;
+        padding-bottom: 0px;
+        margin: 0px $margin_horizontal_categories;
+
+        .infoBlock_wrapper_categories_el {
+          padding: 10px $padding_categories_el;
+        }
+        .active_iwce {
+          background-color: $g_0;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        visibility: hidden;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        visibility: hidden;
+      }
+
+      .infoBlock_wrapper_main {
+        padding-top: 0px;
+        margin-top: 0px;
+
+        .infoBlock_wrapper_main_view {
+          height: 50vh;
+          width: $width_of_main_info_mobile;
+          padding-top: 0px;
+          margin-top: 0px;
+          // background-color: aquamarine;
+        }
+      }
     }
-    100%{
-        transform: translateY(0px);
-        z-index: 100;
-    }
+  }
 }
