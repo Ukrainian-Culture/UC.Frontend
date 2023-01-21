@@ -1,0 +1,18 @@
+@import '../../settings/settings.scss';
+
+.loadingPageSection {
+  display: grid;
+  align-content: center;
+  background-color: pink;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  
+    z-index: 200;
+
+    .loadingPageSection_wrap{
+      display: flex;
+      place-self: center;
+      font-size: 3vw;
+    }
+}
