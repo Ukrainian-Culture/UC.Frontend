@@ -357,7 +357,7 @@ function HistoryRenderer() {
                           <div className="historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine"></div>
                         </div>
 
-                        <Link className='historyRenderer_wrapper_section_mainContainer_wrap' to={`/article/${arr[el_2].date}`} state={arr[el_2].shortDesc}>
+                        <Link className='historyRenderer_wrapper_section_mainContainer_wrap' to={`/article/${arr[el_2].date}`} state={arr[el_2]}>
 
                           <div
                             className="historyRenderer_wrapper_section_mainContainer_wrap_sub_subText"

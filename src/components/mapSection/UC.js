@@ -7,7 +7,10 @@ import {
   NO_SIDEHEIGHT,
   SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
+import stopScroll from "../../hooks/scrolHandler"
 import { CHANGE_OBLAST } from '../../redux-store/selectedOblast/selectedOblastConst'
+import { useLocation } from 'react-router-dom'
+import { ADAPTIVE_M_1 } from '../../settings/screenSizes'
 
 const path = '/uk_map/UC.glb'
 
@@ -16,6 +19,7 @@ export function UC(props) {
   const { camReset, setcamReset } = props
 
   //-------------------------------------------------------------
+  const location = useLocation()
   // hook used for sending action to reducer
   const dispatch = useDispatch()
   // function which send action to change sideHeight variable
@@ -23,9 +27,13 @@ export function UC(props) {
     dispatch({ type: CHANGE_SIDEHEIGHT, payload: `${param}` })
   }
   // function which send action to change selectedOblast variable
-  const changeOblast = (param) =>{
-    dispatch({type: CHANGE_OBLAST, payload: `${param}`})
+  const changeOblast = (param) => {
+    dispatch({ type: CHANGE_OBLAST, payload: `${param}` })
   }
+
+  const state = useSelector((state) => state)
+  // width of screen
+  const screenWidth = state.screenWidth.width
   //-------------------------------------------------------------
 
   // variable contain last clickable oblast
@@ -34,7 +42,7 @@ export function UC(props) {
   const [cNow, setcNow] = useState('')
 
   // basic color of oblast
-  const [baseColor, setbaseColor] = useState('#dbfbff')
+  const [baseColor, setbaseColor] = useState('#e6fcff')
   const [arrBaseColor, setarrBaseColor] = useState([
     { color: baseColor },
     { color: baseColor },
@@ -122,93 +130,148 @@ export function UC(props) {
     useSpring({ color: cNow == '25_lugansk' ? selectColor : baseColor }),
   ]
 
+  // position of map for default screen
+  // var fromPlaceZ = -0.35;
+  const [fromPlaceZ, setFromPlaceZ] = useState(20)
   // position to which the oblast should move
-  const toPlace = [-0.65, 0.5, 1.66]
+  const [toPlace, setToPlace] = useState([-0.65, 0.5, 1.66]);
   // array with animation of mooving from original position to particular point <toPlace>
   const oblMove = [
     useSpring({
-      pos: cState == '1_lviv' ? toPlace : [-1.79, 0.84, -0.35],
+      pos: cState == '1_lviv' ? toPlace : [-1.79, 0.84, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '2_volun' ? toPlace : [-1.58, 1.38, -0.35],
+      pos: cState == '2_volun' ? toPlace : [-1.58, 1.38, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '3_rivne' ? toPlace : [-1.28, 1.34, -0.35],
+      pos: cState == '3_rivne' ? toPlace : [-1.28, 1.34, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '4_ternopil' ? toPlace : [-1.4, 0.83, -0.35],
+      pos: cState == '4_ternopil' ? toPlace : [-1.4, 0.83, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '5_ivano-frankivsk' ? toPlace : [-1.67, 0.52, -0.35],
+      pos: cState == '5_ivano-frankivsk' ? toPlace : [-1.67, 0.52, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '6_zakarpattya' ? toPlace : [-2, 0.44, -0.35],
+      pos: cState == '6_zakarpattya' ? toPlace : [-2, 0.44, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '7_chernivtsi' ? toPlace : [-1.27, 0.41, -0.35],
+      pos: cState == '7_chernivtsi' ? toPlace : [-1.27, 0.41, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '8_hmelnytsk' ? toPlace : [-1.09, 0.83, -0.35],
+      pos: cState == '8_hmelnytsk' ? toPlace : [-1.09, 0.83, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '9_jytomyr' ? toPlace : [-0.74, 1.18, -0.35],
+      pos: cState == '9_jytomyr' ? toPlace : [-0.74, 1.18, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '10_kyiv' ? toPlace : [-0.26, 1.07, -0.35],
+      pos: cState == '10_kyiv' ? toPlace : [-0.26, 1.07, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '11_vinnytsa' ? toPlace : [-0.67, 0.56, -0.35],
+      pos: cState == '11_vinnytsa' ? toPlace : [-0.67, 0.56, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '12_odessa' ? toPlace : [-0.46, -0.1, -0.35],
+      pos: cState == '12_odessa' ? toPlace : [-0.46, -0.1, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '13_mikolaiv' ? toPlace : [0.13, 0.1, -0.35],
+      pos: cState == '13_mikolaiv' ? toPlace : [0.13, 0.1, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '14_kirovograd' ? toPlace : [0.17, 0.51, -0.35],
+      pos: cState == '14_kirovograd' ? toPlace : [0.17, 0.51, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '15_cherkasy' ? toPlace : [-0.02, 0.75, -0.35],
+      pos: cState == '15_cherkasy' ? toPlace : [-0.02, 0.75, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '16_chernigiv' ? toPlace : [0.17, 1.46, -0.35],
+      pos: cState == '16_chernigiv' ? toPlace : [0.17, 1.46, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '17_poltava' ? toPlace : [0.55, 0.86, -0.35],
+      pos: cState == '17_poltava' ? toPlace : [0.55, 0.86, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '18_dnipro' ? toPlace : [0.83, 0.4, -0.35],
+      pos: cState == '18_dnipro' ? toPlace : [0.83, 0.4, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '19_herson' ? toPlace : [0.5, -0.11, -0.35],
+      pos: cState == '19_herson' ? toPlace : [0.5, -0.11, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '20_krym' ? toPlace : [0.75, -0.56, -0.35],
+      pos: cState == '20_krym' ? toPlace : [0.75, -0.56, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '21_zaporizzya' ? toPlace : [1.09, 0.04, -0.35],
+      pos: cState == '21_zaporizzya' ? toPlace : [1.09, 0.04, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '22_sumy' ? toPlace : [0.71, 1.36, -0.35],
+      pos: cState == '22_sumy' ? toPlace : [0.71, 1.36, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '23_harkiv' ? toPlace : [1.2, 0.85, -0.35],
+      pos: cState == '23_harkiv' ? toPlace : [1.2, 0.85, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '24_donetsk' ? toPlace : [1.51, 0.33, -0.35],
+      pos: cState == '24_donetsk' ? toPlace : [1.51, 0.33, fromPlaceZ],
     }),
     useSpring({
-      pos: cState == '25_lugansk' ? toPlace : [1.88, 0.66, -0.35],
+      pos: cState == '25_lugansk' ? toPlace : [1.88, 0.66, fromPlaceZ],
     }),
   ]
 
   // this function return number of oblast in array
-  function getNumberOfSelectedOblast(p_oblast){
-    let temp = p_oblast.slice(0, p_oblast.indexOf("_"))
+  function getNumberOfSelectedOblast(p_oblast) {
+    let temp = p_oblast.slice(0, p_oblast.indexOf('_'))
 
     return parseInt(temp) - 1
   }
+
+  useEffect(()=>{
+    if(screenWidth >= 1536) {
+      setFromPlaceZ(-0.35)
+      setToPlace([-0.65, 0.5, 1.66])
+    }
+    else if(screenWidth >= 1200) {
+      setToPlace([-0.6, 0.5, 1.4])
+      setFromPlaceZ(-0.65)
+    }
+    else if(screenWidth >= 1000) {
+      setToPlace([-0.55, 0.5, 1.2])
+      setFromPlaceZ(-1.35)
+    }
+    else if(screenWidth >= 821) {
+      setFromPlaceZ(-2) 
+      setToPlace([-0.53, 0.5, 0.8])
+    }
+
+    else if(screenWidth >= 781) {
+      setFromPlaceZ(-4.35)
+      setToPlace([-0.55, 0.5, 0.1])
+    }
+    else if(screenWidth >= 615) {
+      setFromPlaceZ(-4.35)
+      setToPlace([0, -0.55, -0.5])
+    }
+    else if(screenWidth >= 480) {
+      setFromPlaceZ(-4.35)
+      setToPlace([0, -0.55, -0.5])
+    }
+    else if(screenWidth >= 370) {
+      setFromPlaceZ(-8.35)
+      setToPlace([0, -0.55, -0.5])
+    }
+    else if(screenWidth >= 320) {
+      setFromPlaceZ(-9.35)
+      setToPlace([0, -0.55, -0.5])
+    }
+    else if(screenWidth >= 280) {
+      setFromPlaceZ(-10.35)
+      setToPlace([0, -0.55, -0.5])
+    }
+    else if(screenWidth >= 150) {
+      setFromPlaceZ(-15.35)
+      setToPlace([0, -0.55, -0.5])
+    }
+    else{
+      
+    }
+
+  },[screenWidth])
 
   return (
     <a.group
@@ -223,14 +286,25 @@ export function UC(props) {
 
         // initializing oblast which should be animated
         setcNow(materialName)
-        if (materialName === cState) { // if selected same oblast move this oblast to original position
+        if (materialName === cState) {
+          // if selected same oblast move this oblast to original position
           setcState(null)
           setcNow(null)
+
           changeSideHeight(NO_SIDEHEIGHT)
-          changeOblast("")
-        } else { // if selected oblast
+          // resume scroll when selected some region
+          stopScroll("scroll")
+
+          changeOblast('')
+        } else {
+          // if selected oblast
+
           setcState(materialName)
+
           changeSideHeight(SIDEHEIGHT)
+          // stop scroll when selected some region
+          stopScroll("hidden")
+
           changeOblast(getNumberOfSelectedOblast(materialName))
         }
 

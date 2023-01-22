@@ -1,0 +1,100 @@
+@import '../../settings/settings.scss';
+
+$gap_category: 40px;
+$height_brick: 90px;
+$padding_brick: 80px;
+
+//====================================
+
+.scrollCategory {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  // background-color: pink;
+
+  ::-webkit-scrollbar {
+    visibility: hidden;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    visibility: hidden;
+  }
+
+  &:hover {
+    // @include scroll_thumb_horizontal;
+    ::-webkit-scrollbar {
+      visibility: visible;
+      height: 8px;
+      background-color: $g_0;
+    }
+    ::-webkit-scrollbar-thumb {
+      visibility: visible;
+      background-color: $g_3;
+    }
+  }
+
+  .scrollCategory_wrap {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 0px 40px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+
+    .scrollCategory_el_wrapp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      .scrollCategory_el {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        
+        background-color: $g_0;
+        height: $height_brick;
+        width: fit-content;
+        padding: 0px $padding_brick;
+        border-radius: 100px;
+
+        font-size: 18px;
+        font-weight: 700;
+
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        .scrollCategory_el_p {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+// =============================================================
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .scrollCategory {
+    ::-webkit-scrollbar {
+      visibility: hidden;
+      height: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+      visibility: hidden;
+    }
+
+    &:hover {
+      // @include scroll_thumb_horizontal;
+      ::-webkit-scrollbar {
+        visibility: visible;
+        height: 0px;
+        background-color: $g_0;
+      }
+      ::-webkit-scrollbar-thumb {
+        visibility: visible;
+        background-color: $g_3;
+      }
+    }
+  }
+}

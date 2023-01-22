@@ -38,36 +38,36 @@ function CustomCamControll(props) {
   }
 
   useFrame((state) => {
-    if (!camRef.current) return
+    // if (!camRef.current) return
 
-    // x axies border of camera movings
-    if (state.camera.position.x > 1.5) state.camera.position.x -= 0.05
-    if (state.camera.position.x > 0.6) state.camera.position.x -= 0.01
-    if (state.camera.position.x < -1.5) state.camera.position.x += 0.05
-    if (state.camera.position.x < -0.6) state.camera.position.x += 0.01
-    // y axies border of camera movings
-    if (state.camera.position.y > 1.5) state.camera.position.y -= 0.05
-    if (state.camera.position.y > 0.6) state.camera.position.y -= 0.01
-    if (state.camera.position.y < -1.5) state.camera.position.y += 0.05
-    if (state.camera.position.y < -0.6) state.camera.position.y += 0.01
-    // z axies border of camera movings
-    if (state.camera.position.z < 0) state.camera.position.z += 0.07
-    if (state.camera.position.z < 2.5) state.camera.position.z += 0.01
-    if (state.camera.position.z > 3) state.camera.position.z -= 0.05
+    // // x axies border of camera movings
+    // if (state.camera.position.x > 1.5) state.camera.position.x -= 0.05
+    // if (state.camera.position.x > 0.6) state.camera.position.x -= 0.01
+    // if (state.camera.position.x < -1.5) state.camera.position.x += 0.05
+    // if (state.camera.position.x < -0.6) state.camera.position.x += 0.01
+    // // y axies border of camera movings
+    // if (state.camera.position.y > 1.5) state.camera.position.y -= 0.05
+    // if (state.camera.position.y > 0.6) state.camera.position.y -= 0.01
+    // if (state.camera.position.y < -1.5) state.camera.position.y += 0.05
+    // if (state.camera.position.y < -0.6) state.camera.position.y += 0.01
+    // // z axies border of camera movings
+    // if (state.camera.position.z < 0) state.camera.position.z += 0.07
+    // if (state.camera.position.z < 2.5) state.camera.position.z += 0.01
+    // if (state.camera.position.z > 3) state.camera.position.z -= 0.05
 
-    if (camReset) {
-      state.camera.rotation.x = 0
-      state.camera.rotation.y = 0
-      state.camera.rotation.z = 0
+    // if (camReset) {
+    //   state.camera.rotation.x = 0
+    //   state.camera.rotation.y = 0
+    //   state.camera.rotation.z = 0
 
-      state.camera.position.lerp(vec.set(defPosX, defPosY, defPosZ), 0.1)
+    //   state.camera.position.lerp(vec.set(defPosX, defPosY, defPosZ), 0.1)
 
-      simpleReset()
-    } else {
-      state.camera.rotation.x = 0
-      state.camera.rotation.y = 0
-      state.camera.rotation.z = 0
-    }
+    //   // simpleReset()
+    // } else {
+    //   state.camera.rotation.x = 0
+    //   state.camera.rotation.y = 0
+    //   state.camera.rotation.z = 0
+    // }
 
     state.camera.updateProjectionMatrix()
   })
@@ -104,13 +104,13 @@ function MapSection() {
         <CustomCamControll camReset={camReset} setcamReset={setcamReset} />
 
         {/* light */}
-        <ambientLight intensity={0.4} />
-        <pointLight position={[0, 0, 5]} intensity={0.2} />
+        <ambientLight intensity={0.5} />
+        <pointLight position={[0, 0, 5]} intensity={0.8} />
 
         {/* component which controll view position */}
-        {sideHeight === NO_SIDEHEIGHT || sideHeight === ""  ? (
+        {/* {sideHeight === NO_SIDEHEIGHT || sideHeight === ""  ? (
           <OrbitControls zoomSpeed={0.5} panSpeed={0.5} rotateSpeed={0.5} />
-        ) : null}
+        ) : null} */}
 
         {/* map of ukraine */}
         <UC camReset={camReset} setcamReset={setcamReset} />
@@ -119,4 +119,4 @@ function MapSection() {
   )
 }
 
-export default MapSection
+export default React.memo(MapSection)

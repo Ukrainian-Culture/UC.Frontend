@@ -7,12 +7,17 @@ import MainPage from '../mainPage/MainPage'
 import ExplorePage from '../explorePage/ExplorePage'
 import ArticlePage from '../articlePage/ArticlePage'
 import NotFoundPage from '../notFoundPage/NotFoundPage'
+import StartAppRequests from '../../hooks/StartAppRequests'
 
 function Main() {
+
+
+  
   return (
     <>
       <Provider store={store}>
         <div className="mainScript">
+          <StartAppRequests/>
           <Routes>
             <Route path="/" element={<MainPage />}/>
             <Route path="/explore" element={<ExplorePage />} />

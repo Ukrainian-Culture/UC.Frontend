@@ -1,1 +1,11 @@
-Make category scroll more adaptive. Prepage InfoBlock for language change. Create variable in redux for change language. 
+MapSection:
+- change color and light.
+- optimise 3d map model. 
+|
+Redux:
+- modify fetchOtherCategory.
+- add fetching of languages and category guID.
+|
+ArticlePage:
+- add adaptation.
+- add possibility to download pdf.

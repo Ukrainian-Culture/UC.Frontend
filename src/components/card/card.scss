@@ -5,7 +5,7 @@ $min_width_of_card: 230px;
 $max_width_of_card: 250px;
 $border_radius_of_card: 10px;
 
-$width_of_emoji: 100px;
+$width_of_emoji: 40px;
 
 .cardBlock{
     text-decoration: none;
@@ -29,11 +29,19 @@ $width_of_emoji: 100px;
 
     .cardBlock_bottomWrapper{
         display: flex;
+        justify-content: space-between;
+        // background-color: pink;
 
         .cardBlock_bottomWrapper_subText{
             font-size: 13px;
             font-weight: 600;
             color: $g_2;
+            width: 80%;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
             // background-color: pink;
         }
 
@@ -42,7 +50,35 @@ $width_of_emoji: 100px;
             align-items: center;
             font-size: 23px;
             width: $width_of_emoji;
-            // background-color: rgb(126, 56, 67);
+
+            .cardBlock_hint_wrapp{
+                // background-color: rgb(126, 56, 67);
+                display: flex;
+                align-items: flex-end;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                border-radius: $border_radius_of_card;
+
+
+                .cardBlock_hint{
+                    // opacity: 0;
+                    background-color: $g_3;
+                    bottom: 0px;
+                    color: $g_0;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-bottom-left-radius: $border_radius_of_card;
+                    border-bottom-right-radius: $border_radius_of_card;
+                }
+            }
+            
         }
     }
+
+    
 }

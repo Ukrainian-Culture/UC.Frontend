@@ -7,3 +7,11 @@
     gap: 10px;
     padding-top: 20px;
 }
+
+// ====================================
+
+@media screen and (max-width: $ADAPTIVE_M_1) {
+    .otherRenderer{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

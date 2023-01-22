@@ -22,17 +22,19 @@ function InfoBlock() {
   const selectorState = useSelector((state) => state)
   // variable used for move side block with info
   const sideHeight = selectorState.sideHeight.class
+  // current language
+  const language = selectorState.changeLanguage.lang
   // variable used for displying categories
-  const categoriesArr = selectorState.categoriesInfoBlock.categories
-  const categories_ukArr = selectorState.categoriesInfoBlock.categories_uk
-  const categoriesCorelation = selectorState.categoriesInfoBlock.corelation
+  const categoriesArr = selectorState.categoriesInfoBlock[1]
+  const corelateCategories = selectorState.categoriesInfoBlock.corelate
 
   // variable which contain selected category
-  const [currentCategory, setcurrentCategory] = useState(categoriesArr[0])
+  const [currentCategory, setcurrentCategory] = useState("history")
   // variable which contains reference on the parent of categories
   const parentCategories = useRef(null)
   // constant subclass name of active category
   const activeWord = 'active_iwce'
+  // ---------------------------------------------------------------
 
   // function which add active subclass to selected category and remove active subclass from previous category
   const clickOnCategory = (e) => {
@@ -47,21 +49,22 @@ function InfoBlock() {
     }
 
     e.target.className = `${e.target.className} ${activeWord}`
-    setcurrentCategory(e.target.innerText)
-    
-    console.log("currentCategory", e.target.innerText)
+    const temp_category_name = corelateCategories(e.target.innerText, language)
+    setcurrentCategory(temp_category_name)
 
-    changeCategory(e.target.innerText)
+    console.log(
+      'currentCategory',
+      corelateCategories(e.target.innerText, language),
+    )
 
+    changeCategory(temp_category_name)
   }
-
 
   useEffect(() => {
     if (parentCategories.current != null) {
       // set first variant in categories active
       parentCategories.current.children[0].className = `${parentCategories.current.children[0].className} ${activeWord}`
     }
-
   }, [sideHeight])
 
   // component to render view of selected information
@@ -75,12 +78,14 @@ function InfoBlock() {
 
         for (let i = 0; i < childrenClasses.length; i++) {
           if (childrenClasses[i].className.includes(activeWord)) {
-            console.log('gacha', childrenClasses[i].innerText)
-            setSelected(childrenClasses[i].innerText)
+            // console.log('gacha', childrenClasses[i].innerText)
+            setSelected(
+              corelateCategories(childrenClasses[i].innerText, language),
+            )
           }
         }
       }
-    })
+    }, [])
 
     return <InfoRenderer selectedCategory={selected} />
   }
@@ -95,15 +100,17 @@ function InfoBlock() {
               ref={parentCategories}
             >
               {categoriesArr.map((el, index) => {
-                return (
-                  <div
-                    onClick={clickOnCategory}
-                    className="infoBlock_wrapper_categories_el"
-                    key={`categoty_info_${index}`}
-                  >
-                    {el}
-                  </div>
-                )
+                if (index != 0) {
+                  return (
+                    <div
+                      onClick={clickOnCategory}
+                      className="infoBlock_wrapper_categories_el"
+                      key={`categoty_info_${index}`}
+                    >
+                      {el}
+                    </div>
+                  )
+                }
               })}
             </div>
 

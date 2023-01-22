@@ -61,7 +61,7 @@ $c_1: pink;
 $c_2: rgb(99, 134, 47);
 $c_3: #8a3434;
 $c_3: #8a3434;
-$c_4: #dbfbff;
+$c_4: #e6fcff;
 
 @mixin border_test{
     border: 1px solid black;
@@ -69,17 +69,35 @@ $c_4: #dbfbff;
 // * test code * ---------------
 
 //========================================================
+
 $g_0: white;
 $g_1: black;
 $g_2:#BABABA;
 $g_3:rgb(232, 232, 232);
+$g_4:rgb(242, 242, 242);
 
 $b_1: #0294A9;
 $b_2: #12AFC2;
 $b_3: #4acdf9;
 $b_4: #dbfbff;
 
-$header_height: 55px;
+$header_height: 60px;
+$header_padding: 4%;
+$header_padding_mobile: 8%;
+
+$header_height_mobile: 70vh;
+
+// $adaptive_s_-1: 480px;
+// $adaptive_s: 1000px;
+// $adaptive_m: 1180px;
+// $adaptive_m_2: 1280px;
+// $adaptive_m_3: 1400px;
+$ADAPTIVE_M_-1: 1650px;
+$ADAPTIVE_M_1: 1410px;
+$ADAPTIVE_M_2: 1100px;
+$ADAPTIVE_S_1: 781px;
+
+//========================================================
 
 // make background of block blury kind of like glass
 @mixin glass_background{
@@ -87,15 +105,55 @@ $header_height: 55px;
     -webkit-backdrop-filter: blur(100px);
 }
 
+@mixin scroll_thumb_horizontal{
+    ::-webkit-scrollbar{
+        height: 8px;
+        background-color: $g_0;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: $g_3;
+    }  
+}
+@mixin scroll_thumb_vartical{
+    // scrollbar road
+    ::-webkit-scrollbar{
+        width: 8px;
+        background-color: $g_0;
+        transition: all 0.6s ease-in-out;
+        border-radius: 6px;
+    }
+    //scrollbar slider
+    ::-webkit-scrollbar-thumb{
+        background-color: $g_3;
+        border-radius: 6px;
+        transition: all 0.6s ease-in-out;
+    }  
+}
+@mixin scroll_thumb_hide{
+    // scrollbar road
+    ::-webkit-scrollbar{
+        visibility: hidden;
+    }
+    //scrollbar slider
+    ::-webkit-scrollbar-thumb{
+        visibility: hidden;
+    }  
+}
+
+// ================================================================
+
 #root, body, html{
     font-family: Fixel;
     margin: 0px;
     padding: 0px;
+    scroll-behavior: smooth;
     ::selection{
         // color:  $b_1;
-        background-color: $b_3;
-        
+        background-color: $b_3;    
     }
+    // overflow-y: hidden;
+    overflow-x: hidden;
+    @include scroll_thumb_vartical;
 }
 
 .App{

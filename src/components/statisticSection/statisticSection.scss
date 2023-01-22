@@ -1,0 +1,59 @@
+@import "../../settings/settings.scss";
+
+.statisticSection {
+  height: calc(100vh - 60px);
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.statisticContent {
+  width: 1300px;
+  height: 100%;
+  display: flex;
+  column-gap: 250px;
+  justify-content: center;
+}
+
+.statisticBlockHeader {
+  font-size: 30px;
+}
+
+.statisticBigNumber {
+  font-size: 80px;
+}
+
+.cityName {
+  font-size: 16px;
+}
+
+.cityBlock {
+  width: 100%;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.cityPopulation {
+  font-size: 30px;
+}
+
+.statisticLeft,
+.statisticRight {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.statisticWrap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}

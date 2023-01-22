@@ -1,0 +1,31 @@
+@import "../../settings/settings.scss";
+
+.introducingCategory{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    // background-color: aquamarine;
+    padding-top: $header_height;
+
+   
+    .introducingCategory_wrapper{
+        display: flex;
+
+        .introducingCategory_bigText{
+            font-size: 35vh;
+            font-weight: 800;
+            align-items: center;
+            color: $g_0;
+            // background-color: yellow;
+        }
+    }
+    
+
+    .introducingCategory_scrollCategories{
+        width: 100vw;
+        @include scroll_thumb_hide;
+    }
+}

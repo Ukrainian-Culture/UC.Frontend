@@ -5,7 +5,9 @@ const initialState = {
         "dishes": "🥟",
         "music": "🎼",
         "documents": "📚",
-        "science": "⚗️"
+        "science": "⚗️",
+        "culture": "⚜️",
+        "all": "📦"
     }
 }
 
