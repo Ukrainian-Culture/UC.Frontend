@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import IntroducingCategory from '../introdusingCategory/IntroducingCategory'
 import { CHANGE_SCREENWIDTH } from '../../redux-store/screenWidth/screenWidthConst'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
+import Footer from "../footer/Footer";
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -46,6 +47,10 @@ function MainPage() {
         <div className="mainPage_scrollWrap_el">
           {/* <h1>{state.screenWidth.width}</h1> */}
           <StatisticSection />
+        </div>
+        <div >
+          {/* <h1>{state.screenWidth.width}</h1> */}
+          <Footer/>
         </div>
       </div>
     </div>

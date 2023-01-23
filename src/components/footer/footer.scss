@@ -1,0 +1,78 @@
+@import "../../settings/settings.scss";
+
+.footer {
+  width: 100%;
+  height: 450px;
+  background-color: $g_0;
+  padding: 0 4%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.footerWrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerDefaultBlock {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+}
+
+.footerText {
+  font-size: 24px;
+  color: $g_5;
+}
+
+.footerFormWrap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.footerFormText {
+
+}
+
+.footerFormTitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.footerFormSubtitle {
+  font-size: 18px;
+  color: $g_5;
+}
+
+.footerForm {
+  display: flex;
+  width: 350px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: #EFEFEF;
+  padding-left: 30px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  column-gap: 10px;
+}
+
+.footerInput{
+  font-size: 18px;
+  color: $g_5;
+  flex-grow: 1;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.footerButton{
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: $b_3;
+  border: none;
+}
