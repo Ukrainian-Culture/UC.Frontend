@@ -15,17 +15,17 @@ function StatisticSection() {
                     <div className="statisticWrap">
                         <div className="statisticWrap">
                             <div className="statisticBlockHeader">
-                             IT startups
+                             national monuments
                             </div>
                             <div className="statisticBigNumber">
-                                >2000
+                                6921
                             </div>
                         </div>
                         <div className="statisticWrap">
                             <div className="statisticBlockHeader">
-                               Some statistic
+                               UNESCO herritage
                             </div>
-                            <div className="statisticBigNumber">123,342</div>
+                            <div className="statisticBigNumber">371</div>
                         </div>
                     </div>
                 </div>
