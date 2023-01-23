@@ -1,19 +1,11 @@
 MapSection:
-- create redux store file for fetching data when selected region.
--Create hook for tracking width of screen.
+- change color and light.
+- optimise 3d map model. 
 |
-Header:
--add adaptation for header.
--add burger animation.
+Redux:
+- modify fetchOtherCategory.
+- add fetching of languages and category guID.
 |
-MainPage: 
-- add snap to section.
-|
-IntroducingCategory:
-- add basic markup.
-|
-ExplorePage: 
-- fix bug with scroll in explorePage. 
-- show scroll bar on hover.
-- add adaptation for ExplorePage
-|
+ArticlePage:
+- add adaptation.
+- add possibility to download pdf.

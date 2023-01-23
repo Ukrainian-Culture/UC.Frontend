@@ -13,14 +13,6 @@ function OtherRenderer() {
   const otherWrapper = useRef()
   const tl = useRef()
 
-  // useEffect(() => {
-
-  //   axios.get("https://localhost:7219/api/4fd5d8c1-f34b-4824-b252-69910285e681/ArticlesTile").then(response => {
-  //     console.log(response)
-  //   })
-
-  // }, [])
-
   useEffect(() => {
     // animation with gsap
     const ctx = gsap.context(() => {

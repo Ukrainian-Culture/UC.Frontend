@@ -61,7 +61,7 @@ $c_1: pink;
 $c_2: rgb(99, 134, 47);
 $c_3: #8a3434;
 $c_3: #8a3434;
-$c_4: #dbfbff;
+$c_4: #e6fcff;
 
 @mixin border_test{
     border: 1px solid black;
@@ -120,6 +120,7 @@ $ADAPTIVE_S_1: 781px;
         width: 8px;
         background-color: $g_0;
         transition: all 0.6s ease-in-out;
+        border-radius: 6px;
     }
     //scrollbar slider
     ::-webkit-scrollbar-thumb{
@@ -150,8 +151,9 @@ $ADAPTIVE_S_1: 781px;
         // color:  $b_1;
         background-color: $b_3;    
     }
-    overflow-y: hidden;
+    // overflow-y: hidden;
     overflow-x: hidden;
+    @include scroll_thumb_vartical;
 }
 
 .App{

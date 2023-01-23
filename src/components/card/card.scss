@@ -50,7 +50,35 @@ $width_of_emoji: 40px;
             align-items: center;
             font-size: 23px;
             width: $width_of_emoji;
-            // background-color: rgb(126, 56, 67);
+
+            .cardBlock_hint_wrapp{
+                // background-color: rgb(126, 56, 67);
+                display: flex;
+                align-items: flex-end;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                border-radius: $border_radius_of_card;
+
+
+                .cardBlock_hint{
+                    // opacity: 0;
+                    background-color: $g_3;
+                    bottom: 0px;
+                    color: $g_0;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-bottom-left-radius: $border_radius_of_card;
+                    border-bottom-right-radius: $border_radius_of_card;
+                }
+            }
+            
         }
     }
+
+    
 }
