@@ -1,8 +1,13 @@
+import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {
+  FETCH_HISTORY_ERROR,
+  FETCH_HISTORY_SUCCESS,
+} from '../../../redux-store/fetchHistory/fetchHistoryConst'
 import { CHANGE_CATEGORY } from '../../../redux-store/selectedCategory/selectedCategoryConst'
 import { SIDEHEIGHT } from '../../../redux-store/sideHeight/sideHeightConst'
 import './infoBlock.scss'
@@ -19,17 +24,21 @@ function InfoBlock() {
   //-------------------------------------------------------------
 
   // state which we get from redux store ando this value contain all states in redux store
-  const selectorState = useSelector((state) => state)
+  const state = useSelector((state) => state)
   // variable used for move side block with info
-  const sideHeight = selectorState.sideHeight.class
+  const sideHeight = state.sideHeight.class
   // current language
-  const language = selectorState.changeLanguage.lang
+  const language = state.changeLanguage.lang
   // variable used for displying categories
-  const categoriesArr = selectorState.categoriesInfoBlock[1]
-  const corelateCategories = selectorState.categoriesInfoBlock.corelate
+  const categoriesArr = state.categoriesInfoBlock[1]
+  const corelateCategories = state.categoriesInfoBlock.corelate
+
+  const selectedOblast = state.selectedOblast.selectedOblast
+  const aboutOblast = state.aboutOblast.aboutOblast
+  const domain = state.startSettings.domain
 
   // variable which contain selected category
-  const [currentCategory, setcurrentCategory] = useState("history")
+  const [currentCategory, setcurrentCategory] = useState('history')
   // variable which contains reference on the parent of categories
   const parentCategories = useRef(null)
   // constant subclass name of active category
@@ -60,6 +69,37 @@ function InfoBlock() {
     changeCategory(temp_category_name)
   }
 
+  // --------------------------------------------------------------------
+
+  // fetching data for side pannel
+  useEffect(() => {
+    if (selectedOblast && sideHeight === SIDEHEIGHT) {
+      setTimeout(() => {
+        const urlHistory = `${domain}/api/${state.culture.data['en']}/History/${aboutOblast[selectedOblast]['en_name']}`
+
+        console.log(urlHistory)
+        let isCanseled = false
+        const cancelToken = axios.CancelToken.source()
+
+        axios
+          .get(urlHistory, { cancelToken: cancelToken.token })
+          .then((responce) => {
+            if (!isCanseled) {
+              dispatch({ type: FETCH_HISTORY_SUCCESS, payload: responce.data })
+            }
+          })
+          .catch(() => {
+            dispatch({ type: FETCH_HISTORY_ERROR })
+          })
+
+        return () => {
+          isCanseled = true
+          cancelToken.cancel()
+        }
+      }, 1000)
+    }
+  }, [selectedOblast])
+
   useEffect(() => {
     if (parentCategories.current != null) {
       // set first variant in categories active
@@ -68,7 +108,7 @@ function InfoBlock() {
   }, [sideHeight])
 
   // component to render view of selected information
-  function SelectInfoCategory() {
+  const SelectInfoCategory = () => {
     // variable which we pass to InfoRenderer component
     const [selected, setSelected] = useState(currentCategory)
 
@@ -126,4 +166,4 @@ function InfoBlock() {
   )
 }
 
-export default InfoBlock
+export default React.memo(InfoBlock)

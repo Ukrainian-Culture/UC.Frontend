@@ -80,4 +80,4 @@ function Card(props) {
   )
 }
 
-export default React.memo(Card)
+export default Card
