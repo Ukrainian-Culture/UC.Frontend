@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
+import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   FETCH_CATEGORY_LOCALE_ERROR,
@@ -17,8 +18,10 @@ import {
 function StartAppRequests() {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
+  const culture = state.culture
+  const categoryLocale = state.categoryLocale
 
-  useEffect(() => {
+  const startHookCallback = useCallback(() => {
     // fetching categories names
     function axiosCategoryLocale(response) {
       axios
@@ -93,6 +96,11 @@ function StartAppRequests() {
         dispatch({ type: FETCH_CATEGORY_LOCALE_ERROR })
         dispatch({ type: FETCH_STATISTIC_ERROR })
       })
+  })
+
+  useEffect(() => {
+    // console.log(Object.keys(categoryLocale).length )
+    if(Object.keys(culture).length === 3 && Object.keys(categoryLocale).length === 3) startHookCallback()
   }, [])
 }
 

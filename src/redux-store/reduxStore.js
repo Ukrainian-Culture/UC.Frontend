@@ -9,13 +9,17 @@ import selectedCategoryReducer from './selectedCategory/selectedCategoryReducer'
 import emojiCategoryReducer from './emojiCategory/emojiCategoryReducer'
 import changeLanguageReducer from './changeLanguage/changeLanguageReducer'
 import fetchExploreReducer from './fetchExplore/fetchExploreReducer'
-import fetchOtherCategory from './fetchOtherCategory/fetchOtherCategory'
 import screenWidthReducer from './screenWidth/screenWidthReducer'
 import fetchCategoryLocaleReducer from './fetchCategoryLocale/fetchCategoryLocaleReducer'
 import startSettingsReducer from './startSettings/startSettingsReducer'
 import fetchCultureReducer from './fetchCulture/fetchCultureReducer'
 import fetchStatisticReducer from './fetchStatistic/fetchStatisticReducer'
 import fetchHistoryReducer from './fetchHistory/fetchHistoryReducer'
+import fetchPeopleReducer from './fetchOtherCategory/fetchPeople/fetchPeopleReducer'
+import fetchDishesReducer from './fetchOtherCategory/fetchDishes/fetchDishesRducer'
+import fetchMusicReducer from './fetchOtherCategory/fetchMusic/fetchMuzicReducer'
+import fetchScienceReducer from './fetchOtherCategory/fetchScience/fetchScienceReducer'
+import fetchArticleReducer from './fetchArticle/fetchArticleReducer'
 
 const rootReducer = combineReducers({
   startSettings: startSettingsReducer,
@@ -27,14 +31,17 @@ const rootReducer = combineReducers({
   selectedCategory: selectedCategoryReducer,
   emojiCategory: emojiCategoryReducer,
   changeLanguage: changeLanguageReducer,
+  fetchArticle: fetchArticleReducer,
   fetchExplore: fetchExploreReducer,
-  fetchOtherCategory: fetchOtherCategory,
   fetchHistory: fetchHistoryReducer,
+  fetchPeople: fetchPeopleReducer,
+  fetchDishes: fetchDishesReducer,
+  fetchMusic: fetchMusicReducer,
+  fetchScience: fetchScienceReducer,
   screenWidth: screenWidthReducer,
   categoryLocale: fetchCategoryLocaleReducer,
   culture: fetchCultureReducer,
-  statistic: fetchStatisticReducer
-
+  statistic: fetchStatisticReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())

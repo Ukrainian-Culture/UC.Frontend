@@ -8,6 +8,9 @@ function LoadingPage(props) {
   const { main } = props
   const state = useSelector((state) => state)
 
+  const culture = state.culture
+  const categoryLocale = state.categoryLocale
+
   const tl = useRef()
   const tl_close = useRef()
   const loadWrap = useRef()
