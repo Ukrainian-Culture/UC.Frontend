@@ -10,6 +10,7 @@ import IntroducingCategory from '../introdusingCategory/IntroducingCategory'
 import { CHANGE_SCREENWIDTH } from '../../redux-store/screenWidth/screenWidthConst'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import LoadingPage from '../loadingPage/LoadingPage'
+import GradientBackground from '../gradientBackground/GradientBackground'
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -28,14 +29,9 @@ function MainPage() {
 
   return (
     <>
-      <LoadingPage/>
+      <LoadingPage main={true}/>
       <div className="mainPage" ref={refWidth}>
-        <div className="container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <GradientBackground/>
 
         <Header centreText={selectedOblast} main={true} />
         <InfoBlock />

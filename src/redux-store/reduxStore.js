@@ -14,6 +14,8 @@ import screenWidthReducer from './screenWidth/screenWidthReducer'
 import fetchCategoryLocaleReducer from './fetchCategoryLocale/fetchCategoryLocaleReducer'
 import startSettingsReducer from './startSettings/startSettingsReducer'
 import fetchCultureReducer from './fetchCulture/fetchCultureReducer'
+import fetchStatisticReducer from './fetchStatistic/fetchStatisticReducer'
+import fetchHistoryReducer from './fetchHistory/fetchHistoryReducer'
 
 const rootReducer = combineReducers({
   startSettings: startSettingsReducer,
@@ -27,9 +29,12 @@ const rootReducer = combineReducers({
   changeLanguage: changeLanguageReducer,
   fetchExplore: fetchExploreReducer,
   fetchOtherCategory: fetchOtherCategory,
+  fetchHistory: fetchHistoryReducer,
   screenWidth: screenWidthReducer,
   categoryLocale: fetchCategoryLocaleReducer,
-  culture: fetchCultureReducer
+  culture: fetchCultureReducer,
+  statistic: fetchStatisticReducer
+
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())

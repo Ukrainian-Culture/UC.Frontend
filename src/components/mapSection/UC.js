@@ -282,7 +282,7 @@ export function UC(props) {
 
         // getting material name of oblast which were clicked
         const materialName = e.object.material.name
-        console.log(materialName)
+        // console.log(materialName)
 
         // initializing oblast which should be animated
         setcNow(materialName)
