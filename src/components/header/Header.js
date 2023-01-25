@@ -21,7 +21,7 @@ function Header(props) {
   }
   //=============================================================
   //handle header central text format and content
-  const { centreText, main, explore } = props
+  const { centreText, main, explore, basic } = props
   const location = useLocation()
 
   const stateRedux = useSelector((state) => state)
@@ -81,7 +81,6 @@ function Header(props) {
         </>
       )
     } else if (explore) {
-      console.log('explore', explore)
       return (
         <>
           <div className="mainHeader_oblastName">
@@ -94,6 +93,8 @@ function Header(props) {
           </div>
         </>
       )
+    } else if (basic) {
+      return <></>
     } else {
       return <></>
     }
@@ -142,7 +143,7 @@ function Header(props) {
     const tl_burger_2 = useRef()
 
     function animationOfBurger(e) {
-      console.log(e.target.children)
+      // console.log(e.target.children)
       const ctx = gsap.context(() => {
         tl_burger.current = gsap.timeline().from('.headerRight_lineTop', {
           rotateZ: 90,
@@ -171,10 +172,14 @@ function Header(props) {
             },
             '-=0.3',
           )
-          .from('.headerRight_lineTop_no_burgerHeight', {
-            rotateZ: 45,
-            duration: 0.5,
-          },"-=.5")
+          .from(
+            '.headerRight_lineTop_no_burgerHeight',
+            {
+              rotateZ: 45,
+              duration: 0.5,
+            },
+            '-=.5',
+          )
           .from(
             '.headerRight_lineBotttom_no_burgerHeight',
             {
@@ -297,4 +302,4 @@ function Header(props) {
   )
 }
 
-export default Header
+export default React.memo(Header)

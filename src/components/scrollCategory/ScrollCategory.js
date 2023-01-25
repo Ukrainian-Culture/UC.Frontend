@@ -20,18 +20,37 @@ function ScrollCategory() {
   const emojiCategory = store.emojiCategory.emoji
   const corelateCategories = store.categoriesInfoBlock.corelate
   const [categories, setCategories] = useState([
-    
     ...store.categoriesInfoBlock[language],
   ])
   // filter category name
   // const [filterCategory, setFilterCategory] = useState('all')s
 
   const tl = useRef()
+  const tl_hover = useRef()
   const wrapScrollCategory = useRef()
   // =====================================
 
-
   // ------------------------------------
+
+  const animationOnHoverCategory = (e) => {
+    const ctx = gsap.context(() => {
+      // tl_hover.current && tl_hover.current.progress(0).kill()
+
+      tl_hover.current = gsap
+        .timeline()
+        .to('.scrollCategory_el_p', { y: -5, stagger: 0.08, duration: 0.3 })
+    }, e.target)
+
+    return () => ctx.revert()
+  }
+
+  const animationLeaveHoverCategory = () => {
+    const ctx = gsap.context(() => {
+      tl_hover.current.reverse()
+    })
+    return () => ctx.revert()
+  }
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       tl.current && tl.current.progress(0).kill()
@@ -40,12 +59,9 @@ function ScrollCategory() {
         .timeline()
         .from('.scrollCategory_el', { opacity: 0, y: -25, stagger: 0.03 })
     }, wrapScrollCategory)
-    
 
     return () => ctx.revert()
   }, [])
-
-  
 
   return (
     <div className="scrollCategory" ref={wrapScrollCategory}>
@@ -56,11 +72,17 @@ function ScrollCategory() {
               onClick={() => {
                 changeFilter(corelateCategories(el, language))
               }}
-              className="scrollCategory_el"
+              onMouseEnter={(e) => animationOnHoverCategory(e)}
+              onMouseLeave={(e) => animationLeaveHoverCategory()}
+              className="scrollCategory_el_wrapp"
               key={`srccat_${index}`}
             >
-              <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${emojiCategory[corelateCategories(el, language)]}`}</p>
-              <p className="scrollCategory_el_p scrollCategory_el_category">{`${el}`}</p>
+              <div className="scrollCategory_el">
+                <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${
+                  emojiCategory[corelateCategories(el, language)]
+                }`}</p>
+                <p className="scrollCategory_el_p scrollCategory_el_category">{`${el}`}</p>
+              </div>
             </div>
           )
         })}
@@ -69,4 +91,4 @@ function ScrollCategory() {
   )
 }
 
-export default ScrollCategory
+export default React.memo(ScrollCategory)
