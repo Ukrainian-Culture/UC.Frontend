@@ -13,20 +13,18 @@ function StatisticSection() {
                         <div className="statisticBigNumber">12</div>
                     </div>
                     <div className="statisticWrap">
-                        <div className="statisticWrap">
-                            <div className="statisticBlockHeader">
-                             national monuments
-                            </div>
-                            <div className="statisticBigNumber">
-                                6921
-                            </div>
+                        <div className="statisticBlockHeader">
+                            national monuments
                         </div>
-                        <div className="statisticWrap">
-                            <div className="statisticBlockHeader">
-                               UNESCO herritage
-                            </div>
-                            <div className="statisticBigNumber">371</div>
+                        <div className="statisticBigNumber">
+                            6921
                         </div>
+                    </div>
+                    <div className="statisticWrap">
+                        <div className="statisticBlockHeader">
+                            UNESCO herritage
+                        </div>
+                        <div className="statisticBigNumber">371</div>
                     </div>
                 </div>
                 <div className="statisticRight">
@@ -54,10 +52,10 @@ function StatisticSection() {
                     </div>
                     <div className="cityBlock">
                         <div className="cityName">
-                           Kyiv
+                            Kyiv
                         </div>
                         <div className="cityPopulation">
-                           2,900,920
+                            2,900,920
                         </div>
                     </div>
                     <div className="cityBlock">
