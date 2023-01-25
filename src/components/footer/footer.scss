@@ -33,10 +33,6 @@
   row-gap: 10px;
 }
 
-.footerFormText {
-
-}
-
 .footerFormTitle {
   font-size: 24px;
   font-weight: 700;
@@ -60,7 +56,7 @@
   column-gap: 10px;
 }
 
-.footerInput{
+.footerInput {
   font-size: 18px;
   color: $g_5;
   flex-grow: 1;
@@ -69,10 +65,100 @@
   outline: none;
 }
 
-.footerButton{
+.footerButton {
   height: 60px;
-  width: 60px;
+  min-width: 60px;
   border-radius: 30px;
   background-color: $b_3;
   border: none;
+}
+
+@media (max-width: $ADAPTIVE_M_1) {
+  .footerText,
+  .footerFormTitle {
+    font-size: 18px;
+  }
+
+  .footerFormSubtitle,
+  .footerInput {
+    font-size: 14px;
+  }
+
+  .footerForm {
+    width: 250px;
+  }
+
+
+  .footerInput {
+    flex-grow: 0;
+    width: 100px;
+  }
+}
+
+@media (max-width: $ADAPTIVE_M_2) {
+  .footerWrap {
+    column-gap: 40px;
+    row-gap: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    > div {
+      width: 250px;
+
+    }
+  }
+}
+
+@media (max-width: $ADAPTIVE_S_1) {
+  .footerWrap {
+    row-gap: 30px;
+    flex-direction: column;
+    align-items: center;
+
+    > div {
+      width: 250px;
+      display: flex;
+
+      :nth-of-type(4) {
+        order: 3
+      }
+    }
+  }
+
+  .footer {
+    height: fit-content;
+    padding: 50px 0;
+  }
+
+  .footerDefaultBlock {
+    row-gap: 10px;
+    align-items: center;
+  }
+
+  .footerText,
+  .footerFormTitle {
+    font-size: 14px;
+  }
+
+  .footerFormSubtitle,
+  .footerInput {
+    font-size: 10px;
+  }
+
+  .footerForm {
+    height: 40px;
+  }
+
+  .footerFormWrap {
+    align-items: center;
+    text-align: center;
+    order: 2;
+  }
+
+  .footerButton {
+    height: 40px;
+    min-width: 40px;
+  }
+
+
 }
