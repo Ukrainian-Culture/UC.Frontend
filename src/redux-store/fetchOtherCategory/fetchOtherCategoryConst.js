@@ -1,3 +1,6 @@
+export const FETCH_OTHER_SUCCESS = "FETCH_OTHER_SUCCESS"
+export const FETCH_OTHER_ERROR = "FETCH_OTHER_ERROR"
+
 export const FETCH_PEOPLE_SUCCESS = 'FETCH_PEOPLE_SUCCESS'
 export const FETCH_PEOPLE_ERROR = 'FETCH_PEOPLE_ERROR'
 
@@ -12,3 +15,5 @@ export const FETCH_DOCUMENTS_ERROR = 'FETCH_DOCUMENTS_ERROR'
 
 export const FETCH_SCIENCE_SUCCESS = 'FETCH_SCIENCE_SUCCESS'
 export const FETCH_SCIENCE_ERROR = 'FETCH_SCIENCE_ERROR'
+
+export const errorMessage = 'error in fetching data for'

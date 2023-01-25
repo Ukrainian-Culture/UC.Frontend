@@ -1,0 +1,16 @@
+@import '../../../settings/settings.scss';
+
+.loadingPageSection_wrap {
+  display: flex;
+  place-self: center;
+  font-size: 200%;
+}
+
+// =======================================
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+    .loadingPageSection_wrap {
+
+        font-size: 150%;
+      }
+}

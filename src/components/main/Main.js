@@ -17,7 +17,6 @@ function Main() {
     <>
       <Provider store={store}>
         <div className="mainScript">
-          <StartAppRequests/>
           <Routes>
             <Route path="/" element={<MainPage />}/>
             <Route path="/explore" element={<ExplorePage />} />

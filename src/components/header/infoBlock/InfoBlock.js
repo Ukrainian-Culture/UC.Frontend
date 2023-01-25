@@ -1,8 +1,23 @@
+import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {
+  FETCH_HISTORY_ERROR,
+  FETCH_HISTORY_SUCCESS,
+} from '../../../redux-store/fetchHistory/fetchHistoryConst'
+import {
+  FETCH_DISHES_ERROR,
+  FETCH_DISHES_SUCCESS,
+  FETCH_MUSIC_ERROR,
+  FETCH_MUSIC_SUCCESS,
+  FETCH_PEOPLE_ERROR,
+  FETCH_PEOPLE_SUCCESS,
+  FETCH_SCIENCE_ERROR,
+  FETCH_SCIENCE_SUCCESS,
+} from '../../../redux-store/fetchOtherCategory/fetchOtherCategoryConst'
 import { CHANGE_CATEGORY } from '../../../redux-store/selectedCategory/selectedCategoryConst'
 import { SIDEHEIGHT } from '../../../redux-store/sideHeight/sideHeightConst'
 import './infoBlock.scss'
@@ -16,25 +31,41 @@ function InfoBlock() {
   const changeCategory = (param) => {
     dispatch({ type: CHANGE_CATEGORY, payload: `${param}` })
   }
+
   //-------------------------------------------------------------
 
   // state which we get from redux store ando this value contain all states in redux store
-  const selectorState = useSelector((state) => state)
+  const state = useSelector((state) => state)
   // variable used for move side block with info
-  const sideHeight = selectorState.sideHeight.class
+  const sideHeight = state.sideHeight.class
   // current language
-  const language = selectorState.changeLanguage.lang
+  const language = state.changeLanguage.lang
   // variable used for displying categories
-  const categoriesArr = selectorState.categoriesInfoBlock[1]
-  const corelateCategories = selectorState.categoriesInfoBlock.corelate
+  const categoriesArr = state.categoriesInfoBlock[1]
+  const corelateCategories = state.categoriesInfoBlock.corelate
+  const selectedCategory = state.selectedCategory.category
+  const selectedOblast = state.selectedOblast.selectedOblast
+  const aboutOblast = state.aboutOblast.aboutOblast
+  const domain = state.startSettings.domain
+  const categoryLocale = state.categoryLocale
 
   // variable which contain selected category
-  const [currentCategory, setcurrentCategory] = useState("history")
+  const [currentCategory, setcurrentCategory] = useState('history')
   // variable which contains reference on the parent of categories
   const parentCategories = useRef(null)
   // constant subclass name of active category
   const activeWord = 'active_iwce'
+
   // ---------------------------------------------------------------
+
+  // check is selected category present in list with corelated guId
+  const getCategoryId = (param) => {
+    let buf
+    categoryLocale.data.forEach((el) => {
+      if (el.name.toLowerCase() === param) buf = el.categoryId
+    })
+    return buf
+  }
 
   // function which add active subclass to selected category and remove active subclass from previous category
   const clickOnCategory = (e) => {
@@ -52,13 +83,108 @@ function InfoBlock() {
     const temp_category_name = corelateCategories(e.target.innerText, language)
     setcurrentCategory(temp_category_name)
 
-    console.log(
-      'currentCategory',
-      corelateCategories(e.target.innerText, language),
-    )
-
     changeCategory(temp_category_name)
   }
+
+  // --------------------------------------------------------------------
+
+  // reset selected category when changed region
+  // useEffect(() => {
+  //   changeCategory('history')
+
+  //   if (parentCategories.current != null) {
+  //     const childrenClasses = parentCategories.current.children
+
+  //     childrenClasses[0].className = `${childrenClasses[0].className} ${activeWord}`
+
+  //     for (let i = 1; i < childrenClasses.length; i++) {
+  //       childrenClasses[i].className = childrenClasses[i].className.replace(
+  //         ` ${activeWord}`,
+  //         '',
+  //       )
+  //     }
+  //   }
+  // }, [selectedOblast])
+  ////////////////////////////////////////////////////////////////////////////////////////
+  // fetching data for side pannel
+  useEffect(() => {
+    if (selectedOblast && sideHeight === SIDEHEIGHT) {
+      setTimeout(() => {
+        const urlHistory = `${domain}/api/${state.culture.data['en']}/History/${aboutOblast[selectedOblast]['en_name']}`
+        // ​/api​/{cultureId}​/ArticlesTile​/{regionName}​/{categoryId}
+
+        const urlPeople = `${domain}/api/${
+          state.culture.data['en']
+        }/ArticlesTile/${
+          aboutOblast[selectedOblast]['en_name']
+        }/${getCategoryId('people')}`
+
+        const urlDishes = `${domain}/api/${
+          state.culture.data['en']
+        }/ArticlesTile/${
+          aboutOblast[selectedOblast]['en_name']
+        }/${getCategoryId('dishes')}`
+        
+        const urlMusic= `${domain}/api/${
+          state.culture.data['en']
+        }/ArticlesTile/${
+          aboutOblast[selectedOblast]['en_name']
+        }/${getCategoryId('music')}`
+
+        const urlScience= `${domain}/api/${
+          state.culture.data['en']
+        }/ArticlesTile/${
+          aboutOblast[selectedOblast]['en_name']
+        }/${getCategoryId('science')}`
+
+
+        let isCanseled = false
+        const cancelToken = axios.CancelToken.source()
+
+        axios
+          .get(urlHistory, { cancelToken: cancelToken.token })
+          .then((responce) => {
+            if (!isCanseled) {
+              dispatch({ type: FETCH_HISTORY_SUCCESS, payload: responce.data })
+            }
+          })
+          .catch(() => {
+            dispatch({ type: FETCH_HISTORY_ERROR })
+          })
+
+
+        axios.get(urlPeople).then((responce) => {
+          dispatch({type: FETCH_PEOPLE_SUCCESS, payload: responce.data})
+        }).catch((e)=>{
+          dispatch({type: FETCH_PEOPLE_ERROR, error: e})
+        })
+
+        axios.get(urlDishes).then((responce) => {
+          dispatch({type: FETCH_DISHES_SUCCESS, payload: responce.data})
+        }).catch((e)=>{
+          dispatch({type: FETCH_DISHES_ERROR, error: e})
+        })
+        
+        axios.get(urlMusic).then((responce) => {
+          dispatch({type: FETCH_MUSIC_SUCCESS, payload: responce.data})
+        }).catch((e)=>{
+          dispatch({type: FETCH_MUSIC_ERROR, error: e})
+        })
+
+        axios.get(urlScience).then((responce) => {
+          dispatch({type: FETCH_SCIENCE_SUCCESS, payload: responce.data})
+        }).catch((e)=>{
+          dispatch({type: FETCH_SCIENCE_ERROR, error: e})
+        })
+
+        return () => {
+          isCanseled = true
+          cancelToken.cancel()
+        }
+      }, 1000)
+    }
+  }, [selectedOblast, selectedCategory])
+  ////////////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     if (parentCategories.current != null) {
@@ -68,7 +194,7 @@ function InfoBlock() {
   }, [sideHeight])
 
   // component to render view of selected information
-  function SelectInfoCategory() {
+  const SelectInfoCategory = () => {
     // variable which we pass to InfoRenderer component
     const [selected, setSelected] = useState(currentCategory)
 
@@ -126,4 +252,4 @@ function InfoBlock() {
   )
 }
 
-export default InfoBlock
+export default React.memo(InfoBlock)

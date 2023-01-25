@@ -10,8 +10,13 @@ import '../articlePage/articlePage.scss'
 import Header from '../header/Header'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import { PDFDownloadLink, pdf } from '@react-pdf/renderer'
-import {saveAs} from "file-saver"
+import { saveAs } from 'file-saver'
 import PDFFormer from '../pdfFormer/PDFFormer'
+import axios from 'axios'
+import {
+  FETCH_ARTICLE_ERROR,
+  FETCH_ARTICLE_SUCCESS,
+} from '../../redux-store/fetchArticle/fetchArticleConst'
 
 function ArticlePage() {
   //-------------------------------------------------------------
@@ -23,7 +28,11 @@ function ArticlePage() {
   }
 
   const state = useSelector((state) => state)
-  
+
+  const fetchArticle = state.fetchArticle
+  const domain = state.startSettings.domain
+  const categoryLocale = state.categoryLocale
+  const culture = state.culture
   //-------------------------------------------------------------
 
   // hook that handle navigation between pages
@@ -33,6 +42,7 @@ function ArticlePage() {
   const { id } = useParams()
   // state variable which we pass throught Link element
   const location = useLocation()
+  const { articleId, title, subText, category, region } = location.state.el
   const [startLoad, setStartLoad] = useState(false)
   const [openDownloadCard, setDownloadCard] = useState(false)
 
@@ -42,13 +52,10 @@ function ArticlePage() {
   }
   // ===========================================================
 
-
   const downloadPDF = async () => {
     setStartLoad(true)
 
-    const blob = await pdf(
-      <PDFFormer data={location.state}/>
-    ).toBlob()
+    const blob = await pdf(<PDFFormer data={location.state} />).toBlob()
 
     // console.log(blob)
 
@@ -60,6 +67,22 @@ function ArticlePage() {
   }
 
   // -----------------------------------------------------------
+
+  //////////////////////////////////////////////////////////////////
+  useEffect(() => {
+    const urlArticle = `${domain}/api/${state.culture.data['en']}/ArticlesLocale/${articleId}`
+    
+    axios
+      .get(urlArticle)
+      .then((responce) => {
+        dispatch({ type: FETCH_ARTICLE_SUCCESS, payload: responce.data })
+      })
+      .catch((e) => {
+        dispatch({ type: FETCH_ARTICLE_ERROR, error: e })
+      })
+  }, [])
+  //////////////////////////////////////////////////////////////////
+
   useEffect(() => {
     changeSideHeight('')
     // resume scroll when selected some region
@@ -101,13 +124,11 @@ function ArticlePage() {
             </div>
           </div>
         </div>
-        <div className="articlePage_wrap_navigation_title">
-          ARTICLE PAGE - {id}
-        </div>
+        <div className="articlePage_wrap_navigation_title">{title || fetchArticle.data.title}</div>
         <div className="articlePage_wrap_content">
           <div className="articlePage_wrap_content_side"></div>
           <div className="articlePage_wrap_content_text">
-            {location.state.shortDesc.repeat(100) || 'no content'}
+            {fetchArticle.data.content || 'no content'}
           </div>
           <div className="articlePage_wrap_content_side"></div>
         </div>

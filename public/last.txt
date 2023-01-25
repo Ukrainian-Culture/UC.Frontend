@@ -1,11 +1,27 @@
-MapSection:
-- change color and light.
-- optimise 3d map model. 
+LoadingPage:
+- add animation and responce on loading.
 |
 Redux:
-- modify fetchOtherCategory.
-- add fetching of languages and category guID.
+- add fetchStatistic.
+- add fetchHistory.
+|
+GradientBackground:
+- create element.
+|
+StartAppRequests:
+- add request for statistic section.
+|
+LoadEmoji:
+- add random array of emoji.
+|
+FetchOther:
+- add fetchPeopleReducer.
+- add fetchDishesReducer.
+- add fetchMusicReducer.
+- add fetchScienceReducer.
+|
+ExplorePage:
+- add api request.
 |
 ArticlePage:
-- add adaptation.
-- add possibility to download pdf.
+- add api request.

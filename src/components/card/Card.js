@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 
 function Card(props) {
-  const { title, subText, category } = props
+  const {articleId ,title, subText, category, region } = props.el
   const emojiCategory = useSelector((state) => state.emojiCategory.emoji)
 
   const tl = useRef()
@@ -54,7 +54,7 @@ function Card(props) {
 
   return (
     <>
-      <Link className="cardBlock" to={`/article/${title}`} ref={cardWrap} state={{shortDesc: subText}}>
+      <Link className="cardBlock" to={`/article/${articleId}`} ref={cardWrap} state={{shortDesc: subText, el: props.el}}>
         <div className="cardBlock_title">{title}</div>
 
         <div className="cardBlock_bottomWrapper">
@@ -72,7 +72,7 @@ function Card(props) {
               {category}
               </div>
             </div> */}
-            {emojiCategory[category]}
+            {emojiCategory[category.toLowerCase()]}
           </div>
         </div>
       </Link>
@@ -80,4 +80,4 @@ function Card(props) {
   )
 }
 
-export default React.memo(Card)
+export default Card

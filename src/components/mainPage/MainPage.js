@@ -11,6 +11,8 @@ import { CHANGE_SCREENWIDTH } from '../../redux-store/screenWidth/screenWidthCon
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import Footer from "../footer/Footer";
 import LoadingPage from '../loadingPage/LoadingPage'
+import GradientBackground from '../gradientBackground/GradientBackground'
+import StartAppRequests from '../../hooks/StartAppRequests'
 
 
 function MainPage() {
@@ -30,14 +32,11 @@ function MainPage() {
 
   return (
     <>
-      <LoadingPage/>
+      <StartAppRequests />
+      <LoadingPage main={true} />
+
       <div className="mainPage" ref={refWidth}>
-        <div className="container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <GradientBackground />
 
         <Header centreText={selectedOblast} main={true} />
         <InfoBlock />
