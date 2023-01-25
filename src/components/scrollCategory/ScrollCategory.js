@@ -51,17 +51,17 @@ function ScrollCategory() {
     return () => ctx.revert()
   }
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      tl.current && tl.current.progress(0).kill()
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     tl.current && tl.current.progress(0).kill()
 
-      tl.current = gsap
-        .timeline()
-        .from('.scrollCategory_el', { opacity: 0, y: -25, stagger: 0.03 })
-    }, wrapScrollCategory)
+  //     tl.current = gsap
+  //       .timeline()
+  //       .from('.scrollCategory_el', { opacity: 0, y: -25, stagger: 0.03 })
+  //   }, wrapScrollCategory)
 
-    return () => ctx.revert()
-  }, [])
+  //   return () => ctx.revert()
+  // }, [])
 
   return (
     <div className="scrollCategory" ref={wrapScrollCategory}>

@@ -370,8 +370,8 @@ function HistoryRenderer() {
 
                         <Link
                           className="historyRenderer_wrapper_section_mainContainer_wrap"
-                          to={`/article/${arr[el_2].date}`}
-                          state={arr[el_2]}
+                          to={`/article/${arr[el_2].acticleId}`}
+                          state={{el:{...arr[el_2], articleId: arr[el_2].acticleId}}}
                         >
                           <div
                             className="historyRenderer_wrapper_section_mainContainer_wrap_sub_subText"

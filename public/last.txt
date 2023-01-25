@@ -10,3 +10,18 @@ GradientBackground:
 |
 StartAppRequests:
 - add request for statistic section.
+|
+LoadEmoji:
+- add random array of emoji.
+|
+FetchOther:
+- add fetchPeopleReducer.
+- add fetchDishesReducer.
+- add fetchMusicReducer.
+- add fetchScienceReducer.
+|
+ExplorePage:
+- add api request.
+|
+ArticlePage:
+- add api request.

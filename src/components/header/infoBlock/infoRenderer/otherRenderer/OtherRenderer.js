@@ -4,14 +4,56 @@ import Card from '../../../../card/Card'
 import '../otherRenderer/otherRenderer.scss'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import LoadingEmoji from '../../../../loadingPage/loadingEmoji/LoadingEmoji'
 
 function OtherRenderer() {
-  const store = useSelector((state) => state)
+  const state = useSelector((state) => state)
+  const fetchPeople = state.fetchPeople
+  const fetchDishes = state.fetchDishes
+  const fetchMusic = state.fetchMusic
+  const fetchScience = state.fetchScience
+  const selectedCategory = state.selectedCategory.category
   // -----------------------------------------
-  // const [platesArr, setPlatesArr] = useState(store.fetchOtherCategory.data.data)
-  const [platesArr, setPlatesArr] = useState([{"articleId":1,"type":"file","region":"hmelnytsk","subText":"About Bohdan Khmelnytsky","title":"About Bohdan Khmelnytsky","category":"People"},{"articleId":2,"type":"file","region":"Kyiv","subText":"About Ivan Mazepa","title":"About Ivan Mazepa","category":"People"}])
+  // const [platesArr, setPlatesArr] = useState([])
+  const [currentPlates, setCurrentPlates] = useState('')
   const otherWrapper = useRef()
   const tl = useRef()
+
+
+  // component to render plates
+  const PlatesRender = () => {
+    console.log(currentPlates)
+    return (
+      <>
+        {currentPlates.data.length !== 0 ? currentPlates.data.map((el, index) => {
+          return (
+            <Card
+              
+              el={el}
+            />
+          )
+        }): <div className='emptyTextBruh'>empty</div>}
+      </>
+    )
+  }
+
+  // ----------------------------------------
+  useEffect(() => {
+    switch (selectedCategory) {
+      case 'people':
+        setCurrentPlates(fetchPeople)
+        break
+      case 'dishes':
+        setCurrentPlates(fetchDishes)
+        break
+      case 'music':
+        setCurrentPlates(fetchMusic)
+        break
+      case 'science':
+        setCurrentPlates(fetchScience)
+        break
+    }
+  }, [selectedCategory])
 
   useEffect(() => {
     // animation with gsap
@@ -29,18 +71,12 @@ function OtherRenderer() {
 
   return (
     <div className="otherRenderer" ref={otherWrapper}>
-      {/* otherRenderer */}
-      {platesArr.map((el, index) => {
-        return (
-          <Card
-            key={`othReC_${index}`}
-            title={el.title}
-            subText={el.subText}
-            category={el.category.toLowerCase()}
-          />
-        )
-      })}
-      <Card
+      {!currentPlates.loading && currentPlates.error === ''? (
+        <PlatesRender />
+      ) : (
+        <LoadingEmoji />
+      )}
+      {/* <Card
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creemsdf sdfsd fsdfj kjsdfhu sdhfu dshufh sdkufhsdkjfnsdkufb dsfbgsdf sjdfbsdfhk dsj"
         category="dishes"
@@ -64,7 +100,7 @@ function OtherRenderer() {
         title="Ukrainian borsch"
         subText="Ukrainian dumplings made from potato and wheet dought with creem"
         category="dishes"
-      />
+      /> */}
     </div>
   )
 }

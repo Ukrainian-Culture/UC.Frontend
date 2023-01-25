@@ -12,18 +12,36 @@ import OtherRenderer from './otherRenderer/OtherRenderer'
 
 function InfoRenderer(props) {
   const { selectedCategory } = props
+  const state = useSelector(state => state)
+  const categoriesInfoBlock = state.categoriesInfoBlock['1']
 
-  return (
-    <div className="infoRenderer">
-      {selectedCategory == 'history' ? (
-        <HistoryRenderer />
-      ) : (
-        <div className="infoRenderer_wrapper">
+  if(selectedCategory == 'history'){
+    return (
+      <div className="infoRenderer">
+         <HistoryRenderer />
+      </div>
+    )
+  }
+  else if(categoriesInfoBlock.includes(selectedCategory)){
+    return(
+      <div className="infoRenderer_wrapper">
           <OtherRenderer />
         </div>
-      )}
-    </div>
-  )
+    )
+  }
+else return(<></>)
+  
+  // return (
+  //   <div className="infoRenderer">
+  //     {selectedCategory == 'history' ? (
+  //       <HistoryRenderer />
+  //     ) : (
+  //       <div className="infoRenderer_wrapper">
+  //         <OtherRenderer />
+  //       </div>
+  //     )}
+  //   </div>
+  // )
 }
 
 export default React.memo(InfoRenderer)

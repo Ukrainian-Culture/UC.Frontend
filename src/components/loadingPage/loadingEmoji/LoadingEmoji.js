@@ -2,14 +2,14 @@ import gsap from 'gsap'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import '../loadingEmoji/loadingEmoji.scss'
+import randomEmoji from 'random-emoji'
 
 function LoadingEmoji() {
   const state = useSelector((state) => state)
 
   const tl = useRef()
   const loadWrap = useRef()
-
-  const [loadEmoji, setLoadEmoji] = useState(['🚸', '🚸', '🚸', '🚸', '🚸'])
+  const [loadEmoji, setLoadEmoji] = useState(randomEmoji.random({count: 5}))
   //============================================
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function LoadingEmoji() {
     <div className="loadingPageSection_wrap" ref={loadWrap}>
       {loadEmoji.map((el, index) => (
         <div className="loadingPageSection_wrap_el" key={`LPSWE_${index}`}>
-          {el}
+          {el.character}
         </div>
       ))}
     </div>
