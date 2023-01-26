@@ -21,29 +21,37 @@ $width_of_main_info_mobile: 100vw;
   .infoBlock_wrapper {
     .infoBlock_wrapper_categories {
       display: flex;
-      padding: 20px 0px;
-      margin: 0px $margin_horizontal_categories;
-      overflow-x: auto;
+      justify-content: center;
+      // background-color: pink;
+      // padding: 20px 0px;
+      // margin: 0px $margin_horizontal_categories;
+      // overflow-x: auto;
 
-      .infoBlock_wrapper_categories_el {
-        padding: 10px $padding_categories_el;
-        text-align: center;
-        font-size: 13px;
-        font-weight: 700;
-        border-radius: 100px;
-        cursor: pointer;
-      }
-      .active_iwce {
-        background-color: $g_0;
-      }
-    }
+      .infoBlock_wrapper_categories_scrollWrapper {
+        display: flex;
+        padding: 20px 0px;
+        margin: 0px $margin_horizontal_categories;
+        overflow-x: auto;
 
-    ::-webkit-scrollbar {
-      visibility: hidden;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-thumb {
-      visibility: hidden;
+        .infoBlock_wrapper_categories_el {
+          padding: 10px $padding_categories_el;
+          text-align: center;
+          font-size: 13px;
+          font-weight: 700;
+          border-radius: 100px;
+          cursor: pointer;
+        }
+        .active_iwce {
+          background-color: $g_0;
+        }
+      }
+      ::-webkit-scrollbar {
+        visibility: hidden;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        visibility: hidden;
+      }
     }
 
     .infoBlock_wrapper_main {
@@ -80,7 +88,8 @@ $width_of_main_info_mobile: 100vw;
   }
 }
 
-.infoBlock_wrapper_categories:hover {
+.infoBlock_wrapper_categories
+  .infoBlock_wrapper_categories_scrollWrapper:hover {
   &::-webkit-scrollbar {
     visibility: visible;
     height: 8px;
@@ -140,16 +149,17 @@ $width_of_main_info_mobile: 100vw;
 
     .infoBlock_wrapper {
       .infoBlock_wrapper_categories {
-        
-        padding-top: 20px;
-        padding-bottom: 0px;
-        margin: 0px $margin_horizontal_categories;
+        .infoBlock_wrapper_categories_scrollWrapper {
+          padding-top: 20px;
+          padding-bottom: 0px;
+          margin: 0px $margin_horizontal_categories;
 
-        .infoBlock_wrapper_categories_el {
-          padding: 10px $padding_categories_el;
-        }
-        .active_iwce {
-          background-color: $g_0;
+          .infoBlock_wrapper_categories_el {
+            padding: 10px $padding_categories_el;
+          }
+          .active_iwce {
+            background-color: $g_0;
+          }
         }
       }
 
@@ -173,6 +183,16 @@ $width_of_main_info_mobile: 100vw;
           // background-color: aquamarine;
         }
       }
+    }
+  }
+
+  .infoBlock_wrapper_categories
+    .infoBlock_wrapper_categories_scrollWrapper:hover {
+    &::-webkit-scrollbar {
+      visibility: hidden;
+    }
+    &::-webkit-scrollbar-thumb {
+      visibility: hidden;
     }
   }
 }

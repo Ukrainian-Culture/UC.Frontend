@@ -39,10 +39,12 @@ $gap_vertical_cards_mobile: 2vh;
       margin-top: 20px;
       // padding-bottom: 60vh;
       display: grid;
+      
       grid-template-columns: repeat(5,1fr);
       gap: $gap_cards;
       // row-gap: $gap_cards;
       padding: 0px 20px;
+
     }
   }
   @include scroll_thumb_vartical;

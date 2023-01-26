@@ -124,19 +124,18 @@ function InfoBlock() {
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('dishes')}`
-        
-        const urlMusic= `${domain}/api/${
+
+        const urlMusic = `${domain}/api/${
           state.culture.data['en']
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('music')}`
 
-        const urlScience= `${domain}/api/${
+        const urlScience = `${domain}/api/${
           state.culture.data['en']
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('science')}`
-
 
         let isCanseled = false
         const cancelToken = axios.CancelToken.source()
@@ -152,30 +151,41 @@ function InfoBlock() {
             dispatch({ type: FETCH_HISTORY_ERROR })
           })
 
+        axios
+          .get(urlPeople)
+          .then((responce) => {
+            dispatch({ type: FETCH_PEOPLE_SUCCESS, payload: responce.data })
+          })
+          .catch((e) => {
+            dispatch({ type: FETCH_PEOPLE_ERROR, error: e })
+          })
 
-        axios.get(urlPeople).then((responce) => {
-          dispatch({type: FETCH_PEOPLE_SUCCESS, payload: responce.data})
-        }).catch((e)=>{
-          dispatch({type: FETCH_PEOPLE_ERROR, error: e})
-        })
+        axios
+          .get(urlDishes)
+          .then((responce) => {
+            dispatch({ type: FETCH_DISHES_SUCCESS, payload: responce.data })
+          })
+          .catch((e) => {
+            dispatch({ type: FETCH_DISHES_ERROR, error: e })
+          })
 
-        axios.get(urlDishes).then((responce) => {
-          dispatch({type: FETCH_DISHES_SUCCESS, payload: responce.data})
-        }).catch((e)=>{
-          dispatch({type: FETCH_DISHES_ERROR, error: e})
-        })
-        
-        axios.get(urlMusic).then((responce) => {
-          dispatch({type: FETCH_MUSIC_SUCCESS, payload: responce.data})
-        }).catch((e)=>{
-          dispatch({type: FETCH_MUSIC_ERROR, error: e})
-        })
+        axios
+          .get(urlMusic)
+          .then((responce) => {
+            dispatch({ type: FETCH_MUSIC_SUCCESS, payload: responce.data })
+          })
+          .catch((e) => {
+            dispatch({ type: FETCH_MUSIC_ERROR, error: e })
+          })
 
-        axios.get(urlScience).then((responce) => {
-          dispatch({type: FETCH_SCIENCE_SUCCESS, payload: responce.data})
-        }).catch((e)=>{
-          dispatch({type: FETCH_SCIENCE_ERROR, error: e})
-        })
+        axios
+          .get(urlScience)
+          .then((responce) => {
+            dispatch({ type: FETCH_SCIENCE_SUCCESS, payload: responce.data })
+          })
+          .catch((e) => {
+            dispatch({ type: FETCH_SCIENCE_ERROR, error: e })
+          })
 
         return () => {
           isCanseled = true
@@ -223,21 +233,24 @@ function InfoBlock() {
           <div className="infoBlock_wrapper">
             <div
               className="infoBlock_wrapper_categories"
-              ref={parentCategories}
+  
             >
-              {categoriesArr.map((el, index) => {
-                if (index != 0) {
-                  return (
-                    <div
-                      onClick={clickOnCategory}
-                      className="infoBlock_wrapper_categories_el"
-                      key={`categoty_info_${index}`}
-                    >
-                      {el}
-                    </div>
-                  )
-                }
-              })}
+              <div className="infoBlock_wrapper_categories_scrollWrapper"
+              ref={parentCategories}>
+                {categoriesArr.map((el, index) => {
+                  if (index != 0) {
+                    return (
+                      <div
+                        onClick={clickOnCategory}
+                        className="infoBlock_wrapper_categories_el"
+                        key={`categoty_info_${index}`}
+                      >
+                        {el}
+                      </div>
+                    )
+                  }
+                })}
+              </div>
             </div>
 
             <div className="infoBlock_wrapper_main">

@@ -1,27 +1,6 @@
-LoadingPage:
-- add animation and responce on loading.
-|
-Redux:
-- add fetchStatistic.
-- add fetchHistory.
-|
-GradientBackground:
-- create element.
-|
-StartAppRequests:
-- add request for statistic section.
-|
-LoadEmoji:
-- add random array of emoji.
-|
-FetchOther:
-- add fetchPeopleReducer.
-- add fetchDishesReducer.
-- add fetchMusicReducer.
-- add fetchScienceReducer.
-|
+Footer:
+- some changes;
+InfoBlock:
+- fix bug with aligning category scroll;
 ExplorePage:
-- add api request.
-|
-ArticlePage:
-- add api request.
+- fix bug with aligning LoadingEmoji;

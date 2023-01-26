@@ -98,7 +98,7 @@ function ExplorePage() {
   return (
     <>
       <StartAppRequests />
-      <LoadingPage main={true}/>
+      <LoadingPage main={true} />
 
       <div className="explorePage" ref={exploreWrap}>
         <div className=" explorePage_wrap">
@@ -110,8 +110,31 @@ function ExplorePage() {
             <ScrollCategory />
           </div>
 
-          <div className="explorePage_mainPlates">
-            {!fetchExplore.loading ? (
+          {!fetchExplore.loading && fetchExplore.error === '' ? (
+            <div className="explorePage_mainPlates">
+              {fetchExplore.data.map((el, index) => {
+                if (
+                  categoryToDisplay().includes(el.category.toLowerCase()) ||
+                  filterCategory == 'all'
+                ) {
+                  return (
+                    <Card
+                      el={el}
+                      key={`epmp_${index}`}
+                      title={el.title}
+                      subText="Ukrainian dumplings made from potato and wheet dought with creem"
+                      category={el.category.toLowerCase()}
+                    />
+                  )
+                }
+              })}
+            </div>
+          ) : (
+            <LoadingEmoji />
+          )}
+
+          {/* <div className="explorePage_mainPlates">
+            {!fetchExplore.loading && fetchExplore.error === '' ? (
               fetchExplore.data.map((el, index) => {
                 if (
                   categoryToDisplay().includes(el.category.toLowerCase()) ||
@@ -131,7 +154,7 @@ function ExplorePage() {
             ) : (
               <LoadingEmoji />
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </>
