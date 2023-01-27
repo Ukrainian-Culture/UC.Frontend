@@ -4,7 +4,7 @@
   width: 100%;
   height: 450px;
   background-color: $g_0;
-  padding: 0 4%;
+  padding: 0 $header_padding * 2;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -23,9 +23,10 @@
 }
 
 .footerText {
-  font-size: 24px;
+  font-size: 0.9vw;
   color: $g_5;
 }
+
 
 .footerFormWrap {
   display: flex;
@@ -34,12 +35,12 @@
 }
 
 .footerFormTitle {
-  font-size: 24px;
+  font-size: 1.7vw;
   font-weight: 700;
 }
 
 .footerFormSubtitle {
-  font-size: 18px;
+  font-size: 0.9vw;
   color: $g_5;
 }
 
@@ -57,7 +58,7 @@
 }
 
 .footerInput {
-  font-size: 18px;
+  font-size: 0.9vw;
   color: $g_5;
   flex-grow: 1;
   background: none;
@@ -135,14 +136,71 @@
     align-items: center;
   }
 
-  .footerText,
+  .footerText{
+    font-size: 3.5vw;
+  }
   .footerFormTitle {
-    font-size: 14px;
+    font-size: 4vw;
   }
 
   .footerFormSubtitle,
   .footerInput {
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .footerForm {
+    height: 40px;
+  }
+
+  .footerFormWrap {
+    align-items: center;
+    text-align: center;
+    order: 2;
+  }
+
+  .footerButton {
+    height: 40px;
+    min-width: 40px;
+  }
+
+
+}
+@media (max-width: $ADAPTIVE_S_2) {
+  .footerWrap {
+    row-gap: 30px;
+    flex-direction: column;
+    align-items: center;
+
+    > div {
+      width: 250px;
+      display: flex;
+
+      :nth-of-type(4) {
+        order: 3
+      }
+    }
+  }
+
+  .footer {
+    height: fit-content;
+    padding: 50px 0;
+  }
+
+  .footerDefaultBlock {
+    row-gap: 10px;
+    align-items: center;
+  }
+
+  .footerText,
+  .footerFormTitle {
+    font-size: 4.9vw;
+  }
+
+  .footerFormSubtitle{
+    font-size: 4vw;
+  }
+  .footerInput {
+    font-size: 3vw;
   }
 
   .footerForm {

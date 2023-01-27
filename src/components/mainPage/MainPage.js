@@ -50,10 +50,9 @@ function MainPage() {
             {/* <h1>{state.screenWidth.width}</h1> */}
             <StatisticSection />
           </div>
-        </div>
-        <div >
-          {/* <h1>{state.screenWidth.width}</h1> */}
-          <Footer/>
+          <div>
+             <Footer/>
+          </div>
         </div>
       </div>
     </>

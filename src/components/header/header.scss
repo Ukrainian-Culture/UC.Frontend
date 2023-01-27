@@ -50,12 +50,28 @@ $width_of_logo: 24px;
         font-size: 14px;
         width: fit-content;
         font-weight: 600;
-        color: $g_2;
+        color: $g_1;
         // transition: all 1s ease-in-out;
+        &:after{
+          content: '';
+          margin-top:-5px;
+          height: 1.2px;
+          width: 0%;
+          background-color: black ;
+        }
+
+
+        &:hover{
+          &:after{
+            width: 100%;
+          }
+        }
       }
 
       .activePage {
-        color: $g_1;
+        &:after{
+          visibility: hidden;
+        }
       }
     }
 

@@ -6,7 +6,7 @@ import {
 const initialState = {
   loading: true,
   data: {
-    uktainePopulation: 42352355,
+    ukrainePopulation: 42352355,
     unescoHeritage: 24,
     populationOfRegions: [
       {

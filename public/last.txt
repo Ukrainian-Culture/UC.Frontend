@@ -1,27 +1,12 @@
-LoadingPage:
-- add animation and responce on loading.
-|
-Redux:
-- add fetchStatistic.
-- add fetchHistory.
-|
-GradientBackground:
-- create element.
-|
-StartAppRequests:
-- add request for statistic section.
-|
-LoadEmoji:
-- add random array of emoji.
-|
-FetchOther:
-- add fetchPeopleReducer.
-- add fetchDishesReducer.
-- add fetchMusicReducer.
-- add fetchScienceReducer.
-|
+Header:
+- change navigation hover;
+StartAppRequest:
+- change api;
+Card:
+- change overflow text in title;
 ExplorePage:
-- add api request.
-|
+- change api url;
 ArticlePage:
-- add api request.
+- change api requests;
+StatisticSection:
+- add api requests;
