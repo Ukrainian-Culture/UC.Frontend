@@ -14,14 +14,22 @@ function Card(props) {
   // =======================================================
 
   // function that make text shorter to accomodate
-  function croppedText(p_text) {
-    const maxLength = 110
+  function croppedText(p_text, num) {
+    const maxLength = num
 
     if (p_text.length > maxLength) {
       return `${p_text.slice(0, maxLength)}`
     }
     return p_text
   }
+  // function croppedText(p_text) {
+  //   const maxLength = 110
+
+  //   if (p_text.length > maxLength) {
+  //     return `${p_text.slice(0, maxLength)}`
+  //   }
+  //   return p_text
+  // }
 
   // -----------------------------------------------
 
@@ -59,7 +67,7 @@ function Card(props) {
 
         <div className="cardBlock_bottomWrapper">
           <div className="cardBlock_bottomWrapper_subText">
-            {croppedText(subText)}
+            {croppedText(subText, 110)}
           </div>
 
           <div

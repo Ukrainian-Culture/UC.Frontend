@@ -62,7 +62,7 @@ function InfoBlock() {
   const getCategoryId = (param) => {
     let buf
     categoryLocale.data.forEach((el) => {
-      if (el.name.toLowerCase() === param) buf = el.categoryId
+      if (el.name.toLowerCase() === param) buf = el.id
     })
     return buf
   }
@@ -110,32 +110,38 @@ function InfoBlock() {
   useEffect(() => {
     if (selectedOblast && sideHeight === SIDEHEIGHT) {
       setTimeout(() => {
-        const urlHistory = `${domain}/api/${state.culture.data['en']}/History/${aboutOblast[selectedOblast]['en_name']}`
+        const loc_lang = `${state.culture.data[1]['id']}`
+
+        const urlHistory = `${domain}/api/${loc_lang}/History/${aboutOblast[selectedOblast]['en_name']}`
         // ​/api​/{cultureId}​/ArticlesTile​/{regionName}​/{categoryId}
 
         const urlPeople = `${domain}/api/${
-          state.culture.data['en']
+          loc_lang
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('people')}`
+        // console.log(urlPeople)
 
         const urlDishes = `${domain}/api/${
-          state.culture.data['en']
+          loc_lang
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('dishes')}`
+        // console.log(urlDishes)
 
         const urlMusic = `${domain}/api/${
-          state.culture.data['en']
+          loc_lang
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('music')}`
-
+        // console.log(urlMusic)
+        
         const urlScience = `${domain}/api/${
-          state.culture.data['en']
+          loc_lang
         }/ArticlesTile/${
           aboutOblast[selectedOblast]['en_name']
         }/${getCategoryId('science')}`
+        // console.log(urlScience)
 
         let isCanseled = false
         const cancelToken = axios.CancelToken.source()
@@ -231,12 +237,11 @@ function InfoBlock() {
       {sideHeight === SIDEHEIGHT ? (
         <div className={`infoBlock infoBlock_${sideHeight}`}>
           <div className="infoBlock_wrapper">
-            <div
-              className="infoBlock_wrapper_categories"
-  
-            >
-              <div className="infoBlock_wrapper_categories_scrollWrapper"
-              ref={parentCategories}>
+            <div className="infoBlock_wrapper_categories">
+              <div
+                className="infoBlock_wrapper_categories_scrollWrapper"
+                ref={parentCategories}
+              >
                 {categoriesArr.map((el, index) => {
                   if (index != 0) {
                     return (

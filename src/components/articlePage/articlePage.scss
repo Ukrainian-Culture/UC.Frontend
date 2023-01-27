@@ -3,7 +3,7 @@
 $width_of_content: 10fr;
 $width_of_sides_of_content: 1fr;
 $height_of_navigation: 70px;
-$back_arrow_border_width: 2px;
+$back_arrow_border_width: 1px;
 $back_arrow_width: 8px;
 
 .articlePage {
@@ -15,6 +15,7 @@ $back_arrow_width: 8px;
     align-items: center;
     margin-top: $header_height;
     padding: 0px $header_padding;
+    padding-bottom: $header_height;
 
     // background-color: rgb(187, 255, 155);
 
@@ -71,6 +72,8 @@ $back_arrow_width: 8px;
 
       .articlePage_wrap_content_text {
         // background-color: brown;
+        white-space: pre-line;
+        // overflow-wrap: break-word;
         font-weight: 400;
       }
     }

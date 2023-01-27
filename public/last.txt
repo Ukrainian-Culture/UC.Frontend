@@ -1,6 +1,12 @@
-Footer:
-- some changes;
-InfoBlock:
-- fix bug with aligning category scroll;
+Header:
+- change navigation hover;
+StartAppRequest:
+- change api;
+Card:
+- change overflow text in title;
 ExplorePage:
-- fix bug with aligning LoadingEmoji;
+- change api url;
+ArticlePage:
+- change api requests;
+StatisticSection:
+- add api requests;

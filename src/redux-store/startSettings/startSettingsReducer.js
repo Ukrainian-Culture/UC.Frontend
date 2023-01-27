@@ -1,5 +1,5 @@
 const initialState = {
-    domain: "https://localhost:7219"
+    domain: "https://ucbackend.azurewebsites.net"
 }
 
 const startSettingsReducer = (state = initialState, action) => {
