@@ -103,7 +103,24 @@ $width_of_logo: 24px;
 
 .headerLeft,
 .headerRight {
-  width: 180px;
+  width: 165px;
+}
+
+.mainHeader
+.headerRight {
+  // background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .headerRight_el{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: $g_1;
+    margin-left: 10px;
+  }
 }
 
 // animation of moving sideHeight to start position

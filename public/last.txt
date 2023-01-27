@@ -1,12 +1,4 @@
-Header:
-- change navigation hover;
-StartAppRequest:
-- change api;
-Card:
-- change overflow text in title;
-ExplorePage:
-- change api url;
-ArticlePage:
-- change api requests;
-StatisticSection:
-- add api requests;
+Profile:
+- initialize folder and files;
+Login:
+- initialize folder and files;

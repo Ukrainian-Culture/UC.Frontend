@@ -126,9 +126,8 @@ function Header(props) {
           <CentreTextRenderer />
 
           <div className="headerRight">
-            {/* <div>en</div>
-          <div>theme</div>
-          <div>user</div> */}
+            <Link to="/profile" className="headerRight_profile headerRight_el">profile</Link>
+            <Link to="/login" className="headerRight_login headerRight_el">login</Link>
           </div>
         </div>
       </>
