@@ -103,6 +103,7 @@ $ADAPTIVE_S_2: 450px;
 
 // make background of block blury kind of like glass
 @mixin glass_background{
+    // background-color: rgba(255, 255, 255, 0.309); 
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(100px);
 }

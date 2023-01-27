@@ -1,0 +1,15 @@
+@import "../../settings/settings.scss";
+
+.ProfileSection{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+    .ProfileSection_header{
+        width: 100%;
+    }
+
+    .ProfileSection_mainBody{
+        margin-top: $header_height;
+    }
+}

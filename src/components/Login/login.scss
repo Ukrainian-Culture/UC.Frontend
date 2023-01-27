@@ -1,0 +1,14 @@
+@import "../../settings/settings.scss";
+
+.LoginSection{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+
+    .LoginSection_header{
+        width: 100%;
+    }
+    .LoginSection_mainBlock{
+        margin-top: $header_height;
+    }
+}
