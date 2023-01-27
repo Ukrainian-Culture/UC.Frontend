@@ -55,17 +55,20 @@ function ExplorePage() {
 
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
-    const urlExplore = `${domain}/api/${state.culture.data['en']}/ArticlesTile`
+    if (!culture.loading) {
+      const loc_lang = `${state.culture.data[1]['id']}`
+      const urlExplore = `${domain}/api/${loc_lang}/ArticlesTile`
 
-    axios
-      .get(urlExplore)
-      .then((responce) => {
-        dispatch({ type: FETCH_EXPLORE_SUCCESS, payload: responce.data })
-      })
-      .catch((e) => {
-        dispatch({ type: FETCH_EXPLORE_ERROR, error: e })
-      })
-  }, [state.culture])
+      axios
+        .get(urlExplore)
+        .then((responce) => {
+          dispatch({ type: FETCH_EXPLORE_SUCCESS, payload: responce.data })
+        })
+        .catch((e) => {
+          dispatch({ type: FETCH_EXPLORE_ERROR, error: e })
+        })
+    }
+  }, [culture])
   ///////////////////////////////////////////////////////////////
 
   // change do filtration when selected filtration category
@@ -98,7 +101,7 @@ function ExplorePage() {
   return (
     <>
       <StartAppRequests />
-      <LoadingPage main={true}/>
+      <LoadingPage main={true} />
 
       <div className="explorePage" ref={exploreWrap}>
         <div className=" explorePage_wrap">
@@ -110,28 +113,20 @@ function ExplorePage() {
             <ScrollCategory />
           </div>
 
-          <div className="explorePage_mainPlates">
-            {!fetchExplore.loading ? (
-              fetchExplore.data.map((el, index) => {
+          {!fetchExplore.loading && fetchExplore.error === '' ? (
+            <div className="explorePage_mainPlates">
+              {fetchExplore.data.map((el, index) => {
                 if (
                   categoryToDisplay().includes(el.category.toLowerCase()) ||
                   filterCategory == 'all'
                 ) {
-                  return (
-                    <Card
-                    el={el}
-                      key={`epmp_${index}`}
-                      title={el.title}
-                      subText="Ukrainian dumplings made from potato and wheet dought with creem"
-                      category={el.category.toLowerCase()}
-                    />
-                  )
+                  return <Card el={el} key={`EPMP__${index}`} />
                 }
-              })
-            ) : (
-              <LoadingEmoji />
-            )}
-          </div>
+              })}
+            </div>
+          ) : (
+            <LoadingEmoji />
+          )}
         </div>
       </div>
     </>

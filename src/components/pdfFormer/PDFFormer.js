@@ -13,14 +13,14 @@ const styles = StyleSheet.create({
 })
 
 function PDFFormer(props) {
-  const { data } = props
+  const { articleId, title, subText, category, region, content } = props
 
 
   return (
     <Document>
       <Page style={styles.page}>
         <Text style={styles.text}>
-          {`${data.shortDesc} `.repeat(100)}
+          {`${content}`}
         </Text>
       </Page>
     </Document>

@@ -26,7 +26,7 @@ function StartAppRequests() {
     function axiosCategoryLocale(response) {
       axios
         .get(
-          `${state.startSettings.domain}/api/${response.data['en']}/CategoryLocale`,
+          `${state.startSettings.domain}/api/category`,
         )
         .then((response_2) => {
           // console.log(response_2)
@@ -42,7 +42,7 @@ function StartAppRequests() {
 
     // fetching data for staticstic section
     function axiosStatistic() {
-      const getUktainePopulation = axios.get(
+      const getUkrainePopulation = axios.get(
         `${state.startSettings.domain}/GetUkranePopulation`,
       )
       const getAmountOfUnescoHeritage = axios.get(
@@ -57,7 +57,7 @@ function StartAppRequests() {
 
       axios
         .all([
-          getUktainePopulation,
+          getUkrainePopulation,
           getAmountOfUnescoHeritage,
           getPopulationOfRegions,
           getAmountOfMonuments,
@@ -65,7 +65,7 @@ function StartAppRequests() {
         .then(
           axios.spread((...allData) => {
             const recievedData = {
-              uktainePopulation: allData[0].data,
+              ukrainePopulation: allData[0].data,
               unescoHeritage: allData[1].data,
               populationOfRegions: allData[2].data,
               monuments: allData[3].data,
@@ -81,7 +81,7 @@ function StartAppRequests() {
 
     // fetching languages
     axios
-      .get(`${state.startSettings.domain}/api/Culture/ids`)
+      .get(`${state.startSettings.domain}/api/culture`)
       .then((response) => {
         // fetching languages guID
         dispatch({ type: FETCH_CULTURE_SUCCESS, payload: response.data })

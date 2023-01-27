@@ -55,7 +55,7 @@ function ArticlePage() {
   const downloadPDF = async () => {
     setStartLoad(true)
 
-    const blob = await pdf(<PDFFormer data={location.state} />).toBlob()
+    const blob = await pdf(<PDFFormer {...location.state.el} content={fetchArticle.data.content} />).toBlob()
 
     // console.log(blob)
 
@@ -70,16 +70,19 @@ function ArticlePage() {
 
   //////////////////////////////////////////////////////////////////
   useEffect(() => {
-    const urlArticle = `${domain}/api/${state.culture.data['en']}/ArticlesLocale/${articleId}`
-    
-    axios
-      .get(urlArticle)
-      .then((responce) => {
-        dispatch({ type: FETCH_ARTICLE_SUCCESS, payload: responce.data })
-      })
-      .catch((e) => {
-        dispatch({ type: FETCH_ARTICLE_ERROR, error: e })
-      })
+    if (!culture.loading) {
+      const loc_lang = `${state.culture.data[1]['id']}`
+      const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${articleId}`
+
+      axios
+        .get(urlArticle)
+        .then((responce) => {
+          dispatch({ type: FETCH_ARTICLE_SUCCESS, payload: responce.data })
+        })
+        .catch((e) => {
+          dispatch({ type: FETCH_ARTICLE_ERROR, error: e })
+        })
+    }
   }, [])
   //////////////////////////////////////////////////////////////////
 
@@ -124,11 +127,13 @@ function ArticlePage() {
             </div>
           </div>
         </div>
-        <div className="articlePage_wrap_navigation_title">{title || fetchArticle.data.title}</div>
+        <div className="articlePage_wrap_navigation_title">
+          {title || fetchArticle.data.title}
+        </div>
         <div className="articlePage_wrap_content">
           <div className="articlePage_wrap_content_side"></div>
           <div className="articlePage_wrap_content_text">
-            {fetchArticle.data.content || 'no content'}
+            {fetchArticle.data.content || 'no content 🤯'}
           </div>
           <div className="articlePage_wrap_content_side"></div>
         </div>
