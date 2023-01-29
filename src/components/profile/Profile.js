@@ -20,6 +20,7 @@ function Profile() {
 
         <div className="ProfileSection_mainBody">
           <div>oh shit this is profile page</div>
+         
         </div>
       </div>
     </>

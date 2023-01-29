@@ -2,7 +2,9 @@ import React from 'react'
 import { useRef } from 'react'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import Header from '../header/Header'
-import "../Login/login.scss"
+import '../Login/login.scss'
+import GradientBackground from '../gradientBackground/GradientBackground'
+import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
 
 function Login() {
   const profileWrap = useRef()
@@ -10,11 +12,15 @@ function Login() {
   useGetScreenWidth({ refWidth: profileWrap })
   return (
     <>
+      {/* <GradientBackground/> */}
+      <GradientCircle />
       <div className="LoginSection" ref={profileWrap}>
         <div className="LoginSection_header">
           <Header />
         </div>
-        <div className="LoginSection_mainBlock">login</div>
+        <div className="LoginSection_mainBlock">
+         
+        </div>
       </div>
     </>
   )

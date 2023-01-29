@@ -4,13 +4,15 @@ const initialState = {
   // categories_uk: ['історія', 'люди', 'культура', 'документи', 'наука'],
   // '1': ['all', 'history', 'people', 'dishes', 'music', 'documents', 'science'],
   // '2': ['всі', 'історія', 'люди', 'страви', 'музика', 'документи', 'наука'],
-  '1': ['all', 'history', 'people', 'dishes', 'music', 'science'],
-  '2': ['всі', 'історія', 'люди', 'страви', 'музика', 'наука'],
+  // '1': ['all', 'history', 'people', 'dishes', 'music', 'science'],
+  '0': ['all', 'history', 'people', 'dishes', 'music', 'science'],
+  '1': ['всі', 'історія', 'люди', 'страви', 'музика', 'наука'],
+  
   corelate: (p_category, p_lang_id) => {
-    return initialState['1'][initialState[p_lang_id].indexOf(p_category)]
+    return initialState['0'][initialState[p_lang_id].indexOf(p_category)]
   },
   corelateToCurrentLang: (p_category, p_lang_id) => {
-    return initialState[p_lang_id][initialState['1'].indexOf(p_category)]
+    return initialState[p_lang_id][initialState['0'].indexOf(p_category)]
   },
 }
 

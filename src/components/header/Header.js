@@ -14,6 +14,8 @@ import {
 } from '../../redux-store/sideHeight/sideHeightConst'
 import { useLayoutEffect } from 'react'
 
+gsap.config({nullTargetWarn:false});
+
 function Header(props) {
   const dispatch = useDispatch()
   const changeSideHeight = (prop) => {
@@ -37,7 +39,7 @@ function Header(props) {
   // variable which contain selected oblast
   const selectedOblast = stateRedux.selectedOblast.selectedOblast
   // this is array which contain
-  const aboutOblast = stateRedux.aboutOblast.aboutOblast
+  const aboutOblast = stateRedux.aboutOblast
   // width of screen
   const screenWidth = stateRedux.screenWidth.width
 
@@ -69,13 +71,13 @@ function Header(props) {
         <>
           <div className="mainHeader_oblastName">
             <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
-              {aboutOblast[selectedOblast].emoji}
+              {aboutOblast.aboutOblast[selectedOblast].emoji}
             </div>
             <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
-              {aboutOblast[selectedOblast].en_name}
+              {aboutOblast.aboutOblast[selectedOblast][language]}
             </div>
             <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
-              region
+              {aboutOblast.region[language]}
             </div>
           </div>
         </>

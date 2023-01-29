@@ -1,4 +1,10 @@
-Profile:
+Main:
+- change language identeficator;
+LoadingPlates:
 - initialize folder and files;
+- add loding for history in main screen;
+- add loading for other in main screen;
+GradientCircle:
+- create component;
 Login:
-- initialize folder and files;
+- add template;

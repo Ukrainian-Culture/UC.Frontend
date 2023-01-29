@@ -41,7 +41,7 @@ function InfoBlock() {
   // current language
   const language = state.changeLanguage.lang
   // variable used for displying categories
-  const categoriesArr = state.categoriesInfoBlock[1]
+  const categoriesArr = state.categoriesInfoBlock[language]
   const corelateCategories = state.categoriesInfoBlock.corelate
   const selectedCategory = state.selectedCategory.category
   const selectedOblast = state.selectedOblast.selectedOblast
@@ -81,65 +81,49 @@ function InfoBlock() {
 
     e.target.className = `${e.target.className} ${activeWord}`
     const temp_category_name = corelateCategories(e.target.innerText, language)
+
     setcurrentCategory(temp_category_name)
 
     changeCategory(temp_category_name)
   }
 
   // --------------------------------------------------------------------
-
-  // reset selected category when changed region
-  // useEffect(() => {
-  //   changeCategory('history')
-
-  //   if (parentCategories.current != null) {
-  //     const childrenClasses = parentCategories.current.children
-
-  //     childrenClasses[0].className = `${childrenClasses[0].className} ${activeWord}`
-
-  //     for (let i = 1; i < childrenClasses.length; i++) {
-  //       childrenClasses[i].className = childrenClasses[i].className.replace(
-  //         ` ${activeWord}`,
-  //         '',
-  //       )
-  //     }
-  //   }
-  // }, [selectedOblast])
   ////////////////////////////////////////////////////////////////////////////////////////
   // fetching data for side pannel
   useEffect(() => {
     if (selectedOblast && sideHeight === SIDEHEIGHT) {
       setTimeout(() => {
-        const loc_lang = `${state.culture.data[1]['id']}`
+        const loc_lang = `${state.culture.data[parseInt(language)]['id']}`
+        const loc_oblast = `${aboutOblast[selectedOblast]["0"]}`
 
-        const urlHistory = `${domain}/api/${loc_lang}/History/${aboutOblast[selectedOblast]['en_name']}`
+        const urlHistory = `${domain}/api/${loc_lang}/History/${loc_oblast}`
         // ​/api​/{cultureId}​/ArticlesTile​/{regionName}​/{categoryId}
 
         const urlPeople = `${domain}/api/${
           loc_lang
         }/ArticlesTile/${
-          aboutOblast[selectedOblast]['en_name']
+          loc_oblast
         }/${getCategoryId('people')}`
         // console.log(urlPeople)
 
         const urlDishes = `${domain}/api/${
           loc_lang
         }/ArticlesTile/${
-          aboutOblast[selectedOblast]['en_name']
+          loc_oblast
         }/${getCategoryId('dishes')}`
         // console.log(urlDishes)
 
         const urlMusic = `${domain}/api/${
           loc_lang
         }/ArticlesTile/${
-          aboutOblast[selectedOblast]['en_name']
+          loc_oblast
         }/${getCategoryId('music')}`
         // console.log(urlMusic)
         
         const urlScience = `${domain}/api/${
           loc_lang
         }/ArticlesTile/${
-          aboutOblast[selectedOblast]['en_name']
+          loc_oblast
         }/${getCategoryId('science')}`
         // console.log(urlScience)
 
@@ -220,9 +204,11 @@ function InfoBlock() {
 
         for (let i = 0; i < childrenClasses.length; i++) {
           if (childrenClasses[i].className.includes(activeWord)) {
-            // console.log('gacha', childrenClasses[i].innerText)
+            // setSelected(
+            //   corelateCategories(childrenClasses[i].innerText, language),
+            // )
             setSelected(
-              corelateCategories(childrenClasses[i].innerText, language),
+              childrenClasses[i].innerText
             )
           }
         }

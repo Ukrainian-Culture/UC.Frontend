@@ -5,6 +5,7 @@ import '../otherRenderer/otherRenderer.scss'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import LoadingEmoji from '../../../../loadingPage/loadingEmoji/LoadingEmoji'
+import LoadingPlates from '../../../../loadingPage/loadingPlates/LoadingPlates'
 
 function OtherRenderer() {
   const state = useSelector((state) => state)
@@ -13,6 +14,8 @@ function OtherRenderer() {
   const fetchMusic = state.fetchMusic
   const fetchScience = state.fetchScience
   const selectedCategory = state.selectedCategory.category
+  const aboutOblast = state.aboutOblast.aboutOblast
+  const selectedOblast = state.selectedOblast.selectedOblast
   // -----------------------------------------
   // const [platesArr, setPlatesArr] = useState([])
   const [currentPlates, setCurrentPlates] = useState('')
@@ -22,13 +25,12 @@ function OtherRenderer() {
 
   // component to render plates
   const PlatesRender = () => {
-    console.log(currentPlates)
     return (
       <>
         {currentPlates.data.length !== 0 ? currentPlates.data.map((el, index) => {
           return (
             <Card
-              
+              key={`CPDLEPDM_${index}`}
               el={el}
             />
           )
@@ -71,10 +73,10 @@ function OtherRenderer() {
 
   return (
     <div className="otherRenderer" ref={otherWrapper}>
-      {!currentPlates.loading && currentPlates.error === ''? (
+      {!currentPlates.loading && currentPlates.error === '' && currentPlates.data.length !== 0 && currentPlates.data[0].region.toLowerCase() === aboutOblast[selectedOblast]['0'].toLowerCase()? (
         <PlatesRender />
       ) : (
-        <LoadingEmoji />
+        <LoadingPlates other={true} />
       )}
       {/* <Card
         title="Ukrainian borsch"
