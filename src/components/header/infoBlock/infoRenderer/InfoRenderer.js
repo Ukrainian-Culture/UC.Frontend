@@ -12,25 +12,26 @@ import OtherRenderer from './otherRenderer/OtherRenderer'
 
 function InfoRenderer(props) {
   const { selectedCategory } = props
-  const state = useSelector(state => state)
-  const categoriesInfoBlock = state.categoriesInfoBlock['1']
+  const state = useSelector((state) => state)
+  // current language
+  const language = state.changeLanguage.lang
+  const categoriesInfoBlock = state.categoriesInfoBlock['0']
+  const corelateCategories = state.categoriesInfoBlock.corelate
 
-  if(selectedCategory == 'history'){
+  if (corelateCategories(selectedCategory, language) == 'history') {
     return (
       <div className="infoRenderer">
-         <HistoryRenderer />
+        <HistoryRenderer />
       </div>
     )
-  }
-  else if(categoriesInfoBlock.includes(selectedCategory)){
-    return(
+  } else if (categoriesInfoBlock.includes(corelateCategories(selectedCategory, language))) {
+    return (
       <div className="infoRenderer_wrapper">
-          <OtherRenderer />
-        </div>
+        <OtherRenderer />
+      </div>
     )
-  }
-else return(<></>)
-  
+  } else return <></>
+
   // return (
   //   <div className="infoRenderer">
   //     {selectedCategory == 'history' ? (

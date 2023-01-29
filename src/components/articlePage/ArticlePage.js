@@ -111,20 +111,21 @@ function ArticlePage() {
           </div>
 
           <div className="articlePage_wrap_navigation_helpers">
-            <div
+            {/* <div
               className="articlePage_wrap_navigation_helpers_download"
               onClick={() => {
                 downloadPDF()
               }}
             >
               download
-              {/* {
+              {
                 startLoad ? <PDFDownloadLink document={<PDFFormer />} fileName={"FORM"}>
                 {({ loading }) => (loading ? 'loading...' : <div>dick</div>)}
               </PDFDownloadLink>
               :null
-              } */}
-            </div>
+              }
+            </div> */}
+            
           </div>
         </div>
         <div className="articlePage_wrap_navigation_title">

@@ -4,6 +4,7 @@ import '../historyRenderer/historyRenderer.scss'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import LoadingEmoji from '../../../../loadingPage/loadingEmoji/LoadingEmoji'
+import LoadingPlates from '../../../../loadingPage/loadingPlates/LoadingPlates'
 
 //==============================================
 
@@ -34,7 +35,6 @@ function HistoryRenderer() {
   const aboutOblast = state.aboutOblast.aboutOblast
   const selectedOblast = state.selectedOblast.selectedOblast
   const history = state.fetchHistory
-  const history_loading = state.fetchHistory.loading
   const history_data = state.fetchHistory.data
   // const history_error = state.fetchHistory.error
 
@@ -392,18 +392,13 @@ function HistoryRenderer() {
       </>
     )
   }
-
-  // if(history_data.length !== 0 && history_data[0].region === aboutOblast[selectedOblast]){
-
-  // }
-  // console.log(aboutOblast[selectedOblast]['en_name'])
-
   return (
     <div className="historyRenderer" ref={historyWrapper}>
-      {!history_loading && history_data.length !== 0 && history_data[0].region === aboutOblast[selectedOblast].en_name? (
+      {!state.fetchHistory.loading && history_data.length !== 0 && history_data[0].region.toLowerCase() === aboutOblast[selectedOblast]['0'].toLowerCase()? (
         <FormingHistoryOrder />
       ) : (
-        <LoadingEmoji />
+        // <LoadingEmoji />
+        <LoadingPlates history={true}/>
       )}
     </div>
   )

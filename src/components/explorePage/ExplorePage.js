@@ -18,6 +18,7 @@ import {
 import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import LoadingPage from '../loadingPage/LoadingPage'
+import LoadingPlates from '../loadingPage/loadingPlates/LoadingPlates'
 
 function ExplorePage() {
   const state = useSelector((state) => state)
@@ -100,8 +101,8 @@ function ExplorePage() {
 
   return (
     <>
-      <StartAppRequests />
-      <LoadingPage main={true} />
+      {/* <StartAppRequests />
+      <LoadingPage main={true} /> */}
 
       <div className="explorePage" ref={exploreWrap}>
         <div className=" explorePage_wrap">
@@ -125,7 +126,8 @@ function ExplorePage() {
               })}
             </div>
           ) : (
-            <LoadingEmoji />
+            <LoadingPlates explore={true}/>
+            // <LoadingEmoji />
           )}
         </div>
       </div>

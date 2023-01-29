@@ -1,12 +1,10 @@
-Header:
-- change navigation hover;
-StartAppRequest:
-- change api;
-Card:
-- change overflow text in title;
-ExplorePage:
-- change api url;
-ArticlePage:
-- change api requests;
-StatisticSection:
-- add api requests;
+Main:
+- change language identeficator;
+LoadingPlates:
+- initialize folder and files;
+- add loding for history in main screen;
+- add loading for other in main screen;
+GradientCircle:
+- create component;
+Login:
+- add template;
