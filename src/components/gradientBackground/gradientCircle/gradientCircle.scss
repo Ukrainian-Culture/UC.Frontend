@@ -1,0 +1,117 @@
+@import '../../../settings/settings.scss';
+
+//* GRADIENT BACKGROUND *//
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  // box-sizing: border-box;
+}
+.GradientCircleSection {
+  z-index: -100;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: none;
+  clip-path: circle(30vw);
+  z-index: -10;
+}
+.GradientCircleSection div {
+  position: absolute;
+  border-radius: 50%;
+}
+.GradientCircleSection div:nth-child(1) {
+  height: 70%;
+  width: 60%;
+  background-color: #fffd9f;
+  left: -20%;
+  top: 20%;
+  animation: gradient_1 13s infinite;
+}
+.GradientCircleSection div:nth-child(2) {
+  height: 80%;
+  width: 80%;
+  background-color: #5feaff;
+  top: -12%;
+  right: -12%;
+  animation-delay: 2s;
+  animation: gradient_2 8s infinite;
+}
+.GradientCircleSection div:nth-child(3) {
+  height: 65%;
+  width: 80%;
+  background-color: #ffe590;
+  bottom: -15%;
+  right: -20%;
+  animation-delay: 0.3s;
+  animation: gradient_3 12s infinite;
+}
+.GradientCircleSection div:nth-child(4) {
+  height: 50%;
+  width: 75%;
+  background-color: #89f9ff;
+  bottom: -10%;
+  left: -18%;
+  animation-delay: 1.2s;
+  animation: gradient_4 13s infinite;
+}
+
+@keyframes gradient {
+  70% {
+    transform: scale(1.2) translate(50px);
+  }
+}
+@keyframes gradient_1 {
+  50% {
+    transform: scaleX(0.3) translate(50px);
+  }
+}
+@keyframes gradient_2 {
+  40% {
+    transform: scaleX(1.4) translate(80px);
+    border-radius: 30%;
+  }
+
+  70% {
+    transform: scale(1.3) translate(60px);
+  }
+}
+@keyframes gradient_3 {
+  30% {
+    transform: scaleY(1.6s) translate(50px);
+    border-radius: 10px;
+    border-top-right-radius: 100%;
+  }
+  50% {
+    transform: scale(1.2) translate(50px);
+
+    border-radius: 100%;
+  }
+}
+@keyframes gradient_4 {
+  30% {
+    transform: scaleY(2.2) translate(50px);
+  }
+
+  70% {
+    transform: scale(1.2) translate(50px);
+  }
+}
+
+.GradientCircleSection_glass{
+  position: absolute;
+  content: '';
+  height: 100vh;
+  width: 100vw;
+  z-index: -9;
+
+  // backdrop-filter: blur(80px);
+  // backdrop-filter: blur(30px);
+  @include glass_background;
+}

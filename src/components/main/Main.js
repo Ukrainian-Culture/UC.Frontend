@@ -8,18 +8,19 @@ import ExplorePage from '../explorePage/ExplorePage'
 import ArticlePage from '../articlePage/ArticlePage'
 import NotFoundPage from '../notFoundPage/NotFoundPage'
 import StartAppRequests from '../../hooks/StartAppRequests'
+import Profile from '../profile/Profile'
+import Login from '../Login/Login'
 
 function Main() {
-
-
-  
   return (
     <>
       <Provider store={store}>
         <div className="mainScript">
           <Routes>
-            <Route path="/" element={<MainPage />}/>
+            <Route path="/" element={<MainPage />} />
             <Route path="/explore" element={<ExplorePage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login/>} />
             <Route path="/article/:id" element={<ArticlePage />} />
 
             <Route path="*" element={<NotFoundPage />} />
