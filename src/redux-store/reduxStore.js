@@ -20,8 +20,10 @@ import fetchDishesReducer from './fetchOtherCategory/fetchDishes/fetchDishesRduc
 import fetchMusicReducer from './fetchOtherCategory/fetchMusic/fetchMuzicReducer'
 import fetchScienceReducer from './fetchOtherCategory/fetchScience/fetchScienceReducer'
 import fetchArticleReducer from './fetchArticle/fetchArticleReducer'
+import interfaceLangReducer from './interfaceLang/interfaceLangReducer'
 
 const rootReducer = combineReducers({
+  interfaceLang: interfaceLangReducer,
   startSettings: startSettingsReducer,
   theme: themeReducer,
   sideHeight: sideHeightReducer,

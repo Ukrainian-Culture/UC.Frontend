@@ -101,8 +101,8 @@ function ExplorePage() {
 
   return (
     <>
-      {/* <StartAppRequests />
-      <LoadingPage main={true} /> */}
+      <StartAppRequests />
+      <LoadingPage main={true} />
 
       <div className="explorePage" ref={exploreWrap}>
         <div className=" explorePage_wrap">
