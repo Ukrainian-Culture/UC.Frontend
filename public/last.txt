@@ -1,10 +1,5 @@
-Main:
-- change language identeficator;
-LoadingPlates:
-- initialize folder and files;
-- add loding for history in main screen;
-- add loading for other in main screen;
-GradientCircle:
-- create component;
-Login:
-- add template;
+> StatisticSection
+- add emoji;
+- change some stylings;
+- add localization;
+- add userOnline counter;

@@ -43,6 +43,7 @@ export function UC(props) {
 
   // basic color of oblast
   const [baseColor, setbaseColor] = useState('#e6fcff')
+  // const [baseColor, setbaseColor] = useState('#262626')
   const [arrBaseColor, setarrBaseColor] = useState([
     { color: baseColor },
     { color: baseColor },
@@ -73,6 +74,7 @@ export function UC(props) {
   ])
   // color when oblast is selected
   const [selectColor, setselectColor] = useState('#2e333b')
+  // const [selectColor, setselectColor] = useState('#8B8D8C')
   const [arrSelectColor, setarrSelectColor] = useState([
     { color: selectColor },
     { color: selectColor },

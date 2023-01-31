@@ -20,8 +20,11 @@ import fetchDishesReducer from './fetchOtherCategory/fetchDishes/fetchDishesRduc
 import fetchMusicReducer from './fetchOtherCategory/fetchMusic/fetchMuzicReducer'
 import fetchScienceReducer from './fetchOtherCategory/fetchScience/fetchScienceReducer'
 import fetchArticleReducer from './fetchArticle/fetchArticleReducer'
+import interfaceLangReducer from './interfaceLang/interfaceLangReducer'
+import fetchOnlineReducer from './fetchUserOnline/fetchUserOnlineReducer'
 
 const rootReducer = combineReducers({
+  interfaceLang: interfaceLangReducer,
   startSettings: startSettingsReducer,
   theme: themeReducer,
   sideHeight: sideHeightReducer,
@@ -42,6 +45,7 @@ const rootReducer = combineReducers({
   categoryLocale: fetchCategoryLocaleReducer,
   culture: fetchCultureReducer,
   statistic: fetchStatisticReducer,
+  userOnline: fetchOnlineReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())
