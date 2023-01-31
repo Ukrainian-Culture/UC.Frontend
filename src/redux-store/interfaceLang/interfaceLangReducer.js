@@ -5,14 +5,22 @@ const initialState = {
         explore: "Explore",
         profile: "Profile",
         login: "Login",
-        back: "back"
+        back: "back",
+        peopleOnline: "Users online",
+        nationalMonuments: "National monuments",
+        usencoHerritage: "UNESCO herritage",
+        ukrainePopulation: "Ukraine population",
     },
     '1':{
         map:"Карта",
         explore: "Довідник",
         profile: "Профіль",
         login: "Вхід",
-        back: "назад"
+        back: "назад",
+        peopleOnline: "Користувачі онлайн",
+        nationalMonuments: "Національні монументи",
+        usencoHerritage: "Спадщина ЮНЕСКО",
+        ukrainePopulation: "Популяція України",
     }
 }
 

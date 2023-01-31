@@ -32,7 +32,7 @@ const initialState = {
   },
   getIndex: function(region, p_arr) {
     for(let i = 0; i < p_arr.length; i++){
-      if(p_arr[i]['0'] === region) return i
+      if(p_arr[i]['0'] === region || p_arr[i]['1'] === region) return i
     }
   }
 }

@@ -1,5 +1,5 @@
-interfaceLang:
-- add variables for interface which contain text for different languages;
-Header:
-- change loading of otherCategory;
-- add region in articlePage;
+> StatisticSection
+- add emoji;
+- change some stylings;
+- add localization;
+- add userOnline counter;
