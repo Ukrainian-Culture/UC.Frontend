@@ -22,19 +22,17 @@ function OtherRenderer() {
   const otherWrapper = useRef()
   const tl = useRef()
 
-
   // component to render plates
   const PlatesRender = () => {
     return (
       <>
-        {currentPlates.data.length !== 0 ? currentPlates.data.map((el, index) => {
-          return (
-            <Card
-              key={`CPDLEPDM_${index}`}
-              el={el}
-            />
-          )
-        }): <div className='emptyTextBruh'>empty</div>}
+        {currentPlates.data.length !== 0 ? (
+          currentPlates.data.map((el, index) => {
+            return <Card key={`CPDLEPDM_${index}`} el={el} />
+          })
+        ) : (
+          <div className="emptyTextBruh">empty</div>
+        )}
       </>
     )
   }
@@ -72,38 +70,20 @@ function OtherRenderer() {
   }, [])
 
   return (
-    <div className="otherRenderer" ref={otherWrapper}>
-      {!currentPlates.loading && currentPlates.error === '' && currentPlates.data.length !== 0 && currentPlates.data[0].region.toLowerCase() === aboutOblast[selectedOblast]['0'].toLowerCase()? (
-        <PlatesRender />
+    <>
+      {!currentPlates.loading &&
+      currentPlates.error === '' &&
+      currentPlates.data.length !== 0 &&
+      currentPlates.data[0].region.toLowerCase() ===
+        aboutOblast[selectedOblast]['0'].toLowerCase() ? (
+        <div className="otherRenderer" ref={otherWrapper}>
+          <PlatesRender />
+        </div>
       ) : (
-        <LoadingPlates other={true} />
+        // <LoadingPlates other={true} />
+        <LoadingEmoji />
       )}
-      {/* <Card
-        title="Ukrainian borsch"
-        subText="Ukrainian dumplings made from potato and wheet dought with creemsdf sdfsd fsdfj kjsdfhu sdhfu dshufh sdkufhsdkjfnsdkufb dsfbgsdf sjdfbsdfhk dsj"
-        category="dishes"
-      />
-      <Card
-        title="Shchedryk"
-        subText="Ukrainian Cristmas song"
-        category="music"
-      />
-      <Card
-        title="Ukrainian borsch"
-        subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="dishes"
-      />
-      <Card
-        title="Ukrainian borsch"
-        subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="dishes"
-      />
-      <Card
-        title="Ukrainian borsch"
-        subText="Ukrainian dumplings made from potato and wheet dought with creem"
-        category="dishes"
-      /> */}
-    </div>
+    </>
   )
 }
 

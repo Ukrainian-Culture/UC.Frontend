@@ -1,10 +1,5 @@
-Main:
-- change language identeficator;
-LoadingPlates:
-- initialize folder and files;
-- add loding for history in main screen;
-- add loading for other in main screen;
-GradientCircle:
-- create component;
-Login:
-- add template;
+interfaceLang:
+- add variables for interface which contain text for different languages;
+Header:
+- change loading of otherCategory;
+- add region in articlePage;
