@@ -10,6 +10,7 @@ const initialState = {
         nationalMonuments: "National monuments",
         usencoHerritage: "UNESCO herritage",
         ukrainePopulation: "Ukraine population",
+        logout: "logout"
     },
     '1':{
         map:"Карта",
@@ -21,6 +22,7 @@ const initialState = {
         nationalMonuments: "Національні монументи",
         usencoHerritage: "Спадщина ЮНЕСКО",
         ukrainePopulation: "Популяція України",
+        logout: "вихід"
     }
 }
 

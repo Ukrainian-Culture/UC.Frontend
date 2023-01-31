@@ -27,15 +27,20 @@ $width_of_logo: 24px;
   );
 
   .mainHeader {
+    display: flex;
+    align-items: center;
     width: 100vw;
     box-sizing: border-box;
     height: $header_height;
     padding: 0 $header_padding;
 
     .headerLeft {
+      display: flex;
+      align-items: center;
+
       .headerLeft_logo {
         text-decoration: none;
-
+        margin-top: 10px;
         width: $width_of_logo;
 
         .headerLeft_logo_svg {
@@ -52,24 +57,23 @@ $width_of_logo: 24px;
         font-weight: 600;
         color: $g_1;
         // transition: all 1s ease-in-out;
-        &:after{
+        &:after {
           content: '';
-          margin-top:-5px;
+          margin-top: -5px;
           height: 1.2px;
           width: 0%;
-          background-color: black ;
+          background-color: black;
         }
 
-
-        &:hover{
-          &:after{
+        &:hover {
+          &:after {
             width: 100%;
           }
         }
       }
 
       .activePage {
-        &:after{
+        &:after {
           visibility: hidden;
         }
       }
@@ -106,14 +110,13 @@ $width_of_logo: 24px;
   width: 175px;
 }
 
-.mainHeader
-.headerRight {
+.mainHeader .headerRight {
   // background-color: pink;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
-  .headerRight_el{
+  .headerRight_el {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -220,7 +223,7 @@ $burger_menu_height: 13px;
             width: 80%;
           }
         }
-        .innerBurgerButton_burgerHeight{
+        .innerBurgerButton_burgerHeight {
           .headerRight_lineBotttom {
             width: 100%;
           }
@@ -262,11 +265,10 @@ $burger_menu_height: 13px;
   .headerSection_burgerHeight {
     height: $header_height;
     z-index: 102;
-      background-color: $g_0;
+    background-color: $g_0;
   }
 
   .burgerHeight {
-    
     transform-origin: top;
     animation-name: burgerHeight;
     animation-timing-function: ease-in-out;
@@ -298,7 +300,6 @@ $burger_menu_height: 13px;
     }
     100% {
       transform: translateY(-100%);
-      
     }
   }
 

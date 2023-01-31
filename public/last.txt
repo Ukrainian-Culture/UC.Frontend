@@ -1,5 +1,2 @@
-> StatisticSection
-- add emoji;
-- change some stylings;
-- add localization;
-- add userOnline counter;
+>Profile:
+- add base template and styles;

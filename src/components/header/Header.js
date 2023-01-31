@@ -148,10 +148,10 @@ function Header(props) {
 
           <div className="headerRight">
             <Link to="/profile" className="headerRight_profile headerRight_el">
-              profile
+            {interfaceLang.profile}
             </Link>
             <Link to="/login" className="headerRight_login headerRight_el">
-              login
+            {interfaceLang.login}
             </Link>
           </div>
         </div>

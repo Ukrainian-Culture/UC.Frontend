@@ -22,6 +22,7 @@ import fetchScienceReducer from './fetchOtherCategory/fetchScience/fetchScienceR
 import fetchArticleReducer from './fetchArticle/fetchArticleReducer'
 import interfaceLangReducer from './interfaceLang/interfaceLangReducer'
 import fetchOnlineReducer from './fetchUserOnline/fetchUserOnlineReducer'
+import profileCategoryReducer from './profileCategory/profileCategoryReducer'
 
 const rootReducer = combineReducers({
   interfaceLang: interfaceLangReducer,
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   culture: fetchCultureReducer,
   statistic: fetchStatisticReducer,
   userOnline: fetchOnlineReducer,
+  profileCategory: profileCategoryReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())

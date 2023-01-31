@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
+import { useSelector } from 'react-redux'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import Header from '../header/Header'
@@ -8,9 +9,56 @@ import MainPage from '../mainPage/MainPage'
 import '../profile/profile.scss'
 
 function Profile() {
+  // const [currentPage, setCurrentPage] = usestate()
+  const state = useSelector((state) => state)
+  // current language
+  const language = state.changeLanguage.lang
+  const profileCategory = state.profileCategory
+  const interfaceLang = state.interfaceLang[language]
+  // ===============================================
+  // variable needed for geting width of screen
   const profileWrap = useRef()
+  //contain index of current category in profile page
+  const [currentCateg, setCurrentCateg] = useState(0)
+  const activeWord = 'active'
+  // reference of parent obkect of cztegories
+  const categoryParent = useRef()
+
+  //------------------------------------------------
+
+  // function which calls when category button pressed
+  const categorySelector = (e) => {
+    if (categoryParent.current != null) {
+      const childrenClasses = categoryParent.current.children
+      for (let i = 0; i < childrenClasses.length; i++) {
+        if (childrenClasses[i].innerText === e.target.innerText) {
+          e.target.className = `${e.target.className.replace(
+            ` ${activeWord}`,
+            '',
+          )} ${activeWord}`
+
+          setCurrentCateg(i)
+        } else {
+          childrenClasses[i].className = childrenClasses[i].className
+            .replaceAll(`${activeWord}`, '')
+            .replaceAll(' ', '')
+        }
+      }
+    }
+  }
+
+  //------------------------------------------------
+
+  useEffect(() => {
+    if (categoryParent.current != null) {
+      // set first variant in categories active
+      categoryParent.current.children[0].className = `${categoryParent.current.children[0].className} ${activeWord}`
+    }
+  }, [])
+
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })
+
   return (
     <>
       <div className="ProfileSection" ref={profileWrap}>
@@ -19,8 +67,36 @@ function Profile() {
         </div>
 
         <div className="ProfileSection_mainBody">
-          <div>oh shit this is profile page</div>
-         
+          <div className="ProfileSection_mainBody_wrapper">
+            <div className="ProfileSection_mainBody_wrapper_head">
+              <div
+                className="ProfileSection_mainBody_wrapper_head_left"
+                ref={categoryParent}
+              >
+                {profileCategory.category[language].map((el, index) => {
+                  return (
+                    <div
+                      className="ProfileSection_mainBody_wrapper_head_left_el"
+                      key={`PSMBWHL_${index}`}
+                      onMouseDown={(e) => categorySelector(e)}
+                    >
+                      {el}
+                    </div>
+                  )
+                })}
+
+                {/* <div className="ProfileSection_mainBody_wrapper_head_left_el">
+                  history
+                </div> */}
+              </div>
+
+              <div className="ProfileSection_mainBody_wrapper_head_right">
+                {interfaceLang.logout}
+              </div>
+            </div>
+
+            <div className="ProfileSection_mainBody_wrapper_content"> </div>
+          </div>
         </div>
       </div>
     </>
