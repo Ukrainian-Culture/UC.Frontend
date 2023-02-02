@@ -93,7 +93,7 @@ function InfoBlock() {
   useEffect(() => {
     if (selectedOblast && sideHeight === SIDEHEIGHT) {
       setTimeout(() => {
-        const loc_lang = `${state.culture.data[parseInt(language)]['id']}`
+        const loc_lang = `${state.culture.data[language]['id']}`
         const loc_oblast = `${aboutOblast[selectedOblast]["0"]}`
 
         const urlHistory = `${domain}/api/${loc_lang}/History/${loc_oblast}`

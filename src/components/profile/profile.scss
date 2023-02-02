@@ -1,15 +1,73 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
-.ProfileSection{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
+$head_font_size: 15px;
 
-    .ProfileSection_header{
-        width: 100%;
+// ===================================
+
+.ProfileSection {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+
+  .ProfileSection_header {
+    width: 100%;
+  }
+
+  .ProfileSection_mainBody {
+    margin-top: calc($header_height + 4vw);
+    padding: 0px $header_padding * 2;
+    height: 70vh;
+
+    .ProfileSection_mainBody_wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .ProfileSection_mainBody_wrapper_head {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid $g_3;
+
+        .ProfileSection_mainBody_wrapper_head_left {
+          display: flex;
+
+          .ProfileSection_mainBody_wrapper_head_left_el {
+            font-size: $head_font_size;
+            font-weight: 500;
+            padding: 4px 0px;
+            margin-right: 1.5rem;
+            cursor: pointer;
+          }
+
+          .active {
+            border-bottom: 3px solid $g_1;
+          }
+        }
+
+        .ProfileSection_mainBody_wrapper_head_right {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: $head_font_size;
+          font-weight: 500;
+          cursor: pointer;
+
+          &:after {
+            content: '';
+            margin-top: -2px;
+            height: 1.5px;
+            width: 100%;
+            background-color: $g_1;
+          }
+        }
+      }
+
+      .ProfileSection_mainBody_wrapper_content {
+        margin-top: 15px;
+        background-color: $g_4;
+        min-height: 80%;
+        border-radius: 7px;
+      }
     }
-
-    .ProfileSection_mainBody{
-        margin-top: $header_height;
-    }
+  }
 }

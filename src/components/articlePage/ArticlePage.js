@@ -29,10 +29,15 @@ function ArticlePage() {
 
   const state = useSelector((state) => state)
 
+  // current language
+  const language = state.changeLanguage.lang
   const fetchArticle = state.fetchArticle
   const domain = state.startSettings.domain
   const categoryLocale = state.categoryLocale
   const culture = state.culture
+  //variable for text in  interface in different language
+  const interfaceLang = state.interfaceLang[language]
+
   //-------------------------------------------------------------
 
   // hook that handle navigation between pages
@@ -99,7 +104,7 @@ function ArticlePage() {
 
   return (
     <div className="articlePage" ref={refWidth}>
-      <Header basic={true} />
+      <Header article={true} articleRegion={region} />
       <div className="articlePage_wrap">
         <div className="articlePage_wrap_navigation">
           <div
@@ -107,7 +112,7 @@ function ArticlePage() {
             onClick={() => backClick()}
           >
             <div className="articlePage_wrap_navigation_back_el"></div>
-            <div className="articlePage_wrap_navigation_back_el">back</div>
+            <div className="articlePage_wrap_navigation_back_el">{interfaceLang.back}</div>
           </div>
 
           <div className="articlePage_wrap_navigation_helpers">
