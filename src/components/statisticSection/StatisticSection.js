@@ -4,9 +4,37 @@ import '../statisticSection/statisticSection.scss'
 
 function StatisticSection() {
   const state = useSelector((state) => state)
+  const language = state.changeLanguage.lang
   const statistic = state.statistic
+  const userOnline = state.userOnline
+  const aboutOblast = state.aboutOblast
+  const interfaceLang = state.interfaceLang
+
   //===================================================
   const [nothing_text] = useState('no data 🤯')
+
+  //function to process arra of region population from statistic api
+  const processOlastPopulation = () => {
+    return statistic.data.populationOfRegions.map((el, index) => {
+      if (el.key === 'м.Київ')
+        return {
+          key:
+            aboutOblast.aboutOblast[
+              aboutOblast.getIndex('Kyiv', aboutOblast.aboutOblast)
+            ][language],
+          value: el.value,
+          alternative: language === '0' ? 'Kyiv' : 'м.Київ'
+        }
+      return {
+        key:
+          aboutOblast.aboutOblast[
+            aboutOblast.getIndex(el.key, aboutOblast.aboutOblast)
+          ][language],
+        value: el.value,
+        alternative: ''
+      }
+    })
+  }
 
   return (
     <>
@@ -15,17 +43,17 @@ function StatisticSection() {
           <div className="statisticContent">
             <div className="statisticLeft">
               <div className="statisticWrap">
-                <div className="statisticBlockHeader">People online</div>
-                <div className="statisticBigNumber">12</div>
+                <div className="statisticBlockHeader">{interfaceLang[language].peopleOnline}</div>
+                <div className="statisticBigNumber">{userOnline.data}</div>
               </div>
               <div className="statisticWrap">
-                <div className="statisticBlockHeader">national monuments</div>
+                <div className="statisticBlockHeader">{interfaceLang[language].nationalMonuments}</div>
                 <div className="statisticBigNumber">
                   {statistic.data.monuments}
                 </div>
               </div>
               <div className="statisticWrap">
-                <div className="statisticBlockHeader">UNESCO herritage</div>
+                <div className="statisticBlockHeader">{interfaceLang[language].usencoHerritage}</div>
                 <div className="statisticBigNumber">
                   {statistic.data.unescoHeritage}
                 </div>
@@ -33,40 +61,28 @@ function StatisticSection() {
             </div>
             <div className="statisticRight">
               <div className="statisticWrap">
-                <div className="statisticBlockHeader">Ukraine population</div>
+                <div className="statisticBlockHeader">{interfaceLang[language].ukrainePopulation}</div>
                 <div className="statisticBigNumber">
                   {' '}
                   {statistic.data.ukrainePopulation}
                 </div>
               </div>
-              {statistic.data.populationOfRegions.map((el, index) => {
+              {processOlastPopulation().map((el, index) => {
                 return (
                   <div className="cityBlock" key={`CBCNCP_${index}`}>
-                    <div className="cityName">{el.key}</div>
-                    <div className="cityPopulation">{el.value}</div>
+                    <div className="cityBlock_left">
+                      <div className="cityName">{el.alternative || el.key}</div>
+                      <div className="cityPopulation">{el.value}</div>
+                    </div>
+
+                    <div className="cityBlock_right">
+                      <div className="cityBlock_emoji">
+                      {aboutOblast.aboutOblast[aboutOblast.getIndex(el.key, aboutOblast.aboutOblast)].emoji}
+                      </div>
+                    </div>
                   </div>
                 )
               })}
-              {/* <div className="cityBlock">
-              <div className="cityName">Donetsk</div>
-              <div className="cityPopulation">4,387,702</div>
-            </div>
-            <div className="cityBlock">
-              <div className="cityName">Dnipro</div>
-              <div className="cityPopulation">3,258,705</div>
-            </div>
-            <div className="cityBlock">
-              <div className="cityName">Kyiv</div>
-              <div className="cityPopulation">2,900,920</div>
-            </div>
-            <div className="cityBlock">
-              <div className="cityName">Kharkiv</div>
-              <div className="cityPopulation">2,720,342</div>
-            </div>
-            <div className="cityBlock">
-              <div className="cityName">Lviv</div>
-              <div className="cityPopulation">2,535,476</div>
-            </div> */}
             </div>
           </div>
         </div>

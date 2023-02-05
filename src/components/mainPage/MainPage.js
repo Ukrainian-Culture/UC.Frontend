@@ -9,11 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import IntroducingCategory from '../introdusingCategory/IntroducingCategory'
 import { CHANGE_SCREENWIDTH } from '../../redux-store/screenWidth/screenWidthConst'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
-import Footer from "../footer/Footer";
+import Footer from '../footer/Footer'
 import LoadingPage from '../loadingPage/LoadingPage'
 import GradientBackground from '../gradientBackground/GradientBackground'
 import StartAppRequests from '../../hooks/StartAppRequests'
-
+import UserOnline from '../../hooks/UserOnline'
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -32,6 +32,7 @@ function MainPage() {
 
   return (
     <>
+      <UserOnline />
       <StartAppRequests />
       <LoadingPage main={true} />
 
@@ -51,7 +52,7 @@ function MainPage() {
             <StatisticSection />
           </div>
           <div>
-             <Footer/>
+            <Footer />
           </div>
         </div>
       </div>

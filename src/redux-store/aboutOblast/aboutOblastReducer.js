@@ -29,8 +29,14 @@ const initialState = {
   region:{
     '0': "region",
     '1': "область"
+  },
+  getIndex: function(region, p_arr) {
+    for(let i = 0; i < p_arr.length; i++){
+      if(p_arr[i]['0'] === region || p_arr[i]['1'] === region) return i
+    }
   }
 }
+
 // const aboutOblast = [
 //     { "0": 'Lviv', "1": 'Львівська', emoji: '' },
 //     { "0": 'Volun', "1": 'Волинська', emoji: '' },

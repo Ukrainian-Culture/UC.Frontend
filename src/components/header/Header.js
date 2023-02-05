@@ -14,7 +14,7 @@ import {
 } from '../../redux-store/sideHeight/sideHeightConst'
 import { useLayoutEffect } from 'react'
 
-gsap.config({nullTargetWarn:false});
+gsap.config({ nullTargetWarn: false })
 
 function Header(props) {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ function Header(props) {
   }
   //=============================================================
   //handle header central text format and content
-  const { centreText, main, explore, basic } = props
+  const { centreText, main, explore, basic, article, articleRegion } = props
   const location = useLocation()
 
   const stateRedux = useSelector((state) => state)
@@ -42,6 +42,8 @@ function Header(props) {
   const aboutOblast = stateRedux.aboutOblast
   // width of screen
   const screenWidth = stateRedux.screenWidth.width
+  //variable for text in  interface in different language
+  const interfaceLang = stateRedux.interfaceLang[language]
 
   // ===========================================================
   //word used in class when user on particular page
@@ -95,6 +97,23 @@ function Header(props) {
           </div>
         </>
       )
+    } else if (article) {
+      const redionId = aboutOblast.getIndex(articleRegion, aboutOblast.aboutOblast)
+      return (
+        <>
+          <div className="mainHeader_oblastName">
+            <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
+              {aboutOblast.aboutOblast[redionId].emoji}
+            </div>
+            <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
+              {aboutOblast.aboutOblast[redionId][language]}
+            </div>
+            <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
+              {aboutOblast.region[language]}
+            </div>
+          </div>
+        </>
+      )
     } else if (basic) {
       return <></>
     } else {
@@ -115,21 +134,25 @@ function Header(props) {
               className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
               to="/"
             >
-              Map
+              {interfaceLang.map}
             </Link>
             <Link
               className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
               to="/explore"
             >
-              Explore
+              {interfaceLang.explore}
             </Link>
           </div>
 
           <CentreTextRenderer />
 
           <div className="headerRight">
-            <Link to="/profile" className="headerRight_profile headerRight_el">profile</Link>
-            <Link to="/login" className="headerRight_login headerRight_el">login</Link>
+            <Link to="/profile" className="headerRight_profile headerRight_el">
+            {interfaceLang.profile}
+            </Link>
+            <Link to="/login" className="headerRight_login headerRight_el">
+            {interfaceLang.login}
+            </Link>
           </div>
         </div>
       </>
@@ -288,13 +311,13 @@ function Header(props) {
               className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
               to="/"
             >
-              Map
+              {interfaceLang.map}
             </Link>
             <Link
               className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
               to="/explore"
             >
-              Explore
+              {interfaceLang.explore}
             </Link>
           </div>
         </div>

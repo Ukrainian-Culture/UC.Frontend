@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@microsoft/signalr": "^7.0.2",
     "@react-pdf/renderer": "^3.0.3",
     "@react-spring/three": "^9.6.1",
     "@react-three/drei": "^9.47.1",
