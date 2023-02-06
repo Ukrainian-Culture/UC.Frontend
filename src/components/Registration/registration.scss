@@ -1,0 +1,224 @@
+@import '../../settings/settings.scss';
+
+// $title_font_size: 3.3vw;
+// $subTitle_font_size: 0.8vw;
+// $input_font_size: 0.8vw;
+// $button_font_size: 0.8vw;
+$title_font_size: 55px;
+$subTitle_font_size: 16px;
+$input_font_size: 16px;
+$button_font_size: 16px;
+
+$input_paddings: 65px;
+
+$input_width: 450px;
+$input_height: 70px;
+
+// mobile variables
+$mob_title_font_size: 7vw;
+$mob_subTitle_font_size: 3vw;
+$mob_input_font_size: 3vw;
+$mob_button_font_size: 3vw;
+
+$mob_input_paddings: 10vw;
+
+$mob_input_width: 70vw;
+$mob_input_height: 15vw;
+// ================================
+
+.RegistrationSection {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+  .RegistrationSection_mainBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: aquamarine;
+    height: 100%;
+    // margin-top: $header_height;
+
+    .RegistrationSection_mainBlock_wrapper {
+      // background-color: pink;
+      margin-top: -40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .RegistrationSection_mainBlock_wrapper_title {
+        color: $g_0;
+        font-size: $title_font_size;
+        font-weight: 700;
+      }
+
+      .RegistrationSection_mainBlock_wrapper_subTitle {
+        display: flex;
+        color: $g_0;
+        font-weight: 600;
+        font-size: $subTitle_font_size;
+        margin-top: 30px;
+
+        .RegistrationSection_mainBlock_wrapper_subTitle_question {
+          margin-right: 10px;
+        }
+
+        .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
+          color: $g_0;
+        }
+      }
+
+      .eyeIconPassword {
+        margin-top: 15px;
+        cursor: pointer;
+        font-size: 28px;
+        color: $g_0;
+      }
+
+      .RegistrationSection_mainBlock_wrapper_input_wrapper {
+        $p1: &;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        // background-color: pink;
+        border-radius: 100px;
+        margin-top: 15px;
+
+        width: $input_width;
+        height: $input_height;
+
+        .RegistrationSection_mainBlock_wrapper_input {
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          border: none;
+          border-radius: 100px;
+          border: 1px solid $g_0;
+          padding: 0px $input_paddings;
+          color: $g_0;
+          text-align: center;
+          font-size: $input_font_size;
+          font-weight: 600;
+          transition: all 0.3s ease-in-out;
+
+          &:focus {
+            background-color: $g_0;
+            color: $g_1;
+            outline: none;
+          }
+
+          &::placeholder {
+            text-align: center;
+            color: $g_0;
+          }
+        }
+
+        .RegistrationSection_mainBlock_wrapper_againPassword_true {
+          border: 1px dashed $r_0;
+          color: $r_0;
+
+          &:focus {
+            background-color: $r_1;
+            color: $g_1;
+            outline: none;
+          }
+        }
+      }
+
+      .RegistrationSection_mainBlock_wrapper_createButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: $input_width;
+        height: $input_height;
+        background-color: $g_0;
+        border-radius: 100px;
+        color: $g_1;
+        font-size: $button_font_size;
+        font-weight: 700;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $g_1;
+          color: $g_0;
+        }
+      }
+    }
+  }
+}
+// ===================================================
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+    .RegistrationSection {
+
+        .RegistrationSection_mainBlock {
+
+      
+          .RegistrationSection_mainBlock_wrapper {
+            margin-top: -40px;
+
+            .RegistrationSection_mainBlock_wrapper_title {
+              font-size: $mob_title_font_size;
+              font-weight: 700;
+            }
+      
+            .RegistrationSection_mainBlock_wrapper_subTitle {
+              font-weight: 600;
+              font-size: $mob_subTitle_font_size;
+              margin-top: 30px;
+      
+              .RegistrationSection_mainBlock_wrapper_subTitle_question {
+                margin-right: 10px;
+              }
+            }
+      
+            .eyeIconPassword {
+              margin-top: 15px;
+              cursor: pointer;
+              font-size: 28px;
+              color: $g_0;
+            }
+      
+            .RegistrationSection_mainBlock_wrapper_input_wrapper {
+
+
+              border-radius: 100px;
+              margin-top: 15px;
+      
+              width: $mob_input_width;
+              height: $mob_input_height;
+      
+              .RegistrationSection_mainBlock_wrapper_input {
+
+                border-radius: 100px;
+                border: 1px solid $g_0;
+                padding: 0px $mob_input_paddings;
+                font-size: $mob_input_font_size;
+                font-weight: 600;
+              }
+      
+              .RegistrationSection_mainBlock_wrapper_againPassword_true {
+                border: 1px dashed $r_0;
+              }
+            }
+      
+            .RegistrationSection_mainBlock_wrapper_createButton {
+              margin-top: 15px;
+              width: $mob_input_width;
+              height: $mob_input_height;
+              background-color: $g_0;
+              border-radius: 100px;
+              color: $g_1;
+              font-size: $mob_button_font_size;
+              font-weight: 700;
+              transition: all 0.3s ease-in-out;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+}

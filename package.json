@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ionic/react": "^6.5.1",
     "@microsoft/signalr": "^7.0.2",
     "@react-pdf/renderer": "^3.0.3",
     "@react-spring/three": "^9.6.1",
@@ -14,6 +15,7 @@
     "axios": "^1.2.2",
     "file-saver": "^2.0.5",
     "gsap": "^3.11.3",
+    "ionicons": "^6.1.1",
     "random-emoji": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

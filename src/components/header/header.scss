@@ -97,6 +97,22 @@ $width_of_logo: 24px;
   }
 }
 
+.profileIcon{
+  color: $g_1;
+  font-size: 20px;
+  margin-top: -2px;
+  margin-right: 3px;
+}
+
+.loginIcon{
+  color: $g_1;
+  font-size: 20px;
+  margin-top: -2px;
+  margin-right: 3px;
+}
+
+
+
 .mainHeader,
 .headerLeft,
 .headerRight {
@@ -117,6 +133,8 @@ $width_of_logo: 24px;
   justify-content: flex-end;
 
   .headerRight_el {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;

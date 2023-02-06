@@ -13,6 +13,8 @@ import {
   SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
 import { useLayoutEffect } from 'react'
+import { IonIcon } from '@ionic/react'
+import { personCircleOutline, enterOutline } from 'ionicons/icons'
 
 gsap.config({ nullTargetWarn: false })
 
@@ -98,7 +100,10 @@ function Header(props) {
         </>
       )
     } else if (article) {
-      const redionId = aboutOblast.getIndex(articleRegion, aboutOblast.aboutOblast)
+      const redionId = aboutOblast.getIndex(
+        articleRegion,
+        aboutOblast.aboutOblast,
+      )
       return (
         <>
           <div className="mainHeader_oblastName">
@@ -148,10 +153,16 @@ function Header(props) {
 
           <div className="headerRight">
             <Link to="/profile" className="headerRight_profile headerRight_el">
-            {interfaceLang.profile}
+              <IonIcon icon={personCircleOutline} className="profileIcon" />
+              <div>{interfaceLang.profile}</div>
             </Link>
             <Link to="/login" className="headerRight_login headerRight_el">
-            {interfaceLang.login}
+              <IonIcon icon={enterOutline} className="loginIcon" />
+              <div>{interfaceLang.login}</div>
+            </Link>
+            <Link to="/registration" className="headerRight_registration headerRight_el">
+              {/* <IonIcon icon={enterOutline} className="loginIcon" /> */}
+              <div>{interfaceLang.registration}</div>
             </Link>
           </div>
         </div>
