@@ -1,0 +1,95 @@
+@import "../../settings/settings.scss";
+
+.subscription{
+  width: 100%;
+  height:100vh;
+  background-color: $g_0;
+  padding:$header_height 0;
+  align-items: center;
+.subscriptionHeader
+{
+  text-align: center;
+  color: $g_1;
+  font-size: 60px;
+  font-weight: 500;
+}
+.subscriptionFeatures{
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  color: $g_0;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  text-align: center;
+  font-weight: 300;
+  div{
+    height: 50px;
+    line-height: 50px;
+    width: 200px;
+    background-color:$g_1;
+    border-radius: 30px;
+   span{
+     font-weight: 500;
+   }
+  }
+  .feature2,.feature3{
+    min-width: 250px;
+  }
+}
+.subscriptionButtons{
+  display: flex;
+  box-sizing: border-box;
+  gap: 25px;
+  justify-content: center;
+    div.some_el0 {
+    color: $g_1;
+    height: 320px;
+    width: 250px;
+    background: #F7F7F7;
+      border-radius: 5px;
+      .subscriptionType,{
+      font-weight: 300;
+      text-align: center;
+      color: $g_5;
+      }
+      .subscriptionPrice{
+        font-weight: 600;
+        text-align: center;
+        font-size: 80px;
+      }
+      .subscriptionDescr{
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+   div.some_el1,.some_el2,.some_el3{
+     height: 320px;
+     width: 320px;
+     background: $g_0;
+     border:1px solid #CECECE;
+     border-radius: 5px;
+     a {
+       color: $g_1;
+       text-decoration: none;
+       .subscriptionType,{
+         font-weight: 300;
+         text-align: center;
+         color: $g_5;
+       }
+       .subscriptionPrice{
+         font-weight: 600;
+         text-align: center;
+         font-size: 80px;
+       }
+       .subscriptionDescr{
+         font-weight: 500;
+         text-align: center;
+       }
+     }
+   }
+  .subscriptionType{
+    margin-top: 60px;
+  }
+}
+
+}
