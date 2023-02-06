@@ -109,7 +109,8 @@
 @media (max-width: $ADAPTIVE_S_1) {
   .statisticContent {
     flex-direction: column;
-    row-gap: 30px;
+    justify-content: flex-start;
+    row-gap: 50px;
   }
 
   .statisticWrap {
@@ -141,11 +142,12 @@
 
   .statisticLeft,
   .statisticRight {
-    height: 50%;
+    height: 35%;
   }
   .statisticWrapRightFirst{
     display: flex;
     flex-direction: column;
+    
   }
   .statisticBlockHeader:last-child{
     width: 100%;

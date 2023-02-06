@@ -1,6 +1,4 @@
-> Header:
-- add icons
->Registration:
-- add basic template;
-- add neccessary fields;
-- add adaptation;
+> StatisticSection:
+- small changes;
+> MainPage:
+- style changes for adaptation;
