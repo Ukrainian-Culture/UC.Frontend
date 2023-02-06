@@ -18,9 +18,7 @@ function Login() {
         <div className="LoginSection_header">
           <Header />
         </div>
-        <div className="LoginSection_mainBlock">
-         
-        </div>
+        <div className="LoginSection_mainBlock"></div>
       </div>
     </>
   )

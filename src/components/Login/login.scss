@@ -5,4 +5,8 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+
+  .LoginSection_mainBlock{
+    padding-top: $header_height;
+  }
 }

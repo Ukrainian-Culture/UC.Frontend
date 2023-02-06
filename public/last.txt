@@ -1,2 +1,6 @@
->Profile:
-- add base template and styles;
+> Header:
+- add icons
+>Registration:
+- add basic template;
+- add neccessary fields;
+- add adaptation;
