@@ -1,4 +1,4 @@
-@import '../../settings/settings.scss';
+@import "../../settings/settings.scss";
 
 .statisticSection {
   height: 100vh;
@@ -29,34 +29,41 @@
   font-weight: 600;
 }
 
+.cityName {
+  font-size: 16px;
+}
+
 .cityBlock {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid black;
-  
-  .cityBlock_left {
-    display: flex;
-    flex-direction: column;
-    // row-gap: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.cityBlock_left {
+  display: flex;
+  flex-direction: column;
+  // row-gap: 5px;
 
-    .cityName {
-      font-size: 16px;
-    }
-
-    .cityPopulation {
-      font-size: 30px;
-      font-weight: 600;
-    }
+  .cityName {
+    font-size: 16px;
   }
 
-  .cityBlock_right{
-    display: flex;
-    align-items: flex-end;
-    .cityBlock_emoji{
-      font-size: 30px;
-    }
+  .cityPopulation {
+    font-size: 30px;
+    font-weight: 600;
   }
+}
+.cityBlock_right{
+  display: flex;
+  align-items: flex-end;
+  .cityBlock_emoji{
+    font-size: 30px;
+  }
+}
+
+.cityPopulation {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .statisticLeft,
@@ -71,4 +78,78 @@
   display: flex;
   flex-direction: column;
   row-gap: 16px;
+}
+
+
+@media (max-width: $ADAPTIVE_M_1) {
+  .statisticContent {
+    width: 100%;
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: $ADAPTIVE_M_2) {
+  .statisticBlockHeader {
+    font-size: 24px;
+  }
+
+  .statisticBigNumber {
+    font-size: 60px;
+  }
+
+  .cityName {
+    font-size: 12px;
+  }
+
+  .cityPopulation {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: $ADAPTIVE_S_1) {
+  .statisticContent {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  .statisticWrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .statisticBlockHeader {
+    font-size: 18px;
+    font-weight: bolder;
+    width: 120px;
+  }
+
+  .statisticBigNumber {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .cityName {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .cityPopulation {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .statisticLeft,
+  .statisticRight {
+    height: 50%;
+  }
+  .statisticWrapRightFirst{
+    display: flex;
+    flex-direction: column;
+  }
+  .statisticBlockHeader:last-child{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+  }
 }
