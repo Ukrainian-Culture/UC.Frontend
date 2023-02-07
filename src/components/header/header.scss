@@ -125,7 +125,8 @@ $width_of_logo: 24px;
 
 .headerLeft,
 .headerRight {
-  width: 175px;
+  min-width: 175px;
+  width: fit-content;
 }
 
 .mainHeader .headerRight {
