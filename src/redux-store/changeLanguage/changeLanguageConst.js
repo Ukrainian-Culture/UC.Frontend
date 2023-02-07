@@ -1,1 +1,3 @@
 export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
+
+export const LS_LANGUAGE = "LS_LANGUAGE"
