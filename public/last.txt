@@ -1,4 +1,2 @@
-> StatisticSection:
-- small changes;
-> MainPage:
-- style changes for adaptation;
+>Header:
+- add language changer;

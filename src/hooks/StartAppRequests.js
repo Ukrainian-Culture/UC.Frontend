@@ -3,6 +3,10 @@ import React, { useEffect } from 'react'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
+  CHANGE_LANGUAGE,
+  LS_LANGUAGE,
+} from '../redux-store/changeLanguage/changeLanguageConst'
+import {
   FETCH_CATEGORY_LOCALE_ERROR,
   FETCH_CATEGORY_LOCALE_SUCCESS,
 } from '../redux-store/fetchCategoryLocale/fetchCategoryLocaleConst'
@@ -17,17 +21,23 @@ import {
 
 function StartAppRequests() {
   const dispatch = useDispatch()
+  const chnge_Language = (value) => {
+    dispatch({ type: CHANGE_LANGUAGE, payload: value })
+  }
+
+  // --------------------------------------------------
+
   const state = useSelector((state) => state)
   const culture = state.culture
   const categoryLocale = state.categoryLocale
+
+  // ==================================================
 
   const startHookCallback = useCallback(() => {
     // fetching categories names
     function axiosCategoryLocale(response) {
       axios
-        .get(
-          `${state.startSettings.domain}/api/category`,
-        )
+        .get(`${state.startSettings.domain}/api/category`)
         .then((response_2) => {
           // console.log(response_2)
           dispatch({
@@ -99,8 +109,17 @@ function StartAppRequests() {
   })
 
   useEffect(() => {
-    // console.log(Object.keys(categoryLocale).length )
-    if(Object.keys(culture).length === 3 && Object.keys(categoryLocale).length === 3) startHookCallback()
+    const def = localStorage.getItem(LS_LANGUAGE)
+    if (def) {
+      chnge_Language(def)
+    }
+   
+
+    if (
+      Object.keys(culture).length === 3 &&
+      Object.keys(categoryLocale).length === 3
+    )
+      startHookCallback()
   }, [])
 }
 

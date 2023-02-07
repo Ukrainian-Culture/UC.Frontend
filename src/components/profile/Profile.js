@@ -61,6 +61,9 @@ function Profile() {
 
   return (
     <>
+      <StartAppRequests />
+      <LoadingPage main={true} />
+
       <div className="ProfileSection" ref={profileWrap}>
         <div className="ProfileSection_header">
           <Header basic={true} />

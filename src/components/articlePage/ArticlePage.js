@@ -76,7 +76,7 @@ function ArticlePage() {
   //////////////////////////////////////////////////////////////////
   useEffect(() => {
     if (!culture.loading) {
-      const loc_lang = `${state.culture.data[1]['id']}`
+      const loc_lang = `${state.culture.data[language]['id']}`
       const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${articleId}`
 
       axios

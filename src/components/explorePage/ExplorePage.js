@@ -57,7 +57,7 @@ function ExplorePage() {
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
     if (!culture.loading) {
-      const loc_lang = `${state.culture.data[1]['id']}`
+      const loc_lang = `${state.culture.data[language]['id']}`
       const urlExplore = `${domain}/api/${loc_lang}/ArticlesTile`
 
       axios
