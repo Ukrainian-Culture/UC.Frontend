@@ -7,6 +7,7 @@ import Header from '../header/Header'
 import LoadingPage from '../loadingPage/LoadingPage'
 import MainPage from '../mainPage/MainPage'
 import '../profile/profile.scss'
+import AdminArticles from './adminArticles/AdminArticles'
 
 function Profile() {
   // const [currentPage, setCurrentPage] = usestate()
@@ -29,6 +30,7 @@ function Profile() {
   // function which calls when category button pressed
   const categorySelector = (e) => {
     if (categoryParent.current != null) {
+      
       const childrenClasses = categoryParent.current.children
       for (let i = 0; i < childrenClasses.length; i++) {
         if (childrenClasses[i].innerText === e.target.innerText) {
@@ -61,6 +63,9 @@ function Profile() {
 
   return (
     <>
+      <StartAppRequests />
+      <LoadingPage main={true} />
+
       <div className="ProfileSection" ref={profileWrap}>
         <div className="ProfileSection_header">
           <Header basic={true} />
@@ -85,9 +90,12 @@ function Profile() {
                   )
                 })}
 
-                {/* <div className="ProfileSection_mainBody_wrapper_head_left_el">
-                  history
-                </div> */}
+                <div
+                  className="ProfileSection_mainBody_wrapper_head_left_el"
+                  onMouseDown={(e) => categorySelector(e)}
+                >
+                  {profileCategory.adminCategory[language]}
+                </div>
               </div>
 
               <div className="ProfileSection_mainBody_wrapper_head_right">
@@ -95,7 +103,9 @@ function Profile() {
               </div>
             </div>
 
-            <div className="ProfileSection_mainBody_wrapper_content"> </div>
+            <div className="ProfileSection_mainBody_wrapper_content">
+              <AdminArticles/>
+            </div>
           </div>
         </div>
       </div>

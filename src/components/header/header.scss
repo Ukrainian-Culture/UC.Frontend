@@ -97,21 +97,23 @@ $width_of_logo: 24px;
   }
 }
 
-.profileIcon{
+.headerIcon {
   color: $g_1;
   font-size: 20px;
   margin-top: -2px;
   margin-right: 3px;
 }
 
-.loginIcon{
-  color: $g_1;
-  font-size: 20px;
-  margin-top: -2px;
-  margin-right: 3px;
-}
+// .profileIcon{
 
+// }
 
+// .loginIcon{
+//   color: $g_1;
+//   font-size: 20px;
+//   margin-top: -2px;
+//   margin-right: 3px;
+// }
 
 .mainHeader,
 .headerLeft,
@@ -123,7 +125,8 @@ $width_of_logo: 24px;
 
 .headerLeft,
 .headerRight {
-  width: 175px;
+  min-width: 175px;
+  width: fit-content;
 }
 
 .mainHeader .headerRight {
@@ -141,6 +144,26 @@ $width_of_logo: 24px;
     cursor: pointer;
     color: $g_1;
     margin-left: 10px;
+  }
+}
+
+.headerRight_language_drawer {
+  background-color: $g_0;
+  border-radius: 10px;
+  padding: 10px 15px;
+  position: fixed;
+  margin-top: 60px;
+  z-index: 200;
+  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
+  font-weight: 500;
+
+  .headerRight_language_drawer_el {
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+
+    &:hover {
+      color: $g_5;
+    }
   }
 }
 
