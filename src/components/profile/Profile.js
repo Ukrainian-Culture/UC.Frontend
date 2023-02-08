@@ -8,10 +8,13 @@ import LoadingPage from '../loadingPage/LoadingPage'
 import MainPage from '../mainPage/MainPage'
 import '../profile/profile.scss'
 import AdminArticles from './adminArticles/AdminArticles'
+import ProfileRenderer from './profileRenderer/ProfileRenderer'
 
 function Profile() {
   // const [currentPage, setCurrentPage] = usestate()
   const state = useSelector((state) => state)
+  // user data
+  const user = state.user
   // current language
   const language = state.changeLanguage.lang
   const profileCategory = state.profileCategory
@@ -71,14 +74,15 @@ function Profile() {
           <Header basic={true} />
         </div>
 
-        <div className="ProfileSection_mainBody">
+        {!user.loading ? <div className="ProfileSection_mainBody">
           <div className="ProfileSection_mainBody_wrapper">
             <div className="ProfileSection_mainBody_wrapper_head">
               <div
                 className="ProfileSection_mainBody_wrapper_head_left"
                 ref={categoryParent}
               >
-                {profileCategory.category[language].map((el, index) => {
+                
+                {profileCategory[user.data.role][language].map((el, index) => {
                   return (
                     <div
                       className="ProfileSection_mainBody_wrapper_head_left_el"
@@ -90,12 +94,6 @@ function Profile() {
                   )
                 })}
 
-                <div
-                  className="ProfileSection_mainBody_wrapper_head_left_el"
-                  onMouseDown={(e) => categorySelector(e)}
-                >
-                  {profileCategory.adminCategory[language]}
-                </div>
               </div>
 
               <div className="ProfileSection_mainBody_wrapper_head_right">
@@ -104,10 +102,10 @@ function Profile() {
             </div>
 
             <div className="ProfileSection_mainBody_wrapper_content">
-              <AdminArticles/>
+              <ProfileRenderer user={user} profileCategory={profileCategory} currentCateg={currentCateg} language={language}/>
             </div>
           </div>
-        </div>
+        </div> : null}
       </div>
     </>
   )
