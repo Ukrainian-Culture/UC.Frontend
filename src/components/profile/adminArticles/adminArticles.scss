@@ -1,2 +1,115 @@
 @import "../../../settings/settings.scss";
 
+.AdminArticles_Section{
+  height: 100%;
+  .articleIdWrap {
+    padding: 30px 0px 0px 60px;
+    height: 75px;
+    font-size: 15px;
+    .articleIdText {
+      height: 20px;
+      width: 90px;
+      padding-bottom: 10px;
+      font-weight: 500;
+      color:$g_1;
+    }
+    .articleId {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      gap: 30px;
+      input {
+        height: 40px;
+        width: 425px;
+        border: none;
+        border-radius: 5px;
+      }
+      Button {
+        text-align: center;
+        background-color: $g_1;
+        width: 110px;
+        height: 40px;
+        color:$g_0;
+        border: none;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+  .mainWrap{
+    display: flex;
+    padding:5px 0px 0px 60px;
+    .leftWrap {
+
+      .tittleWrap {
+        width: 565px;
+        .tittleText {
+          height: 20px;
+          width: 90px;
+          padding-bottom: 10px;
+          font-weight: 500;
+          color: $g_1;
+        }
+        .tittleArea {
+          width: 565px;
+          height: 80px;
+          border: none;
+          border-radius: 5px;
+        }
+      }
+      .shortDescriptionWrap {
+        width: 565px;
+        .shortDescriptionText {
+          height: 20px;
+          width: 90px;
+          padding: 5px 0px 10px 0px;
+          font-weight: 500;
+          color: $g_1;
+        }
+        .shortDescriptionArea {
+          width: 565px;
+          height: 80px;
+          border: none;
+          border-radius: 5px;
+        }
+      }
+    }
+    .subtextWrap {
+      width: 565px;
+      padding: 0px 60px 0px 40px;
+      .subtextText {
+        height: 20px;
+        width: 90px;
+        padding-bottom: 10px;
+        font-weight: 500;
+        color: $g_1;
+      }
+      .subtextArea{
+        width: 565px;
+        height: 200px;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+  }
+  .contentWrap {
+    width: 565px;
+    padding:0px 0px 40px 60px;
+    .contentText {
+      height: 20px;
+      width: 90px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-weight: 500;
+      color: $g_1;
+    }
+    .contentArea{
+      width: 1170px;
+      height: 110px;
+      border: none;
+      border-radius: 5px;
+    }
+  }
+}
