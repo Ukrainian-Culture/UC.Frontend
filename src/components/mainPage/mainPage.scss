@@ -22,3 +22,17 @@
   }
   @include scroll_thumb_vartical;
 }
+
+// ===================================
+
+@media (max-width: $ADAPTIVE_S_1) {
+  .mainPage {
+
+    .mainPage_scrollWrap {
+
+      scroll-snap-type:none;
+
+    }
+    @include scroll_thumb_vartical;
+  }
+}

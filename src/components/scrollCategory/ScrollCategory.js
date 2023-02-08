@@ -63,6 +63,8 @@ function ScrollCategory() {
   //   return () => ctx.revert()
   // }, [])
 
+  // useEffect(() => {console.log()}, [])
+
   return (
     <div className="scrollCategory" ref={wrapScrollCategory}>
       <div className="scrollCategory_wrap">
@@ -79,7 +81,7 @@ function ScrollCategory() {
             >
               <div className="scrollCategory_el">
                 <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${
-                  emojiCategory[corelateCategories(el, language)]
+                  emojiCategory[corelateCategories(el, 1)]
                 }`}</p>
                 <p className="scrollCategory_el_p scrollCategory_el_category">{`${el}`}</p>
               </div>

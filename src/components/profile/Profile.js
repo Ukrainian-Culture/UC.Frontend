@@ -7,10 +7,14 @@ import Header from '../header/Header'
 import LoadingPage from '../loadingPage/LoadingPage'
 import MainPage from '../mainPage/MainPage'
 import '../profile/profile.scss'
+import AdminArticles from './adminArticles/AdminArticles'
+import ProfileRenderer from './profileRenderer/ProfileRenderer'
 
 function Profile() {
   // const [currentPage, setCurrentPage] = usestate()
   const state = useSelector((state) => state)
+  // user data
+  const user = state.user
   // current language
   const language = state.changeLanguage.lang
   const profileCategory = state.profileCategory
@@ -29,6 +33,7 @@ function Profile() {
   // function which calls when category button pressed
   const categorySelector = (e) => {
     if (categoryParent.current != null) {
+      
       const childrenClasses = categoryParent.current.children
       for (let i = 0; i < childrenClasses.length; i++) {
         if (childrenClasses[i].innerText === e.target.innerText) {
@@ -61,19 +66,23 @@ function Profile() {
 
   return (
     <>
+      <StartAppRequests />
+      <LoadingPage main={true} />
+
       <div className="ProfileSection" ref={profileWrap}>
         <div className="ProfileSection_header">
           <Header basic={true} />
         </div>
 
-        <div className="ProfileSection_mainBody">
+        {!user.loading ? <div className="ProfileSection_mainBody">
           <div className="ProfileSection_mainBody_wrapper">
             <div className="ProfileSection_mainBody_wrapper_head">
               <div
                 className="ProfileSection_mainBody_wrapper_head_left"
                 ref={categoryParent}
               >
-                {profileCategory.category[language].map((el, index) => {
+                
+                {profileCategory[user.data.role][language].map((el, index) => {
                   return (
                     <div
                       className="ProfileSection_mainBody_wrapper_head_left_el"
@@ -85,9 +94,6 @@ function Profile() {
                   )
                 })}
 
-                {/* <div className="ProfileSection_mainBody_wrapper_head_left_el">
-                  history
-                </div> */}
               </div>
 
               <div className="ProfileSection_mainBody_wrapper_head_right">
@@ -95,9 +101,11 @@ function Profile() {
               </div>
             </div>
 
-            <div className="ProfileSection_mainBody_wrapper_content"> </div>
+            <div className="ProfileSection_mainBody_wrapper_content">
+              <ProfileRenderer user={user} profileCategory={profileCategory} currentCateg={currentCateg} language={language}/>
+            </div>
           </div>
-        </div>
+        </div> : null}
       </div>
     </>
   )

@@ -1,2 +1,7 @@
->Profile:
-- add base template and styles;
+>ProfileRenderer:
+- add layout;
+- add basic transition;
+>fetchUser:
+- create state for user;
+>userProfileTab:
+- add layout;
