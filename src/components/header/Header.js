@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../header/header.scss'
 import { ReactComponent as LOGO } from '../../logo.svg'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import useClearSelectedOblast from '../../hooks/useClearSelectedOblast'
 import gsap from 'gsap'
@@ -13,6 +13,10 @@ import {
   SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
 import { useLayoutEffect } from 'react'
+import { IonIcon } from '@ionic/react'
+import { personCircleOutline, enterOutline, globeOutline } from 'ionicons/icons'
+import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
+import { CHANGE_LANGUAGE, LS_LANGUAGE } from '../../redux-store/changeLanguage/changeLanguageConst'
 
 gsap.config({ nullTargetWarn: false })
 
@@ -24,32 +28,42 @@ function Header(props) {
   //=============================================================
   //handle header central text format and content
   const { centreText, main, explore, basic, article, articleRegion } = props
-  const location = useLocation()
 
-  const stateRedux = useSelector((state) => state)
+   // hook that handle navigation between pages
+   const navigate = useNavigate()
+   // state variable which we pass throught Link element
+   const location = useLocation()
+
+  const state = useSelector((state) => state)
   // current language
-  const language = stateRedux.changeLanguage.lang
+  const language = state.changeLanguage.lang
+  const culture = state.culture
   // corelated emoji to category
-  const emojiCategory = stateRedux.emojiCategory.emoji
-  const corelateCategories = stateRedux.categoriesInfoBlock.corelate
-  const corelateToCurrentLang =
-    stateRedux.categoriesInfoBlock.corelateToCurrentLang
+  const emojiCategory = state.emojiCategory.emoji
+  const corelateCategories = state.categoriesInfoBlock.corelate
+  const corelateToCurrentLang = state.categoriesInfoBlock.corelateToCurrentLang
   // variable used for move side block with info
-  const sideHeight = stateRedux.sideHeight.class
+  const sideHeight = state.sideHeight.class
   // variable which contain selected oblast
-  const selectedOblast = stateRedux.selectedOblast.selectedOblast
+  const selectedOblast = state.selectedOblast.selectedOblast
   // this is array which contain
-  const aboutOblast = stateRedux.aboutOblast
+  const aboutOblast = state.aboutOblast
   // width of screen
-  const screenWidth = stateRedux.screenWidth.width
+  const screenWidth = state.screenWidth.width
   //variable for text in  interface in different language
-  const interfaceLang = stateRedux.interfaceLang[language]
+  const interfaceLang = state.interfaceLang[language]
 
   // ===========================================================
   //word used in class when user on particular page
   const activeWord = 'activePage'
   const [headerLeft_map, setHeaderLeft_map] = useState(activeWord)
   const [headerLeft_explore, setHeaderLeft_explore] = useState('')
+  // variable used to show language box
+  const [showLangBox, setshowLangBox] = useState(false)
+  // reference to language drawer box
+  const refShowLangBox = useRef()
+  // reference to a buttom language drawer box
+  const refBtnLang = useRef()
 
   // parent wrapper for animtion
   const wrapHead = useRef()
@@ -98,7 +112,10 @@ function Header(props) {
         </>
       )
     } else if (article) {
-      const redionId = aboutOblast.getIndex(articleRegion, aboutOblast.aboutOblast)
+      const redionId = aboutOblast.getIndex(
+        articleRegion,
+        aboutOblast.aboutOblast,
+      )
       return (
         <>
           <div className="mainHeader_oblastName">
@@ -147,11 +164,34 @@ function Header(props) {
           <CentreTextRenderer />
 
           <div className="headerRight">
+            <div
+              onClick={() => setshowLangBox((el) => !el)}
+              className="headerRight_language headerRight_el"
+              ref={refBtnLang}
+            >
+              <IonIcon icon={globeOutline} className="profileIcon headerIcon" />
+              <div>{culture.data[language].name}</div>
+            </div>
+
             <Link to="/profile" className="headerRight_profile headerRight_el">
-            {interfaceLang.profile}
+              <IonIcon
+                icon={personCircleOutline}
+                className="profileIcon headerIcon"
+              />
+              <div>{interfaceLang.profile}</div>
             </Link>
+
             <Link to="/login" className="headerRight_login headerRight_el">
-            {interfaceLang.login}
+              <IonIcon icon={enterOutline} className="loginIcon headerIcon" />
+              <div>{interfaceLang.login}</div>
+            </Link>
+
+            <Link
+              to="/registration"
+              className="headerRight_registration headerRight_el"
+            >
+              {/* <IonIcon icon={enterOutline} className="loginIcon" /> */}
+              <div>{interfaceLang.registration}</div>
             </Link>
           </div>
         </div>
@@ -276,6 +316,13 @@ function Header(props) {
     }
   }, [])
 
+  const languageOptionClick = (index) => {
+    setshowLangBox(el=>!el)
+    navigate(0)
+    localStorage.setItem(LS_LANGUAGE, index)
+    dispatch({type: CHANGE_LANGUAGE, payload: index})
+  }
+
   // animation with gsap when selected oblast
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -291,37 +338,67 @@ function Header(props) {
     return () => ctx.revert()
   }, [centreText])
 
+  // set position of language box drawer
+  useEffect(() => {
+    if (refShowLangBox.current) {
+      // console.log('offset', refBtnLang.current.offsetLeft)
+      let div = document.querySelector('.headerRight_language_drawer')
+      div.style.transform = `translate(${
+        refBtnLang.current.offsetLeft - 65
+      }px, 0px)`
+
+      div.style.top = '-10px'
+    }
+    
+  }, [showLangBox])
+
   return (
     <>
-      <div
-        className={`headerSection ${sideHeight} headerSection_${burgerHeight}`}
-        ref={wrapHead}
-      >
-        {screenWidth >= ADAPTIVE_S_1 ? (
-          <ScreenBasicSize />
-        ) : (
-          <ScreenMobileSize />
-        )}
-      </div>
+      {!culture.loading ? (
+        <>
+          {showLangBox ? (
+            <div className="headerRight_language_drawer" ref={refShowLangBox} onMouseLeave={()=> setshowLangBox(el=>!el)}>
+              {culture.data.map((el, index) => {
+                return (
+                  <div onClick={()=>languageOptionClick(index)} key={el.id} className={`headerRight_language_drawer_el`}>
+                    {el.name}
+                  </div>
+                )
+              })}
+            </div>
+          ) : null}
 
-      {screenWidth >= 780 ? null : (
-        <div className={`headerSection_burgerBackground ${burgerHeight}`}>
-          <div className="headerSection_burgerBackground_navigation">
-            <Link
-              className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
-              to="/"
-            >
-              {interfaceLang.map}
-            </Link>
-            <Link
-              className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
-              to="/explore"
-            >
-              {interfaceLang.explore}
-            </Link>
+          <div
+            className={`headerSection ${sideHeight} headerSection_${burgerHeight}`}
+            ref={wrapHead}
+          >
+            {screenWidth >= ADAPTIVE_S_1 ? (
+              <ScreenBasicSize />
+            ) : (
+              <ScreenMobileSize />
+            )}
           </div>
-        </div>
-      )}
+
+          {screenWidth >= 780 ? null : (
+            <div className={`headerSection_burgerBackground ${burgerHeight}`}>
+              <div className="headerSection_burgerBackground_navigation">
+                <Link
+                  className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
+                  to="/"
+                >
+                  {interfaceLang.map}
+                </Link>
+                <Link
+                  className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
+                  to="/explore"
+                >
+                  {interfaceLang.explore}
+                </Link>
+              </div>
+            </div>
+          )}
+        </>
+      ) : null}
     </>
   )
 }

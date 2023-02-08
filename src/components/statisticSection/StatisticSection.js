@@ -62,6 +62,7 @@ function StatisticSection() {
                         <div className="statisticRight">
                             <div className="statisticWrap">
                                 <div className="statisticWrapRightFirst">
+
                                   <div className="statisticBlockHeaderRightFirst">
                                         <div className="statisticBlockHeader">{interfaceLang[language].ukrainePopulation}</div>
                                   </div>
@@ -78,7 +79,6 @@ function StatisticSection() {
                                             <div className="cityName">{el.alternative || el.key}</div>
                                             <div className="cityPopulation">{el.value}</div>
                                         </div>
-
                                         <div className="cityBlock_right">
                                             <div className="cityBlock_emoji">
                                                 {aboutOblast.aboutOblast[aboutOblast.getIndex(el.key, aboutOblast.aboutOblast)].emoji}

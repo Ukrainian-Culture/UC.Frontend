@@ -19,7 +19,7 @@
   top: 0;
   bottom: 0;
   overflow: none;
-  clip-path: circle(30vw);
+  clip-path: circle(40%);
   z-index: -10;
 }
 .GradientCircleSection div {
@@ -114,4 +114,47 @@
   // backdrop-filter: blur(80px);
   // backdrop-filter: blur(30px);
   @include glass_background;
+}
+// -------------------------------------------------------
+
+.GradientCircleSection_registration div:nth-child(1) {
+  height: 70%;
+  width: 60%;
+  background-color: #fff388;
+  left: -20%;
+  top: 20%;
+  animation: gradient_1 13s infinite;
+}
+.GradientCircleSection_registration div:nth-child(2) {
+  height: 80%;
+  width: 80%;
+  background-color: #249dde;
+  top: -12%;
+  right: -12%;
+  animation-delay: 2s;
+  animation: gradient_2 8s infinite;
+}
+.GradientCircleSection_registration div:nth-child(3) {
+  height: 65%;
+  width: 80%;
+  background-color: #42f2e3;
+  bottom: -15%;
+  right: -20%;
+  animation-delay: 0.3s;
+  animation: gradient_3 12s infinite;
+}
+.GradientCircleSection_registration div:nth-child(4) {
+  height: 50%;
+  width: 75%;
+  background-color: #50bfe7;
+  bottom: -10%;
+  left: -18%;
+  animation-delay: 1.2s;
+  animation: gradient_4 13s infinite;
+}
+//==============================================================
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .GradientCircleSection {
+    clip-path: circle(50%);
+  }
 }
