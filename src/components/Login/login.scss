@@ -53,8 +53,9 @@
   box-sizing: border-box;
   border: 1px solid $g_0;
   column-gap: 10px;
-  color: $g_0;
+  color: $g_1;
   outline: none;
+  font-size: 17px;
 }
 .LoginInput::placeholder{
   color: $g_0;
