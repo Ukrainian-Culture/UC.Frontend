@@ -6,3 +6,89 @@
   width: 100vw;
   height: 100vh;
 }
+.LoginSection_mainBlock{
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+  justify-content: center;
+  display: flex;
+}
+.SignInSection{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.NewUserSignIn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 10px;
+  color: $g_0;
+  font-weight: 600;
+  font-size: 20px;
+}
+.UserLoginForm {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 200px;
+  border-radius: 30px;
+  background-color: rgba(255, 255,255, 0);
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  column-gap: 10px;
+  margin-top: 8px;
+}
+.LoginInput,
+.PasswordInput{
+  display: flex;
+  width: 350px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: rgba(255, 255,255, 0);
+  padding-left: 30px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid $g_0;
+  column-gap: 10px;
+  color: $g_0;
+  outline: none;
+}
+.LoginInput::placeholder{
+  color: $g_0;
+}
+.PasswordInput::placeholder {
+  color: $g_0;
+}
+
+.LoginButton{
+  width: 350px;
+  display: flex;
+  color: $b_2;
+  font-size: 22px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: rgba(255,255,255, 1);
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-color: $g_0;
+  column-gap: 10px;
+  border: none!important;
+}
+.SignIn{
+  font-size: 65px;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  color: $g_0;
+}
+.LoginForms{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+

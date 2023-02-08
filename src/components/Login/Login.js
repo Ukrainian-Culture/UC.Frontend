@@ -17,9 +17,23 @@ function Login() {
       <div className="LoginSection" ref={profileWrap}>
         <div className="LoginSection_header">
           <Header />
+
         </div>
         <div className="LoginSection_mainBlock">
-         
+            <div className="SignInSection">
+                <div className="SignIn">Sign In</div>
+                <div className="NewUserSignIn">
+                    New user?
+                    <div className="CreateNewAccount">Create an account</div>
+                </div>
+                <div className="LoginForms">
+                    <form className="UserLoginForm">
+                        <input type="text" className='LoginInput' placeholder='username'/>
+                        <input type="text" className='PasswordInput' placeholder='password'/>
+                        <button className="LoginButton">log in</button>
+                    </form>
+                </div>
+            </div>
         </div>
       </div>
     </>
