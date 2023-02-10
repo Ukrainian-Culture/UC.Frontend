@@ -18,7 +18,7 @@ const fetchCultureReducer = (state = initialState, action) => {
         case FETCH_CULTURE_ERROR:
             return {
                 ...state,
-                loading: false,
+                loading: true,
                 data: {},
                 error: 'error in fetchCultureReducer'
             }
