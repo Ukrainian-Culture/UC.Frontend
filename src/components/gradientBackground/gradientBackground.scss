@@ -1,4 +1,4 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
 //* GRADIENT BACKGROUND *//
 *,
@@ -28,7 +28,12 @@
 .container div:nth-child(1) {
   height: 70%;
   width: 60%;
-  background-color: #d7faff;
+  background: rgb(15, 123, 204);
+  background: radial-gradient(
+    circle,
+    rgb(40, 148, 231) 0%,
+    rgba(36, 222, 201, 1) 100%
+  );
   left: -20%;
   top: 20%;
   animation: gradient_1 10s infinite;
@@ -36,7 +41,12 @@
 .container div:nth-child(2) {
   height: 80%;
   width: 70%;
-  background-color: #fff7db;
+  background: rgb(255, 243, 136);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 243, 136, 1) 0%,
+    rgb(255, 227, 136) 35%
+  );
   top: -12%;
   right: -12%;
   animation-delay: 2s;
@@ -45,7 +55,12 @@
 .container div:nth-child(3) {
   height: 65%;
   width: 80%;
-  background-color: #c6f8fb;
+  background: rgb(66, 242, 227);
+  background: linear-gradient(
+    90deg,
+    rgb(66, 213, 242) 0%,
+    rgb(66, 242, 224) 35%
+  );
   bottom: -15%;
   right: -20%;
   animation-delay: 0.3s;
@@ -54,7 +69,12 @@
 .container div:nth-child(4) {
   height: 50%;
   width: 75%;
-  background-color: #fff9e6;
+  background: rgb(255, 190, 98);
+  background: radial-gradient(
+    circle,
+    rgb(255, 205, 98) 49%,
+    rgba(255, 218, 98, 1) 63%
+  );
   bottom: -10%;
   left: -18%;
   animation-delay: 1.2s;

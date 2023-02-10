@@ -15,6 +15,7 @@ import LoadingPage from '../loadingPage/LoadingPage'
 import GradientBackground from '../gradientBackground/GradientBackground'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import UserOnline from '../../hooks/UserOnline'
+import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -38,7 +39,7 @@ function MainPage() {
       <LoadingPage main={true} />
 
       <div className="mainPage" ref={refWidth}>
-        <GradientBackground />
+        <GradientCircle colorClass={'registration'}/>
 
         <Header centreText={selectedOblast} main={true} />
         <InfoBlock />

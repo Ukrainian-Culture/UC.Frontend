@@ -1,12 +1,12 @@
-> PopupWindow:
-- create files for popup element;
->ExplorePage:
-- fix in category scroll;
->Header:
-- fix with language name;
->ArticlePage:
-- fix bug with reload page;
->Registration:
-- add main logic for registration;
->PopupSubs:
-- create popup which appears vhet user creates account;
+>Register:
+-add adaptation on registration;
+>Login:
+-small fixes;
+>GradientCircle:
+-adaptation;
+>gradientBackground:
+-change colors
+>Profile:
+-add email to show;
+>Login:
+-create requests to api;

@@ -4,9 +4,9 @@ import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import { useDispatch, useSelector } from 'react-redux'
 import { FETCH_USER_SUCCESS } from '../../redux-store/fetchUser/fetchUserConst'
 
-const Subscription = ({ popup, setIsVisible }) => {
+const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
   const dispatch = useDispatch()
-  const state = useSelector((state) => state)
+  // const state = useSelector((state) => state)
 
   //====================================
   const array = [
@@ -43,8 +43,9 @@ const Subscription = ({ popup, setIsVisible }) => {
     if (e.target.className.split(' ')[1] === 'some_el_el0') {
       // if popup block
       if (popup) {
-        dispatch({ type: FETCH_USER_SUCCESS, payload: { daysAmount: days } })
+        console.log('subscription days setted!')
         setIsVisible((el) => !el)
+        setDaysAmount(days)
       }
     }
   }

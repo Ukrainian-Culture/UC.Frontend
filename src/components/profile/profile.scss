@@ -51,14 +51,16 @@ $head_font_size: 15px;
           font-size: $head_font_size;
           font-weight: 500;
           cursor: pointer;
+          text-decoration: underline;
+          text-decoration-thickness: 1.5px;
 
-          &:after {
-            content: '';
-            margin-top: -2px;
-            height: 1.5px;
-            width: 100%;
-            background-color: $g_1;
-          }
+          // &:after {
+          //   content: '';
+          //   margin-top: -2px;
+          //   height: 1.5px;
+          //   width: 100%;
+          //   background-color: $g_1;
+          // }
         }
       }
 

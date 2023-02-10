@@ -3,7 +3,8 @@ import { FETCH_USER_SUCCESS } from './fetchUserConst'
 const initialState = {
   loading: false,
   data: {
-    role: 'admin',
+    role: 'notuser',
+    email: '',
     startDate: [],
     endDate: [],
     daysAmount: 0,

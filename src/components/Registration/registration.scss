@@ -11,50 +11,21 @@ $button_font_size: 16px;
 
 $input_paddings: 65px;
 
-//-------------------------
-// mobile 3 variables
-
-$input_width: 450px;
+$input_width: 400px;
 $input_height: 70px;
 
-$mob_3_title_font_size: 5vw;
-$mob_3_subTitle_font_size: 2vw;
-$mob_3_input_font_size: 2vw;
-$mob_3_button_font_size: 2vw;
-
-$mob_3_input_paddings: 10vw;
-
-$mob_3_input_width: 65vw;
-$mob_3_input_height: 10vw;
 //-------------------------
-// mobile s 1 variables
-$mob_s1_input_width: 450px;
-$mob_s1_input_height: 70px;
+// mobile variables
+$mob_title_font_size: 35px;
+$mob_subTitle_font_size: 14px;
+$mob_input_font_size: 14px;
+$mob_button_font_size: 14px;
 
-$mob_s1_title_font_size: 6vw;
-$mob_s1_subTitle_font_size: 2vw;
-$mob_s1_input_font_size: 2vw;
-$mob_s1_button_font_size: 2vw;
+$mob_input_paddings: 55px;
 
-$mob_s1_input_paddings: 10vw;
+$mob_input_width: 320px;
+$mob_input_height: 60px;
 
-$mob_s1_input_width: 65vw;
-$mob_s1_input_height: 10vw;
-//-------------------------
-// mobile s 2 variables
-$mob_s2_input_width: 450px;
-$mob_s2_input_height: 70px;
-
-$mob_s2_title_font_size: 6vw;
-$mob_s2_subTitle_font_size: 3vw;
-$mob_s2_input_font_size: 3vw;
-$mob_s2_button_font_size: 3vw;
-
-$mob_s2_input_paddings: 13vw;
-
-$mob_s2_input_width: 65vw;
-$mob_s2_input_height: 10vw;
-//-------------------------
 // ================================
 
 .RegistrationSection {
@@ -182,383 +153,130 @@ $mob_s2_input_height: 10vw;
   }
 }
 // ===================================================
-
-@media screen and (max-width: $ADAPTIVE_M_3) {
-  .RegistrationSection {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-
-    .RegistrationSection_mainBlock {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // background-color: aquamarine;
-      height: 100%;
-      // margin-top: $header_height;
-
-      .RegistrationSection_mainBlock_wrapper {
-        // background-color: pink;
-        margin-top: -40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .RegistrationSection_mainBlock_wrapper_title {
-          color: $g_0;
-          font-size: $mob_3_title_font_size;
-          font-weight: 700;
-        }
-
-        .RegistrationSection_mainBlock_wrapper_subTitle {
-          display: flex;
-          color: $g_0;
-          font-weight: 600;
-          font-size: $mob_3_subTitle_font_size;
-          margin-top: 30px;
-
-          .RegistrationSection_mainBlock_wrapper_subTitle_question {
-            margin-right: 10px;
-          }
-
-          .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
-            color: $g_0;
-          }
-        }
-
-        .eyeIconPassword {
-          margin-top: 15px;
-          cursor: pointer;
-          font-size: 28px;
-          color: $g_0;
-        }
-
-        .RegistrationSection_mainBlock_wrapper_input_wrapper {
-          $p1: &;
-
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          // background-color: pink;
-          border-radius: 100px;
-          margin-top: 15px;
-
-          width: $mob_3_input_width;
-          height: $mob_3_input_height;
-
-          .RegistrationSection_mainBlock_wrapper_input {
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            border: none;
-            border-radius: 100px;
-            border: 1px solid $g_0;
-            padding: 0px $mob_3_input_paddings;
-            color: $g_0;
-            text-align: center;
-            font-size: $mob_3_input_font_size;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-
-            &:focus {
-              background-color: $g_0;
-              color: $g_1;
-              outline: none;
-            }
-
-            &::placeholder {
-              text-align: center;
-              color: $g_0;
-            }
-          }
-
-          .RegistrationSection_mainBlock_wrapper_againPassword_true {
-            border: 1px dashed $r_0;
-            color: $r_0;
-
-            &:focus {
-              background-color: $r_1;
-              color: $g_1;
-              outline: none;
-            }
-          }
-        }
-
-        .RegistrationSection_mainBlock_wrapper_createButton {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 15px;
-          width: $mob_3_input_width;
-          height: $mob_3_input_height;
-          background-color: $g_0;
-          border-radius: 100px;
-          color: $g_1;
-          font-size: $mob_3_button_font_size;
-          font-weight: 700;
-          transition: all 0.3s ease-in-out;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $g_1;
-            color: $g_0;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-width: $ADAPTIVE_S_1) {
-  .RegistrationSection {
+  
+.RegistrationSection {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+  .RegistrationSection_mainBlock {
     display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    // background-color: aquamarine;
+    height: 100%;
+    // margin-top: $header_height;
 
-    .RegistrationSection_mainBlock {
+    .RegistrationSection_mainBlock_wrapper {
+      // background-color: pink;
+      margin-top: -40px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      // background-color: aquamarine;
-      height: 100%;
-      // margin-top: $header_height;
 
-      .RegistrationSection_mainBlock_wrapper {
-        // background-color: pink;
-        margin-top: -40px;
+      .RegistrationSection_mainBlock_wrapper_title {
+        color: $g_0;
+        font-size: $mob_title_font_size;
+        font-weight: 700;
+      }
+
+      .RegistrationSection_mainBlock_wrapper_subTitle {
         display: flex;
-        flex-direction: column;
+        color: $g_0;
+        font-weight: 600;
+        font-size: $mob_subTitle_font_size;
+        margin-top: 30px;
+
+        .RegistrationSection_mainBlock_wrapper_subTitle_question {
+          margin-right: 10px;
+        }
+
+        .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
+          color: $g_0;
+        }
+      }
+
+      .eyeIconPassword {
+        margin-top: 15px;
+        cursor: pointer;
+        font-size: 28px;
+        color: $g_0;
+      }
+
+      .RegistrationSection_mainBlock_wrapper_input_wrapper {
+        $p1: &;
+
+        display: flex;
         align-items: center;
+        justify-content: flex-end;
+        // background-color: pink;
+        border-radius: 100px;
+        margin-top: 15px;
 
-        .RegistrationSection_mainBlock_wrapper_title {
-          color: $g_0;
-          font-size: $mob_s1_title_font_size;
-          font-weight: 700;
-        }
+        width: $mob_input_width;
+        height: $mob_input_height;
 
-        .RegistrationSection_mainBlock_wrapper_subTitle {
-          display: flex;
+        .RegistrationSection_mainBlock_wrapper_input {
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          border: none;
+          border-radius: 100px;
+          border: 1px solid $g_0;
+          padding: 0px $mob_input_paddings;
           color: $g_0;
+          text-align: center;
+          font-size: $mob_input_font_size;
           font-weight: 600;
-          font-size: $mob_s1_subTitle_font_size;
-          margin-top: 30px;
-
-          .RegistrationSection_mainBlock_wrapper_subTitle_question {
-            margin-right: 10px;
-          }
-
-          .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
-            color: $g_0;
-          }
-        }
-
-        .eyeIconPassword {
-          margin-top: 15px;
-          cursor: pointer;
-          font-size: 28px;
-          color: $g_0;
-        }
-
-        .RegistrationSection_mainBlock_wrapper_input_wrapper {
-          $p1: &;
-
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          // background-color: pink;
-          border-radius: 100px;
-          margin-top: 15px;
-
-          width: $mob_s1_input_width;
-          height: $mob_s1_input_height;
-
-          .RegistrationSection_mainBlock_wrapper_input {
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            border: none;
-            border-radius: 100px;
-            border: 1px solid $g_0;
-            padding: 0px $mob_s1_input_paddings;
-            color: $g_0;
-            text-align: center;
-            font-size: $mob_s1_input_font_size;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-
-            &:focus {
-              background-color: $g_0;
-              color: $g_1;
-              outline: none;
-            }
-
-            &::placeholder {
-              text-align: center;
-              color: $g_0;
-            }
-          }
-
-          .RegistrationSection_mainBlock_wrapper_againPassword_true {
-            border: 1px dashed $r_0;
-            color: $r_0;
-
-            &:focus {
-              background-color: $r_1;
-              color: $g_1;
-              outline: none;
-            }
-          }
-        }
-
-        .RegistrationSection_mainBlock_wrapper_createButton {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 15px;
-          width: $mob_s1_input_width;
-          height: $mob_s1_input_height;
-          background-color: $g_0;
-          border-radius: 100px;
-          color: $g_1;
-          font-size: $mob_s1_button_font_size;
-          font-weight: 700;
           transition: all 0.3s ease-in-out;
-          cursor: pointer;
 
-          &:hover {
-            background-color: $g_1;
+          &:focus {
+            background-color: $g_0;
+            color: $g_1;
+            outline: none;
+          }
+
+          &::placeholder {
+            text-align: center;
             color: $g_0;
           }
+        }
+
+        .RegistrationSection_mainBlock_wrapper_againPassword_true {
+          border: 1px dashed $r_0;
+          color: $r_0;
+
+          &:focus {
+            background-color: $r_1;
+            color: $g_1;
+            outline: none;
+          }
+        }
+      }
+
+      .RegistrationSection_mainBlock_wrapper_createButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: $mob_input_width;
+        height: $mob_input_height;
+        background-color: $g_0;
+        border-radius: 100px;
+        color: $g_1;
+        font-size: $mob_button_font_size;
+        font-weight: 700;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $g_1;
+          color: $g_0;
         }
       }
     }
   }
 }
-@media screen and (max-width: $ADAPTIVE_S_2) {
-  .RegistrationSection {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-
-    .RegistrationSection_mainBlock {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // background-color: aquamarine;
-      height: 100%;
-      // margin-top: $header_height;
-
-      .RegistrationSection_mainBlock_wrapper {
-        // background-color: pink;
-        margin-top: -40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .RegistrationSection_mainBlock_wrapper_title {
-          color: $g_0;
-          font-size: $mob_s2_title_font_size;
-          font-weight: 700;
-        }
-
-        .RegistrationSection_mainBlock_wrapper_subTitle {
-          display: flex;
-          color: $g_0;
-          font-weight: 600;
-          font-size: $mob_s2_subTitle_font_size;
-          margin-top: 30px;
-
-          .RegistrationSection_mainBlock_wrapper_subTitle_question {
-            margin-right: 10px;
-          }
-
-          .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
-            color: $g_0;
-          }
-        }
-
-        .eyeIconPassword {
-          margin-top: 15px;
-          cursor: pointer;
-          font-size: 28px;
-          color: $g_0;
-        }
-
-        .RegistrationSection_mainBlock_wrapper_input_wrapper {
-          $p1: &;
-
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          // background-color: pink;
-          border-radius: 100px;
-          margin-top: 15px;
-
-          width: $mob_s2_input_width;
-          height: $mob_s2_input_height;
-
-          .RegistrationSection_mainBlock_wrapper_input {
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            border: none;
-            border-radius: 100px;
-            border: 1px solid $g_0;
-            padding: 0px $mob_s2_input_paddings;
-            color: $g_0;
-            text-align: center;
-            font-size: $mob_s2_input_font_size;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-
-            &:focus {
-              background-color: $g_0;
-              color: $g_1;
-              outline: none;
-            }
-
-            &::placeholder {
-              text-align: center;
-              color: $g_0;
-            }
-          }
-
-          .RegistrationSection_mainBlock_wrapper_againPassword_true {
-            border: 1px dashed $r_0;
-            color: $r_0;
-
-            &:focus {
-              background-color: $r_1;
-              color: $g_1;
-              outline: none;
-            }
-          }
-        }
-
-        .RegistrationSection_mainBlock_wrapper_createButton {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 15px;
-          width: $mob_s2_input_width;
-          height: $mob_s2_input_height;
-          background-color: $g_0;
-          border-radius: 100px;
-          color: $g_1;
-          font-size: $mob_s2_button_font_size;
-          font-weight: 700;
-          transition: all 0.3s ease-in-out;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $g_1;
-            color: $g_0;
-          }
-        }
-      }
-    }
-  }
 }
