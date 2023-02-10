@@ -8,6 +8,9 @@ import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
 
 function Login() {
   const profileWrap = useRef()
+
+  
+
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })
   return (
