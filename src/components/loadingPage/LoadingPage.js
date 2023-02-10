@@ -40,10 +40,10 @@ function LoadingPage(props) {
   // -----------------------------------------------------------
   useEffect(() => {
     // when main page on display
-    if (main && !state.culture.loading && !state.categoryLocale.loading) {
+    if (main && !culture.loading && !categoryLocale.loading) {
       setTimeout(() => closeAnimation(), 250)
     }
-  }, [state.culture.loading, state.categoryLocale.loading])
+  }, [culture.loading, categoryLocale.loading])
 
 
   return (

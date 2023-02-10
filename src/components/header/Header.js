@@ -16,7 +16,10 @@ import { useLayoutEffect } from 'react'
 import { IonIcon } from '@ionic/react'
 import { personCircleOutline, enterOutline, globeOutline } from 'ionicons/icons'
 import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
-import { CHANGE_LANGUAGE, LS_LANGUAGE } from '../../redux-store/changeLanguage/changeLanguageConst'
+import {
+  CHANGE_LANGUAGE,
+  LS_LANGUAGE,
+} from '../../redux-store/changeLanguage/changeLanguageConst'
 
 gsap.config({ nullTargetWarn: false })
 
@@ -29,10 +32,10 @@ function Header(props) {
   //handle header central text format and content
   const { centreText, main, explore, basic, article, articleRegion } = props
 
-   // hook that handle navigation between pages
-   const navigate = useNavigate()
-   // state variable which we pass throught Link element
-   const location = useLocation()
+  // hook that handle navigation between pages
+  const navigate = useNavigate()
+  // state variable which we pass throught Link element
+  const location = useLocation()
 
   const state = useSelector((state) => state)
   // current language
@@ -303,6 +306,13 @@ function Header(props) {
   useEffect(() => {
     setBurgerHeight('')
 
+    // hide side height if not on mapSection
+    if (location.pathname === '/') {
+      // dispatch({type: CHANGE_SIDEHEIGHT, payload:SIDEHEIGHT})
+    } else {
+      dispatch({type: CHANGE_SIDEHEIGHT, payload:NO_SIDEHEIGHT})
+    }
+
     // add to className "activeWord" on current page
     if (location.pathname === '/') {
       setHeaderLeft_map(activeWord)
@@ -317,10 +327,10 @@ function Header(props) {
   }, [])
 
   const languageOptionClick = (index) => {
-    setshowLangBox(el=>!el)
+    setshowLangBox((el) => !el)
     navigate(0)
     localStorage.setItem(LS_LANGUAGE, index)
-    dispatch({type: CHANGE_LANGUAGE, payload: index})
+    dispatch({ type: CHANGE_LANGUAGE, payload: index })
   }
 
   // animation with gsap when selected oblast
@@ -349,18 +359,26 @@ function Header(props) {
 
       div.style.top = '-10px'
     }
-    
   }, [showLangBox])
 
   return (
     <>
       {!culture.loading ? (
         <>
+          {/* language popup */}
           {showLangBox ? (
-            <div className="headerRight_language_drawer" ref={refShowLangBox} onMouseLeave={()=> setshowLangBox(el=>!el)}>
+            <div
+              className="headerRight_language_drawer"
+              ref={refShowLangBox}
+              onMouseLeave={() => setshowLangBox((el) => !el)}
+            >
               {culture.data.map((el, index) => {
                 return (
-                  <div onClick={()=>languageOptionClick(index)} key={el.id} className={`headerRight_language_drawer_el`}>
+                  <div
+                    onClick={() => languageOptionClick(index)}
+                    key={el.id}
+                    className={`headerRight_language_drawer_el`}
+                  >
                     {el.name}
                   </div>
                 )

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as signalR from '@microsoft/signalr'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   FETCH_ONLINE_ERROR,
   FETCH_ONLINE_SUCCESS,
@@ -9,11 +9,12 @@ import {
 function UserOnline() {
   const [connection, setConnection] = useState(null)
   const dispatch = useDispatch()
+  const state = useSelector((state) => state)
   // -------------------------------------------------
 
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://ucbackend.azurewebsites.net/onlineUsersHuber', {
+      .withUrl(`${state.startSettings.domain}/onlineUsersHuber`, {
         skipNegotiation: true,
         transport: signalR.HttpTransportType.WebSockets,
       })

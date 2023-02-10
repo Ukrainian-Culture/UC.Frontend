@@ -19,9 +19,7 @@ function ScrollCategory() {
   // corelated emoji to category
   const emojiCategory = store.emojiCategory.emoji
   const corelateCategories = store.categoriesInfoBlock.corelate
-  const [categories, setCategories] = useState([
-    ...store.categoriesInfoBlock[language],
-  ])
+
   // filter category name
   // const [filterCategory, setFilterCategory] = useState('all')s
 
@@ -68,7 +66,7 @@ function ScrollCategory() {
   return (
     <div className="scrollCategory" ref={wrapScrollCategory}>
       <div className="scrollCategory_wrap">
-        {categories.map((el, index) => {
+        {store.categoriesInfoBlock[language].map((el, index) => {
           return (
             <div
               onClick={() => {
@@ -80,9 +78,9 @@ function ScrollCategory() {
               key={`srccat_${index}`}
             >
               <div className="scrollCategory_el">
-                <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${
-                  emojiCategory[corelateCategories(el, 1)]
-                }`}</p>
+                <p className="scrollCategory_el_p scrollCategory_el_emoji">
+                  {`${emojiCategory[corelateCategories(el, language)]}`}
+                </p>
                 <p className="scrollCategory_el_p scrollCategory_el_category">{`${el}`}</p>
               </div>
             </div>
