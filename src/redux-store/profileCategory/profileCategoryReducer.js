@@ -6,8 +6,8 @@ const initialState = {
   },
 
   admin: {
-    '0': ['articles'],
-    '1': ['статті'],
+    '0': ['articles', 'mailing'],
+    '1': ['статті', 'розсилка'],
   },
 }
 
