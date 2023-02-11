@@ -1,5 +1,6 @@
 const initialState = {
     emoji: {
+        "search": "🔎",
         "history": "📜",
         "people": "🙋‍♂️",
         "dishes": "🥟",
@@ -12,7 +13,7 @@ const initialState = {
 }
 
 const emojiCategoryReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         default:
             return state;
     }

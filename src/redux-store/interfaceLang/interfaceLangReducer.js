@@ -1,7 +1,7 @@
 const initialState = {
-    
-    '0':{
-        map:"Map",
+
+    '0': {
+        map: "Map",
         explore: "Explore",
         profile: "Profile",
         login: "Login",
@@ -12,6 +12,7 @@ const initialState = {
         usencoHerritage: "UNESCO herritage",
         ukrainePopulation: "Ukraine population",
         logout: "logout",
+        search: "search",
         create_an_account: "Create an account",
         already_have_an_account: "Already have an account?",
         signin: "Sign in",
@@ -21,8 +22,8 @@ const initialState = {
         create: "Create"
 
     },
-    '1':{
-        map:"Карта",
+    '1': {
+        map: "Карта",
         explore: "Довідник",
         profile: "Профіль",
         login: "Вхід",
@@ -33,6 +34,7 @@ const initialState = {
         usencoHerritage: "Спадщина ЮНЕСКО",
         ukrainePopulation: "Популяція України",
         logout: "вихід",
+        search: "пошук",
         create_an_account: "Створити акаунт",
         already_have_an_account: "Уже є акаунт?",
         signin: "Вхід",
@@ -43,8 +45,8 @@ const initialState = {
     }
 }
 
-const interfaceLangReducer = (state = initialState, action) =>{
-    return {...state}
+const interfaceLangReducer = (state = initialState, action) => {
+    return { ...state }
 }
 
 export default interfaceLangReducer
