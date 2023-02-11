@@ -1,5 +1,6 @@
 @import '../../../settings/settings.scss';
 
+$padding_ver: 10vh;
 $sections_width: 25vw;
 $sections_height: 45vh;
 
@@ -9,15 +10,39 @@ $input_title_margin: 30px;
 $input_heignt: 9vh;
 $input_width: 100%;
 
+// -----------------------
+//m1
+$m1_sections_width: 30vw;
+$m1_sections_height: 45vh;
+
+// -----------------------
+//m2
+$m2_sections_width: 34vw;
+$m2_sections_height: 45vh;
+
+// -----------------------
+//s1
+$s1_padding_ver: 2vh;
+$s1_sections_width: 70vw;
+$s1_sections_height: 30vh;
+
+$s1_margin_top_bottom: 30px;
+
+$s1_input_title_margin: 30px;
+$s1_input_heignt: 8vh;
+$s1_input_width: 100%;
+
+//==========================
+
 .UserProfileTab_section {
   width: 100%;
-  height: 100%;
+  // height: 200vh;
+  padding: $padding_ver 0px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  align-content: center;
 
-  .UserProfileTab_section_el{
+  .UserProfileTab_section_el {
     min-width: 250px;
   }
 
@@ -40,7 +65,6 @@ $input_width: 100%;
       }
 
       .UserProfileTab_section_left_inputWrap {
-
         margin-top: 10px;
         height: $input_heignt;
         width: $input_width;
@@ -58,7 +82,7 @@ $input_width: 100%;
         }
 
         .UserProfileTab_section_left_inputWrap_icon {
-            cursor: pointer;
+          cursor: pointer;
           margin-right: $input_title_margin;
           font-size: 18px;
           font-weight: 600;
@@ -96,8 +120,133 @@ $input_width: 100%;
       font-weight: 500;
       background-color: $g_1;
       border-radius: 100px;
-      padding: 15px 3.5vw;
+      padding: 5% 4vw;
       cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: $ADAPTIVE_M_1) {
+  .UserProfileTab_section {
+    .UserProfileTab_section_left {
+      width: $m1_sections_width;
+      height: $m1_sections_height;
+    }
+
+    .UserProfileTab_section_right {
+      width: $m1_sections_width;
+      height: $m1_sections_height;
+    }
+  }
+}
+
+// @media screen and (max-width: $ADAPTIVE_M_2) {
+//   .UserProfileTab_section {
+//     .UserProfileTab_section_left {
+//       width: $m2_sections_width;
+//       height: $m2_sections_height;
+//     }
+
+//     .UserProfileTab_section_right {
+//       width: $m2_sections_width;
+//       height: $m2_sections_height;
+//     }
+//   }
+// }
+
+@media screen and (max-width: $ADAPTIVE_M_2) {
+  .UserProfileTab_section {
+    width: 100%;
+    padding: $s1_padding_ver 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .UserProfileTab_section_el {
+      min-width: 250px;
+    }
+
+    .UserProfileTab_section_left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: $s1_sections_width;
+      height: $s1_sections_height;
+      // background-color: pink;
+
+      .UserProfileTab_section_left_inp {
+        display: flex;
+        flex-direction: column;
+
+        .UserProfileTab_section_left_title {
+          font-size: 20px;
+          font-weight: 600;
+          margin-left: $s1_input_title_margin;
+        }
+
+        .UserProfileTab_section_left_inputWrap {
+          margin-top: 10px;
+          height: $s1_input_heignt;
+          width: $s1_input_width;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 100px;
+          background-color: $g_0;
+
+          .UserProfileTab_section_left_inputWrap_input {
+            font-size: 20px;
+            font-weight: 500;
+            color: $g_2;
+            margin-left: $s1_input_title_margin;
+          }
+
+          .UserProfileTab_section_left_inputWrap_icon {
+            cursor: pointer;
+            margin-right: $s1_input_title_margin;
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .UserProfileTab_section_right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      width: $s1_sections_width;
+      height: fit-content;
+      // max-height: $s1_sections_height;
+      background-color: $g_0;
+      border-radius: 30px;
+
+      .UserProfileTab_section_right_title {
+        margin-top: $s1_margin_top_bottom;
+        color: $g_1;
+        font-weight: 600;
+        font-size: 5vw;
+      }
+
+      .UserProfileTab_section_right_time {
+        color: $g_1;
+        font-weight: 600;
+        font-size: 11vw;
+      }
+
+      .UserProfileTab_section_right_addButton {
+        margin-bottom: $s1_margin_top_bottom;
+        color: $g_0;
+        font-weight: 500;
+        background-color: $g_1;
+        border-radius: 100px;
+        padding: 5% 9vw;
+        cursor: pointer;
+      }
     }
   }
 }

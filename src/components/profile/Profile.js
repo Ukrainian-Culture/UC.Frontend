@@ -11,7 +11,10 @@ import AdminArticles from './adminArticles/AdminArticles'
 import ProfileRenderer from './profileRenderer/ProfileRenderer'
 import NotFoundPage from '../notFoundPage/NotFoundPage'
 import Registration from '../Registration/Registration'
-import { FETCH_USER_SUCCESS } from '../../redux-store/fetchUser/fetchUserConst'
+import {
+  FETCH_USER_SUCCESS,
+  LS_USER,
+} from '../../redux-store/fetchUser/fetchUserConst'
 
 function Profile() {
   const dispatch = useDispatch()
@@ -30,8 +33,6 @@ function Profile() {
   const activeWord = 'active'
   // reference of parent obkect of cztegories
   const categoryParent = useRef()
-
-
 
   //------------------------------------------------
 
@@ -62,11 +63,14 @@ function Profile() {
       payload: {
         role: 'notuser',
         email: '',
+        accessToken: '',
+        refreshToken: '',
         startDate: [],
         endDate: [],
         daysAmount: 0,
       },
     })
+    localStorage.removeItem(LS_USER)
   }
   //////////////////////////////////////////////////////////////////////
 
@@ -117,7 +121,10 @@ function Profile() {
                       )}
                     </div>
 
-                    <div onClick={cliclLogOut} className="ProfileSection_mainBody_wrapper_head_right">
+                    <div
+                      onClick={cliclLogOut}
+                      className="ProfileSection_mainBody_wrapper_head_right"
+                    >
                       {interfaceLang.logout}
                     </div>
                   </div>
