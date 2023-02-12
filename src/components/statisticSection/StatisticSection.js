@@ -62,10 +62,10 @@ function StatisticSection() {
                         <div className="statisticRight">
                             <div className="statisticWrap">
                                 <div className="statisticWrapRightFirst">
-                                    <div className="statisticBlockHeaderRightFirst">
-                                        <div
-                                            className="statisticBlockHeader">{interfaceLang[language].ukrainePopulation}</div>
-                                    </div>
+
+                                  <div className="statisticBlockHeaderRightFirst">
+                                        <div className="statisticBlockHeader">{interfaceLang[language].ukrainePopulation}</div>
+                                  </div>
                                     <div className="statisticBigNumber">
                                         {' '}
                                         {statistic.data.ukrainePopulation}

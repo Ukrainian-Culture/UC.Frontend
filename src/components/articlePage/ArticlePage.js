@@ -17,6 +17,8 @@ import {
   FETCH_ARTICLE_ERROR,
   FETCH_ARTICLE_SUCCESS,
 } from '../../redux-store/fetchArticle/fetchArticleConst'
+import StartAppRequests from '../../hooks/StartAppRequests'
+import LoadingPage from '../loadingPage/LoadingPage'
 
 function ArticlePage() {
   //-------------------------------------------------------------
@@ -60,7 +62,9 @@ function ArticlePage() {
   const downloadPDF = async () => {
     setStartLoad(true)
 
-    const blob = await pdf(<PDFFormer {...location.state.el} content={fetchArticle.data.content} />).toBlob()
+    const blob = await pdf(
+      <PDFFormer {...location.state.el} content={fetchArticle.data.content} />,
+    ).toBlob()
 
     // console.log(blob)
 
@@ -75,9 +79,11 @@ function ArticlePage() {
 
   //////////////////////////////////////////////////////////////////
   useEffect(() => {
+    // console.log('oh shit', articleId, id)
+
     if (!culture.loading) {
       const loc_lang = `${state.culture.data[language]['id']}`
-      const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${articleId}`
+      const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${id}`
 
       axios
         .get(urlArticle)
@@ -88,7 +94,7 @@ function ArticlePage() {
           dispatch({ type: FETCH_ARTICLE_ERROR, error: e })
         })
     }
-  }, [])
+  }, [culture])
   //////////////////////////////////////////////////////////////////
 
   useEffect(() => {
@@ -103,20 +109,29 @@ function ArticlePage() {
   useGetScreenWidth({ refWidth: refWidth })
 
   return (
-    <div className="articlePage" ref={refWidth}>
-      <Header article={true} articleRegion={region} />
-      <div className="articlePage_wrap">
-        <div className="articlePage_wrap_navigation">
-          <div
-            className="articlePage_wrap_navigation_back"
-            onClick={() => backClick()}
-          >
-            <div className="articlePage_wrap_navigation_back_el"></div>
-            <div className="articlePage_wrap_navigation_back_el">{interfaceLang.back}</div>
-          </div>
+    <>
+      <StartAppRequests />
+      <LoadingPage main={true} />
 
-          <div className="articlePage_wrap_navigation_helpers">
-            {/* <div
+      <div className="articlePage" ref={refWidth}>
+        <Header
+          article={true}
+          articleRegion={fetchArticle.data.region || region || ''}
+        />
+        <div className="articlePage_wrap">
+          <div className="articlePage_wrap_navigation">
+            <div
+              className="articlePage_wrap_navigation_back"
+              onClick={() => backClick()}
+            >
+              <div className="articlePage_wrap_navigation_back_el"></div>
+              <div className="articlePage_wrap_navigation_back_el">
+                {interfaceLang.back}
+              </div>
+            </div>
+
+            <div className="articlePage_wrap_navigation_helpers">
+              {/* <div
               className="articlePage_wrap_navigation_helpers_download"
               onClick={() => {
                 downloadPDF()
@@ -130,21 +145,21 @@ function ArticlePage() {
               :null
               }
             </div> */}
-            
+            </div>
           </div>
-        </div>
-        <div className="articlePage_wrap_navigation_title">
-          {title || fetchArticle.data.title}
-        </div>
-        <div className="articlePage_wrap_content">
-          <div className="articlePage_wrap_content_side"></div>
-          <div className="articlePage_wrap_content_text">
-            {fetchArticle.data.content || 'no content 🤯'}
+          <div className="articlePage_wrap_navigation_title">
+            {title || fetchArticle.data.title}
           </div>
-          <div className="articlePage_wrap_content_side"></div>
+          <div className="articlePage_wrap_content">
+            <div className="articlePage_wrap_content_side"></div>
+            <div className="articlePage_wrap_content_text">
+              {fetchArticle.data.content || 'no content 🤯'}
+            </div>
+            <div className="articlePage_wrap_content_side"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
