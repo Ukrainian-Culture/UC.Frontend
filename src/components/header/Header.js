@@ -20,6 +20,7 @@ import {
   CHANGE_LANGUAGE,
   LS_LANGUAGE,
 } from '../../redux-store/changeLanguage/changeLanguageConst'
+import PopupBlock from '../popupBlock/PopupBlock'
 
 gsap.config({ nullTargetWarn: false })
 
@@ -78,6 +79,8 @@ function Header(props) {
   const NO_BURGERHEIGHT = 'no_burgerHeight'
   // is burger menu active
   const [burgerHeight, setBurgerHeight] = useState('')
+  // popup visibility
+  const [isLangPopupVisible, setIsLangPopupVisible] = useState(false)
   // -----------------------------------------------------------
 
   // component which render text in the middle of header
@@ -340,6 +343,26 @@ function Header(props) {
     }
   }, [])
 
+  const LanguageChangeBlock = () => {
+    return (
+      <>
+        <div className="header_LanguageChangeBlock">
+          {culture.data.map((el, index) => {
+            return (
+              <div
+                onClick={() => languageOptionClick(index)}
+                key={el.id}
+                className={`header_LanguageChangeBlock_el`}
+              >
+                {el.name}
+              </div>
+            )
+          })}
+        </div>
+      </>
+    )
+  }
+
   const languageOptionClick = (index) => {
     setshowLangBox((el) => !el)
     navigate(0)
@@ -411,23 +434,76 @@ function Header(props) {
             )}
           </div>
 
-          {screenWidth >= 780 ? null : (
-            <div className={`headerSection_burgerBackground ${burgerHeight}`}>
-              <div className="headerSection_burgerBackground_navigation">
-                <Link
-                  className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
-                  to="/"
-                >
-                  {interfaceLang.map}
-                </Link>
-                <Link
-                  className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
-                  to="/explore"
-                >
-                  {interfaceLang.explore}
-                </Link>
+          {screenWidth >= ADAPTIVE_S_1 ? null : (
+            <>
+              {isLangPopupVisible ? (
+                <PopupBlock setIsVisible={setIsLangPopupVisible}>
+                  <LanguageChangeBlock />
+                </PopupBlock>
+              ) : null}
+
+              <div className={`headerSection_burgerBackground ${burgerHeight}`}>
+                <div className="headerSection_burgerBackground_navigation">
+                  <div className="headerSection_burgerBackground_navigation_top">
+                    <div onClick={()=>{setIsLangPopupVisible(el=>!el)}} className="headerLeft_language">
+                      <IonIcon
+                        icon={globeOutline}
+                        className="profileIcon headerIcon"
+                      />
+                      <div>{culture.data[language].name}</div>
+                    </div>
+
+                    {user.data.role === 'notuser' ? (
+                      <div className="headerLeft_profile">
+                        <Link
+                          className={`headerLeft_profile_link`}
+                          to="/login"
+                        >
+                          <div className={`headerLeft_profile_wrap`}>
+                            <IonIcon
+                              icon={enterOutline}
+                              className="headerLeft_map_navs_icon"
+                            />
+                            <div className="headerLeft_map_navs_text">
+                              {interfaceLang.login}
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="headerLeft_profile">
+                        <Link
+                          className={`headerLeft_profile_link`}
+                          to="/profile"
+                        >
+                          <div className={`headerLeft_profile_wrap`}>
+                            <IonIcon
+                              icon={personCircleOutline}
+                              className="headerLeft_map_navs_icon"
+                            />
+                            <div className="headerLeft_map_navs_text">
+                              {interfaceLang.profile}
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  <Link
+                    className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
+                    to="/"
+                  >
+                    {interfaceLang.map}
+                  </Link>
+                  <Link
+                    className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
+                    to="/explore"
+                  >
+                    {interfaceLang.explore}
+                  </Link>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </>
       ) : null}

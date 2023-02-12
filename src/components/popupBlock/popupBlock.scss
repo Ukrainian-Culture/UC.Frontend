@@ -1,0 +1,40 @@
+@import '../../settings/settings.scss';
+
+$padding_content: 40px;
+
+.PopupBlock_Section {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 110;
+  background-color: rgba(210, 210, 210, 0.489);
+
+  .PopupBlock_Section_Content {
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content;
+    height: fit-content;
+    // padding: 0px $padding_content;
+    background-color: $g_0;
+    border-radius: 10px;
+
+    .PopupBlock_Section_Content_Close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        font-size: 28px;
+        margin-top: $padding_content;
+        padding: 5px;
+        border-radius: 100px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: $g_4;
+        }
+      }
+  }
+}

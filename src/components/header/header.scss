@@ -50,7 +50,7 @@ $width_of_logo: 24px;
 
       .headerLeft_map_navs {
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
         text-decoration: none;
         font-size: 14px;
         width: fit-content;
@@ -279,11 +279,12 @@ $burger_menu_height: 13px;
 
     .headerSection_burgerBackground_navigation {
       position: absolute;
-      margin-top: $header_height * 2;
-      padding: 0 $header_padding_mobile;
+      margin-top: $header_height;
+
       z-index: 109;
 
       .headerLeft_map_navs {
+        padding: 0 $header_padding_mobile;
         display: flex;
         flex-direction: column;
         text-decoration: none;
@@ -296,6 +297,39 @@ $burger_menu_height: 13px;
 
       .activePage {
         color: $g_1;
+      }
+
+      .headerSection_burgerBackground_navigation_top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        width: 100vw;
+        height: 100%;
+        padding: 20px 0px;
+        // border-top: 2px solid $g_3;
+        border-bottom: 1px solid $g_3;
+        // background-color: pink;
+        font-size: 23px;
+        color: $g_1;
+
+        .headerLeft_language {
+          display: flex;
+          align-items: center;
+        }
+
+        .headerLeft_profile {
+          // background-color: yellow;s
+
+          .headerLeft_profile_link {
+            text-decoration: none;
+            color: $g_1;
+            .headerLeft_profile_wrap {
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
       }
     }
   }
@@ -383,5 +417,23 @@ $burger_menu_height: 13px;
         0 $header_height_mobile
       );
     }
+  }
+}
+
+.header_LanguageChangeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px 0px;
+  width: 50vw;
+  height: 50vw;
+
+  .header_LanguageChangeBlock_el {
+    // background-color: pink;
+    text-align: center;
+    width: 100%;
+    font-size: 10vw;
+    font-weight: 500;
   }
 }
