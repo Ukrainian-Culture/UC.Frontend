@@ -3,7 +3,7 @@ import { FETCH_USER_SUCCESS } from './fetchUserConst'
 const initialState = {
   loading: false,
   data: {
-    role: 'user',
+    role: 'admin',
   },
   error: '',
 }
