@@ -1,8 +1,4 @@
->Profile:
--add adaptation;
->Login:
--create requests to api;
->useLocalToken:
--hook which returns data from localStorage;
->useLogin:
--hook which execute logining;
+> header:
+- add adaptation details for profile button and language button;
+> popupBlock:
+- create element which apears as popup block on full screen;
