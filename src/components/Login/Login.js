@@ -13,6 +13,8 @@ import {
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
 } from '../../redux-store/fetchUser/fetchUserConst'
+import useLocalToken from '../../hooks/useLocalToken'
+import useLogin from '../../hooks/useLogin'
 
 function Login() {
   const dispatch = useDispatch()
@@ -79,58 +81,18 @@ function Login() {
       console.log('start submitData')
     }
   }
+  //////////////////////////////////////////////////////////////////////
 
-  // registration request
+
+  // signing in
+  useLogin(submitData)
+
+  // refirect after signing uinrequest
   useEffect(() => {
-    if (submitData != null) {
-      fetch('https://localhost:7219/api/account/login', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          accept: 'application/json',
-        },
-        body: JSON.stringify(submitData),
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          // console.log('login request ', res)
-          if (Object.keys(res).includes('accessToken')) {
-            dispatch({
-              type: FETCH_USER_SUCCESS,
-              payload: { role: 'user', email: locEmail },
-            })
-            navigate('/profile')
-          } else {
-            dispatch({
-              type: FETCH_USER_ERROR,
-              error: JSON.stringify(res),
-            })
-          }
-          // fetch('https://localhost:7219/api/account/changePassword', {
-          //   method: 'PATCH',
-          //   headers: {
-          //     'content-type': 'application/json',
-          //     Authorization: 'bearer ' + res['accessToken'],
-          //   },
-          //   body: JSON.stringify({
-          //     email: 'denys23423534@gmail.com',
-          //     currentPassword: oldPass,
-          //     newPassword: newPass,
-          //     confirmPassword: newPass,
-          //   }),
-          // })
-          //   .then((res_2) => res_2.json())
-          //   .then((res_2) => {
-          //     console.log('change password request ', res_2)
-          //   })
-        }).catch((e)=>{
-          dispatch({
-            type: FETCH_USER_ERROR,
-            error: JSON.stringify(e),
-          })
-        })
-    }
-  }, [submitData])
+    if (user.data['accessToken'] !== '') navigate('/profile')
+  }, [user.data['accessToken']])
+
+  //////////////////////////////////////////////////////////////////////
 
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })

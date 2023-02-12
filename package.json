@@ -13,6 +13,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "bcryptjs": "^2.4.3",
     "file-saver": "^2.0.5",
     "gsap": "^3.11.3",
     "ionicons": "^6.1.1",

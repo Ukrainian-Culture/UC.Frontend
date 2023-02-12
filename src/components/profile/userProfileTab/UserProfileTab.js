@@ -9,6 +9,7 @@ function UserProfileTab() {
   const state = useSelector((state) => state)
   const language = state.changeLanguage.lang
   const interfaceLang = state.interfaceLang
+  const user = state.user
   //=====================================
 
   return (
@@ -24,7 +25,7 @@ function UserProfileTab() {
 
             <div className="UserProfileTab_section_left_inputWrap">
               <div className="UserProfileTab_section_left_inputWrap_input">
-                {interfaceLang[language].your_email}
+              {user.data.email}
               </div>
 
               <IonIcon

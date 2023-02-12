@@ -16,7 +16,9 @@ $head_font_size: 15px;
   .ProfileSection_mainBody {
     margin-top: calc($header_height + 4vw);
     padding: 0px $header_padding * 2;
-    height: 85vh;
+    padding-bottom: 40px;
+    height: fit-content;
+    // background-color: pink;
 
     .ProfileSection_mainBody_wrapper {
       height: 100%;
@@ -53,21 +55,14 @@ $head_font_size: 15px;
           cursor: pointer;
           text-decoration: underline;
           text-decoration-thickness: 1.5px;
-
-          // &:after {
-          //   content: '';
-          //   margin-top: -2px;
-          //   height: 1.5px;
-          //   width: 100%;
-          //   background-color: $g_1;
-          // }
         }
       }
 
       .ProfileSection_mainBody_wrapper_content {
         margin-top: 15px;
         background-color: $g_4;
-        min-height: 80%;
+
+        height: fit-content;
         border-radius: 7px;
       }
     }

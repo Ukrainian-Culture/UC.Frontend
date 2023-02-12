@@ -20,6 +20,7 @@ import NotFoundPage from '../notFoundPage/NotFoundPage'
 import Profile from '../profile/Profile'
 import '../Registration/registration.scss'
 import PopupSubs from '../subscription/popupSubs/PopupSubs'
+import bcrypt from 'bcryptjs'
 
 function Registration() {
   const dispatch = useDispatch()
@@ -131,18 +132,40 @@ function Registration() {
     }
   }
   //////////////////////////////////////////////////////
+
+  // useEffect(() => {
+  //   // window.localStorage.setItem(
+  //   //   'user',
+  //   //   JSON.stringify({
+  //   //     email: "sd",
+  //   //     password: bcrypt.hashSync(locPass, bcrypt.genSaltSync(10)),
+  //   //   }),
+  //   // )
+  //   console.log(localStorage.getItem("user"))
+  //   // console.log(bcrypt.hashSync("dick", bcrypt.genSaltSync(10)))
+  //   // console.log(bcrypt.compareSync("dick", '$2a$10$nNOs6KnhVCKk9QTL2ZZfkepZjsxOQQob4rdv232S8VV0mx7yfcD4S'))
+  // }, [])
+
   // registration request
   useEffect(() => {
     if (submitData != null && daysAmount !== 0) {
-      fetch('https://localhost:7219/api/account/signup', {
+      const url = `${state.startSettings.domain}/api/account/signup`
+      const url_2 = 'https://localhost:7219/api/account/signup'
+
+      fetch(url_2, {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+          'content-type': 'application/json',
+        },
         body: JSON.stringify(submitData),
       })
         .then((res) => res.json())
         .then((res) => {
           if (typeof res === 'boolean') {
             console.log('registration request ', res)
+
+            // writeLocalStorage()
+
             dispatch({
               type: FETCH_USER_SUCCESS,
               payload: {
@@ -151,7 +174,7 @@ function Registration() {
                 email: locEmail,
               },
             })
-            //  navigate('/profile')
+             navigate('/login')
           } else {
             console.log('error registration request', res.status)
             dispatch({
