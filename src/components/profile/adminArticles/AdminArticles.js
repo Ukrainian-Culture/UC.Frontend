@@ -5,16 +5,19 @@ function AdminArticles() {
     const Button = styled.button``
     return (
     <div className='AdminArticles_Section'>
-        <div className='articleIdWrap'>
-        <div className='articleIdText'><span>article id</span></div>
-        <div className='articleId'>
-            <div>
-                <input type="text"/>
+        <div className='AdminArticles_Wrap'>
+        <div className="AdminArticles_Section_articleIdWrap">
+            <div className='articleIdWrap'>
+                <div className='articleIdText'><span>article id</span></div>
+                <div className='articleId'>
+                    <div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <Button >search</Button>
+                    </div>
+                </div>
             </div>
-             <div>
-              <Button >search</Button>
-             </div>
-        </div>
         </div>
         <div className='mainWrap'>
             <div className='leftWrap'>
@@ -35,6 +38,7 @@ function AdminArticles() {
         <div className='contentWrap'>
             <div className='contentText'><span>content</span></div>
             <textarea className="contentArea"></textarea>
+        </div>
         </div>
     </div>
   )

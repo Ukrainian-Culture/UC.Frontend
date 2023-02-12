@@ -25,6 +25,8 @@ function ProfileRenderer(props) {
         return <UserProfileTab />
       case 'history':
         return <UserHistory />
+      case 'mailing':
+        return <>mailing</>
       default:
         return <></>
     }
