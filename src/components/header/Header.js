@@ -38,6 +38,7 @@ function Header(props) {
   const location = useLocation()
 
   const state = useSelector((state) => state)
+  const user = state.user
   // current language
   const language = state.changeLanguage.lang
   const culture = state.culture
@@ -135,7 +136,15 @@ function Header(props) {
         </>
       )
     } else if (basic) {
-      return <></>
+      return (
+        <>
+          <div className="mainHeader_oblastName">
+            <div className="mainHeader_oblastName_email mainHeader_oblastName_el">
+              {user.data.email}
+            </div>
+          </div>
+        </>
+      )
     } else {
       return <></>
     }
@@ -176,26 +185,31 @@ function Header(props) {
               <div>{culture.data[language].name}</div>
             </div>
 
-            <Link to="/profile" className="headerRight_profile headerRight_el">
-              <IonIcon
-                icon={personCircleOutline}
-                className="profileIcon headerIcon"
-              />
-              <div>{interfaceLang.profile}</div>
-            </Link>
+            {/* how button to sign in if user not registered otherwise show profile button */}
+            {user.data.role !== 'notuser' ? (
+              <Link
+                to="/profile"
+                className="headerRight_profile headerRight_el"
+              >
+                <IonIcon
+                  icon={personCircleOutline}
+                  className="profileIcon headerIcon"
+                />
+                <div>{interfaceLang.profile}</div>
+              </Link>
+            ) : (
+              <Link to="/login" className="headerRight_login headerRight_el">
+                <IonIcon icon={enterOutline} className="loginIcon headerIcon" />
+                <div>{interfaceLang.login}</div>
+              </Link>
+            )}
 
-            <Link to="/login" className="headerRight_login headerRight_el">
-              <IonIcon icon={enterOutline} className="loginIcon headerIcon" />
-              <div>{interfaceLang.login}</div>
-            </Link>
-
-            <Link
+            {/* <Link
               to="/registration"
               className="headerRight_registration headerRight_el"
             >
-              {/* <IonIcon icon={enterOutline} className="loginIcon" /> */}
               <div>{interfaceLang.registration}</div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </>
@@ -310,7 +324,7 @@ function Header(props) {
     if (location.pathname === '/') {
       // dispatch({type: CHANGE_SIDEHEIGHT, payload:SIDEHEIGHT})
     } else {
-      dispatch({type: CHANGE_SIDEHEIGHT, payload:NO_SIDEHEIGHT})
+      dispatch({ type: CHANGE_SIDEHEIGHT, payload: NO_SIDEHEIGHT })
     }
 
     // add to className "activeWord" on current page

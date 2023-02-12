@@ -125,8 +125,8 @@ $width_of_logo: 24px;
 
 .headerLeft,
 .headerRight {
-  min-width: 175px;
-  width: fit-content;
+  // background-color: pink;
+  width: 175px;
 }
 
 .mainHeader .headerRight {
@@ -240,10 +240,7 @@ $burger_menu_height: 13px;
       padding: 0 $header_padding_mobile;
 
       .headerRight {
-        // background-color: pink;
         display: flex;
-        justify-content: flex-end;
-        width: 180px;
 
         .innerBurgerButton {
           cursor: pointer;

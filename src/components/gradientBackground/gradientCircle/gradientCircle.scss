@@ -19,7 +19,7 @@
   top: 0;
   bottom: 0;
   overflow: none;
-  clip-path: circle(40%);
+  clip-path: circle(50%);
   z-index: -10;
 }
 .GradientCircleSection div {
@@ -29,14 +29,14 @@
 .GradientCircleSection div:nth-child(1) {
   height: 70%;
   width: 60%;
-  background-color: #fffd9f;
+  background-color: #fffd79;
   left: -20%;
   top: 20%;
   animation: gradient_1 13s infinite;
 }
 .GradientCircleSection div:nth-child(2) {
   height: 80%;
-  width: 80%;
+  width: 90%;
   background-color: #5feaff;
   top: -12%;
   right: -12%;
@@ -46,7 +46,7 @@
 .GradientCircleSection div:nth-child(3) {
   height: 65%;
   width: 80%;
-  background-color: #ffe590;
+  background-color: #ffd979;
   bottom: -15%;
   right: -20%;
   animation-delay: 0.3s;
@@ -55,7 +55,7 @@
 .GradientCircleSection div:nth-child(4) {
   height: 50%;
   width: 75%;
-  background-color: #89f9ff;
+  background-color: #48d4ff;
   bottom: -10%;
   left: -18%;
   animation-delay: 1.2s;
@@ -104,7 +104,7 @@
   }
 }
 
-.GradientCircleSection_glass{
+.GradientCircleSection_glass {
   position: absolute;
   content: '';
   height: 100vh;
@@ -127,7 +127,7 @@
 }
 .GradientCircleSection_registration div:nth-child(2) {
   height: 80%;
-  width: 80%;
+  width: 90%;
   background-color: #249dde;
   top: -12%;
   right: -12%;
@@ -155,6 +155,26 @@
 //==============================================================
 @media screen and (max-width: $ADAPTIVE_S_1) {
   .GradientCircleSection {
-    clip-path: circle(50%);
+    clip-path: circle(60%);
+  }
+}
+@media screen and (max-width: $ADAPTIVE_S_2) {
+  .GradientCircleSection div:nth-child(2) {
+    height: 80%;
+    width: 110%;
+    background-color: #5feaff;
+    top: -12%;
+    right: -12%;
+    animation-delay: 2s;
+    animation: gradient_2 8s infinite;
+  }
+  .GradientCircleSection_registration div:nth-child(2) {
+    height: 80%;
+    width: 110%;
+    background-color: #249dde;
+    top: -12%;
+    right: -12%;
+    animation-delay: 2s;
+    animation: gradient_2 8s infinite;
   }
 }

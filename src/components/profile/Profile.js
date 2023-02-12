@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import Header from '../header/Header'
@@ -9,9 +9,15 @@ import MainPage from '../mainPage/MainPage'
 import '../profile/profile.scss'
 import AdminArticles from './adminArticles/AdminArticles'
 import ProfileRenderer from './profileRenderer/ProfileRenderer'
+import NotFoundPage from '../notFoundPage/NotFoundPage'
+import Registration from '../Registration/Registration'
+import {
+  FETCH_USER_SUCCESS,
+  LS_USER,
+} from '../../redux-store/fetchUser/fetchUserConst'
 
 function Profile() {
-  // const [currentPage, setCurrentPage] = usestate()
+  const dispatch = useDispatch()
   const state = useSelector((state) => state)
   // user data
   const user = state.user
@@ -33,7 +39,6 @@ function Profile() {
   // function which calls when category button pressed
   const categorySelector = (e) => {
     if (categoryParent.current != null) {
-      
       const childrenClasses = categoryParent.current.children
       for (let i = 0; i < childrenClasses.length; i++) {
         if (childrenClasses[i].innerText === e.target.innerText) {
@@ -51,6 +56,23 @@ function Profile() {
       }
     }
   }
+  //////////////////////////////////////////////////////////////////////
+  const cliclLogOut = () => {
+    dispatch({
+      type: FETCH_USER_SUCCESS,
+      payload: {
+        role: 'notuser',
+        email: '',
+        accessToken: '',
+        refreshToken: '',
+        startDate: [],
+        endDate: [],
+        daysAmount: 0,
+      },
+    })
+    localStorage.removeItem(LS_USER)
+  }
+  //////////////////////////////////////////////////////////////////////
 
   //------------------------------------------------
 
@@ -66,47 +88,63 @@ function Profile() {
 
   return (
     <>
-      <StartAppRequests />
-      <LoadingPage main={true} />
+      {user.data.role !== 'notuser' ? (
+        <>
+          <StartAppRequests />
+          <LoadingPage main={true} />
 
-      <div className="ProfileSection" ref={profileWrap}>
-        <div className="ProfileSection_header">
-          <Header basic={true} />
-        </div>
+          <div className="ProfileSection" ref={profileWrap}>
+            <div className="ProfileSection_header">
+              <Header basic={true} />
+            </div>
 
-        {!user.loading ? <div className="ProfileSection_mainBody">
-          <div className="ProfileSection_mainBody_wrapper">
-            <div className="ProfileSection_mainBody_wrapper_head">
-              <div
-                className="ProfileSection_mainBody_wrapper_head_left"
-                ref={categoryParent}
-              >
-                
-                {profileCategory[user.data.role][language].map((el, index) => {
-                  return (
+            {!user.loading ? (
+              <div className="ProfileSection_mainBody">
+                <div className="ProfileSection_mainBody_wrapper">
+                  <div className="ProfileSection_mainBody_wrapper_head">
                     <div
-                      className="ProfileSection_mainBody_wrapper_head_left_el"
-                      key={`PSMBWHL_${index}`}
-                      onMouseDown={(e) => categorySelector(e)}
+                      className="ProfileSection_mainBody_wrapper_head_left"
+                      ref={categoryParent}
                     >
-                      {el}
+                      {profileCategory[user.data.role][language].map(
+                        (el, index) => {
+                          return (
+                            <div
+                              className="ProfileSection_mainBody_wrapper_head_left_el"
+                              key={`PSMBWHL_${index}`}
+                              onMouseDown={(e) => categorySelector(e)}
+                            >
+                              {el}
+                            </div>
+                          )
+                        },
+                      )}
                     </div>
-                  )
-                })}
 
+                    <div
+                      onClick={cliclLogOut}
+                      className="ProfileSection_mainBody_wrapper_head_right"
+                    >
+                      {interfaceLang.logout}
+                    </div>
+                  </div>
+
+                  <div className="ProfileSection_mainBody_wrapper_content">
+                    <ProfileRenderer
+                      user={user}
+                      profileCategory={profileCategory}
+                      currentCateg={currentCateg}
+                      language={language}
+                    />
+                  </div>
+                </div>
               </div>
-
-              <div className="ProfileSection_mainBody_wrapper_head_right">
-                {interfaceLang.logout}
-              </div>
-            </div>
-
-            <div className="ProfileSection_mainBody_wrapper_content">
-              <ProfileRenderer user={user} profileCategory={profileCategory} currentCateg={currentCateg} language={language}/>
-            </div>
+            ) : null}
           </div>
-        </div> : null}
-      </div>
+        </>
+      ) : (
+        <Registration />
+      )}
     </>
   )
 }

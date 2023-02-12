@@ -13,25 +13,26 @@ function useGetScreenWidth(props) {
   //==================================
   const state = useSelector((state) => state)
 
-
   useEffect(() => {
-    const screenWidth = state.screenWidth.width
-    if (screenWidth === 0) changeScreenWidth(refWidth.current.offsetWidth)
-
-    const changeEvent = () => {
+    if (refWidth.current) {
+      const screenWidth = state.screenWidth.width
       if (screenWidth === 0) changeScreenWidth(refWidth.current.offsetWidth)
-      else {
-        // console.log(screenWidth, '%%%%%%%%%%%%%%%%%')
-        changeScreenWidth(refWidth.current.offsetWidth)
+
+      const changeEvent = () => {
+        if (screenWidth === 0) changeScreenWidth(refWidth.current.offsetWidth)
+        else {
+          // console.log(screenWidth, '%%%%%%%%%%%%%%%%%')
+          changeScreenWidth(refWidth.current.offsetWidth)
+        }
+      }
+
+      window.addEventListener('resize', changeEvent)
+
+      return () => {
+        window.removeEventListener('resize', changeEvent)
       }
     }
-
-    window.addEventListener('resize', changeEvent)
-
-    return () => {
-      window.removeEventListener('resize', changeEvent)
-    }
-  }, [state])
+  }, [state, refWidth])
 }
 
 export default useGetScreenWidth

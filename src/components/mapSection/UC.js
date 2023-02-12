@@ -42,7 +42,7 @@ export function UC(props) {
   const [cNow, setcNow] = useState('')
 
   // basic color of oblast
-  const [baseColor, setbaseColor] = useState('#e6fcff')
+  const [baseColor, setbaseColor] = useState('#fff')
   // const [baseColor, setbaseColor] = useState('#262626')
   const [arrBaseColor, setarrBaseColor] = useState([
     { color: baseColor },

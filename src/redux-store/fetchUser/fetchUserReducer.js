@@ -1,9 +1,12 @@
-import { FETCH_USER_SUCCESS } from './fetchUserConst'
+import { FETCH_USER_ERROR, FETCH_USER_SUCCESS } from './fetchUserConst'
 
 const initialState = {
   loading: false,
   data: {
-    role: 'user',
+    role: 'notuser',
+    email: '',
+    accessToken: '',
+    refreshToken: '',
     startDate: [],
     endDate: [],
     daysAmount: 0,
@@ -75,11 +78,11 @@ const fetchUserReducer = (state = initialState, action) => {
         data: { ...state.data, ...action.payload, ...FormatData(action.payload)},
         error: '',
       }
-    case FETCH_USER_SUCCESS:
+    case FETCH_USER_ERROR:
       return {
         ...state,
         loading: false,
-        data: {},
+        data: {...state.data},
         error: action.error,
       }
     default:
