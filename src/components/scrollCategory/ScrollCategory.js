@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CHANGE_FILTER } from '../../redux-store/selectedCategory/selectedCategoryConst'
 import '../scrollCategory/scrollCategory.scss'
+import axios from 'axios'
 
 function ScrollCategory() {
   //-------------------------------------------------------------
@@ -33,8 +34,6 @@ function ScrollCategory() {
 
   const animationOnHoverCategory = (e) => {
     const ctx = gsap.context(() => {
-      // tl_hover.current && tl_hover.current.progress(0).kill()
-
       tl_hover.current = gsap
         .timeline()
         .to('.scrollCategory_el_p', { y: -5, stagger: 0.08, duration: 0.3 })
@@ -53,18 +52,15 @@ function ScrollCategory() {
   return (
     <div className="scrollCategory" ref={wrapScrollCategory}>
       <div className="scrollCategory_wrap">
-        <div
-          onClick={() => {
-            changeFilter(corelateCategories("search", language))
-          }}
-          onMouseEnter={(e) => animationOnHoverCategory(e)}
-          onMouseLeave={(_) => animationLeaveHoverCategory()}
-          className="scrollCategory_el_wrapp"
-        >
-          <div className="scrollCategory_el">
-            <p className="scrollCategory_el_p scrollCategory_el_emoji">{`${emojiCategory["search"]}`}</p>
-            <p className="scrollCategory_el_p scrollCategory_el_category">{interfaceLang[language].search}</p>
-          </div>
+
+
+        <div className="scrollCategory_el_wrapp"        >
+          <input
+           // onChange={}
+            type="text"
+            className="scrollCategory_el "
+            placeholder={`${emojiCategory["search"]}` + interfaceLang[language].search}
+          />
         </div>
 
         {store.categoriesInfoBlock[language].map((el, index) => {
@@ -88,7 +84,7 @@ function ScrollCategory() {
           )
         })}
       </div>
-    </div>
+    </div >
   )
 }
 
