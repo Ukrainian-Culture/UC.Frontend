@@ -20,7 +20,7 @@ async function useLocalToken() {
       dispatch({
         type: FETCH_USER_SUCCESS,
         payload: {
-          role: 'user',
+          role: ls_user_json.role,
           email: ls_user_json.email,
           accessToken: ls_user_json['accessToken'],
           refreshToken: ls_user_json['refreshToken'],
