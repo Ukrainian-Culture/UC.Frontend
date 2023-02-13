@@ -1,5 +1,5 @@
 import { IonIcon } from '@ionic/react'
-import axios from 'axios'
+// import axios from 'axios'
 import { eyeOffOutline, eyeOutline, navigate } from 'ionicons/icons'
 import React from 'react'
 import { useEffect } from 'react'
@@ -16,11 +16,10 @@ import {
 import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
 import Header from '../header/Header'
 import LoadingPage from '../loadingPage/LoadingPage'
-import NotFoundPage from '../notFoundPage/NotFoundPage'
+// import NotFoundPage from '../notFoundPage/NotFoundPage'
 import Profile from '../profile/Profile'
 import '../Registration/registration.scss'
 import PopupSubs from '../subscription/popupSubs/PopupSubs'
-import bcrypt from 'bcryptjs'
 
 function Registration() {
   const dispatch = useDispatch()
@@ -170,7 +169,7 @@ function Registration() {
               type: FETCH_USER_SUCCESS,
               payload: {
                 daysAmount: daysAmount,
-                role: 'user',
+                // role: 'user',
                 email: locEmail,
               },
             })
