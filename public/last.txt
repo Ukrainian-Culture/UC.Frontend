@@ -1,4 +1,4 @@
-> header:
-- add adaptation details for profile button and language button;
-> popupBlock:
-- create element which apears as popup block on full screen;
+>header:
+-add block oh hover on profile button in header;
+>subscription:
+- add localization;

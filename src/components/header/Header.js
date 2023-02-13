@@ -42,6 +42,8 @@ function Header(props) {
   const user = state.user
   // current language
   const language = state.changeLanguage.lang
+  //variable for text in  interface in different language
+  const interfaceLang = state.interfaceLang[language]
   const culture = state.culture
   // corelated emoji to category
   const emojiCategory = state.emojiCategory.emoji
@@ -55,8 +57,6 @@ function Header(props) {
   const aboutOblast = state.aboutOblast
   // width of screen
   const screenWidth = state.screenWidth.width
-  //variable for text in  interface in different language
-  const interfaceLang = state.interfaceLang[language]
 
   // ===========================================================
   //word used in class when user on particular page
@@ -81,6 +81,7 @@ function Header(props) {
   const [burgerHeight, setBurgerHeight] = useState('')
   // popup visibility
   const [isLangPopupVisible, setIsLangPopupVisible] = useState(false)
+  const [hoverProfile, setHoverProfile] = useState(false)
   // -----------------------------------------------------------
 
   // component which render text in the middle of header
@@ -191,6 +192,7 @@ function Header(props) {
             {/* how button to sign in if user not registered otherwise show profile button */}
             {user.data.role !== 'notuser' ? (
               <Link
+                onMouseEnter={() => setHoverProfile(true)}
                 to="/profile"
                 className="headerRight_profile headerRight_el"
               >
@@ -311,14 +313,6 @@ function Header(props) {
 
   // -----------------------------------------------------------
 
-  function burgetClick() {
-    if (burgerHeight === BURGERHEIGHT && burgerHeight !== '')
-      setBurgerHeight(NO_BURGERHEIGHT)
-    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '') {
-      setBurgerHeight(BURGERHEIGHT)
-    }
-  }
-
   useClearSelectedOblast()
   useEffect(() => {
     setBurgerHeight('')
@@ -342,6 +336,65 @@ function Header(props) {
       setHeaderLeft_explore('')
     }
   }, [])
+
+  function burgetClick() {
+    if (burgerHeight === BURGERHEIGHT && burgerHeight !== '')
+      setBurgerHeight(NO_BURGERHEIGHT)
+    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '') {
+      setBurgerHeight(BURGERHEIGHT)
+    }
+  }
+
+  const HoverProfileBlock = () => {
+    return (
+      <>
+        {hoverProfile ? (
+          <div
+            onMouseLeave={() => setHoverProfile(false)}
+            className="header_HoverProfileBlock"
+          >
+            <div className="header_HoverProfileBlock_email">
+              {user.data.email}
+            </div>
+            <div className="header_HoverProfileBlock_wrap">
+              <Link
+                to="/profile"
+                className="header_HoverProfileBlock_wrap_profile"
+              >
+                <div>{interfaceLang.profile.toLowerCase()}</div>
+              </Link>
+            </div>
+          </div>
+        ) : null}
+      </>
+    )
+  }
+
+  const LanguageChangeBlockSmall = () => {
+    return (
+      <>
+        {showLangBox ? (
+          <div
+            className="headerRight_language_drawer"
+            ref={refShowLangBox}
+            onMouseLeave={() => setshowLangBox((el) => !el)}
+          >
+            {culture.data.map((el, index) => {
+              return (
+                <div
+                  onClick={() => languageOptionClick(index)}
+                  key={el.id}
+                  className={`headerRight_language_drawer_el`}
+                >
+                  {el.name}
+                </div>
+              )
+            })}
+          </div>
+        ) : null}
+      </>
+    )
+  }
 
   const LanguageChangeBlock = () => {
     return (
@@ -403,25 +456,9 @@ function Header(props) {
       {!culture.loading ? (
         <>
           {/* language popup */}
-          {showLangBox ? (
-            <div
-              className="headerRight_language_drawer"
-              ref={refShowLangBox}
-              onMouseLeave={() => setshowLangBox((el) => !el)}
-            >
-              {culture.data.map((el, index) => {
-                return (
-                  <div
-                    onClick={() => languageOptionClick(index)}
-                    key={el.id}
-                    className={`headerRight_language_drawer_el`}
-                  >
-                    {el.name}
-                  </div>
-                )
-              })}
-            </div>
-          ) : null}
+          <LanguageChangeBlockSmall />
+          {/* profile popup */}
+          <HoverProfileBlock />
 
           <div
             className={`headerSection ${sideHeight} headerSection_${burgerHeight}`}
@@ -445,7 +482,12 @@ function Header(props) {
               <div className={`headerSection_burgerBackground ${burgerHeight}`}>
                 <div className="headerSection_burgerBackground_navigation">
                   <div className="headerSection_burgerBackground_navigation_top">
-                    <div onClick={()=>{setIsLangPopupVisible(el=>!el)}} className="headerLeft_language">
+                    <div
+                      onClick={() => {
+                        setIsLangPopupVisible((el) => !el)
+                      }}
+                      className="headerLeft_language"
+                    >
                       <IonIcon
                         icon={globeOutline}
                         className="profileIcon headerIcon"
@@ -455,10 +497,7 @@ function Header(props) {
 
                     {user.data.role === 'notuser' ? (
                       <div className="headerLeft_profile">
-                        <Link
-                          className={`headerLeft_profile_link`}
-                          to="/login"
-                        >
+                        <Link className={`headerLeft_profile_link`} to="/login">
                           <div className={`headerLeft_profile_wrap`}>
                             <IonIcon
                               icon={enterOutline}
