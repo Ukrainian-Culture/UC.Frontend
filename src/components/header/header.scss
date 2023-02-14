@@ -147,26 +147,6 @@ $width_of_logo: 24px;
   }
 }
 
-.headerRight_language_drawer {
-  background-color: $g_0;
-  border-radius: 10px;
-  padding: 10px 15px;
-  position: fixed;
-  margin-top: 60px;
-  z-index: 200;
-  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
-  font-weight: 500;
-
-  .headerRight_language_drawer_el {
-    cursor: pointer;
-    transition: color 0.15s ease-in-out;
-
-    &:hover {
-      color: $g_5;
-    }
-  }
-}
-
 // animation of moving sideHeight to start position
 .no_sideHeight {
   animation-name: no_sideHeight;
@@ -420,6 +400,28 @@ $burger_menu_height: 13px;
   }
 }
 
+// block to change language on big screen
+
+.headerRight_language_drawer {
+  background-color: $g_0;
+  border-radius: 10px;
+  padding: 10px 15px;
+  position: fixed;
+  margin-top: 60px;
+  z-index: 200;
+  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
+  font-weight: 500;
+
+  .headerRight_language_drawer_el {
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+
+    &:hover {
+      color: $g_5;
+    }
+  }
+}
+
 .header_LanguageChangeBlock {
   display: flex;
   flex-direction: column;
@@ -435,5 +437,37 @@ $burger_menu_height: 13px;
     width: 100%;
     font-size: 10vw;
     font-weight: 500;
+  }
+}
+
+// block which appears when hover on profile button in header
+.header_HoverProfileBlock {
+  z-index: 110;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  margin-top: $header_height + 5px;
+  margin-right: $header_padding;
+  padding: 10px 20px;
+  background-color: $g_0;
+  border-radius: 7px;
+  width: fit-content;
+  // font-size: 16px;
+  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
+
+  .header_HoverProfileBlock_email {
+    font-weight: 600;
+  }
+
+  .header_HoverProfileBlock_wrap{
+    margin-top: 5px;
+
+    .header_HoverProfileBlock_wrap_profile{
+      font-weight: 500;
+      font-size: 15px;
+      text-decoration: none;
+      color: $g_1;
+    }
   }
 }
