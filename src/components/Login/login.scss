@@ -6,30 +6,36 @@
   width: 100vw;
   height: 100vh;
 
-  .LoginSection_mainBlock{
+  .LoginSection_mainBlock {
     padding-top: $header_height;
   }
 }
-.LoginSection_mainBlock{
+.LoginSection_mainBlock {
   align-items: center;
   width: 100vw;
   height: 80vh;
   justify-content: center;
   display: flex;
 }
-.SignInSection{
+.SignInSection {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
-.NewUserSignIn{
+.NewUserSignIn {
   display: flex;
   flex-direction: row;
   justify-content: center;
   column-gap: 10px;
   color: $g_0;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
+
+  .CreateNewAccount{
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+  }
 }
 .UserLoginForm {
   display: flex;
@@ -37,7 +43,7 @@
   width: 350px;
   height: 200px;
   border-radius: 30px;
-  background-color: rgba(255, 255,255, 0);
+  background-color: rgba(255, 255, 255, 0);
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
@@ -45,55 +51,82 @@
   margin-top: 8px;
 }
 .LoginInput,
-.PasswordInput{
+.PasswordInput {
   display: flex;
   width: 350px;
   height: 60px;
   border-radius: 30px;
-  background-color: rgba(255, 255,255, 0);
-  padding-left: 30px;
+  background-color: rgba(255, 255, 255, 0);
+  // padding-left: 30px;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   border: 1px solid $g_0;
   column-gap: 10px;
-  color: $g_1;
+  color: $g_0;
+  font-weight: 600;
   outline: none;
   font-size: 17px;
+  text-align: center;
+
+  &:focus {
+    background-color: $g_0;
+    color: $g_1;
+    outline: none;
+  }
+
+  &::placeholder {
+    text-align: center;
+    color: $g_0;
+  }
 }
-.LoginInput::placeholder{
+.LoginInput::placeholder {
   color: $g_0;
 }
 .PasswordInput::placeholder {
   color: $g_0;
 }
 
-.LoginButton{
+.LoginButton {
   width: 350px;
   display: flex;
-  color: $b_2;
-  font-size: 22px;
+  color: $g_1;
+  font-size: 16px;
   height: 60px;
   border-radius: 30px;
-  background-color: rgba(255,255,255, 1);
+  background-color: rgba(255, 255, 255, 1);
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   border-color: $g_0;
   column-gap: 10px;
-  border: none!important;
+  border: none !important;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $g_1;
+    color: $g_0;
+  }
 }
-.SignIn{
-  font-size: 65px;
+.SignIn {
+  font-size: 55px;
   display: flex;
   justify-content: center;
   font-weight: 600;
   color: $g_0;
 }
-.LoginForms{
+.LoginForms {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
 }
 
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .SignIn {
+    font-size: 45px;
+
+  }
+}

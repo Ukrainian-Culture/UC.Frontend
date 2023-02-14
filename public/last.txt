@@ -1,12 +1,4 @@
-> PopupWindow:
-- create files for popup element;
->ExplorePage:
-- fix in category scroll;
->Header:
-- fix with language name;
->ArticlePage:
-- fix bug with reload page;
->Registration:
-- add main logic for registration;
->PopupSubs:
-- create popup which appears vhet user creates account;
+>header:
+-add block oh hover on profile button in header;
+>subscription:
+- add localization;

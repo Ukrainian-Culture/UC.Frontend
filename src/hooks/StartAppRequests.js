@@ -18,6 +18,7 @@ import {
   FETCH_STATISTIC_ERROR,
   FETCH_STATISTIC_SUCCESS,
 } from '../redux-store/fetchStatistic/fetchStatisticConst'
+import useLocalToken from './useLocalToken'
 
 function StartAppRequests() {
   const dispatch = useDispatch()
@@ -108,12 +109,16 @@ function StartAppRequests() {
       })
   })
 
+  // get tocken from local storage if it exist
+  useLocalToken()
+
   useEffect(() => {
     const def = localStorage.getItem(LS_LANGUAGE)
     if (def) {
       chnge_Language(def)
     }
    
+    
 
     if (
       Object.keys(culture).length === 3 &&

@@ -20,6 +20,7 @@ import {
   CHANGE_LANGUAGE,
   LS_LANGUAGE,
 } from '../../redux-store/changeLanguage/changeLanguageConst'
+import PopupBlock from '../popupBlock/PopupBlock'
 
 gsap.config({ nullTargetWarn: false })
 
@@ -38,8 +39,11 @@ function Header(props) {
   const location = useLocation()
 
   const state = useSelector((state) => state)
+  const user = state.user
   // current language
   const language = state.changeLanguage.lang
+  //variable for text in  interface in different language
+  const interfaceLang = state.interfaceLang[language]
   const culture = state.culture
   // corelated emoji to category
   const emojiCategory = state.emojiCategory.emoji
@@ -53,8 +57,6 @@ function Header(props) {
   const aboutOblast = state.aboutOblast
   // width of screen
   const screenWidth = state.screenWidth.width
-  //variable for text in  interface in different language
-  const interfaceLang = state.interfaceLang[language]
 
   // ===========================================================
   //word used in class when user on particular page
@@ -77,6 +79,9 @@ function Header(props) {
   const NO_BURGERHEIGHT = 'no_burgerHeight'
   // is burger menu active
   const [burgerHeight, setBurgerHeight] = useState('')
+  // popup visibility
+  const [isLangPopupVisible, setIsLangPopupVisible] = useState(false)
+  const [hoverProfile, setHoverProfile] = useState(false)
   // -----------------------------------------------------------
 
   // component which render text in the middle of header
@@ -135,7 +140,15 @@ function Header(props) {
         </>
       )
     } else if (basic) {
-      return <></>
+      return (
+        <>
+          <div className="mainHeader_oblastName">
+            <div className="mainHeader_oblastName_email mainHeader_oblastName_el">
+              {user.data.email}
+            </div>
+          </div>
+        </>
+      )
     } else {
       return <></>
     }
@@ -176,26 +189,32 @@ function Header(props) {
               <div>{culture.data[language].name}</div>
             </div>
 
-            <Link to="/profile" className="headerRight_profile headerRight_el">
-              <IonIcon
-                icon={personCircleOutline}
-                className="profileIcon headerIcon"
-              />
-              <div>{interfaceLang.profile}</div>
-            </Link>
+            {/* how button to sign in if user not registered otherwise show profile button */}
+            {user.data.role !== 'notuser' ? (
+              <Link
+                onMouseEnter={() => setHoverProfile(true)}
+                to="/profile"
+                className="headerRight_profile headerRight_el"
+              >
+                <IonIcon
+                  icon={personCircleOutline}
+                  className="profileIcon headerIcon"
+                />
+                <div>{interfaceLang.profile}</div>
+              </Link>
+            ) : (
+              <Link to="/login" className="headerRight_login headerRight_el">
+                <IonIcon icon={enterOutline} className="loginIcon headerIcon" />
+                <div>{interfaceLang.login}</div>
+              </Link>
+            )}
 
-            <Link to="/login" className="headerRight_login headerRight_el">
-              <IonIcon icon={enterOutline} className="loginIcon headerIcon" />
-              <div>{interfaceLang.login}</div>
-            </Link>
-
-            <Link
+            {/* <Link
               to="/registration"
               className="headerRight_registration headerRight_el"
             >
-              {/* <IonIcon icon={enterOutline} className="loginIcon" /> */}
               <div>{interfaceLang.registration}</div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </>
@@ -294,14 +313,6 @@ function Header(props) {
 
   // -----------------------------------------------------------
 
-  function burgetClick() {
-    if (burgerHeight === BURGERHEIGHT && burgerHeight !== '')
-      setBurgerHeight(NO_BURGERHEIGHT)
-    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '') {
-      setBurgerHeight(BURGERHEIGHT)
-    }
-  }
-
   useClearSelectedOblast()
   useEffect(() => {
     setBurgerHeight('')
@@ -310,7 +321,7 @@ function Header(props) {
     if (location.pathname === '/') {
       // dispatch({type: CHANGE_SIDEHEIGHT, payload:SIDEHEIGHT})
     } else {
-      dispatch({type: CHANGE_SIDEHEIGHT, payload:NO_SIDEHEIGHT})
+      dispatch({ type: CHANGE_SIDEHEIGHT, payload: NO_SIDEHEIGHT })
     }
 
     // add to className "activeWord" on current page
@@ -325,6 +336,85 @@ function Header(props) {
       setHeaderLeft_explore('')
     }
   }, [])
+
+  function burgetClick() {
+    if (burgerHeight === BURGERHEIGHT && burgerHeight !== '')
+      setBurgerHeight(NO_BURGERHEIGHT)
+    else if (burgerHeight === NO_BURGERHEIGHT || burgerHeight === '') {
+      setBurgerHeight(BURGERHEIGHT)
+    }
+  }
+
+  const HoverProfileBlock = () => {
+    return (
+      <>
+        {hoverProfile ? (
+          <div
+            onMouseLeave={() => setHoverProfile(false)}
+            className="header_HoverProfileBlock"
+          >
+            <div className="header_HoverProfileBlock_email">
+              {user.data.email}
+            </div>
+            <div className="header_HoverProfileBlock_wrap">
+              <Link
+                to="/profile"
+                className="header_HoverProfileBlock_wrap_profile"
+              >
+                <div>{interfaceLang.profile.toLowerCase()}</div>
+              </Link>
+            </div>
+          </div>
+        ) : null}
+      </>
+    )
+  }
+
+  const LanguageChangeBlockSmall = () => {
+    return (
+      <>
+        {showLangBox ? (
+          <div
+            className="headerRight_language_drawer"
+            ref={refShowLangBox}
+            onMouseLeave={() => setshowLangBox((el) => !el)}
+          >
+            {culture.data.map((el, index) => {
+              return (
+                <div
+                  onClick={() => languageOptionClick(index)}
+                  key={el.id}
+                  className={`headerRight_language_drawer_el`}
+                >
+                  {el.name}
+                </div>
+              )
+            })}
+          </div>
+        ) : null}
+      </>
+    )
+  }
+
+  const LanguageChangeBlock = () => {
+    return (
+      <>
+        <div className="header_LanguageChangeBlock">
+          {culture.data.map((el, index) => {
+            return (
+              <div
+                onClick={() => languageOptionClick(index)}
+                key={el.id}
+                className={`header_LanguageChangeBlock_el`}
+              >
+                {el.name}
+              </div>
+            )
+          })}
+        </div>
+      </>
+    )
+  }
 
   const languageOptionClick = (index) => {
     setshowLangBox((el) => !el)
@@ -366,25 +456,9 @@ function Header(props) {
       {!culture.loading ? (
         <>
           {/* language popup */}
-          {showLangBox ? (
-            <div
-              className="headerRight_language_drawer"
-              ref={refShowLangBox}
-              onMouseLeave={() => setshowLangBox((el) => !el)}
-            >
-              {culture.data.map((el, index) => {
-                return (
-                  <div
-                    onClick={() => languageOptionClick(index)}
-                    key={el.id}
-                    className={`headerRight_language_drawer_el`}
-                  >
-                    {el.name}
-                  </div>
-                )
-              })}
-            </div>
-          ) : null}
+          <LanguageChangeBlockSmall />
+          {/* profile popup */}
+          <HoverProfileBlock />
 
           <div
             className={`headerSection ${sideHeight} headerSection_${burgerHeight}`}
@@ -397,23 +471,78 @@ function Header(props) {
             )}
           </div>
 
-          {screenWidth >= 780 ? null : (
-            <div className={`headerSection_burgerBackground ${burgerHeight}`}>
-              <div className="headerSection_burgerBackground_navigation">
-                <Link
-                  className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
-                  to="/"
-                >
-                  {interfaceLang.map}
-                </Link>
-                <Link
-                  className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
-                  to="/explore"
-                >
-                  {interfaceLang.explore}
-                </Link>
+          {screenWidth >= ADAPTIVE_S_1 ? null : (
+            <>
+              {isLangPopupVisible ? (
+                <PopupBlock setIsVisible={setIsLangPopupVisible}>
+                  <LanguageChangeBlock />
+                </PopupBlock>
+              ) : null}
+
+              <div className={`headerSection_burgerBackground ${burgerHeight}`}>
+                <div className="headerSection_burgerBackground_navigation">
+                  <div className="headerSection_burgerBackground_navigation_top">
+                    <div
+                      onClick={() => {
+                        setIsLangPopupVisible((el) => !el)
+                      }}
+                      className="headerLeft_language"
+                    >
+                      <IonIcon
+                        icon={globeOutline}
+                        className="profileIcon headerIcon"
+                      />
+                      <div>{culture.data[language].name}</div>
+                    </div>
+
+                    {user.data.role === 'notuser' ? (
+                      <div className="headerLeft_profile">
+                        <Link className={`headerLeft_profile_link`} to="/login">
+                          <div className={`headerLeft_profile_wrap`}>
+                            <IonIcon
+                              icon={enterOutline}
+                              className="headerLeft_map_navs_icon"
+                            />
+                            <div className="headerLeft_map_navs_text">
+                              {interfaceLang.login}
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="headerLeft_profile">
+                        <Link
+                          className={`headerLeft_profile_link`}
+                          to="/profile"
+                        >
+                          <div className={`headerLeft_profile_wrap`}>
+                            <IonIcon
+                              icon={personCircleOutline}
+                              className="headerLeft_map_navs_icon"
+                            />
+                            <div className="headerLeft_map_navs_text">
+                              {interfaceLang.profile}
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  <Link
+                    className={`headerLeft_map headerLeft_map_navs ${headerLeft_map}`}
+                    to="/"
+                  >
+                    {interfaceLang.map}
+                  </Link>
+                  <Link
+                    className={`headerLeft_explore headerLeft_map_navs ${headerLeft_explore}`}
+                    to="/explore"
+                  >
+                    {interfaceLang.explore}
+                  </Link>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </>
       ) : null}

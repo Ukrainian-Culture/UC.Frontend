@@ -50,7 +50,7 @@ $width_of_logo: 24px;
 
       .headerLeft_map_navs {
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
         text-decoration: none;
         font-size: 14px;
         width: fit-content;
@@ -125,8 +125,8 @@ $width_of_logo: 24px;
 
 .headerLeft,
 .headerRight {
-  min-width: 175px;
-  width: fit-content;
+  // background-color: pink;
+  width: 175px;
 }
 
 .mainHeader .headerRight {
@@ -144,26 +144,6 @@ $width_of_logo: 24px;
     cursor: pointer;
     color: $g_1;
     margin-left: 10px;
-  }
-}
-
-.headerRight_language_drawer {
-  background-color: $g_0;
-  border-radius: 10px;
-  padding: 10px 15px;
-  position: fixed;
-  margin-top: 60px;
-  z-index: 200;
-  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
-  font-weight: 500;
-
-  .headerRight_language_drawer_el {
-    cursor: pointer;
-    transition: color 0.15s ease-in-out;
-
-    &:hover {
-      color: $g_5;
-    }
   }
 }
 
@@ -240,10 +220,7 @@ $burger_menu_height: 13px;
       padding: 0 $header_padding_mobile;
 
       .headerRight {
-        // background-color: pink;
         display: flex;
-        justify-content: flex-end;
-        width: 180px;
 
         .innerBurgerButton {
           cursor: pointer;
@@ -282,11 +259,12 @@ $burger_menu_height: 13px;
 
     .headerSection_burgerBackground_navigation {
       position: absolute;
-      margin-top: $header_height * 2;
-      padding: 0 $header_padding_mobile;
+      margin-top: $header_height;
+
       z-index: 109;
 
       .headerLeft_map_navs {
+        padding: 0 $header_padding_mobile;
         display: flex;
         flex-direction: column;
         text-decoration: none;
@@ -299,6 +277,39 @@ $burger_menu_height: 13px;
 
       .activePage {
         color: $g_1;
+      }
+
+      .headerSection_burgerBackground_navigation_top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        width: 100vw;
+        height: 100%;
+        padding: 20px 0px;
+        // border-top: 2px solid $g_3;
+        border-bottom: 1px solid $g_3;
+        // background-color: pink;
+        font-size: 23px;
+        color: $g_1;
+
+        .headerLeft_language {
+          display: flex;
+          align-items: center;
+        }
+
+        .headerLeft_profile {
+          // background-color: yellow;s
+
+          .headerLeft_profile_link {
+            text-decoration: none;
+            color: $g_1;
+            .headerLeft_profile_wrap {
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
       }
     }
   }
@@ -385,6 +396,78 @@ $burger_menu_height: 13px;
         100% $header_height_mobile,
         0 $header_height_mobile
       );
+    }
+  }
+}
+
+// block to change language on big screen
+
+.headerRight_language_drawer {
+  background-color: $g_0;
+  border-radius: 10px;
+  padding: 10px 15px;
+  position: fixed;
+  margin-top: 60px;
+  z-index: 200;
+  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
+  font-weight: 500;
+
+  .headerRight_language_drawer_el {
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+
+    &:hover {
+      color: $g_5;
+    }
+  }
+}
+
+.header_LanguageChangeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px 0px;
+  width: 50vw;
+  height: 50vw;
+
+  .header_LanguageChangeBlock_el {
+    // background-color: pink;
+    text-align: center;
+    width: 100%;
+    font-size: 10vw;
+    font-weight: 500;
+  }
+}
+
+// block which appears when hover on profile button in header
+.header_HoverProfileBlock {
+  z-index: 110;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  margin-top: $header_height + 5px;
+  margin-right: $header_padding;
+  padding: 10px 20px;
+  background-color: $g_0;
+  border-radius: 7px;
+  width: fit-content;
+  // font-size: 16px;
+  box-shadow: -3px 3px 20px rgba(176, 176, 176, 0.2);
+
+  .header_HoverProfileBlock_email {
+    font-weight: 600;
+  }
+
+  .header_HoverProfileBlock_wrap{
+    margin-top: 5px;
+
+    .header_HoverProfileBlock_wrap_profile{
+      font-weight: 500;
+      font-size: 15px;
+      text-decoration: none;
+      color: $g_1;
     }
   }
 }
