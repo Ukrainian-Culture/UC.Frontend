@@ -26,20 +26,22 @@
     padding-bottom: 60px;
     text-align: center;
     font-weight: 300;
+
     div {
       height: 50px;
       line-height: 50px;
-      width: 200px;
+      width: fit-content;
+      padding: 0px 30px;
       background-color: $g_1;
       border-radius: 30px;
       span {
         font-weight: 500;
       }
     }
-    .feature2,
-    .feature3 {
-      min-width: 250px;
-    }
+    // .feature2,
+    // .feature3 {
+    //   min-width: 250px;
+    // }
   }
   .subscriptionButtons {
     display: flex;

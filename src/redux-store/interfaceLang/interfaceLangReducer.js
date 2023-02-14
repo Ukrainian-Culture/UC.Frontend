@@ -24,6 +24,16 @@ const initialState = {
 
     signIn_account: 'Sign in',
     new_user: "New user?",
+
+    subscription: "Subscription",
+    search: "search",
+    history: "history",
+    download_f_a: "download",
+    full_article: "full article",
+    article_f_t: "article",
+    full_translation: "full translation",
+    article_f_as: "article",
+    full_access: "full access",
   },
   '1': {
     map: 'Карта',
@@ -50,6 +60,16 @@ const initialState = {
 
     signIn_account: 'Ввійти в акаунт',
     new_user: "Новий користувач?",
+
+    subscription: "Підписка",
+    search: "пошук",
+    history: "історія",
+    download_f_a: "скачування",
+    full_article: "повної статті",
+    article_f_t: "переклад",
+    full_translation: "повної статті",
+    article_f_as: "повний доступ до",
+    full_access: "статті",
   },
 }
 
