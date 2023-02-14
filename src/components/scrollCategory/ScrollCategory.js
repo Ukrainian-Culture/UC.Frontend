@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CHANGE_FILTER } from '../../redux-store/selectedCategory/selectedCategoryConst'
 import '../scrollCategory/scrollCategory.scss'
+import axios from 'axios'
 
 function ScrollCategory() {
   //-------------------------------------------------------------
@@ -16,6 +17,7 @@ function ScrollCategory() {
   const store = useSelector((state) => state)
   // current id of language
   const language = store.changeLanguage.lang
+  const interfaceLang = store.interfaceLang;
   // corelated emoji to category
   const emojiCategory = store.emojiCategory.emoji
   const corelateCategories = store.categoriesInfoBlock.corelate
@@ -32,8 +34,6 @@ function ScrollCategory() {
 
   const animationOnHoverCategory = (e) => {
     const ctx = gsap.context(() => {
-      // tl_hover.current && tl_hover.current.progress(0).kill()
-
       tl_hover.current = gsap
         .timeline()
         .to('.scrollCategory_el_p', { y: -5, stagger: 0.08, duration: 0.3 })
@@ -49,23 +49,20 @@ function ScrollCategory() {
     return () => ctx.revert()
   }
 
-  // useEffect(() => {
-  //   const ctx = gsap.context(() => {
-  //     tl.current && tl.current.progress(0).kill()
-
-  //     tl.current = gsap
-  //       .timeline()
-  //       .from('.scrollCategory_el', { opacity: 0, y: -25, stagger: 0.03 })
-  //   }, wrapScrollCategory)
-
-  //   return () => ctx.revert()
-  // }, [])
-
-  // useEffect(() => {console.log()}, [])
-
   return (
     <div className="scrollCategory" ref={wrapScrollCategory}>
       <div className="scrollCategory_wrap">
+
+
+        <div className="scrollCategory_el_wrapp"        >
+          <input
+           // onChange={}
+            type="text"
+            className="scrollCategory_el "
+            placeholder={`${emojiCategory["search"]}` + interfaceLang[language].search}
+          />
+        </div>
+
         {store.categoriesInfoBlock[language].map((el, index) => {
           return (
             <div
@@ -73,7 +70,7 @@ function ScrollCategory() {
                 changeFilter(corelateCategories(el, language))
               }}
               onMouseEnter={(e) => animationOnHoverCategory(e)}
-              onMouseLeave={(e) => animationLeaveHoverCategory()}
+              onMouseLeave={(_) => animationLeaveHoverCategory()}
               className="scrollCategory_el_wrapp"
               key={`srccat_${index}`}
             >
@@ -87,7 +84,7 @@ function ScrollCategory() {
           )
         })}
       </div>
-    </div>
+    </div >
   )
 }
 

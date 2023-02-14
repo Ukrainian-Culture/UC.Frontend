@@ -21,10 +21,10 @@ const initialState = {
     your_email: 'your email',
     subscription: 'Subscription',
     add_subscription: 'add subscription',
-
+    
     signIn_account: 'Sign in',
     new_user: "New user?",
-
+    search: "search",
     subscription: "Subscription",
     search: "search",
     history: "history",
@@ -57,7 +57,7 @@ const initialState = {
     your_email: 'ваша пошта',
     subscription: 'Підписка',
     add_subscription: 'додати підписку',
-
+    search: "пошук",
     signIn_account: 'Ввійти в акаунт',
     new_user: "Новий користувач?",
 
@@ -75,6 +75,7 @@ const initialState = {
 
 const interfaceLangReducer = (state = initialState, action) => {
   return { ...state }
+
 }
 
 export default interfaceLangReducer

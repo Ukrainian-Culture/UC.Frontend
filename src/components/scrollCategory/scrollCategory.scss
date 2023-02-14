@@ -16,17 +16,20 @@ $padding_brick: 80px;
     visibility: hidden;
     height: 8px;
   }
+
   ::-webkit-scrollbar-thumb {
     visibility: hidden;
   }
 
   &:hover {
+
     // @include scroll_thumb_horizontal;
     ::-webkit-scrollbar {
       visibility: visible;
       height: 8px;
       background-color: $g_0;
     }
+
     ::-webkit-scrollbar-thumb {
       visibility: visible;
       background-color: $g_3;
@@ -42,16 +45,16 @@ $padding_brick: 80px;
     padding-bottom: 25px;
 
     .scrollCategory_el_wrapp {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .scrollCategory_el {
         display: flex;
         gap: 5px;
         justify-content: center;
         align-items: center;
-        
+
         background-color: $g_0;
         height: $height_brick;
         width: fit-content;
@@ -68,6 +71,18 @@ $padding_brick: 80px;
           display: flex;
         }
       }
+
+      input.scrollCategory_el {
+        border: none;
+        width: 100px;
+        max-width: 100%;
+        transition-duration: 1.2s;
+      }
+
+      input.scrollCategory_el:focus {
+        width: 68vw;
+        border: none;
+      }
     }
   }
 }
@@ -80,20 +95,41 @@ $padding_brick: 80px;
       visibility: hidden;
       height: 0px;
     }
+
     ::-webkit-scrollbar-thumb {
       visibility: hidden;
     }
 
     &:hover {
+
       // @include scroll_thumb_horizontal;
       ::-webkit-scrollbar {
         visibility: visible;
         height: 0px;
         background-color: $g_0;
       }
+
       ::-webkit-scrollbar-thumb {
         visibility: visible;
         background-color: $g_3;
+      }
+    }
+
+    .scrollCategory_wrap {
+  
+      .scrollCategory_el_wrapp {
+      
+        input.scrollCategory_el {
+          border: none;
+          width: 100px;
+          max-width: 100%;
+          transition-duration: 1.2s;
+        }
+
+        input.scrollCategory_el:focus {
+          width: 40vw;
+          border: none;
+        }
       }
     }
   }
