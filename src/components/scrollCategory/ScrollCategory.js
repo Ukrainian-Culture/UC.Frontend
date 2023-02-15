@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CHANGE_FILTER } from '../../redux-store/selectedCategory/selectedCategoryConst'
 import '../scrollCategory/scrollCategory.scss'
 import axios from 'axios'
+import { SEARCH_CHANGE } from '../../redux-store/search/searchConst'
+import { useCallback } from 'react'
+import debounce from 'lodash.debounce'
 
 function ScrollCategory() {
   //-------------------------------------------------------------
@@ -17,17 +20,19 @@ function ScrollCategory() {
   const store = useSelector((state) => state)
   // current id of language
   const language = store.changeLanguage.lang
-  const interfaceLang = store.interfaceLang;
+  const culture = store.culture
+  const interfaceLang = store.interfaceLang
   // corelated emoji to category
   const emojiCategory = store.emojiCategory.emoji
   const corelateCategories = store.categoriesInfoBlock.corelate
 
-  // filter category name
-  // const [filterCategory, setFilterCategory] = useState('all')s
+  const search = store.search.data
 
   const tl = useRef()
   const tl_hover = useRef()
   const wrapScrollCategory = useRef()
+
+  const [searchFocus, setSearchFocus] = useState(false)
   // =====================================
 
   // ------------------------------------
@@ -49,17 +54,31 @@ function ScrollCategory() {
     return () => ctx.revert()
   }
 
+  const changeSearchText = (val) => {
+    dispatch({ type: SEARCH_CHANGE, payload: val })
+  }
+
+  useEffect(() => {
+    wrapScrollCategory.current.style.overflow = searchFocus ? 'hidden' : 'auto'
+  }, [searchFocus])
+
   return (
-    <div className="scrollCategory" ref={wrapScrollCategory}>
-      <div className="scrollCategory_wrap">
-
-
-        <div className="scrollCategory_el_wrapp"        >
+    <div className="scrollCategory">
+      <div className="scrollCategory_wrap" ref={wrapScrollCategory}>
+        <div className="scrollCategory_el_wrapp">
           <input
-           // onChange={}
+            value={search || ''}
+            onChange={(e) => changeSearchText(e.target.value)}
+            onFocus={() => setSearchFocus(true)}
+            onBlur={() => {
+              setSearchFocus(false)
+              changeSearchText('')
+            }}
             type="text"
             className="scrollCategory_el "
-            placeholder={`${emojiCategory["search"]}` + interfaceLang[language].search}
+            placeholder={
+              `${emojiCategory['search']}` + interfaceLang[language].search
+            }
           />
         </div>
 
@@ -84,7 +103,7 @@ function ScrollCategory() {
           )
         })}
       </div>
-    </div >
+    </div>
   )
 }
 
