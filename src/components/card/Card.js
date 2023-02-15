@@ -1,10 +1,20 @@
 import React, { useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import '../card/card.scss'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
+import { SEARCH_CHANGE } from '../../redux-store/search/searchConst'
 
 function Card(props) {
+  const dispatch = useDispatch()
+  
+  const changeSearchText = (val) => {
+    dispatch({ type: SEARCH_CHANGE, payload: val })
+  }
+
+  const state = useSelector((state) => state)
+
+  // -------------------------------------------
   const {articleId ,title, subText, category, region } = props.el
   const emojiCategory = useSelector((state) => state.emojiCategory.emoji)
 
@@ -22,15 +32,6 @@ function Card(props) {
     }
     return p_text
   }
-  // function croppedText(p_text) {
-  //   const maxLength = 110
-
-  //   if (p_text.length > maxLength) {
-  //     return `${p_text.slice(0, maxLength)}`
-  //   }
-  //   return p_text
-  // }
-
   // -----------------------------------------------
 
   const animEnterHover = (e) => {
@@ -62,7 +63,8 @@ function Card(props) {
 
   return (
     <>
-      <Link className="cardBlock" to={`/article/${articleId}`} ref={cardWrap} state={{shortDesc: subText, el: props.el}}>
+      <Link
+      onClick={()=>changeSearchText('')} className="cardBlock" to={`/article/${articleId}`} ref={cardWrap} state={{shortDesc: subText, el: props.el}}>
         <div className="cardBlock_title">{title}</div>
 
         <div className="cardBlock_bottomWrapper">
