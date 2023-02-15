@@ -19,11 +19,13 @@ import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import LoadingPage from '../loadingPage/LoadingPage'
 import LoadingPlates from '../loadingPage/loadingPlates/LoadingPlates'
+import { type } from '@testing-library/user-event/dist/type'
 
 function ExplorePage() {
   const state = useSelector((state) => state)
   // fetched array with articles
   const [articleArr, setArticleArr] = useState(state.fetchExplore.arr)
+  const [searchArr, setSearchArr] = useState([])
   // current language
   const language = state.changeLanguage.lang
   // filter category
@@ -54,6 +56,10 @@ function ExplorePage() {
     else return filterCategory
   }
 
+  const getPlatesArr = () => {
+    return state.search.data === '' ? fetchExplore.data : searchArr
+  }
+
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
     if (!culture.loading) {
@@ -70,7 +76,21 @@ function ExplorePage() {
         })
     }
   }, [culture])
-  ///////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    if (state.search.data !== '') {
+
+      const url = `${state.startSettings.domain}/api/Search/articleTiles/${culture.data[language]?.id}/${state.search.data}`
+      fetch(url)
+        .then((res) => res.json())
+        .then((res) => {
+          // console.log(res)
+          setSearchArr(res)
+        })
+    }
+  }, [state.search.data])
+
+  /////////////////////////////////////////////////////////////////////
 
   // change do filtration when selected filtration category
   useEffect(() => {
@@ -114,9 +134,9 @@ function ExplorePage() {
             <ScrollCategory />
           </div>
 
-          {!fetchExplore.loading && fetchExplore.error === '' ? (
+          {!fetchExplore.loading && fetchExplore.error === '' && typeof(getPlatesArr()) !== 'undefined' ? (
             <div className="explorePage_mainPlates">
-              {fetchExplore.data.map((el, index) => {
+              {getPlatesArr().map((el, index) => {
                 if (
                   categoryToDisplay().includes(el.category.toLowerCase()) ||
                   filterCategory == 'all'
@@ -126,7 +146,7 @@ function ExplorePage() {
               })}
             </div>
           ) : (
-            <LoadingPlates explore={true}/>
+            <LoadingPlates explore={true} />
             // <LoadingEmoji />
           )}
         </div>

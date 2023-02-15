@@ -1,4 +1,3 @@
->header:
--add block oh hover on profile button in header;
->subscription:
-- add localization;
+> Search:
+- add api requests;
+- change styles slightly;

@@ -351,7 +351,7 @@ function Header(props) {
         {hoverProfile ? (
           <div
             onMouseLeave={() => setHoverProfile(false)}
-            className="header_HoverProfileBlock"
+            className={`header_HoverProfileBlock header_HoverProfileBlock${explore ? '_explore' : ''}`}
           >
             <div className="header_HoverProfileBlock_email">
               {user.data.email}
