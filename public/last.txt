@@ -1,3 +1,4 @@
+> 404 error:
+- solve 404 error;
 > Search:
-- add api requests;
-- change styles slightly;
+- fix bug;

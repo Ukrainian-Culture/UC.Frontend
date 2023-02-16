@@ -1,7 +1,8 @@
-export function Email(_email){
+export function EmailValidation(_email){
     const [user_name, full_domain] = _email.split('@')
 
     const [mail_server, domain] = full_domain.split('.')
+    console.log(mail_server, domain)
 
     const user_name_validation = /[a-zA-Z._]+[0-9]*[a-zA-Z._]+/
     const mail_server_validation = /[a-z]+/
@@ -25,6 +26,7 @@ export function Email(_email){
             ok: false,
         }
     }
+
     else if(!user_name.match(user_name_validation)){
         return {
             message: ['User name must contain only letters and numbers','Ім\'я куристувача мусить містити лише літери та цифри'],
@@ -32,6 +34,7 @@ export function Email(_email){
         }
     }
     else if(!mail_server.match(mail_server_validation)){
+
         return {
             message: ['Mail server must contain only letters in lowercase','Сервер мусить містити лише малі літери'],
             ok: false,
@@ -56,7 +59,7 @@ export function Email(_email){
         }
     }
 }
-export function Password(_password){
+export function PasswordValidation(_password){
     if(_password.length < 8 ){
         return {
             message: ['Password is too short. It should be at least 8 characters long','Пароль закороткий. Пароль мусить бути принаймні 8 символів'],

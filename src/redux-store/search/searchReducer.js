@@ -1,4 +1,4 @@
-import { SEARCH_CHANGE } from './searchConst'
+import { SEARCH_CHANGE, SEARCH_CLEAR_SWAP } from './searchConst'
 
 const initialState = {
   data: '',
@@ -16,4 +16,4 @@ const searchReducer = (state = initialState, action) => {
   }
 }
 
-export default searchReducer;
+export default searchReducer

@@ -128,13 +128,13 @@ function Header(props) {
         <>
           <div className="mainHeader_oblastName">
             <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
-              {aboutOblast.aboutOblast[redionId].emoji}
+              {/* {aboutOblast.aboutOblast[redionId].emoji} */}
             </div>
             <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
-              {aboutOblast.aboutOblast[redionId][language]}
+              {/* {aboutOblast.aboutOblast[redionId][language]} */}
             </div>
             <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
-              {aboutOblast.region[language]}
+              {/* {aboutOblast.region[language]} */}
             </div>
           </div>
         </>

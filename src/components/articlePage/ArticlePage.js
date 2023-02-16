@@ -33,6 +33,8 @@ function ArticlePage() {
 
   // current language
   const language = state.changeLanguage.lang
+
+  const user = state.user
   const fetchArticle = state.fetchArticle
   const domain = state.startSettings.domain
   const categoryLocale = state.categoryLocale
@@ -49,7 +51,7 @@ function ArticlePage() {
   const { id } = useParams()
   // state variable which we pass throught Link element
   const location = useLocation()
-  const { articleId, title, subText, category, region } = location.state.el
+  // const { articleId, title, subText, category, region } = location.state.el
   const [startLoad, setStartLoad] = useState(false)
   const [openDownloadCard, setDownloadCard] = useState(false)
 
@@ -78,6 +80,26 @@ function ArticlePage() {
   // -----------------------------------------------------------
 
   //////////////////////////////////////////////////////////////////
+
+  const addArticleToHistory = () => {
+    const url = `${state.startSettings.userRequestDomain}/api/${user.data.email}/UserHistory`
+
+    // const date = new Date()
+    const reqBody = {
+      dateOfWatch: '10.01.2022',
+      title: id,
+    }
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(reqBody),
+    })
+      // .then((res) => console.log("addArticleToHistory",res))
+  }
+
   useEffect(() => {
     // console.log('oh shit', articleId, id)
 
@@ -93,6 +115,9 @@ function ArticlePage() {
         .catch((e) => {
           dispatch({ type: FETCH_ARTICLE_ERROR, error: e })
         })
+
+      // write viewed article to database
+      addArticleToHistory()
     }
   }, [culture])
   //////////////////////////////////////////////////////////////////
@@ -113,25 +138,23 @@ function ArticlePage() {
       <StartAppRequests />
       <LoadingPage main={true} />
 
-      <div className="articlePage" ref={refWidth}>
-        <Header
-          article={true}
-          articleRegion={fetchArticle.data.region || region || ''}
-        />
-        <div className="articlePage_wrap">
-          <div className="articlePage_wrap_navigation">
-            <div
-              className="articlePage_wrap_navigation_back"
-              onClick={() => backClick()}
-            >
-              <div className="articlePage_wrap_navigation_back_el"></div>
-              <div className="articlePage_wrap_navigation_back_el">
-                {interfaceLang.back}
+      {!fetchArticle.loading ? (
+        <div className="articlePage" ref={refWidth}>
+          <Header article={true} articleRegion={fetchArticle.data.region} />
+          <div className="articlePage_wrap">
+            <div className="articlePage_wrap_navigation">
+              <div
+                className="articlePage_wrap_navigation_back"
+                onClick={() => backClick()}
+              >
+                <div className="articlePage_wrap_navigation_back_el"></div>
+                <div className="articlePage_wrap_navigation_back_el">
+                  {interfaceLang.back}
+                </div>
               </div>
-            </div>
 
-            <div className="articlePage_wrap_navigation_helpers">
-              {/* <div
+              <div className="articlePage_wrap_navigation_helpers">
+                {/* <div
               className="articlePage_wrap_navigation_helpers_download"
               onClick={() => {
                 downloadPDF()
@@ -145,20 +168,21 @@ function ArticlePage() {
               :null
               }
             </div> */}
+              </div>
             </div>
-          </div>
-          <div className="articlePage_wrap_navigation_title">
-            {title || fetchArticle.data.title}
-          </div>
-          <div className="articlePage_wrap_content">
-            <div className="articlePage_wrap_content_side"></div>
-            <div className="articlePage_wrap_content_text">
-              {fetchArticle.data.content || 'no content 🤯'}
+            <div className="articlePage_wrap_navigation_title">
+              {fetchArticle.data.title}
             </div>
-            <div className="articlePage_wrap_content_side"></div>
+            <div className="articlePage_wrap_content">
+              <div className="articlePage_wrap_content_side"></div>
+              <div className="articlePage_wrap_content_text">
+                {fetchArticle.data.content || 'no content 🤯'}
+              </div>
+              <div className="articlePage_wrap_content_side"></div>
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
     </>
   )
 }

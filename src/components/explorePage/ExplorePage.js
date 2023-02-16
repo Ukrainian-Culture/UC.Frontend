@@ -20,6 +20,8 @@ import StartAppRequests from '../../hooks/StartAppRequests'
 import LoadingPage from '../loadingPage/LoadingPage'
 import LoadingPlates from '../loadingPage/loadingPlates/LoadingPlates'
 import { type } from '@testing-library/user-event/dist/type'
+import { SEARCH_CHANGE } from '../../redux-store/search/searchConst'
+import { search } from 'ionicons/icons'
 
 function ExplorePage() {
   const state = useSelector((state) => state)
@@ -48,6 +50,7 @@ function ExplorePage() {
   const changeSideHeight = (param) => {
     dispatch({ type: CHANGE_SIDEHEIGHT, payload: `${param}` })
   }
+
   //-------------------------------------------------------------
 
   // returns array of filters catefories
@@ -79,7 +82,6 @@ function ExplorePage() {
 
   useEffect(() => {
     if (state.search.data !== '') {
-
       const url = `${state.startSettings.domain}/api/Search/articleTiles/${culture.data[language]?.id}/${state.search.data}`
       fetch(url)
         .then((res) => res.json())
@@ -134,14 +136,19 @@ function ExplorePage() {
             <ScrollCategory />
           </div>
 
-          {!fetchExplore.loading && fetchExplore.error === '' && typeof(getPlatesArr()) !== 'undefined' ? (
+          {!fetchExplore.loading &&
+          fetchExplore.error === '' &&
+          typeof getPlatesArr() !== 'undefined' &&
+          getPlatesArr().length !== 0? (
             <div className="explorePage_mainPlates">
               {getPlatesArr().map((el, index) => {
                 if (
                   categoryToDisplay().includes(el.category.toLowerCase()) ||
                   filterCategory == 'all'
                 ) {
-                  return <Card el={el} key={`EPMP__${index}`} />
+                  return (
+                    <Card el={el} key={`EPMP__${index}_${state.search.data}`} />
+                  )
                 }
               })}
             </div>

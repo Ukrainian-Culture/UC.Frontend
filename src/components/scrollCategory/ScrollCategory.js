@@ -4,9 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CHANGE_FILTER } from '../../redux-store/selectedCategory/selectedCategoryConst'
 import '../scrollCategory/scrollCategory.scss'
 import axios from 'axios'
-import { SEARCH_CHANGE } from '../../redux-store/search/searchConst'
+import {
+  SEARCH_CHANGE,
+  SEARCH_CLEAR_SWAP,
+} from '../../redux-store/search/searchConst'
 import { useCallback } from 'react'
 import debounce from 'lodash.debounce'
+import { IonIcon } from '@ionic/react'
+import { globeOutline, closeOutline } from 'ionicons/icons'
 
 function ScrollCategory() {
   //-------------------------------------------------------------
@@ -16,7 +21,12 @@ function ScrollCategory() {
   const changeFilter = (param) => {
     dispatch({ type: CHANGE_FILTER, payload: `${param}` })
   }
+  const changeSearchText = (val) => {
+    dispatch({ type: SEARCH_CHANGE, payload: val })
+  }
+
   //-------------------------------------------------------------
+
   const store = useSelector((state) => state)
   // current id of language
   const language = store.changeLanguage.lang
@@ -33,8 +43,7 @@ function ScrollCategory() {
   const wrapScrollCategory = useRef()
 
   const [searchFocus, setSearchFocus] = useState(false)
-  // =====================================
-
+  const searchRef = useRef()
   // ------------------------------------
 
   const animationOnHoverCategory = (e) => {
@@ -54,10 +63,6 @@ function ScrollCategory() {
     return () => ctx.revert()
   }
 
-  const changeSearchText = (val) => {
-    dispatch({ type: SEARCH_CHANGE, payload: val })
-  }
-
   useEffect(() => {
     wrapScrollCategory.current.style.overflow = searchFocus ? 'hidden' : 'auto'
   }, [searchFocus])
@@ -65,21 +70,35 @@ function ScrollCategory() {
   return (
     <div className="scrollCategory">
       <div className="scrollCategory_wrap" ref={wrapScrollCategory}>
-        <div className="scrollCategory_el_wrapp">
+        <div
+          onClick={() => {
+            setSearchFocus(true)
+            searchRef.current && searchRef.current.focus()
+          }}
+          className={`scrollCategory_el_wrapp scrollCategory_el_wrapp_search scrollCategory_el_wrapp_search_${searchFocus}`}
+        >
           <input
+          ref={searchRef}
             value={search || ''}
             onChange={(e) => changeSearchText(e.target.value)}
-            onFocus={() => setSearchFocus(true)}
-            onBlur={() => {
-              setSearchFocus(false)
-              changeSearchText('')
-            }}
             type="text"
             className="scrollCategory_el "
             placeholder={
-              `${emojiCategory['search']}` + interfaceLang[language].search
+              `${emojiCategory['search']} ${interfaceLang[language].search}`
             }
           />
+          <div
+            className={`scrollCategory_el_ scrollCategory_el_${searchFocus}`}
+          >
+            <IonIcon
+              onClick={(e) => {
+                e.stopPropagation()
+                setSearchFocus(false)
+                changeSearchText('')
+              }}
+              icon={closeOutline}
+            />
+          </div>
         </div>
 
         {store.categoriesInfoBlock[language].map((el, index) => {

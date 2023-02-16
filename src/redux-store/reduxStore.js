@@ -25,6 +25,7 @@ import fetchOnlineReducer from './fetchUserOnline/fetchUserOnlineReducer'
 import profileCategoryReducer from './profileCategory/profileCategoryReducer'
 import fetchUserReducer from './fetchUser/fetchUserReducer'
 import searchReducer from './search/searchReducer'
+import fetchUserHistoryReducer from './fetchUserHistory/fetchUserHistoryReducer'
 
 const rootReducer = combineReducers({
   interfaceLang: interfaceLangReducer,
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
   userOnline: fetchOnlineReducer,
   profileCategory: profileCategoryReducer,
   user: fetchUserReducer,
+  userHistory: fetchUserHistoryReducer,
   search: searchReducer,
 })
 

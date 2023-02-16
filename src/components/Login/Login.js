@@ -15,6 +15,7 @@ import {
 } from '../../redux-store/fetchUser/fetchUserConst'
 import useLocalToken from '../../hooks/useLocalToken'
 import useLogin from '../../hooks/useLogin'
+import { EmailValidation, PasswordValidation } from '../../hooks/Validation'
 
 function Login() {
   const dispatch = useDispatch()
@@ -35,6 +36,14 @@ function Login() {
   const [isEmailWrong, setIsEmailWrong] = useState(false)
   const [isPassWrong, setIsConfPassWrong] = useState(false)
   const [isConfPassWrong, setIsPassWrong] = useState(false)
+
+  const emptyValidation = {
+    message: '',
+    error: false,
+  }
+
+  const [emailError, setEmailError] = useState(emptyValidation)
+  const [passError, setPassError] = useState(emptyValidation)
 
   const [submitData, setSubmitData] = useState(null)
 
@@ -57,11 +66,18 @@ function Login() {
   const GetLocEmail = (e) => {
     const def = e.target.value
     setLocEmail(def)
+    if (def.includes('@')) {
+      setEmailError(EmailValidation(def))
+      console.log(EmailValidation(def))
+    }
+
+    if (def === '') setEmailError(emptyValidation)
   }
   // get pass from user
   const GetLocPass = (e) => {
     const def = FormatingPassword(e.target.value)
     setLocPass(def)
+    setPassError(PasswordValidation(def))
   }
 
   // function which check if account can be created
@@ -82,7 +98,6 @@ function Login() {
     }
   }
   //////////////////////////////////////////////////////////////////////
-
 
   // signing in
   useLogin(submitData)
@@ -132,6 +147,10 @@ function Login() {
                   placeholder={`${state.interfaceLang[language].email}`}
                 />
 
+                <div className="LoginForms_emailError LoginForms_Error">
+                  {emailError.message[language]}
+                </div>
+
                 <input
                   value={locPass}
                   onChange={(e) => GetLocPass(e)}
@@ -139,6 +158,10 @@ function Login() {
                   className="PasswordInput"
                   placeholder={`${state.interfaceLang[language].password}`}
                 />
+
+                <div className="LoginForms_emailPass LoginForms_Error">
+                  {passError.message[language]}
+                </div>
 
                 <div onClick={submitFormData} className="LoginButton">
                   {state.interfaceLang[language].signin}

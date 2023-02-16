@@ -23,8 +23,8 @@ function ProfileRenderer(props) {
     switch (profileCategory['user'][0][currentCateg]) {
       case 'profile':
         return <UserProfileTab />
-      case 'history':
-        return <UserHistory />
+      // case 'history':
+      //   return <UserHistory />
       case 'mailing':
         return <>mailing</>
       default:
@@ -35,4 +35,4 @@ function ProfileRenderer(props) {
   return <>{user.data.role === 'user' ? <UserRenderer /> : <AdminRenderer />}</>
 }
 
-export default ProfileRenderer
+export default React.memo(ProfileRenderer)
