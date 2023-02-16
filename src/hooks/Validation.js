@@ -4,8 +4,8 @@ export function Email(_email){
     const [mail_server, domain] = full_domain.split('.')
 
     const user_name_validation = /[a-zA-Z._]+[0-9]*[a-zA-Z._]+/
-    const mail_server_validation = /[a-zA-Z]+/
-    const domain_validation = /[a-zA-Z]/
+    const mail_server_validation = /[a-z]+/
+    const domain_validation = /[a-z]+/
 
     if(!user_name.length){
         return {
@@ -25,21 +25,21 @@ export function Email(_email){
             ok: false,
         }
     }
-    else if(user_name.match(user_name_validation)){
+    else if(!user_name.match(user_name_validation)){
         return {
             message: ['User name must contain only letters and numbers','Ім\'я куристувача мусить містити лише літери та цифри'],
             ok: false,
         }
     }
-    else if(mail_server.match(mail_server_validation)){
+    else if(!mail_server.match(mail_server_validation)){
         return {
-            message: ['Mail server must contain only letters','Сервер мусить містити лише літери'],
+            message: ['Mail server must contain only letters in lowercase','Сервер мусить містити лише малі літери'],
             ok: false,
         }
     }
-    else if(domain.match(domain_validation)){
+    else if(!domain.match(domain_validation)){
         return {
-            message: ['Domain must contain only letters','Домен мусить містити лише літери'],
+            message: ['Domain must contain only letters in lowercase','Домен мусить містити лише малі літери'],
             ok: false,
         }
     }
