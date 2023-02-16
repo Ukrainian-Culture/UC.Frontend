@@ -90,7 +90,7 @@ export function PasswordValidation(_password){
             ok: false,
         }
     }
-    else if(!_password.match(/[0-1]/)){
+    else if(!_password.match(/[0-9]/)){
         return {
             message: ['Password must contain at least one number','Пароль мусить містити принаймні одну цифру'],
             ok: false,
