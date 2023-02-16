@@ -23,8 +23,8 @@ function ProfileRenderer(props) {
     switch (profileCategory['user'][0][currentCateg]) {
       case 'profile':
         return <UserProfileTab />
-      // case 'history':
-      //   return <UserHistory />
+      case 'history':
+        return <UserHistory />
       case 'mailing':
         return <>mailing</>
       default:

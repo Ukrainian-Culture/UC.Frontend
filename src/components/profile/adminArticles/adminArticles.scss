@@ -1,6 +1,6 @@
-@import "../../../settings/settings.scss";
+@import '../../../settings/settings.scss';
 
-.AdminArticles_Section{
+.AdminArticles_Section {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -8,7 +8,7 @@
   .AdminArticles_Wrap {
     display: flex;
     flex-direction: column;
-    .AdminArticles_Section_articleIdWrap{
+    .AdminArticles_Section_articleIdWrap {
       width: fit-content;
     }
     .articleIdWrap {
@@ -54,7 +54,6 @@
       padding: 5px 0px 0px 60px;
 
       .leftWrap {
-
         .tittleWrap {
           width: fit-content;
 
@@ -127,11 +126,30 @@
       }
 
       .contentArea {
-        width:70.5vw;
+        width: 70.5vw;
         height: 18vh;
         border: none;
         border-radius: 5px;
         resize: vertical;
+      }
+    }
+
+    .submitWrap {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+
+      .submitWrap_button {
+        text-align: center;
+        background-color: $g_1;
+        width: 7vw;
+        height: 6vh;
+        color: $g_0;
+        border: none;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 15px;
+        cursor: pointer;
       }
     }
   }

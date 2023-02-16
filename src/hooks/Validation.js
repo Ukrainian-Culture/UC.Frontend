@@ -2,7 +2,6 @@ export function EmailValidation(_email){
     const [user_name, full_domain] = _email.split('@')
 
     const [mail_server, domain] = full_domain.split('.')
-    console.log(mail_server, domain)
 
     const user_name_validation = /[a-zA-Z._]+[0-9]*[a-zA-Z._]+/
     const mail_server_validation = /[a-z]+/
@@ -46,7 +45,7 @@ export function EmailValidation(_email){
             ok: false,
         }
     }
-    else if(domain.length >= 2 && domain.length <= 4){
+    else if(domain.length < 2 || domain.length > 3){
         return {
             message: ['Domain must be at least 2 letters long and shorter than 4 letters','Домен мусить містити від 2 до 4 літер'],
             ok: false,

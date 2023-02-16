@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import '../popupSubs/popupSubs.scss'
 import Subscription from '../Subscription'
 
-function PopupSubs({ setIsVisible, setDaysAmount }) {
+function PopupSubs({ setIsVisible, setDaysAmount, setIsSubmit }) {
   //   const [isVisible, setIsVisible] = useState(true)
 
   return (
@@ -17,7 +17,10 @@ function PopupSubs({ setIsVisible, setDaysAmount }) {
             setDaysAmount={setDaysAmount}
           />
           <div
-            onClick={() => setIsVisible((el) => !el)}
+            onClick={() => {
+              setIsVisible((el) => !el)
+              setIsSubmit(false)
+            }}
             className="PopupSubs_Section_content_close"
           >
             <IonIcon className="popup_icon" icon={closeOutline} />

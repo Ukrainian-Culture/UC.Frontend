@@ -55,6 +55,10 @@ async function useLogin(submitData) {
               error: JSON.stringify(res),
             })
           }
+
+          return res
+        }).catch((e)=>{
+          console.log("logging error")
         })
     }
   }, [submitData])
