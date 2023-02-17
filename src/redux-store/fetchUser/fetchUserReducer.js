@@ -1,7 +1,14 @@
-import { FETCH_USER_ERROR, FETCH_USER_SUCCESS } from './fetchUserConst'
+import {
+  FETCH_USER_ERROR,
+  FETCH_USER_SUCCESS,
+  USER_CHANGE_EMAIL,
+  USER_CLEAR_ERROR,
+  USER_LOGOUT,
+  USER_REGISTRATION_CALL,
+} from './fetchUserConst'
 
 const initialState = {
-  loading: false,
+  loading: true,
   data: {
     role: 'notuser',
     email: '',
@@ -64,26 +71,60 @@ const FormatData = (payload) => {
     startDate: t_startDate,
     endDate: t_endDate,
   }
-
 }
 
 const fetchUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER_SUCCESS:
-      
-
       return {
         ...state,
         loading: false,
-        data: { ...state.data, ...action.payload, ...FormatData(action.payload)},
+        data: {
+          ...state.data,
+          ...action.payload,
+          ...FormatData(action.payload),
+        },
+        error: '',
+      }
+    case USER_REGISTRATION_CALL:
+      return {
+        ...state,
+        loading: true,
+        data: {
+          ...state.data,
+          ...action.payload,
+        },
+        error: '',
+      }
+    case USER_LOGOUT:
+      return {
+        ...state,
+        loading: true,
+        data: {
+          ...state.data,
+          role: 'notuser',
+          email: '',
+          accessToken: '',
+          refreshToken: '',
+          startDate: [],
+          endDate: [],
+          daysAmount: 0,
+        },
         error: '',
       }
     case FETCH_USER_ERROR:
       return {
         ...state,
-        loading: false,
-        data: {...state.data},
+        loading: true,
+        data: { ...state.data },
         error: action.error,
+      }
+    case USER_CLEAR_ERROR:
+      return {
+        ...state,
+        loading: true,
+        data: { ...state.data },
+        error: '',
       }
     default:
       return state

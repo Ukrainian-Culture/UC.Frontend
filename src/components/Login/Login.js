@@ -12,10 +12,12 @@ import { useNavigate } from 'react-router-dom'
 import {
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
+  USER_CLEAR_ERROR,
 } from '../../redux-store/fetchUser/fetchUserConst'
 import useLocalToken from '../../hooks/useLocalToken'
 import useLogin from '../../hooks/useLogin'
 import { EmailValidation, PasswordValidation } from '../../hooks/Validation'
+import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
 
 function Login() {
   const dispatch = useDispatch()
@@ -46,6 +48,7 @@ function Login() {
   const [passError, setPassError] = useState(emptyValidation)
 
   const [submitData, setSubmitData] = useState(null)
+  const [isSubmit, setIsSubmit] = useState(false)
 
   //==============================================
 
@@ -66,18 +69,21 @@ function Login() {
   const GetLocEmail = (e) => {
     const def = e.target.value
     setLocEmail(def)
-    if (def.includes('@')) {
+    if (def.includes('@') && def.split('.').length == 2) {
       setEmailError(EmailValidation(def))
-      console.log(EmailValidation(def))
     }
 
     if (def === '') setEmailError(emptyValidation)
+
+    if (user.error !== '') dispatch({ type: USER_CLEAR_ERROR })
   }
   // get pass from user
   const GetLocPass = (e) => {
     const def = FormatingPassword(e.target.value)
     setLocPass(def)
     setPassError(PasswordValidation(def))
+
+    if (def === '') setPassError(emptyValidation)
   }
 
   // function which check if account can be created
@@ -94,17 +100,42 @@ function Login() {
         email: locEmail,
         password: locPass,
       })
+
+      setIsSubmit(true)
       console.log('start submitData')
     }
   }
+
+  const LoggingErrorRenderer = () => {
+    if (user.error !== '') {
+
+      return (
+        <>
+          <div className="LoginForms_Error LoginForms_Error_loging">
+            user {locEmail} unauthorized
+          </div>
+        </>
+      )
+    }
+
+    return <></>
+  }
+
+  useEffect(() => {
+    if(user.error !== '') setIsSubmit(false)
+  }, [user.error])
+
   //////////////////////////////////////////////////////////////////////
 
   // signing in
   useLogin(submitData)
 
-  // refirect after signing uinrequest
+  // redirect after signing uinrequest
   useEffect(() => {
-    if (user.data['accessToken'] !== '') navigate('/profile')
+    if (user.data['accessToken'] !== ''){
+      navigate('/profile')
+      setIsSubmit(false)
+    }
   }, [user.data['accessToken']])
 
   //////////////////////////////////////////////////////////////////////
@@ -164,8 +195,14 @@ function Login() {
                 </div>
 
                 <div onClick={submitFormData} className="LoginButton">
-                  {state.interfaceLang[language].signin}
+                  {user.loading && !isSubmit? (
+                    <>{state.interfaceLang[language].signin}</>
+                  ) : (
+                    <LoadingEmoji button={true} />
+                  )}
                 </div>
+
+                <LoggingErrorRenderer />
               </form>
             </div>
           </div>
@@ -175,4 +212,4 @@ function Login() {
   )
 }
 
-export default Login
+export default React.memo(Login)
