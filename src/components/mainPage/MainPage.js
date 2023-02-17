@@ -45,7 +45,7 @@ function MainPage() {
         <InfoBlock />
 
         <div className="mainPage_scrollWrap" id="mainPage_scrollWrap">
-          <div className="mainPage_scrollWrap_el">
+          <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_map">
             <MapSection />
           </div>
           {/* <div className='mainPage_scrollWrap_el'><IntroducingCategory /></div> */}
@@ -56,7 +56,7 @@ function MainPage() {
           <div className="mainPage_scrollWrap_el">
             <Subscription />
           </div>
-          <div>
+          <div className="mainPage_scrollWrap_el">
             <Footer />
           </div>
         </div>
