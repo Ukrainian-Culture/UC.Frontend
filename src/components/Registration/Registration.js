@@ -12,9 +12,11 @@ import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import {
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
+  USER_REGISTRATION_CALL,
 } from '../../redux-store/fetchUser/fetchUserConst'
 import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
 import Header from '../header/Header'
+import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
 import LoadingPage from '../loadingPage/LoadingPage'
 // import NotFoundPage from '../notFoundPage/NotFoundPage'
 import Profile from '../profile/Profile'
@@ -54,6 +56,7 @@ function Registration() {
   const [submitData, setSubmitData] = useState(null)
   const [daysAmount, setDaysAmount] = useState(0)
 
+  const [isSubmit, setIsSubmit] = useState(false)
   // ===============================================
 
   // change visibility of password
@@ -127,23 +130,11 @@ function Registration() {
         confirmPassword: locConfPass,
       })
 
-      setIsVisible((el) => !el)
+      setIsSubmit(true)
+      setIsVisible(true)
     }
   }
   //////////////////////////////////////////////////////
-
-  // useEffect(() => {
-  //   // window.localStorage.setItem(
-  //   //   'user',
-  //   //   JSON.stringify({
-  //   //     email: "sd",
-  //   //     password: bcrypt.hashSync(locPass, bcrypt.genSaltSync(10)),
-  //   //   }),
-  //   // )
-  //   console.log(localStorage.getItem("user"))
-  //   // console.log(bcrypt.hashSync("dick", bcrypt.genSaltSync(10)))
-  //   // console.log(bcrypt.compareSync("dick", '$2a$10$nNOs6KnhVCKk9QTL2ZZfkepZjsxOQQob4rdv232S8VV0mx7yfcD4S'))
-  // }, [])
 
   // registration request
   useEffect(() => {
@@ -161,19 +152,18 @@ function Registration() {
         .then((res) => res.json())
         .then((res) => {
           if (typeof res === 'boolean') {
-            console.log('registration request ', res)
+            // console.log('registration request ', res)
 
             // writeLocalStorage()
-
+            setIsSubmit(false)
             dispatch({
-              type: FETCH_USER_SUCCESS,
+              type: USER_REGISTRATION_CALL,
               payload: {
                 daysAmount: daysAmount,
-                // role: 'user',
                 email: locEmail,
               },
             })
-             navigate('/login')
+            navigate('/login')
           } else {
             console.log('error registration request', res.status)
             dispatch({
@@ -201,6 +191,7 @@ function Registration() {
 
           {isVisible ? (
             <PopupSubs
+              setIsSubmit={setIsSubmit}
               setIsVisible={setIsVisible}
               setDaysAmount={setDaysAmount}
             />
@@ -275,7 +266,11 @@ function Registration() {
                   onClick={submitFormData}
                   className="RegistrationSection_mainBlock_wrapper_createButton"
                 >
-                  {interfaceLang[language].create}
+                  {user.loading && !isSubmit ? (
+                    <>{interfaceLang[language].create}</>
+                  ) : (
+                    <LoadingEmoji button={true} />
+                  )}
                 </div>
               </form>
             </div>

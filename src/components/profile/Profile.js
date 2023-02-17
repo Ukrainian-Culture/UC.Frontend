@@ -14,6 +14,7 @@ import Registration from '../Registration/Registration'
 import {
   FETCH_USER_SUCCESS,
   LS_USER,
+  USER_LOGOUT,
 } from '../../redux-store/fetchUser/fetchUserConst'
 
 function Profile() {
@@ -59,16 +60,7 @@ function Profile() {
   //////////////////////////////////////////////////////////////////////
   const cliclLogOut = () => {
     dispatch({
-      type: FETCH_USER_SUCCESS,
-      payload: {
-        role: 'notuser',
-        email: '',
-        accessToken: '',
-        refreshToken: '',
-        startDate: [],
-        endDate: [],
-        daysAmount: 0,
-      },
+      type: USER_LOGOUT,
     })
     localStorage.removeItem(LS_USER)
   }
@@ -81,7 +73,7 @@ function Profile() {
       // set first variant in categories active
       categoryParent.current.children[0].className = `${categoryParent.current.children[0].className} ${activeWord}`
     }
-  }, [])
+  }, [categoryParent.current])
 
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })
