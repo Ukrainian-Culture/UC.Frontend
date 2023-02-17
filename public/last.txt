@@ -1,4 +1,9 @@
-> 404 error:
-- solve 404 error;
-> Search:
-- fix bug;
+> Login:
+- add loading animation on button;
+> Registration:
+- add loading animation on button;
+>adminArticle:
+-add api requests to change article;
+>Footer:
+- add localization;
+- add logo;

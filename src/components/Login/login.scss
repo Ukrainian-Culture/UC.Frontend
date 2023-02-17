@@ -49,11 +49,14 @@
   box-sizing: border-box;
 
   .LoginForms_Error{
+    text-align: center;
     color: $r_0;
     font-size: 17px;
     font-weight: 600;
   }
 }
+
+
 .LoginInput,
 .PasswordInput {
   margin-top: 10px;
@@ -114,6 +117,14 @@
   &:hover {
     background-color: $g_1;
     color: $g_0;
+
+    .loadingPageSection_wrap_true {
+
+      .loadingPageSection_wrap_el {
+        background-color: $g_0;
+
+      }
+    }
   }
 }
 .SignIn {
@@ -128,6 +139,10 @@
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
+}
+
+.LoginForms_Error_loging{
+  margin-top: 10px;
 }
 
 @media screen and (max-width: $ADAPTIVE_S_1) {

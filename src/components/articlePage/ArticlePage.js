@@ -86,8 +86,11 @@ function ArticlePage() {
 
     // const date = new Date()
     const reqBody = {
-      dateOfWatch: '10.01.2022',
-      title: id,
+      "articleId": fetchArticle.data.articleId,
+      "region":  fetchArticle.data.region,
+      "subText":  fetchArticle.data.subText,
+      "title":  fetchArticle.data.title,
+      "category":  fetchArticle.data.category
     }
 
     fetch(url, {
@@ -111,6 +114,7 @@ function ArticlePage() {
         .get(urlArticle)
         .then((responce) => {
           dispatch({ type: FETCH_ARTICLE_SUCCESS, payload: responce.data })
+          console.log(responce.data)
         })
         .catch((e) => {
           dispatch({ type: FETCH_ARTICLE_ERROR, error: e })

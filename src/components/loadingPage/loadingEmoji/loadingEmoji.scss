@@ -4,13 +4,32 @@
   display: flex;
   place-self: center;
   font-size: 200%;
+  margin-top: -9px;
+}
+
+.loadingPageSection_wrap_true {
+  font-size: 100%;
+
+  .loadingPageSection_wrap_el {
+    background-color: $g_1;
+    border-radius: 100px;
+    margin: 0px 6px;
+    height: 8px;
+    width: 8px;
+    color: transparent;
+
+    transition: background-color 0.3s ease-in-out;
+  }
 }
 
 // =======================================
 
 @media screen and (max-width: $ADAPTIVE_S_1) {
-    .loadingPageSection_wrap {
+  .loadingPageSection_wrap {
+    font-size: 150%;
+  }
 
-        font-size: 150%;
-      }
+  .loadingPageSection_wrap_true {
+    font-size: 70%;
+  }
 }
