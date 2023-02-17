@@ -20,7 +20,7 @@
       scroll-snap-align: center;
     }
   }
-  @include scroll_thumb_vartical;
+  @include scroll_thumb_vertical;
 }
 
 // ===================================
@@ -33,6 +33,6 @@
       scroll-snap-type:none;
 
     }
-    @include scroll_thumb_vartical;
+    @include scroll_thumb_vertical;
   }
 }
