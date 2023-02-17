@@ -75,6 +75,7 @@ $g_1: rgb(0, 0, 0);
 $g_1_2: #262626;
 $g_1_3: #3f3f3f;
 $g_2:#BABABA;
+$g_2_1: #d3d3d3;
 $g_3:rgb(232, 232, 232);
 $g_4:rgb(242, 242, 242);
 $g_5:#8B8D8C;
@@ -131,7 +132,7 @@ $ADAPTIVE_S_2: 450px;
     }
     //scrollbar slider
     ::-webkit-scrollbar-thumb{
-        background-color: $g_3;
+        background-color: $g_2_1;
         border-radius: 6px;
         transition: all 0.6s ease-in-out;
     }
