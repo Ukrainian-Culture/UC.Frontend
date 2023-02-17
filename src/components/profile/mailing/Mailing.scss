@@ -1,0 +1,131 @@
+@import "../../../settings/settings.scss";
+
+.Mailing_Section{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  .Mailing_Wrap{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    .Mail_Wrap{
+      padding: 30px 60px 100px 60px;
+      .to {
+        padding: 30px 0px 0px 0px;
+        font-size: 15px;
+
+        .toText{
+          font-weight: 500;
+          color: $g_1;
+        }
+        input {
+          height: 8vh;
+          width: 45vw;
+          border: none;
+          border-radius: 5px;
+        }
+          input[type="text"]::placeholder {
+
+            /* Firefox, Chrome, Opera */
+            text-align: right;
+            font-weight: 500;
+            color: $g_1;
+            font-size: 15px;
+            padding-right: 10px;
+          }
+
+      }
+
+      .Subject {
+        padding: 15px 0px 0px 0px;
+        font-size: 15px;
+
+        .subjectText{
+          font-weight: 500;
+          color: $g_1;
+        }
+        input {
+          height: 11vh;
+          width: 45vw;
+          border: none;
+          border-radius: 5px;
+        }
+      }
+      .Body {
+        padding: 15px 0px 0px 0px;
+        font-size: 15px;
+
+        .bodyText{
+          font-weight: 500;
+          color: $g_1;
+        }
+        textarea {
+          height: 30vh;
+          width: 45vw;
+          border: none;
+          border-radius: 5px;
+          resize: none;
+        }
+      }
+      .bodyWrap{
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+      }
+      .Attachments {
+        padding-top: 20px;
+
+        .attachmentsText{
+          font-weight: 500;
+          color: $g_1;
+        }
+
+        .attachments {
+          position: relative;
+          display: flex;
+          border-radius: 5px;
+          height: 20vh;
+          width: 22vw;
+          background-color: $g_0;
+          justify-content: flex-end;
+          .but{
+            position: absolute;
+            bottom: 0;
+            padding-right:15px;
+            padding-bottom: 15px;
+            width: fit-content;
+            height:  5vh;
+          }
+          Button{
+            height: 5vh;
+            width: 6vw;
+            text-align: center;
+            background-color:$g_3;
+            color: $g_1;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 25px;
+            cursor: pointer;
+          }
+        }
+        }
+        .button{
+          padding-top: 15px;
+        Button {
+          text-align: center;
+          background-color: $g_1;
+          width: 22vw;
+          height: 7vh;
+          color: $g_0;
+          border: none;
+          border-radius: 5px;
+          font-weight: 800;
+          font-size: 20px;
+          cursor: pointer;
+          }
+        }
+      }
+    }
+  }
