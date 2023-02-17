@@ -83,7 +83,7 @@ $padding_brick: 80px;
       input.scrollCategory_el {
         border: none;
         width: 88px;
-        max-width: 100vw;
+        max-width: 90vw;
         padding: 0px;
         padding-right: 10px;
         padding-left: $padding_brick;
@@ -135,4 +135,28 @@ $padding_brick: 80px;
 // =============================================================
 
 @media screen and (max-width: $ADAPTIVE_S_1) {
+  .scrollCategory {
+    
+    .scrollCategory_wrap {
+  
+      .scrollCategory_el_wrapp_search_true {
+        input.scrollCategory_el {
+          width: 50vw
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_S_2) {
+  .scrollCategory {
+    
+    .scrollCategory_wrap {
+  
+      .scrollCategory_el_wrapp_search_true {
+        input.scrollCategory_el {
+          width: 35vw
+        }
+      }
+    }
+  }
 }

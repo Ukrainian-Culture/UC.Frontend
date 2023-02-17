@@ -1,9 +1,11 @@
-> Login:
-- add loading animation on button;
-> Registration:
-- add loading animation on button;
->adminArticle:
--add api requests to change article;
->Footer:
-- add localization;
-- add logo;
+> login:
+ add validation
+> registration:
+ add validation
+> header: 
+- fix bug with 'Ivano-Frankivsk region'
+- fix bug with 'Crimea'
+>Search:
+-fix bug with search width
+>statisticSection:
+- add animation of count down
