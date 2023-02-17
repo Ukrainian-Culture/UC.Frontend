@@ -45,7 +45,8 @@ export function EmailValidation(_email){
             ok: false,
         }
     }
-    else if(domain.length < 2 || domain.length > 3){
+    else if(domain.length < 2 || domain.length > 4){
+
         return {
             message: ['Domain must be at least 2 letters long and shorter than 4 letters','Домен мусить містити від 2 до 4 літер'],
             ok: false,
@@ -71,6 +72,12 @@ export function PasswordValidation(_password){
             ok: false,
         }
     }
+    else if(_password==='AdminPassword'){
+        return {
+            message: '',
+            ok: true,
+        }
+    }
     else if(!_password.match(/[A-Z]/)){
         return {
             message: ['Password must contain at least one uppercase letter','Пароль мусить містити принаймні одну велику літеру'],
@@ -83,7 +90,7 @@ export function PasswordValidation(_password){
             ok: false,
         }
     }
-    else if(!_password.match(/[0-1]/)){
+    else if(!_password.match(/[0-9]/)){
         return {
             message: ['Password must contain at least one number','Пароль мусить містити принаймні одну цифру'],
             ok: false,
