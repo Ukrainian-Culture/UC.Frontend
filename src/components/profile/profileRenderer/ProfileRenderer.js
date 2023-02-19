@@ -29,6 +29,7 @@ function ProfileRenderer(props) {
         // case 'history':
         //   return <UserHistory />
       case 'mailing':
+
         return <>mailing</>
       default:
         return <></>

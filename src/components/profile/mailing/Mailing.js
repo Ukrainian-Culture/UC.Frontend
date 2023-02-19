@@ -47,7 +47,6 @@ function Mailing(){
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )
