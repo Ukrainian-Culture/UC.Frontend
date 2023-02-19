@@ -1,5 +1,6 @@
 import React from 'react'
 import AdminArticles from '../adminArticles/AdminArticles'
+import Mailing from '../mailing/Mailing'
 import '../profileRenderer/profileRenderer.scss'
 import UserHistory from '../userHistory/UserHistory'
 import UserProfileTab from '../userProfileTab/UserProfileTab'
@@ -13,6 +14,8 @@ function ProfileRenderer(props) {
     switch (profileCategory['admin'][0][currentCateg]) {
       case 'articles':
         return <AdminArticles />
+      case 'mailing':
+        return <Mailing />
       default:
         return <></>
     }
@@ -23,8 +26,8 @@ function ProfileRenderer(props) {
     switch (profileCategory['user'][0][currentCateg]) {
       case 'profile':
         return <UserProfileTab />
-      case 'history':
-        return <UserHistory />
+        // case 'history':
+        //   return <UserHistory />
       case 'mailing':
         return <>mailing</>
       default:
