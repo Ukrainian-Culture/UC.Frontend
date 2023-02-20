@@ -90,8 +90,8 @@ const initialState = {
     l_c_u: 'Львів, Україна',
     about_us: 'Про нас',
     private_policy: 'Політика конфіденційності',
-    t_a_c: 'Term & Conditions',
-    g_2_off: 'Отримай 20% знишку',
+    t_a_c: 'Умови користування',
+    g_2_off: 'Отримай 20% знижку',
     b_s_t_n: 'Підписавшись на нашу розсилку',
 
     // userHistory
