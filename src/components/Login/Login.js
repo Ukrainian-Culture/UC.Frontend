@@ -41,7 +41,7 @@ function Login() {
 
   const emptyValidation = {
     message: '',
-    error: false,
+    ok: false,
   }
 
   const [emailError, setEmailError] = useState(emptyValidation)
@@ -69,26 +69,35 @@ function Login() {
   const GetLocEmail = (e) => {
     const def = e.target.value
     setLocEmail(def)
+
     if (def.includes('@') && def.split('.').length == 2) {
       setEmailError(EmailValidation(def))
     }
 
     if (def === '') setEmailError(emptyValidation)
-
     if (user.error !== '') dispatch({ type: USER_CLEAR_ERROR })
   }
   // get pass from user
   const GetLocPass = (e) => {
     const def = FormatingPassword(e.target.value)
     setLocPass(def)
+
     setPassError(PasswordValidation(def))
 
     if (def === '') setPassError(emptyValidation)
+    if (user.error !== '') dispatch({ type: USER_CLEAR_ERROR })
   }
 
   // function which check if account can be created
   const isReadyForSubmit = () => {
-    return !isEmailWrong && !isPassWrong && locEmail !== '' && locPass !== ''
+    const def_1 =
+      !isEmailWrong && !isPassWrong && locEmail !== '' && locPass !== ''
+
+    const def_2 = state.startSettings.validation
+      ? emailError.ok && passError.ok
+      : true
+
+    return def_1 && def_2
   }
 
   // function which send data from inputs to url request signup
@@ -108,11 +117,10 @@ function Login() {
 
   const LoggingErrorRenderer = () => {
     if (user.error !== '') {
-
       return (
         <>
           <div className="LoginForms_Error LoginForms_Error_loging">
-            user {locEmail} unauthorized
+            user {locEmail} bad email or password
           </div>
         </>
       )
@@ -122,7 +130,7 @@ function Login() {
   }
 
   useEffect(() => {
-    if(user.error !== '') setIsSubmit(false)
+    if (user.error !== '') setIsSubmit(false)
   }, [user.error])
 
   //////////////////////////////////////////////////////////////////////
@@ -132,7 +140,7 @@ function Login() {
 
   // redirect after signing uinrequest
   useEffect(() => {
-    if (user.data['accessToken'] !== ''){
+    if (user.data['accessToken'] !== '') {
       navigate('/profile')
       setIsSubmit(false)
     }
@@ -179,7 +187,8 @@ function Login() {
                 />
 
                 <div className="LoginForms_emailError LoginForms_Error">
-                  {emailError.message[language]}
+                  {state.startSettings.validation &&
+                    emailError.message[language]}
                 </div>
 
                 <input
@@ -191,11 +200,12 @@ function Login() {
                 />
 
                 <div className="LoginForms_emailPass LoginForms_Error">
-                  {passError.message[language]}
+                  {state.startSettings.validation &&
+                    passError.message[language]}
                 </div>
 
                 <div onClick={submitFormData} className="LoginButton">
-                  {user.loading && !isSubmit? (
+                  {user.loading && !isSubmit ? (
                     <>{state.interfaceLang[language].signin}</>
                   ) : (
                     <LoadingEmoji button={true} />

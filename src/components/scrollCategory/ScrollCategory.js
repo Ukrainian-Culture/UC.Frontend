@@ -82,7 +82,7 @@ function ScrollCategory() {
             value={search || ''}
             onChange={(e) => changeSearchText(e.target.value)}
             type="text"
-            className="scrollCategory_el "
+            className="scrollCategory_el scrollCategory_el_search"
             placeholder={
               `${emojiCategory['search']} ${interfaceLang[language].search}`
             }

@@ -218,9 +218,16 @@ $burger_menu_height: 13px;
   .headerSection {
     .mainHeader {
       padding: 0 $header_padding_mobile;
+      display: flex;
+      justify-content: space-between;
+
+      .headerLeft {
+        width: fit-content;
+      }
 
       .headerRight {
         display: flex;
+        width: fit-content;
 
         .innerBurgerButton {
           cursor: pointer;
@@ -460,10 +467,10 @@ $burger_menu_height: 13px;
     font-weight: 600;
   }
 
-  .header_HoverProfileBlock_wrap{
+  .header_HoverProfileBlock_wrap {
     margin-top: 5px;
 
-    .header_HoverProfileBlock_wrap_profile{
+    .header_HoverProfileBlock_wrap_profile {
       font-weight: 500;
       font-size: 15px;
       text-decoration: none;
@@ -471,6 +478,6 @@ $burger_menu_height: 13px;
     }
   }
 }
-.header_HoverProfileBlock_explore{
+.header_HoverProfileBlock_explore {
   margin-top: 5px;
 }
