@@ -1,11 +1,7 @@
-> login:
- add validation
-> registration:
- add validation
-> header: 
-- fix bug with 'Ivano-Frankivsk region'
-- fix bug with 'Crimea'
->Search:
--fix bug with search width
->statisticSection:
-- add animation of count down
+> profile:
+ - add api for user history;
+> header:
+ - add dynamic navigation links;
+> statistic:
+- fix big counter; 
+- fix bug with online users;

@@ -5,31 +5,35 @@ import {
   FETCH_ONLINE_ERROR,
   FETCH_ONLINE_SUCCESS,
 } from '../redux-store/fetchUserOnline/fetchUserOnlineConst'
+import { useLocation } from 'react-router-dom'
 
 function UserOnline() {
   const [connection, setConnection] = useState(null)
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
+  const userOnline = state.userOnline
   // -------------------------------------------------
 
   useEffect(() => {
-    const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl(`${state.startSettings.domain}/onlineUsersHuber`, {
-        skipNegotiation: true,
-        transport: signalR.HttpTransportType.WebSockets,
-      })
-      .build()
+    if (userOnline.loading) {
+      const newConnection = new signalR.HubConnectionBuilder()
+        .withUrl(`${state.startSettings.domain}/onlineUsersHuber`, {
+          skipNegotiation: true,
+          transport: signalR.HttpTransportType.WebSockets,
+        })
+        .build()
 
-    setConnection(newConnection)
+      setConnection(newConnection)
+    }
   }, [])
-  // console.log(connection)
+
   useEffect(() => {
     if (connection) {
       connection
         .start()
         .then(() => {
-          // console.log('Connected!')
           connection.on('UpdateOnlineUsers', (count) => {
+            // console.log('Connected!', count)
             // console.log(count)
             dispatch({ type: FETCH_ONLINE_SUCCESS, payload: count })
           })

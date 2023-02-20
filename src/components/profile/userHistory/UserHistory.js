@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   USER_HISTORY_ERROR,
@@ -16,23 +16,26 @@ function UserHistory() {
   // current language
   const language = state.changeLanguage.lang
   const domain = state.startSettings.domain
+  const interfaceLang = state.interfaceLang[language]
 
+  //--------------------------------------------
+  const [historyArr, setHistoryArr] = useState([])
   //--------------------------------------------
 
   /////////////////////////////////////////////////
-  const getOtherArticleData = (id) => {
-    const loc_lang = `${state.culture.data[language]['id']}`
-    const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${id}`
+  // const getOtherArticleData = (id) => {
+  //   const loc_lang = `${state.culture.data[language]['id']}`
+  //   const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${id}`
 
-    axios.get(urlArticle).then((res) => {
-      const arr = state.userHistory.data
-      arr.push(res.data)
-      dispatch({
-        type: USER_HISTORY_SUCCESS,
-        payload: arr,
-      })
-    })
-  }
+  //   axios.get(urlArticle).then((res) => {
+  //     const arr = state.userHistory.data
+  //     arr.push(res.data)
+  //     dispatch({
+  //       type: USER_HISTORY_SUCCESS,
+  //       payload: arr,
+  //     })
+  //   })
+  // }
 
   useEffect(() => {
     if (state.userHistory.loading) {
@@ -41,10 +44,15 @@ function UserHistory() {
       axios
         .get(url)
         .then((res) => {
-          console.log(res)
-          res.data.forEach((el) => {
-            getOtherArticleData(el.title)
-          })
+          // console.log(res)
+          setHistoryArr([...res.data])
+          // dispatch({
+          //   type: USER_HISTORY_SUCCESS,
+          //   payload: res.data,
+          // })
+          // res.data.forEach((el) => {
+          //   // getOtherArticleData(el.title)
+          // })
         })
         .catch((e) => dispatch({ type: USER_HISTORY_ERROR, error: e }))
     }
@@ -53,13 +61,18 @@ function UserHistory() {
 
   return (
     <div className="UserHistory_section">
-      <div className="UserHistory_section_wrap">
-        {!state.userHistory.loading &&
-          state.userHistory.data.map((el, index) => {
-            console.log(el)
-            // return <Card el={el} key={`UHSWDM__${index}_`} />
+      {historyArr.length > 0 ? (
+        <div className="UserHistory_section_wrap">
+          {historyArr.map((el, index) => {
+            // console.log(el)
+            return <Card el={el} key={`UHSWDM__${index}_`} />
           })}
-      </div>
+        </div>
+      ) : (
+        <div className="UserHistory_section_empty">
+          <div className="UserHistory_section_empty_text"> {interfaceLang.empty} 🤷‍♂️🍃</div>
+        </div>
+      )}
     </div>
   )
 }
