@@ -37,14 +37,16 @@ const initialState = {
     full_access: 'full access',
 
     //footer
-    d_a_d: "Design and development",
+    d_a_d: 'Design and development',
     l_c_u: 'Lviv, Ukraine',
     about_us: 'About us',
     private_policy: 'Privacy Policy',
     t_a_c: 'Term & Conditions',
     g_2_off: 'Get 20% off',
     b_s_t_n: 'By subscribing to our newsletter',
-    
+
+    // userHistory
+    empty: 'empty',
   },
   '1': {
     map: 'Карта',
@@ -84,13 +86,16 @@ const initialState = {
     full_access: 'статті',
 
     //footer
-    d_a_d: "Дизайн і розробка",
+    d_a_d: 'Дизайн і розробка',
     l_c_u: 'Львів, Україна',
     about_us: 'Про нас',
     private_policy: 'Політика конфіденційності',
     t_a_c: 'Term & Conditions',
     g_2_off: 'Отримай 20% знишку',
     b_s_t_n: 'Підписавшись на нашу розсилку',
+
+    // userHistory
+    empty: 'пусто',
   },
 }
 

@@ -5,7 +5,7 @@ const initialState = {
   // domain: "https://localhost:7219",
   userRequestDomain: 'https://localhost:7219',
   // userRequestDomain: "https://ucbackend.azurewebsites.net",
-  validation: true,
+  validation: false,
 
   enterStatistic: false
 }

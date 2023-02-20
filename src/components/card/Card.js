@@ -1,21 +1,26 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../card/card.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { SEARCH_CHANGE } from '../../redux-store/search/searchConst'
 
 function Card(props) {
   const dispatch = useDispatch()
-  
+
   const changeSearchText = (val) => {
     dispatch({ type: SEARCH_CHANGE, payload: val })
   }
 
   const state = useSelector((state) => state)
+  // current language
+  const language = state.changeLanguage.lang
+  const user = state.user
+
+  const location = useLocation()
 
   // -------------------------------------------
-  const {articleId ,title, subText, category, region } = props.el
+  const { articleId, title, subText, category, region } = props.el
   const emojiCategory = useSelector((state) => state.emojiCategory.emoji)
 
   const tl = useRef()
@@ -61,10 +66,45 @@ function Card(props) {
     return () => ctx.revert()
   }, [])
 
+  const clickCard = () =>{
+    changeSearchText('')
+
+    addArticleToHistory(props.el)
+  }
+
+  ////////////////////////////////////////////////////////////////
+  const addArticleToHistory = (data) => {
+    const url = `${state.startSettings.userRequestDomain}/api/${user.data.email}/UserHistory`
+
+      // const date = new Date()
+      const reqBody = {
+        articleId: data.articleId,
+        region: data.region,
+        subText: data.subText,
+        title: data.title,
+        category: data.category,
+      }
+      console.log(' writen in history', reqBody)
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(reqBody),
+      })
+  }
+  ////////////////////////////////////////////////////////////////
+
   return (
     <>
       <Link
-      onClick={()=>changeSearchText('')} className="cardBlock" to={`/article/${articleId}`} ref={cardWrap} state={{shortDesc: subText, el: props.el}}>
+        onClick={clickCard}
+        className="cardBlock"
+        to={`/article/${articleId}`}
+        ref={cardWrap}
+        state={{ shortDesc: subText, el: props.el }}
+      >
         <div className="cardBlock_title">{title}</div>
 
         <div className="cardBlock_bottomWrapper">
