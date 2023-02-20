@@ -1,7 +1,4 @@
-> profile:
- - add api for user history;
-> header:
- - add dynamic navigation links;
-> statistic:
-- fix big counter; 
-- fix bug with online users;
+> explore:
+ - change background of selected scroll category;
+> startSettings:
+ - connect to azure;
