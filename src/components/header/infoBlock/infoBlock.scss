@@ -83,7 +83,7 @@ $width_of_main_info_mobile: 100vw;
           background-color: $g_3;
         }
       }
-      @include scroll_thumb_vartical;
+      @include scroll_thumb_vertical;
     }
   }
 }

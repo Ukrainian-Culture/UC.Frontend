@@ -13,14 +13,17 @@
     overflow-x: hidden;
     scroll-snap-type:y proximity;
 
-
     .mainPage_scrollWrap_el {
       width: 100%;
-      height: 100%;
+      height: fit-content;
       scroll-snap-align: center;
     }
+
+    .mainPage_scrollWrap_el_map{
+      height: 100%;
+    }
   }
-  @include scroll_thumb_vartical;
+  @include scroll_thumb_vertical;
 }
 
 // ===================================
@@ -33,6 +36,6 @@
       scroll-snap-type:none;
 
     }
-    @include scroll_thumb_vartical;
+    @include scroll_thumb_vertical;
   }
 }
