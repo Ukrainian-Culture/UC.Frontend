@@ -51,9 +51,11 @@ function ArticlePage() {
   const { id } = useParams()
   // state variable which we pass throught Link element
   const location = useLocation()
-  // const { articleId, title, subText, category, region } = location.state.el
-  const [startLoad, setStartLoad] = useState(false)
+  //  const { articleId, title, subText, category, region } = location.state.el
+  const [endtLoad, setEndLoad] = useState(false)
   const [openDownloadCard, setDownloadCard] = useState(false)
+
+  const [test, setTest] = useState([])
 
   // redirect to previous page when button "back" pressed
   function backClick() {
@@ -61,67 +63,66 @@ function ArticlePage() {
   }
   // ===========================================================
 
-  const downloadPDF = async () => {
-    setStartLoad(true)
-
-    const blob = await pdf(
-      <PDFFormer {...location.state.el} content={fetchArticle.data.content} />,
-    ).toBlob()
-
-    // console.log(blob)
-
-    saveAs(blob, 'pageName')
-  }
-
-  function DonwloadCard() {
-    return <></>
-  }
-
   // -----------------------------------------------------------
 
   //////////////////////////////////////////////////////////////////
 
-  const addArticleToHistory = () => {
-    const url = `${state.startSettings.userRequestDomain}/api/${user.data.email}/UserHistory`
+  // const addArticleToHistory = (data) => {
+  //   if (location.state !== null) {
+  //     const { articleId, title, subText, category, region } = location.state.el
+  //     const url = `${state.startSettings.userRequestDomain}/api/${user.data.email}/UserHistory`
 
-    // const date = new Date()
-    const reqBody = {
-      "articleId": fetchArticle.data.articleId,
-      "region":  fetchArticle.data.region,
-      "subText":  fetchArticle.data.subText,
-      "title":  fetchArticle.data.title,
-      "category":  fetchArticle.data.category
-    }
+  //     // const date = new Date()
+  //     const reqBody = {
+  //       articleId: data.articleId,
+  //       region: region,
+  //       subText: data.subText,
+  //       title: data.title,
+  //       category: category,
+  //     }
+  //     console.log(' writen in history', reqBody)
 
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(reqBody),
-    })
-      // .then((res) => console.log("addArticleToHistory",res))
-  }
+  //     fetch(url, {
+  //       method: 'POST',
+  //       headers: {
+  //         'content-type': 'application/json',
+  //       },
+  //       body: JSON.stringify(reqBody),
+  //     })
+  //   }
+  // }
 
   useEffect(() => {
     // console.log('oh shit', articleId, id)
 
-    if (!culture.loading) {
+    if (!culture.loading && !endtLoad) {
+      const loc_id = location.pathname.replace('/article/', '')
+
       const loc_lang = `${state.culture.data[language]['id']}`
-      const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${id}`
+      const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${loc_id}`
 
       axios
         .get(urlArticle)
         .then((responce) => {
           dispatch({ type: FETCH_ARTICLE_SUCCESS, payload: responce.data })
-          console.log(responce.data)
+          // console.log(responce.data)
+
+          // write viewed article to database
+          // addArticleToHistory(responce.data)
+
+          setEndLoad(true)
         })
         .catch((e) => {
           dispatch({ type: FETCH_ARTICLE_ERROR, error: e })
         })
 
-      // write viewed article to database
-      addArticleToHistory()
+      // setTest((el) => {
+      //   if (el.length === 0) console.log(el)
+
+      //   return [...el, '1']
+      // })
+
+      
     }
   }, [culture])
   //////////////////////////////////////////////////////////////////
@@ -191,7 +192,7 @@ function ArticlePage() {
   )
 }
 
-export default ArticlePage
+export default React.memo(ArticlePage)
 
 {
   /* <div className="articlePage" ref={refWidth}>

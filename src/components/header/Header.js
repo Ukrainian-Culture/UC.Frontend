@@ -39,9 +39,11 @@ function Header(props) {
   const location = useLocation()
 
   const state = useSelector((state) => state)
-  const user = state.user
   // current language
   const language = state.changeLanguage.lang
+
+  const user = state.user
+  const profileCategory = state.profileCategory
   //variable for text in  interface in different language
   const interfaceLang = state.interfaceLang[language]
   const culture = state.culture
@@ -363,12 +365,24 @@ function Header(props) {
               {user.data.email}
             </div>
             <div className="header_HoverProfileBlock_wrap">
-              <Link
+              {/* <Link
                 to="/profile"
                 className="header_HoverProfileBlock_wrap_profile"
               >
                 <div>{interfaceLang.profile.toLowerCase()}</div>
-              </Link>
+              </Link> */}
+              {profileCategory[user.data.role][language].map((el, index) => {
+                return (
+                  <Link
+                    to="/profile"
+                    state={index}
+                    key={`PHHPB_${index}`}
+                    className="header_HoverProfileBlock_wrap_profile"
+                  >
+                    <div>{el.toLowerCase()}</div>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         ) : null}

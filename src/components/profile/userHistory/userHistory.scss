@@ -1,1 +1,62 @@
-@import "../../../settings/settings.scss";
+@import '../../../settings/settings.scss';
+
+$gap_cards: 1vw;
+
+$gap_vertical_cards_mobile: 2vh;
+
+.UserHistory_section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 50vh;
+
+  .UserHistory_section_wrap {
+    height: fit-content;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap_cards;
+    // row-gap: $gap_cards;
+    padding: 40px 0px;
+  }
+
+  .UserHistory_section_empty {
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    font-weight: 700;
+    color: $g_1_2;
+  }
+}
+
+@media screen and (max-width: $ADAPTIVE_M_-1) {
+  .UserHistory_section {
+    .UserHistory_section_wrap {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_M_1) {
+  .UserHistory_section {
+    .UserHistory_section_wrap {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_M_2) {
+  .UserHistory_section {
+    .UserHistory_section_wrap {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .UserHistory_section {
+    height: 83%;
+
+    .UserHistory_section_wrap {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: $gap_vertical_cards_mobile;
+    }
+  }
+}
