@@ -172,6 +172,10 @@ function Registration() {
     if (user.error !== '') setIsSubmit(false)
   }, [user.error])
 
+  useEffect(() => {
+    dispatch({ type: USER_CLEAR_ERROR })
+  }, [])
+
   //////////////////////////////////////////////////////
 
   // registration request
@@ -227,7 +231,8 @@ function Registration() {
       return (
         <>
           <div className="LoginForms_Error LoginForms_Error_loging">
-            user {locEmail} bad email or password
+            {state.interfaceLang[language].user} {locEmail}{' '}
+            {state.interfaceLang[language].b_e_o_p}
           </div>
         </>
       )

@@ -64,45 +64,50 @@ const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
       </div>
       <div className="subscriptionFeatures">
         <div className="feature1">
-        {interfaceLang.search} <span>{interfaceLang.history}</span>{' '}
+          {interfaceLang.search} <span>{interfaceLang.history}</span>{' '}
         </div>
         <div className="feature2">
-        {interfaceLang.download_f_a} <span>{interfaceLang.full_article}</span>
+          {interfaceLang.download_f_a} <span>{interfaceLang.full_article}</span>
         </div>
         <div className="feature3">
-        {interfaceLang.article_f_t} <span>{interfaceLang.full_translation}</span>
+          {interfaceLang.article_f_t}{' '}
+          <span>{interfaceLang.full_translation}</span>
         </div>
         <div className="feature4">
-        {interfaceLang.article_f_as} <span>{interfaceLang.full_access}</span>
+          {interfaceLang.article_f_as} <span>{interfaceLang.full_access}</span>
         </div>
       </div>
       <div className="subscriptionButtons">
         {array.map((el, index) => (
-          <div
-            className={`some_el${index}`}
-            onClick={(e) => cardClick(e, el.days)}
-            key={`${index}`}
-          >
-            <a href={el.url}>
-              <div>
-                <div className={`subscriptionType some_el_el${index}`}>
-                  {el.type[language]}{' '}
-                </div>
-                <React.Fragment>
-                  <br />
-                </React.Fragment>
-                <div className={`subscriptionPrice some_el_el${index}`}>
-                  ${el.price}{' '}
-                </div>
-                <React.Fragment>
-                  <br />
-                </React.Fragment>
-                <div className={`subscriptionDescr some_el_el${index}`}>
-                  {el.description[language]}{' '}
-                </div>
+          <>
+            {state.user.data.role === 'user' && index === 0 ? null : (
+              <div
+                className={`some_el${index}`}
+                onClick={(e) => cardClick(e, el.days)}
+                key={`SBMFERG${index}`}
+              >
+                <a href={el.url}>
+                  <div>
+                    <div className={`subscriptionType some_el_el${index}`}>
+                      {el.type[language]}{' '}
+                    </div>
+                    <React.Fragment>
+                      <br />
+                    </React.Fragment>
+                    <div className={`subscriptionPrice some_el_el${index}`}>
+                      ${el.price}{' '}
+                    </div>
+                    <React.Fragment>
+                      <br />
+                    </React.Fragment>
+                    <div className={`subscriptionDescr some_el_el${index}`}>
+                      {el.description[language]}{' '}
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
+            )}
+          </>
         ))}
       </div>
     </div>

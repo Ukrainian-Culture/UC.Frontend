@@ -1,4 +1,8 @@
-> explore:
- - change background of selected scroll category;
-> startSettings:
- - connect to azure;
+> GradientCircle:
+ - fix bug with blured background;
+> mapPage:
+ - add history timeline to userHistory;
+> login:
+ - add button which show and hide password;
+> articlePage:
+ - add region to header;
