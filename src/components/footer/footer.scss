@@ -26,6 +26,7 @@
   font-size: 0.9vw;
   color: $g_5;
 
+
   .footerText_logo_svg{
     height: 60px;
   }
@@ -177,7 +178,7 @@
     align-items: center;
 
     > div {
-      width: 250px;
+      width: 300px;
       display: flex;
 
       :nth-of-type(4) {
