@@ -2,7 +2,7 @@ import { FETCH_ONLINE_ERROR, FETCH_ONLINE_SUCCESS } from "./fetchUserOnlineConst
 
 const initialState = {
     loading: true,
-    data: 0,
+    data: 1,
     error: ''
 }
 
