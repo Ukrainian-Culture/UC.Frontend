@@ -47,6 +47,10 @@ const initialState = {
 
     // userHistory
     empty: 'empty',
+
+    // login
+    user: 'user',
+    b_e_o_p: 'bad email or password',
   },
   '1': {
     map: 'Карта',
@@ -97,6 +101,10 @@ const initialState = {
 
     // userHistory
     empty: 'пусто',
+
+    // login
+    user: 'користувач',
+    b_e_o_p: 'хибний логін або пароль',
   },
 }
 

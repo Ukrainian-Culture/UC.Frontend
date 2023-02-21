@@ -1,3 +1,6 @@
+import { IonIcon } from '@ionic/react'
+// import axios from 'axios'
+import { eyeOffOutline, eyeOutline } from 'ionicons/icons'
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
@@ -50,7 +53,20 @@ function Login() {
   const [submitData, setSubmitData] = useState(null)
   const [isSubmit, setIsSubmit] = useState(false)
 
+  // variable which show is password is visible
+  const [isPassVisible, setIsPassVisible] = useState(false)
+  // variable which contain icon of eye ( closed or open )
+  const [eyePasswordIcon, setEyePasswordIcon] = useState(eyeOffOutline)
+
   //==============================================
+
+  // change visibility of password
+  const passwordVisibility = () => {
+    setIsPassVisible((el) => {
+      !el ? setEyePasswordIcon(eyeOutline) : setEyePasswordIcon(eyeOffOutline)
+      return !el
+    })
+  }
 
   const clickSignIn = () => {
     navigate('/registration')
@@ -120,7 +136,8 @@ function Login() {
       return (
         <>
           <div className="LoginForms_Error LoginForms_Error_loging">
-            user {locEmail} bad email or password
+            {state.interfaceLang[language].user} {locEmail}{' '}
+            {state.interfaceLang[language].b_e_o_p}
           </div>
         </>
       )
@@ -132,6 +149,10 @@ function Login() {
   useEffect(() => {
     if (user.error !== '') setIsSubmit(false)
   }, [user.error])
+
+  useEffect(() => {
+    dispatch({ type: USER_CLEAR_ERROR })
+  }, [])
 
   //////////////////////////////////////////////////////////////////////
 
@@ -191,10 +212,17 @@ function Login() {
                     emailError.message[language]}
                 </div>
 
+                <IonIcon
+                  icon={eyePasswordIcon}
+                  className="eyeIconPassword"
+                  onClick={passwordVisibility}
+                />
+
                 <input
                   value={locPass}
                   onChange={(e) => GetLocPass(e)}
-                  type="current-password"
+                  type={isPassVisible ? '' : 'password'}
+                  autoComplete="current-password"
                   className="PasswordInput"
                   placeholder={`${state.interfaceLang[language].password}`}
                 />
