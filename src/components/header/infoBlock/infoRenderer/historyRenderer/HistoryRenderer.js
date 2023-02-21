@@ -36,6 +36,9 @@ function HistoryRenderer() {
   const selectedOblast = state.selectedOblast.selectedOblast
   const history = state.fetchHistory
   const history_data = state.fetchHistory.data
+  // current language
+  const language = state.changeLanguage.lang
+  const user = state.user
   // const history_error = state.fetchHistory.error
 
   // ---------------------------------
@@ -230,6 +233,42 @@ function HistoryRenderer() {
     return arr
   }
 
+  ////////////////////////////////////////////////////////////////
+  const linkClick = (el) => {
+    const reqBody = {
+      articleId: el.acticleId,
+      region: el.region,
+      subText: el.date,
+      title: el.shortDescription,
+      category: 'History',
+    }
+
+    addArticleToHistory(reqBody)
+  }
+
+  const addArticleToHistory = (data) => {
+    const url = `${state.startSettings.userRequestDomain}/api/${user.data.email}/UserHistory`
+
+    // const date = new Date()
+    const reqBody = {
+      articleId: data.articleId,
+      region: data.region,
+      subText: data.subText,
+      title: data.title,
+      category: data.category,
+    }
+    console.log(' writen in history', reqBody)
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(reqBody),
+    })
+  }
+  ////////////////////////////////////////////////////////////////
+
   // returns array of json elements with fieds name(stand out for year period) and list(contain index of elements from period <name>)
   function makeGroupsByYear(p_arr) {
     // template of array element
@@ -369,9 +408,15 @@ function HistoryRenderer() {
                         </div>
 
                         <Link
+                          onClick={() => linkClick(arr[el_2])}
                           className="historyRenderer_wrapper_section_mainContainer_wrap"
                           to={`/article/${arr[el_2].acticleId}`}
-                          state={{el:{...arr[el_2], articleId: arr[el_2].acticleId}}}
+                          state={{
+                            el: {
+                              ...arr[el_2],
+                              articleId: arr[el_2].acticleId,
+                            },
+                          }}
                         >
                           <div
                             className="historyRenderer_wrapper_section_mainContainer_wrap_sub_subText"
@@ -394,11 +439,14 @@ function HistoryRenderer() {
   }
   return (
     <div className="historyRenderer" ref={historyWrapper}>
-      {!state.fetchHistory.loading && history_data.length !== 0 && history_data[0].region.toLowerCase() === aboutOblast[selectedOblast]['0'].toLowerCase()? (
+      {!state.fetchHistory.loading &&
+      history_data.length !== 0 &&
+      history_data[0].region.toLowerCase() ===
+        aboutOblast[selectedOblast]['0'].toLowerCase() ? (
         <FormingHistoryOrder />
       ) : (
         // <LoadingEmoji />
-        <LoadingPlates history={true}/>
+        <LoadingPlates history={true} />
       )}
     </div>
   )
