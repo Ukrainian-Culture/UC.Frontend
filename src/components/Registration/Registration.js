@@ -172,6 +172,10 @@ function Registration() {
     if (user.error !== '') setIsSubmit(false)
   }, [user.error])
 
+  useEffect(() => {
+    dispatch({ type: USER_CLEAR_ERROR })
+  }, [])
+
   //////////////////////////////////////////////////////
 
   // registration request
@@ -180,7 +184,7 @@ function Registration() {
       const url = `${state.startSettings.domain}/api/account/signup`
       const url_2 = 'https://localhost:7219/api/account/signup'
 
-      fetch(url_2, {
+      fetch(url, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -227,7 +231,8 @@ function Registration() {
       return (
         <>
           <div className="LoginForms_Error LoginForms_Error_loging">
-            user {locEmail} bad email or password
+            {state.interfaceLang[language].user} {locEmail}{' '}
+            {state.interfaceLang[language].b_e_o_p}
           </div>
         </>
       )

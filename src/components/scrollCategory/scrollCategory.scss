@@ -65,7 +65,8 @@ $padding_brick: 80px;
         font-weight: 700;
 
         cursor: pointer;
-        transition: all 0.1s ease-in-out;
+        // transition: all 0.1s ease-in-out;
+        transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 
         .scrollCategory_el_p {
           display: flex;
@@ -79,6 +80,10 @@ $padding_brick: 80px;
       background-color: $g_0;
       border-radius: 100px;
       cursor: pointer;
+
+      .scrollCategory_el{
+        transition: all 0.1s ease-in-out;
+      }
 
       input.scrollCategory_el {
         border: none;
@@ -129,6 +134,14 @@ $padding_brick: 80px;
         width: 70vw;
       }
     }
+
+    .scrollCategory_el_wrapp_activeCategory {
+      .scrollCategory_el {
+        // border: 3px solid black;
+        background-color: $g_3;
+        // color: $g_0;
+      }
+    }
   }
 }
 
@@ -136,12 +149,10 @@ $padding_brick: 80px;
 
 @media screen and (max-width: $ADAPTIVE_S_1) {
   .scrollCategory {
-    
     .scrollCategory_wrap {
-  
       .scrollCategory_el_wrapp_search_true {
         input.scrollCategory_el {
-          width: 50vw
+          width: 50vw;
         }
       }
     }
@@ -149,12 +160,10 @@ $padding_brick: 80px;
 }
 @media screen and (max-width: $ADAPTIVE_S_2) {
   .scrollCategory {
-    
     .scrollCategory_wrap {
-  
       .scrollCategory_el_wrapp_search_true {
         input.scrollCategory_el {
-          width: 35vw
+          width: 35vw;
         }
       }
     }

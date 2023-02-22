@@ -35,7 +35,7 @@ const initialState = {
     full_access: 'full access',
 
     //footer
-    d_a_d: "Design and development",
+    d_a_d: 'Design and development',
     l_c_u: 'Lviv, Ukraine',
     about_us: 'About us',
     private_policy: 'Privacy Policy',
@@ -43,12 +43,21 @@ const initialState = {
     g_2_off: 'Get 20% off',
     b_s_t_n: 'By subscribing to our newsletter',
 
+
     //changer
     change: 'change',
     new: 'new',
     current: 'current',
     confirm: 'confirm',
     email_c: 'email',
+
+    // userHistory
+    empty: 'empty',
+
+    // login
+    user: 'user',
+    b_e_o_p: 'bad email or password',
+
   },
   '1': {
     map: 'Карта',
@@ -86,13 +95,15 @@ const initialState = {
     full_access: 'статті',
 
     //footer
-    d_a_d: "Дизайн і розробка",
+    d_a_d: 'Дизайн і розробка',
     l_c_u: 'Львів, Україна',
     about_us: 'Про нас',
     private_policy: 'Політика конфіденційності',
-    t_a_c: 'Term & Conditions',
-    g_2_off: 'Отримай 20% знишку',
+    t_a_c: 'Умови користування',
+
+    g_2_off: 'Отримай 20% знижку',
     b_s_t_n: 'Підписавшись на нашу розсилку',
+
 
     //changer
     change: 'змінити',
@@ -100,6 +111,14 @@ const initialState = {
     current: 'поточна',
     confirm: 'підтвердіть',
     email_c: 'електронну пошту',
+
+    // userHistory
+    empty: 'пусто',
+
+    // login
+    user: 'користувач',
+    b_e_o_p: 'хибний логін або пароль',
+
   },
 }
 

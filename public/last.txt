@@ -1,11 +1,8 @@
+> GradientCircle:
+ - fix bug with blured background;
+> mapPage:
+ - add history timeline to userHistory;
 > login:
- add validation
-> registration:
- add validation
-> header: 
-- fix bug with 'Ivano-Frankivsk region'
-- fix bug with 'Crimea'
->Search:
--fix bug with search width
->statisticSection:
-- add animation of count down
+ - add button which show and hide password;
+> articlePage:
+ - add region to header;

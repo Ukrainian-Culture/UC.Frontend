@@ -3,9 +3,9 @@ import { STATISTIC_TRIGGER } from './startSettingsReducerConst'
 const initialState = {
   domain: 'https://ucbackend.azurewebsites.net',
   // domain: "https://localhost:7219",
-  userRequestDomain: 'https://localhost:7219',
-  // userRequestDomain: "https://ucbackend.azurewebsites.net",
-  validation: true,
+  // userRequestDomain: 'https://localhost:7219',
+  userRequestDomain: "https://ucbackend.azurewebsites.net",
+  validation: false,
 
   enterStatistic: false
 }

@@ -2,6 +2,7 @@ import { IonIcon } from '@ionic/react'
 import { enterOutline, createOutline, pencilOutline } from 'ionicons/icons'
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
+import PopupBlock from '../../popupBlock/PopupBlock'
 import PopupWindow from '../popupWindow/PopupWindow'
 import '../userProfileTab/userProfileTab.scss'
 import PopupBlock from "../../popupBlock/PopupBlock";
@@ -18,6 +19,7 @@ function UserProfileTab() {
 
   return (
     <>
+
       {
         isPopup ?
             <div className="UserProfileChangerPopup">
@@ -27,6 +29,7 @@ function UserProfileTab() {
             </div>
             :null
       }
+
       <div className="UserProfileTab_section">
         <div className="UserProfileTab_section_left UserProfileTab_section_el">
           <div className="UserProfileTab_section_left_inp">
@@ -36,7 +39,7 @@ function UserProfileTab() {
 
             <div onClick={() => {setIsPopup(true); setPopupContent('email')}} className="UserProfileTab_section_left_inputWrap">
               <div className="UserProfileTab_section_left_inputWrap_input">
-              {user.data.email}
+                {user.data.email}
               </div>
 
               <IonIcon
@@ -65,12 +68,14 @@ function UserProfileTab() {
         </div>
 
         <div className="UserProfileTab_section_right UserProfileTab_section_el">
-          <div className="UserProfileTab_section_right_title">{interfaceLang[language].subscription}</div>
+          <div className="UserProfileTab_section_right_title">
+            {interfaceLang[language].subscription}
+          </div>
 
           <div className="UserProfileTab_section_right_time">00:00:00</div>
 
           <div className="UserProfileTab_section_right_addButton">
-          {interfaceLang[language].add_subscription}
+            {interfaceLang[language].add_subscription}
           </div>
         </div>
       </div>

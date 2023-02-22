@@ -16,6 +16,8 @@ import {
   LS_USER,
   USER_LOGOUT,
 } from '../../redux-store/fetchUser/fetchUserConst'
+import PopupBlock from '../popupBlock/PopupBlock'
+import { useLocation } from 'react-router-dom'
 
 function Profile() {
   const dispatch = useDispatch()
@@ -35,6 +37,7 @@ function Profile() {
   // reference of parent obkect of cztegories
   const categoryParent = useRef()
 
+  const location = useLocation(0)
   //------------------------------------------------
 
   // function which calls when category button pressed
@@ -70,10 +73,22 @@ function Profile() {
 
   useEffect(() => {
     if (categoryParent.current != null) {
-      // set first variant in categories active
-      categoryParent.current.children[0].className = `${categoryParent.current.children[0].className} ${activeWord}`
+      if (location.state == null) {
+        // set first variant in categories active
+        categoryParent.current.children[0].className = `${categoryParent.current.children[0].className} ${activeWord}`
+      } else if (location.state !== null) {
+        const index = location.state
+        categoryParent.current.children[
+          index
+        ].className = `${categoryParent.current.children[index].className} ${activeWord}`
+        setCurrentCateg(index)
+      }
     }
   }, [categoryParent.current])
+
+  // useEffect(() => {
+  //   console.log(location)
+  // }, [])
 
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })

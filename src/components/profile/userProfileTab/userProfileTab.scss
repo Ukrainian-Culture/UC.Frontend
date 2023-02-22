@@ -70,6 +70,7 @@ $s1_input_width: 100%;
         font-size: 20px;
         font-weight: 600;
         margin-left: $input_title_margin;
+
       }
 
       .UserProfileTab_section_left_inputWrap {
@@ -87,6 +88,10 @@ $s1_input_width: 100%;
           font-weight: 500;
           color: $g_2;
           margin-left: $input_title_margin;
+
+          overflow: hidden;
+          max-width: 75%;
+
         }
 
         .UserProfileTab_section_left_inputWrap_icon {
@@ -204,7 +209,7 @@ $s1_input_width: 100%;
           background-color: $g_0;
 
           .UserProfileTab_section_left_inputWrap_input {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 500;
             color: $g_2;
             margin-left: $s1_input_title_margin;

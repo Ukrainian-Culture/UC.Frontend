@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="footerText">{interfaceLang.l_c_u}</div>
         </div>
         <div className="footerDefaultBlock">
-          <div className="footerText">{interfaceLang.about_us}</div>
+            <div className="footerText">{interfaceLang.about_us}</div>
           <div className="footerText">{interfaceLang.private_policy}</div>
           <div className="footerText">{interfaceLang.t_a_c}</div>
         </div>

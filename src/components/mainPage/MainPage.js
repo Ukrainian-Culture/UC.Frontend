@@ -27,8 +27,8 @@ function MainPage() {
   const changeScreenWidth = (param) => {
     dispatch({ type: CHANGE_SCREENWIDTH, payload: param })
   }
-  const changeEnterStatistic = (param)=>{
-    dispatch({type: STATISTIC_TRIGGER, payload: param})
+  const changeEnterStatistic = (param) => {
+    dispatch({ type: STATISTIC_TRIGGER, payload: param })
   }
   // ==================================================
   const state = useSelector((state) => state)
@@ -46,14 +46,13 @@ function MainPage() {
     const ctx = gsap.context(() => {
       tl.current && tl.current.progress(0).kill()
 
-      const dur = 1
-
       tl.current = gsap.timeline().to('.statisticSection', {
         scrollTrigger: {
           scroller: mainRef.current,
-          trigger: '.statisticSection',
-          start: 'center',
-          onEnter: () =>{
+          trigger: '.mainPage_scrollWrap_el_statistic',
+          start: 'center 70%',
+          // markers: true,
+          onEnter: () => {
             console.log('trigger work')
             changeEnterStatistic(true)
           },
@@ -78,8 +77,11 @@ function MainPage() {
         <Header centreText={selectedOblast} main={true} />
         <InfoBlock />
 
-
-        <div className="mainPage_scrollWrap" id="mainPage_scrollWrap" ref={mainRef}>
+        <div
+          className="mainPage_scrollWrap"
+          id="mainPage_scrollWrap"
+          ref={mainRef}
+        >
           <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_map">
             <MapSection />
           </div>
