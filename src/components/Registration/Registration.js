@@ -180,7 +180,7 @@ function Registration() {
 
   // registration request
   useEffect(() => {
-    if (submitData != null && daysAmount !== 0) {
+    if (submitData != null) {
       const url = `${state.startSettings.domain}/api/account/signup`
       const url_2 = 'https://localhost:7219/api/account/signup'
 
@@ -205,7 +205,7 @@ function Registration() {
                 email: locEmail,
               },
             })
-            navigate('/login')
+            // navigate('/login')
           } else {
             console.log('error registration request', res.status)
             dispatch({
@@ -222,7 +222,7 @@ function Registration() {
           })
         })
     }
-  }, [submitData, daysAmount])
+  }, [submitData])
 
   //////////////////////////////////////////////////////
 

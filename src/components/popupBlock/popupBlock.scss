@@ -1,6 +1,6 @@
 @import '../../settings/settings.scss';
 
-$padding_content: 40px;
+$padding_content: 15px;
 
 .PopupBlock_Section {
   position: absolute;
@@ -15,26 +15,28 @@ $padding_content: 40px;
   .PopupBlock_Section_Content {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
     width: fit-content;
     height: fit-content;
-    // padding: 0px $padding_content;
     background-color: $g_0;
     border-radius: 10px;
 
     .PopupBlock_Section_Content_Close {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        font-size: 28px;
-        margin-top: $padding_content;
-        padding: 5px;
-        border-radius: 100px;
-        cursor: pointer;
-  
-        &:hover {
-          background-color: $g_4;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      font-size: 28px;
+      margin-top: $padding_content;
+      margin-right: $padding_content;
+      padding: 5px;
+      border-radius: 100px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $g_4;
       }
+    }
   }
 }
