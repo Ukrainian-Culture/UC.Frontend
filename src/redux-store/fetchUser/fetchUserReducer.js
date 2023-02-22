@@ -1,4 +1,5 @@
 import {
+  EMAIL_CHANGER_USER,
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
   USER_CLEAR_ERROR,
@@ -111,6 +112,15 @@ const fetchUserReducer = (state = initialState, action) => {
         },
         error: '',
       }
+
+    case EMAIL_CHANGER_USER:
+      return {
+        ...state,
+        loading: false,
+        data: {...state.data},
+        error: '',
+      }
+
     case FETCH_USER_ERROR:
       return {
         ...state,
