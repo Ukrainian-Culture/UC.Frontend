@@ -33,35 +33,35 @@ function MainPage() {
   useGetScreenWidth({ refWidth: refWidth })
 
   return (
-    <>
-      <UserOnline />
-      <StartAppRequests />
-      <LoadingPage main={true} />
+      <>
+        <UserOnline />
+        <StartAppRequests />
+        <LoadingPage main={true} />
 
-      <div className="mainPage" ref={refWidth}>
-        <GradientCircle colorClass={'registration'}/>
+        <div className="mainPage" ref={refWidth}>
+          <GradientCircle colorClass={'registration'}/>
 
-        <Header centreText={selectedOblast} main={true} />
-        <InfoBlock />
+          <Header centreText={selectedOblast} main={true} />
+          <InfoBlock />
 
-        <div className="mainPage_scrollWrap" id="mainPage_scrollWrap">
-          <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_map">
-            <MapSection />
-          </div>
-          {/* <div className='mainPage_scrollWrap_el'><IntroducingCategory /></div> */}
-          <div className="mainPage_scrollWrap_el">
-            {/* <h1>{state.screenWidth.width}</h1> */}
-            <StatisticSection />
-          </div>
-          <div className="mainPage_scrollWrap_el">
-            <Subscription />
-          </div>
-          <div className="mainPage_scrollWrap_el">
-            <Footer />
+          <div className="mainPage_scrollWrap" id="mainPage_scrollWrap">
+            <div className="mainPage_scrollWrap_el">
+              <MapSection />
+            </div>
+            {/* <div className='mainPage_scrollWrap_el'><IntroducingCategory /></div> */}
+            <div className="mainPage_scrollWrap_el">
+              {/* <h1>{state.screenWidth.width}</h1> */}
+              <StatisticSection />
+            </div>
+            <div className="mainPage_scrollWrap_el">
+              <Subscription />
+            </div>
+            <div  className="mainPage_scrollWrap_el">
+              <Footer />
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
   )
 }
 
