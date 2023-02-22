@@ -17,29 +17,30 @@ const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
     {
       days: 7,
       description: ['7 days', '7 днів'],
-      type: ['free', 'безплатно'],
-      price: 0,
+      type: ['free', 'безкоштовно'],
+      price: ['$0','₴0'],
+      url:[' ',' '],
     },
     {
       days: 31,
-      description: ['$8/mo per month', '$8/м на місяць'],
+      description: ['$8/mo per month', '₴300/м на місяць'],
       type: ['month', 'місяць'],
-      price: 8,
-      url: 'https://secure.wayforpay.com/button/b414ea931b158',
+      price: ['$8','₴300'],
+      url: ['https://secure.wayforpay.com/button/b414ea931b158','https://secure.wayforpay.com/button/be7e7c568acea'],
     },
     {
       days: 120,
-      description: ['$5/mo per month', '$5/м на місяць'],
+      description: ['$5/mo per month', '₴150/м на місяць'],
       type: ['quarter', 'квартал'],
-      price: 15,
-      url: 'https://secure.wayforpay.com/button/bcb979111f790',
+      price: ['$15','₴550'],
+      url: ['https://secure.wayforpay.com/button/bcb979111f790', 'https://secure.wayforpay.com/button/bba8a0f1e8192'],
     },
     {
       days: 365,
-      description: ['$2,5/mo per month', '$2,5/м на місяць'],
+      description: ['$2,5/mo per month', '₴92,5/м на місяць'],
       type: ['year', 'рік'],
-      price: 30,
-      url: 'https://secure.wayforpay.com/button/bb0727a70d9c1',
+      price: ['$30','₴1110'],
+      url: ['https://secure.wayforpay.com/button/bb0727a70d9c1','https://secure.wayforpay.com/button/b67cbf69a24e3'],
     },
   ]
 
@@ -86,7 +87,7 @@ const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
                 onClick={(e) => cardClick(e, el.days)}
                 key={`SBMFERG${index}`}
               >
-                <a href={el.url}>
+                <a href={el.url[language]}>
                   <div>
                     <div className={`subscriptionType some_el_el${index}`}>
                       {el.type[language]}{' '}
@@ -95,7 +96,7 @@ const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
                       <br />
                     </React.Fragment>
                     <div className={`subscriptionPrice some_el_el${index}`}>
-                      ${el.price}{' '}
+                      {el.price[language]}{' '}
                     </div>
                     <React.Fragment>
                       <br />
