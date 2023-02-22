@@ -66,16 +66,37 @@ function MainPage() {
   // getting screen size from current page
   useGetScreenWidth({ refWidth: refWidth })
   return (
-    <>
-      <UserOnline />
-      <StartAppRequests />
-      <LoadingPage main={true} />
+      <>
+        <UserOnline />
+        <StartAppRequests />
+        <LoadingPage main={true} />
+
+ Subscription_v2
+        <div className="mainPage" ref={refWidth}>
+          <GradientCircle colorClass={'registration'}/>
 
       <div className="mainPage" ref={refWidth}>
         <GradientCircle colorClass={'registration'} />
 
-        <Header centreText={selectedOblast} main={true} />
-        <InfoBlock />
+
+          <Header centreText={selectedOblast} main={true} />
+          <InfoBlock />
+
+          <div className="mainPage_scrollWrap" id="mainPage_scrollWrap">
+            <div className="mainPage_scrollWrap_el">
+              <MapSection />
+            </div>
+            {/* <div className='mainPage_scrollWrap_el'><IntroducingCategory /></div> */}
+            <div className="mainPage_scrollWrap_el">
+              {/* <h1>{state.screenWidth.width}</h1> */}
+              <StatisticSection />
+            </div>
+            <div className="mainPage_scrollWrap_el">
+              <Subscription />
+            </div>
+            <div  className="mainPage_scrollWrap_el">
+              <Footer />
+            </div>
 
         <div
           className="mainPage_scrollWrap"
@@ -95,10 +116,10 @@ function MainPage() {
           </div>
           <div className="mainPage_scrollWrap_el">
             <Footer />
+
           </div>
         </div>
-      </div>
-    </>
+      </>
   )
 }
 
