@@ -1,4 +1,4 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
 .statisticSection {
   height: 100vh;
@@ -29,6 +29,8 @@
   font-weight: 600;
 }
 
+
+
 .cityName {
   font-size: 16px;
 }
@@ -53,10 +55,10 @@
     font-weight: 600;
   }
 }
-.cityBlock_right{
+.cityBlock_right {
   display: flex;
   align-items: flex-end;
-  .cityBlock_emoji{
+  .cityBlock_emoji {
     font-size: 30px;
   }
 }
@@ -69,6 +71,8 @@
 .statisticLeft,
 .statisticRight {
   height: 100%;
+  width: 30svw;
+  // background-color: pink;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -80,15 +84,26 @@
   row-gap: 16px;
 }
 
-
 @media (max-width: $ADAPTIVE_M_1) {
   .statisticContent {
     width: 100%;
     padding: 0 30px;
   }
+
+  .statisticLeft,
+  .statisticRight {
+    width: 37vw;
+    // background-color: rgb(140, 14, 35);
+
+  }
 }
 
 @media (max-width: $ADAPTIVE_M_2) {
+  .statisticContent {
+
+    column-gap: 150px;
+
+  }
   .statisticBlockHeader {
     font-size: 24px;
   }
@@ -103,6 +118,13 @@
 
   .cityPopulation {
     font-size: 24px;
+  }
+
+  .statisticLeft,
+  .statisticRight {
+    width: 45vw;
+    // background-color: rgb(104, 14, 140);
+
   }
 }
 
@@ -143,13 +165,13 @@
   .statisticLeft,
   .statisticRight {
     height: 35%;
+    width: 80vw;
   }
-  .statisticWrapRightFirst{
+  .statisticWrapRightFirst {
     display: flex;
     flex-direction: column;
-    
   }
-  .statisticBlockHeader:last-child{
+  .statisticBlockHeader:last-child {
     width: 100%;
     font-size: 20px;
     font-weight: bolder;

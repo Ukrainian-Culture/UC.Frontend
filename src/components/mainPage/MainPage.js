@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../mainPage/mainPage.scss'
 import Header from '../header/Header'
 import InfoBlock from '../header/infoBlock/InfoBlock'
@@ -16,6 +16,10 @@ import GradientBackground from '../gradientBackground/GradientBackground'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import UserOnline from '../../hooks/UserOnline'
 import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { STATISTIC_TRIGGER } from '../../redux-store/startSettings/startSettingsReducerConst'
+gsap.registerPlugin(ScrollTrigger)
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -23,23 +27,57 @@ function MainPage() {
   const changeScreenWidth = (param) => {
     dispatch({ type: CHANGE_SCREENWIDTH, payload: param })
   }
+  const changeEnterStatistic = (param) => {
+    dispatch({ type: STATISTIC_TRIGGER, payload: param })
+  }
   // ==================================================
   const state = useSelector((state) => state)
   const selectedOblast = state.selectedOblast.selectedOblast
 
   // variable which contain referense on main screen blocks
   const refWidth = useRef()
+
+  const tl = useRef()
+  const mainRef = useRef()
+
+  // ---------------------------------------------------------
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      tl.current && tl.current.progress(0).kill()
+
+      tl.current = gsap.timeline().to('.statisticSection', {
+        scrollTrigger: {
+          scroller: mainRef.current,
+          trigger: '.mainPage_scrollWrap_el_statistic',
+          start: 'center 70%',
+          // markers: true,
+          onEnter: () => {
+            console.log('trigger work')
+            changeEnterStatistic(true)
+          },
+        },
+      })
+    }, mainRef)
+
+    return () => ctx.revert()
+  }, [])
+
   // getting screen size from current page
   useGetScreenWidth({ refWidth: refWidth })
-
   return (
       <>
         <UserOnline />
         <StartAppRequests />
         <LoadingPage main={true} />
 
+ Subscription_v2
         <div className="mainPage" ref={refWidth}>
           <GradientCircle colorClass={'registration'}/>
+
+      <div className="mainPage" ref={refWidth}>
+        <GradientCircle colorClass={'registration'} />
+
 
           <Header centreText={selectedOblast} main={true} />
           <InfoBlock />
@@ -59,6 +97,26 @@ function MainPage() {
             <div  className="mainPage_scrollWrap_el">
               <Footer />
             </div>
+
+        <div
+          className="mainPage_scrollWrap"
+          id="mainPage_scrollWrap"
+          ref={mainRef}
+        >
+          <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_map">
+            <MapSection />
+          </div>
+          {/* <div className='mainPage_scrollWrap_el'><IntroducingCategory /></div> */}
+          <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_statistic">
+            {/* <h1>{state.screenWidth.width}</h1> */}
+            <StatisticSection />
+          </div>
+          <div className="mainPage_scrollWrap_el ">
+            <Subscription />
+          </div>
+          <div className="mainPage_scrollWrap_el">
+            <Footer />
+
           </div>
         </div>
       </>

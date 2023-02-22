@@ -44,6 +44,8 @@ function ScrollCategory() {
 
   const [searchFocus, setSearchFocus] = useState(false)
   const searchRef = useRef()
+
+  const activeWord = 'activeCategory'
   // ------------------------------------
 
   const animationOnHoverCategory = (e) => {
@@ -78,14 +80,12 @@ function ScrollCategory() {
           className={`scrollCategory_el_wrapp scrollCategory_el_wrapp_search scrollCategory_el_wrapp_search_${searchFocus}`}
         >
           <input
-          ref={searchRef}
+            ref={searchRef}
             value={search || ''}
             onChange={(e) => changeSearchText(e.target.value)}
             type="text"
-            className="scrollCategory_el "
-            placeholder={
-              `${emojiCategory['search']} ${interfaceLang[language].search}`
-            }
+            className="scrollCategory_el scrollCategory_el_search"
+            placeholder={`${emojiCategory['search']} ${interfaceLang[language].search}`}
           />
           <div
             className={`scrollCategory_el_ scrollCategory_el_${searchFocus}`}
@@ -109,7 +109,12 @@ function ScrollCategory() {
               }}
               onMouseEnter={(e) => animationOnHoverCategory(e)}
               onMouseLeave={(_) => animationLeaveHoverCategory()}
-              className="scrollCategory_el_wrapp"
+              className={`scrollCategory_el_wrapp scrollCategory_el_wrapp_${
+                corelateCategories(el, language) ===
+                store.selectedCategory.filter
+                  ? activeWord
+                  : ''
+              }`}
               key={`srccat_${index}`}
             >
               <div className="scrollCategory_el">

@@ -54,6 +54,13 @@
     font-size: 17px;
     font-weight: 600;
   }
+
+  .eyeIconPassword {
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 28px;
+    color: $g_0;
+  }
 }
 
 
@@ -96,7 +103,7 @@
 }
 
 .LoginButton {
-  margin-top: 10px;
+  margin-top: 15px;
   width: 350px;
   display: flex;
   color: $g_1;
@@ -128,6 +135,7 @@
   }
 }
 .SignIn {
+  white-space: nowrap;
   font-size: 55px;
   display: flex;
   justify-content: center;

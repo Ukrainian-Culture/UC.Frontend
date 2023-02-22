@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
+import { EmailValidation, PasswordValidation } from '../../hooks/Validation'
 import {
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
+  USER_CLEAR_ERROR,
   USER_REGISTRATION_CALL,
 } from '../../redux-store/fetchUser/fetchUserConst'
 import GradientCircle from '../gradientBackground/gradientCircle/GradientCircle'
@@ -53,6 +55,14 @@ function Registration() {
   const [isPassWrong, setIsConfPassWrong] = useState(false)
   const [isConfPassWrong, setIsPassWrong] = useState(false)
 
+  const emptyValidation = {
+    message: '',
+    ok: false,
+  }
+  const [emailError, setEmailError] = useState(emptyValidation)
+  const [passError, setPassError] = useState(emptyValidation)
+  const [confPassError, setConfPassError] = useState(emptyValidation)
+
   const [submitData, setSubmitData] = useState(null)
   const [daysAmount, setDaysAmount] = useState(0)
 
@@ -80,7 +90,14 @@ function Registration() {
   const GetLocEmail = (e) => {
     const def = e.target.value
     setLocEmail(def)
-    // console.log('email: ', def)
+
+    // email validation
+    if (def.includes('@') && def.split('.').length == 2) {
+      setEmailError(EmailValidation(def))
+    }
+
+    if (def === '') setEmailError(emptyValidation)
+    if (user.error !== '') dispatch({ type: USER_CLEAR_ERROR })
   }
   // get pass from user
   const GetLocPass = (e) => {
@@ -90,7 +107,12 @@ function Registration() {
     locConfPass !== def && def !== ''
       ? setIsPassWrong(true)
       : setIsPassWrong(false)
-    // console.log('pass: ', def)
+
+    // password validation
+    setPassError(PasswordValidation(def))
+
+    if (def === '') setPassError(emptyValidation)
+    if (user.error !== '') dispatch({ type: USER_CLEAR_ERROR })
   }
   // get confirm pass from user
   const GetLocConfPass = (e) => {
@@ -106,17 +128,28 @@ function Registration() {
 
       //   console.log(`shit_${isConfPassWrong}`)
     }
+
+    // confirm password validation
+    setConfPassError(PasswordValidation(def))
+
+    if (def === '') setConfPassError(emptyValidation)
+    if (user.error !== '') dispatch({ type: USER_CLEAR_ERROR })
   }
 
   // function which check if account can be created
   const isReadyForSubmit = () => {
-    return (
+    const def_1 =
       !isEmailWrong &&
       !isPassWrong &&
       locEmail !== '' &&
       locPass !== '' &&
       locConfPass !== ''
-    )
+
+    const def_2 = state.startSettings.validation
+      ? emailError.ok && passError.ok && confPassError.ok
+      : true
+
+    return def_1 && def_2
   }
 
   // function which send data from inputs to url request signup
@@ -134,6 +167,15 @@ function Registration() {
       setIsVisible(true)
     }
   }
+
+  useEffect(() => {
+    if (user.error !== '') setIsSubmit(false)
+  }, [user.error])
+
+  useEffect(() => {
+    dispatch({ type: USER_CLEAR_ERROR })
+  }, [])
+
   //////////////////////////////////////////////////////
 
   // registration request
@@ -142,7 +184,7 @@ function Registration() {
       const url = `${state.startSettings.domain}/api/account/signup`
       const url_2 = 'https://localhost:7219/api/account/signup'
 
-      fetch(url_2, {
+      fetch(url, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -174,11 +216,30 @@ function Registration() {
         })
         .catch((e) => {
           console.log('error registration request', e)
+          dispatch({
+            type: FETCH_USER_ERROR,
+            error: JSON.stringify(e),
+          })
         })
     }
   }, [submitData, daysAmount])
 
   //////////////////////////////////////////////////////
+
+  const LoggingErrorRenderer = () => {
+    if (user.error !== '') {
+      return (
+        <>
+          <div className="LoginForms_Error LoginForms_Error_loging">
+            {state.interfaceLang[language].user} {locEmail}{' '}
+            {state.interfaceLang[language].b_e_o_p}
+          </div>
+        </>
+      )
+    }
+
+    return <></>
+  }
 
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })
@@ -234,6 +295,11 @@ function Registration() {
                   ></input>
                 </div>
 
+                <div className="RegForms_emailError RegForms_Error">
+                  {state.startSettings.validation &&
+                    emailError.message[language]}
+                </div>
+
                 <IonIcon
                   icon={eyePasswordIcon}
                   className="eyeIconPassword"
@@ -251,6 +317,11 @@ function Registration() {
                   ></input>
                 </div>
 
+                <div className="RegForms_passError RegForms_Error">
+                  {state.startSettings.validation &&
+                    passError.message[language]}
+                </div>
+
                 <div className="RegistrationSection_mainBlock_wrapper_input_wrapper">
                   <input
                     value={locConfPass}
@@ -262,6 +333,11 @@ function Registration() {
                   ></input>
                 </div>
 
+                {/* <div className="RegForms_cofnPassError RegForms_Error">
+                  {state.startSettings.validation &&
+                    confPassError.message[language]}
+                </div> */}
+
                 <div
                   onClick={submitFormData}
                   className="RegistrationSection_mainBlock_wrapper_createButton"
@@ -272,6 +348,8 @@ function Registration() {
                     <LoadingEmoji button={true} />
                   )}
                 </div>
+
+                <LoggingErrorRenderer />
               </form>
             </div>
           </div>

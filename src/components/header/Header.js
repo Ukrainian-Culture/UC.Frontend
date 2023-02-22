@@ -39,9 +39,11 @@ function Header(props) {
   const location = useLocation()
 
   const state = useSelector((state) => state)
-  const user = state.user
   // current language
   const language = state.changeLanguage.lang
+
+  const user = state.user
+  const profileCategory = state.profileCategory
   //variable for text in  interface in different language
   const interfaceLang = state.interfaceLang[language]
   const culture = state.culture
@@ -97,12 +99,16 @@ function Header(props) {
             <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
               {aboutOblast.aboutOblast[selectedOblast].emoji}
             </div>
+
             <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
               {aboutOblast.aboutOblast[selectedOblast][language]}
             </div>
-            <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
-              {aboutOblast.region[language]}
-            </div>
+
+            {aboutOblast.aboutOblast[selectedOblast][0] !== 'Crimea' ? (
+              <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
+                {aboutOblast.region[language]}
+              </div>
+            ) : null}
           </div>
         </>
       )
@@ -128,14 +134,17 @@ function Header(props) {
         <>
           <div className="mainHeader_oblastName">
             <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
-              {/* {aboutOblast.aboutOblast[redionId].emoji} */}
+              {aboutOblast.aboutOblast[redionId].emoji}
             </div>
             <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
-              {/* {aboutOblast.aboutOblast[redionId][language]} */}
+              {aboutOblast.aboutOblast[redionId][language]}
             </div>
-            <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
-              {/* {aboutOblast.region[language]} */}
-            </div>
+
+            {aboutOblast.aboutOblast[redionId][0] !== 'Crimea' ? (
+              <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
+                {aboutOblast.region[language]}
+              </div>
+            ) : null}
           </div>
         </>
       )
@@ -351,18 +360,32 @@ function Header(props) {
         {hoverProfile ? (
           <div
             onMouseLeave={() => setHoverProfile(false)}
-            className={`header_HoverProfileBlock header_HoverProfileBlock${explore ? '_explore' : ''}`}
+            className={`header_HoverProfileBlock header_HoverProfileBlock${
+              explore ? '_explore' : ''
+            }`}
           >
             <div className="header_HoverProfileBlock_email">
               {user.data.email}
             </div>
             <div className="header_HoverProfileBlock_wrap">
-              <Link
+              {/* <Link
                 to="/profile"
                 className="header_HoverProfileBlock_wrap_profile"
               >
                 <div>{interfaceLang.profile.toLowerCase()}</div>
-              </Link>
+              </Link> */}
+              {profileCategory[user.data.role][language].map((el, index) => {
+                return (
+                  <Link
+                    to="/profile"
+                    state={index}
+                    key={`PHHPB_${index}`}
+                    className="header_HoverProfileBlock_wrap_profile"
+                  >
+                    <div>{el.toLowerCase()}</div>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         ) : null}

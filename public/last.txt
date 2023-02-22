@@ -1,9 +1,8 @@
-> Login:
-- add loading animation on button;
-> Registration:
-- add loading animation on button;
->adminArticle:
--add api requests to change article;
->Footer:
-- add localization;
-- add logo;
+> GradientCircle:
+ - fix bug with blured background;
+> mapPage:
+ - add history timeline to userHistory;
+> login:
+ - add button which show and hide password;
+> articlePage:
+ - add region to header;
