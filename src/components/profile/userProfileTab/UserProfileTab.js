@@ -1,21 +1,32 @@
 import { IonIcon } from '@ionic/react'
 import { enterOutline, createOutline, pencilOutline } from 'ionicons/icons'
-import React from 'react'
+import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import PopupWindow from '../popupWindow/PopupWindow'
 import '../userProfileTab/userProfileTab.scss'
+import PopupBlock from "../../popupBlock/PopupBlock";
+import Changer from "../../emain_passwordChanger/Changer";
 
 function UserProfileTab() {
   const state = useSelector((state) => state)
   const language = state.changeLanguage.lang
   const interfaceLang = state.interfaceLang
   const user = state.user
+  const [isPopup, setIsPopup] = useState(false);
+  const [popupContent,setPopupContent] = useState('');
   //=====================================
 
   return (
     <>
-      <PopupWindow />
-
+      {
+        isPopup ?
+            <div className="UserProfileChangerPopup">
+              <PopupBlock setIsPopup={setIsPopup}  setIsVisible={setIsPopup}>
+                <Changer content={popupContent}/>
+              </PopupBlock>
+            </div>
+            :null
+      }
       <div className="UserProfileTab_section">
         <div className="UserProfileTab_section_left UserProfileTab_section_el">
           <div className="UserProfileTab_section_left_inp">
@@ -23,7 +34,7 @@ function UserProfileTab() {
               {interfaceLang[language].email}
             </div>
 
-            <div className="UserProfileTab_section_left_inputWrap">
+            <div onClick={() => {setIsPopup(true); setPopupContent('email')}} className="UserProfileTab_section_left_inputWrap">
               <div className="UserProfileTab_section_left_inputWrap_input">
               {user.data.email}
               </div>
@@ -35,12 +46,12 @@ function UserProfileTab() {
             </div>
           </div>
 
-          <div className="UserProfileTab_section_left_inp">
+          <div  className="UserProfileTab_section_left_inp">
             <div className="UserProfileTab_section_left_title">
               {interfaceLang[language].password}
             </div>
 
-            <div className="UserProfileTab_section_left_inputWrap">
+            <div onClick={() => {setIsPopup(true); setPopupContent('password')}} className="UserProfileTab_section_left_inputWrap">
               <div className="UserProfileTab_section_left_inputWrap_input">
                 ***************
               </div>
