@@ -54,7 +54,7 @@ export function EmailValidation(_email){
     }
     else{
         return {
-            message:'',
+            message:[''],
             ok:true
         }
     }
@@ -74,7 +74,7 @@ export function PasswordValidation(_password){
     }
     else if(_password==='AdminPassword'){
         return {
-            message: '',
+            message: [''],
             ok: true,
         }
     }
@@ -96,9 +96,15 @@ export function PasswordValidation(_password){
             ok: false,
         }
     }
+    else if(!_password.match(/^\d*[a-zA-Z][a-zA-Z\d]*$/)){
+        return {
+            message: ['Password must contain only letters and number','Пароль мусить містити лише літери та цифри'],
+            ok: false,
+        }
+    }
     else{
         return {
-            message: '',
+            message: [''],
             ok:true,
         }
     }

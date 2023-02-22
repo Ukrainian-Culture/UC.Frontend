@@ -8,7 +8,7 @@ const initialState = {
     back: 'back',
     peopleOnline: 'Users online',
     nationalMonuments: 'National monuments',
-    usencoHerritage: 'UNESCO herritage',
+    usencoHerritage: 'UNESCO heritage',
     ukrainePopulation: 'Ukraine population',
     logout: 'logout',
     create_an_account: 'Create an account',
@@ -26,8 +26,6 @@ const initialState = {
     search: 'search',
 
     //subscription
-    subscription: 'Subscription',
-    search: 'search',
     history: 'history',
     download_f_a: 'download',
     full_article: 'full article',
@@ -45,12 +43,21 @@ const initialState = {
     g_2_off: 'Get 20% off',
     b_s_t_n: 'By subscribing to our newsletter',
 
+
+    //changer
+    change: 'change',
+    new: 'new',
+    current: 'current',
+    confirm: 'confirm',
+    email_c: 'email',
+
     // userHistory
     empty: 'empty',
 
     // login
     user: 'user',
     b_e_o_p: 'bad email or password',
+
   },
   '1': {
     map: 'Карта',
@@ -79,8 +86,6 @@ const initialState = {
     new_user: 'Новий користувач?',
 
     //subscription
-    subscription: 'Підписка',
-    search: 'пошук',
     history: 'історія',
     download_f_a: 'скачування',
     full_article: 'повної статті',
@@ -99,12 +104,21 @@ const initialState = {
     g_2_off: 'Отримай 20% знижку',
     b_s_t_n: 'Підписавшись на нашу розсилку',
 
+
+    //changer
+    change: 'змінити',
+    new: 'нова',
+    current: 'поточна',
+    confirm: 'підтвердіть',
+    email_c: 'електронну пошту',
+
     // userHistory
     empty: 'пусто',
 
     // login
     user: 'користувач',
     b_e_o_p: 'хибний логін або пароль',
+
   },
 }
 
