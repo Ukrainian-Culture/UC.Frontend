@@ -11,6 +11,7 @@ import StartAppRequests from '../../hooks/StartAppRequests'
 import Profile from '../profile/Profile'
 import Login from '../Login/Login'
 import Registration from '../Registration/Registration'
+import SubscriptionPage from '../subscription/SubscriptionPage/SubscriptionPage'
 
 function Main() {
   return (
@@ -24,6 +25,7 @@ function Main() {
             <Route path="/login" element={<Login/>} />
             <Route path="/registration" element={<Registration/>} />
             <Route path="/article/:id" element={<ArticlePage />} />
+            <Route path="/subscription" element={<SubscriptionPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

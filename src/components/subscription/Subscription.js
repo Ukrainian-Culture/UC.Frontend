@@ -4,7 +4,7 @@ import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import { useDispatch, useSelector } from 'react-redux'
 import { FETCH_USER_SUCCESS } from '../../redux-store/fetchUser/fetchUserConst'
 
-const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
+const Subscription = ({ subsPage, popup, setIsVisible, setDaysAmount }) => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
   // current language
@@ -47,9 +47,9 @@ const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
   const cardClick = (e, days) => {
     if (e.target.className.split(' ')[1] === 'some_el_el0') {
       // if popup block
-      if (popup) {
+      if (popup || subsPage) {
         console.log('subscription days setted!')
-        setIsVisible((el) => !el)
+        // setIsVisible((el) => !el)
         setDaysAmount(days)
       }
     }
@@ -105,11 +105,23 @@ const Subscription = ({ popup, setIsVisible, setDaysAmount }) => {
                       {el.description[language]}{' '}
                     </div>
                   </div>
-                </a>
-              </div>
-            )}
-          </>
-        ))}
+                  <React.Fragment>
+                    <br />
+                  </React.Fragment>
+                  <div className={`subscriptionPrice some_el_el${index}`}>
+                    ${el.price}{' '}
+                  </div>
+                  <React.Fragment>
+                    <br />
+                  </React.Fragment>
+                  <div className={`subscriptionDescr some_el_el${index}`}>
+                    {el.description[language]}{' '}
+                  </div>
+                </div>
+              </a>
+            </div>
+          ),
+        )}
       </div>
     </div>
   )

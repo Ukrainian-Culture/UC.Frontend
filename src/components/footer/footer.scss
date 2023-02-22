@@ -1,4 +1,4 @@
-@import "../../settings/settings.scss";
+@import '../../settings/settings.scss';
 
 .footer {
   width: 100%;
@@ -26,12 +26,10 @@
   font-size: 0.9vw;
   color: $g_5;
 
-
-  .footerText_logo_svg{
+  .footerText_logo_svg {
     height: 60px;
   }
 }
-
 
 .footerFormWrap {
   display: flex;
@@ -54,7 +52,7 @@
   width: 350px;
   height: 60px;
   border-radius: 30px;
-  background-color: #EFEFEF;
+  background-color: #efefef;
   padding-left: 30px;
   align-items: center;
   justify-content: space-between;
@@ -95,7 +93,6 @@
     width: 250px;
   }
 
-
   .footerInput {
     flex-grow: 0;
     width: 100px;
@@ -111,7 +108,6 @@
 
     > div {
       width: 250px;
-
     }
   }
 }
@@ -127,7 +123,7 @@
       display: flex;
 
       :nth-of-type(4) {
-        order: 3
+        order: 3;
       }
     }
   }
@@ -142,7 +138,7 @@
     align-items: center;
   }
 
-  .footerText{
+  .footerText {
     font-size: 3.5vw;
   }
   .footerFormTitle {
@@ -168,9 +164,39 @@
     height: 40px;
     min-width: 40px;
   }
-
-
 }
+
+.footerTextPolicy {
+  cursor: pointer;
+}
+
+.footerTextTerms {
+  cursor: pointer;
+}
+
+.popupFoot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  .popupFootRender {
+    // background-color: pink;
+    margin: 40px;
+    overflow: auto;
+
+    .popupFootRender_title {
+    }
+
+    .popupFootRender_content {
+    }
+  }
+}
+
 @media (max-width: $ADAPTIVE_S_2) {
   .footerWrap {
     row-gap: 30px;
@@ -182,7 +208,7 @@
       display: flex;
 
       :nth-of-type(4) {
-        order: 3
+        order: 3;
       }
     }
   }
@@ -202,7 +228,7 @@
     font-size: 4.9vw;
   }
 
-  .footerFormSubtitle{
+  .footerFormSubtitle {
     font-size: 4vw;
   }
   .footerInput {
@@ -223,6 +249,4 @@
     height: 40px;
     min-width: 40px;
   }
-
-
 }
