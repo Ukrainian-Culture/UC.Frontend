@@ -1,68 +1,74 @@
 @import '../../settings/settings.scss';
 
 $padding_content: 20px;
-$element_width_input: 280px;
+$element_width_input: 70%;
 $element_width_exit: 300px;
 $element_width_button: 120px;
 $element_width_button_margin: 110px;
 
-
-.Changer_Section{
+.Changer_Section {
   padding: $padding_content;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 500px;
 
-  .popup_icon{
-    align-self: end;
-    cursor: pointer;
-  }
-
-  .Changer_Title{
+  .Changer_Title {
     align-self: center;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
+    margin-bottom: 20px;
   }
 
-  .Changer_Input{
+  .Changer_Input {
     align-self: center;
     width: $element_width_input;
     padding: 25px 0;
-    margin: 10px 0;
+    margin-top: 15px;
     border: 0;
-    border-radius: 30px;
+    border-radius: 100px;
     background-color: $g_4;
-    font-size: 15px;
-    color: $g_5;
+    font-size: 18px;
+    font-weight: 600;
+    color: $g_1_2;
     text-align: center;
+
+    &::placeholder {
+      font-size: 18px;
+      color: $g_5;
+      text-align: center;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 
-  .Changer_Input::placeholder{
-    font-size: 15px;
-    color: $g_5;
-    text-align: center;
-    font-size: 20px;
+  .Changer_Button_wrap {
+    margin: 25px 0px ;
+    display: flex;
+    justify-content: flex-end;
+    width: $element_width_input;
+
+    .Changer_Button {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $element_width_button;
+      background-color: $g_1;
+      color: $g_0;
+      font-weight: 600;
+      font-size: 18px;
+      border-radius: 100px;
+      padding: 20px 20px;
+    }
   }
 
-  .Changer_Input:focus{
-    outline: none;
-  }
-
-  .Changer_Button{
-    align-self: end;
-    width: $element_width_button;
-    background-color: $g_1;
-    color: $g_0;
-    font-size: 20px;
-    border-radius: 30px;
-    padding: 15px 20px;
-    margin-right: $element_width_button_margin;
-  }
-
-  .Error_Message{
-    margin-bottom: 10px;
+  .Error_Message {
+    // margin-bottom: 10px;
     color: $r_0;
+    font-weight: 500;
+    text-align: center;
   }
 }
-
