@@ -18,41 +18,53 @@ const Subscription = ({ subsPage, popup, setIsVisible, setDaysAmount }) => {
       days: 7,
       description: ['7 days', '7 днів'],
       type: ['free', 'безкоштовно'],
-      price: ['$0','₴0'],
-      url:[' ',' '],
+      price: ['$0', '₴0'],
+      url: [' ', ' '],
     },
     {
       days: 31,
       description: ['$8/mo per month', '₴300/м на місяць'],
       type: ['month', 'місяць'],
-      price: ['$8','₴300'],
-      url: ['https://secure.wayforpay.com/button/b414ea931b158','https://secure.wayforpay.com/button/be7e7c568acea'],
+      price: ['$8', '₴300'],
+      url: [
+        'https://secure.wayforpay.com/button/b414ea931b158',
+        'https://secure.wayforpay.com/button/be7e7c568acea',
+      ],
     },
     {
       days: 120,
       description: ['$5/mo per month', '₴150/м на місяць'],
       type: ['quarter', 'квартал'],
-      price: ['$15','₴550'],
-      url: ['https://secure.wayforpay.com/button/bcb979111f790', 'https://secure.wayforpay.com/button/bba8a0f1e8192'],
+      price: ['$15', '₴550'],
+      url: [
+        'https://secure.wayforpay.com/button/bcb979111f790',
+        'https://secure.wayforpay.com/button/bba8a0f1e8192',
+      ],
     },
     {
       days: 365,
       description: ['$2,5/mo per month', '₴92,5/м на місяць'],
       type: ['year', 'рік'],
-      price: ['$30','₴1110'],
-      url: ['https://secure.wayforpay.com/button/bb0727a70d9c1','https://secure.wayforpay.com/button/b67cbf69a24e3'],
+      price: ['$30', '₴1110'],
+      url: [
+        'https://secure.wayforpay.com/button/bb0727a70d9c1',
+        'https://secure.wayforpay.com/button/b67cbf69a24e3',
+      ],
     },
   ]
 
-  const cardClick = (e, days) => {
-    if (e.target.className.split(' ')[1] === 'some_el_el0') {
+  const cardClick = (e, val) => {
+    if (['some_el0', 'some_el_el0'].includes(e.target.className.split(' ')[1])) {
       // if popup block
       if (popup || subsPage) {
         console.log('subscription days setted!')
         // setIsVisible((el) => !el)
-        setDaysAmount(days)
+        setDaysAmount(val.days)
       }
     }
+    try {
+      if (val.url[language] !== ' ') window.open(val.url[language])
+    } catch (e) {}
   }
 
   const profileWrap = useRef()
@@ -79,37 +91,23 @@ const Subscription = ({ subsPage, popup, setIsVisible, setDaysAmount }) => {
         </div>
       </div>
       <div className="subscriptionButtons">
-        {array.map((el, index) => (
-          <>
-            {state.user.data.role === 'user' && index === 0 ? null : (
-              <div
-                className={`some_el${index}`}
-                onClick={(e) => cardClick(e, el.days)}
-                key={`SBMFERG${index}`}
-              >
-                <a href={el.url[language]}>
-                  <div>
-                    <div className={`subscriptionType some_el_el${index}`}>
-                      {el.type[language]}{' '}
-                    </div>
-                    <React.Fragment>
-                      <br />
-                    </React.Fragment>
-                    <div className={`subscriptionPrice some_el_el${index}`}>
-                      {el.price[language]}{' '}
-                    </div>
-                    <React.Fragment>
-                      <br />
-                    </React.Fragment>
-                    <div className={`subscriptionDescr some_el_el${index}`}>
-                      {el.description[language]}{' '}
-                    </div>
+        {array.map((el, index) =>
+          state.user.data.role === 'user' && index === 0 ? null : (
+            <div
+              className={`subscriptionButtons_el some_el${index}`}
+              onClick={(e) => cardClick(e, el)}
+              key={`SBMFERG${index}`}
+            >
+              <a>
+                <div>
+                  <div className={`subscriptionType some_el_el${index}`}>
+                    {el.type[language]}{' '}
                   </div>
                   <React.Fragment>
                     <br />
                   </React.Fragment>
                   <div className={`subscriptionPrice some_el_el${index}`}>
-                    ${el.price}{' '}
+                    {el.price[language]}{' '}
                   </div>
                   <React.Fragment>
                     <br />

@@ -6,7 +6,7 @@ import Tutorial from "./components/tutorial/Tutorial";
 function App() {
   return (
     <div className="App">
-      <Tutorial/> 
+      {/* <Tutorial/>  */}
       <Main/>
     </div>
   );

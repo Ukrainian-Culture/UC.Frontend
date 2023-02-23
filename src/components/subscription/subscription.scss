@@ -48,6 +48,11 @@
     box-sizing: border-box;
     gap: 25px;
     align-items: center;
+
+    .subscriptionButtons_el{
+      cursor: pointer;
+    }
+
     div.some_el0 {
       cursor: pointer;
       color: $g_1;

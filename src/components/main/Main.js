@@ -12,6 +12,7 @@ import Profile from '../profile/Profile'
 import Login from '../Login/Login'
 import Registration from '../Registration/Registration'
 import SubscriptionPage from '../subscription/SubscriptionPage/SubscriptionPage'
+import ConfirmEmailPage from '../ConfirmEmailPage/ConfirmEmailPage'
 
 function Main() {
   return (
@@ -26,6 +27,7 @@ function Main() {
             <Route path="/registration" element={<Registration/>} />
             <Route path="/article/:id" element={<ArticlePage />} />
             <Route path="/subscription" element={<SubscriptionPage />} />
+            <Route path="/confirm" element={<ConfirmEmailPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
