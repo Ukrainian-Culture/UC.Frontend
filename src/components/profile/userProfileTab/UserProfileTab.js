@@ -22,7 +22,7 @@ function UserProfileTab() {
       {
         isPopup ?
             <div className="UserProfileChangerPopup">
-              <PopupBlock setIsPopup={setIsPopup}  setIsVisible={setIsPopup}>
+              <PopupBlock closeBtn={true} setIsPopup={setIsPopup}  setIsVisible={setIsPopup}>
                 <Changer content={popupContent}/>
               </PopupBlock>
             </div>

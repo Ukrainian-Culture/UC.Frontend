@@ -1,19 +1,53 @@
 @import '../../settings/settings.scss';
 
-.confirmEmail_confirm {
-  .confirmEmail_confirm_wrap {
-    margin: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.ConfirmEmailPage_section{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    .confirmEmail_confirm_text {
-      font-size: 30px;
-      font-weight: 700;
+  .ConfirmEmailPage_section_text1{
+    font-size: 3vw;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .ConfirmEmailPage_section_steps{
+    margin-top: 20px;
+
+    .ConfirmEmailPage_section_steps_el{
+      font-size: 1.3vw;
+      margin-top: 10px;
+      padding: 7px 25px;
+      border-radius: 7px;
+      background-color: $g_4;
     }
-    .confirmEmail_confirm_mark {
-      font-size: 60px;
-      margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .ConfirmEmailPage_section{
+
+  
+    .ConfirmEmailPage_section_text1{
+      font-size: 6vw;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .ConfirmEmailPage_section_steps{
+      margin-top: 20px;
+  
+      .ConfirmEmailPage_section_steps_el{
+        font-size: 4vw;
+        margin: 0px 30px;
+        margin-top: 10px;
+        padding: 7px 25px;
+        border-radius: 7px;
+        background-color: $g_4;
+      }
     }
   }
 }

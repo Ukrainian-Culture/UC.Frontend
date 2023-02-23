@@ -7,11 +7,11 @@ const initialState = {
   // userRequestDomain: 'https://localhost:7219',
   userRequestDomain: 'https://ucbackend.azurewebsites.net',
 
-  confirmDomain: 'https://localhost:7219',
-  // confirmDomain: "https://ucbackend.azurewebsites.net",
+  // confirmDomain: 'https://localhost:7219',
+  confirmDomain: "https://ucbackend.azurewebsites.net",
 
-  emailNavLink: "http://localhost:3000/subscription",
-  // emailNavLink: "https://uculture.github.io/subscription",
+  // emailNavLink: "http://localhost:3000/subscription",
+  emailNavLink: "https://uculture.github.io/subscription",
 
   validation: false,
 
