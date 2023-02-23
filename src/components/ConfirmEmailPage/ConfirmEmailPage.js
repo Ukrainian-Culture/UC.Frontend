@@ -9,16 +9,25 @@ import {
   LOCALE_STORAGE_CONGIRM_TOKEN,
   USER_CHANGE_CONFIRM_TOKEN,
 } from '../../redux-store/fetchUser/fetchUserConst'
+import { useNavigate } from 'react-router-dom'
 
 function ConfirmEmailPage() {
-  const dispatch = useDispatch()
-
   const state = useSelector((state) => state)
   const language = state.changeLanguage.lang
-  const user = state.user
 
+  // hook that handle navigation between pages
+  const navigate = useNavigate()
   //=========================================
-  
+
+  const isWaitForConfirm = () => {
+    return Object.keys(localStorage).includes(LOCALE_STORAGE_CONGIRM_TOKEN)
+    // return true
+  }
+
+  useEffect(() => {
+    if (!isWaitForConfirm()) navigate('/login')
+  }, [])
+
   // variable which contain referense on main screen blocks
   const refWidth = useRef()
   // getting screen size from current page
@@ -28,9 +37,24 @@ function ConfirmEmailPage() {
       <StartAppRequests />
       <LoadingPage main={true} />
 
-      <div className="ConfirmEmailPage_section" ref={refWidth}>
-        ConfirmEmailPage_section
-      </div>
+      {isWaitForConfirm() ? (
+        <div className="ConfirmEmailPage_section" ref={refWidth}>
+          <div className="ConfirmEmailPage_section_text1">
+            {state.interfaceLang[language].v_y_e_t_c_r} 📬
+          </div>
+          <div className="ConfirmEmailPage_section_steps">
+            <div className="ConfirmEmailPage_section_steps_el">
+              ✉️ {state.interfaceLang[language].w_h_s_a_e_t_y_e_a}
+            </div>
+            <div className="ConfirmEmailPage_section_steps_el">
+              👇 {state.interfaceLang[language].c_o_t_l_i_t_l}
+            </div>
+            <div className="ConfirmEmailPage_section_steps_el">
+              ✅ {state.interfaceLang[language].t_r_w_b_c}
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   )
 }

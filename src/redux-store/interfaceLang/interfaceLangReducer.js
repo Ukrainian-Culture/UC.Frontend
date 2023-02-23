@@ -43,7 +43,6 @@ const initialState = {
     g_2_off: 'Get 20% off',
     b_s_t_n: 'By subscribing to our newsletter',
 
-
     //changer
     change: 'change',
     new_p: 'new',
@@ -63,6 +62,11 @@ const initialState = {
     user: 'user',
     b_e_o_p: 'bad email or password',
 
+    //confirmEmailPage
+    v_y_e_t_c_r: 'Verify your email to complete registration',
+    w_h_s_a_e_t_y_e_a: 'we have sent an email to your email address',
+    c_o_t_l_i_t_l: 'click on the link in the letter',
+    t_r_w_b_c: 'then registration will be complete',
   },
   '1': {
     map: 'Карта',
@@ -128,6 +132,11 @@ const initialState = {
     user: 'користувач',
     b_e_o_p: 'хибний логін або пароль',
 
+    //confirmEmailPage
+    v_y_e_t_c_r: 'Підтвердьте свою електронну адресу, щоб завершити реєстрацію',
+    w_h_s_a_e_t_y_e_a: 'ми надіслали лист на вашу електронну адресу',
+    c_o_t_l_i_t_l: 'натисніть на посилання в листі',
+    t_r_w_b_c: 'тоді реєстрація буде завершена',
   },
 }
 

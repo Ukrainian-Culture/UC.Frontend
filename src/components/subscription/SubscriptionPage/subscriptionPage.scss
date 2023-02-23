@@ -1,0 +1,19 @@
+@import '../../../settings/settings.scss';
+
+.confirmEmail_confirm {
+  .confirmEmail_confirm_wrap {
+    margin: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .confirmEmail_confirm_text {
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .confirmEmail_confirm_mark {
+      font-size: 60px;
+      margin-top: 30px;
+    }
+  }
+}
