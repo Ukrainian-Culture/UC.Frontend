@@ -13,18 +13,20 @@ import Login from '../Login/Login'
 import Registration from '../Registration/Registration'
 import SubscriptionPage from '../subscription/SubscriptionPage/SubscriptionPage'
 import ConfirmEmailPage from '../ConfirmEmailPage/ConfirmEmailPage'
+import Tutorial from '../tutorial/Tutorial'
 
 function Main() {
   return (
     <>
       <Provider store={store}>
+        <Tutorial />
         <div className="mainScript">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/explore" element={<ExplorePage />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/registration" element={<Registration/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} />
             <Route path="/article/:id" element={<ArticlePage />} />
             <Route path="/subscription" element={<SubscriptionPage />} />
             <Route path="/confirm" element={<ConfirmEmailPage />} />
