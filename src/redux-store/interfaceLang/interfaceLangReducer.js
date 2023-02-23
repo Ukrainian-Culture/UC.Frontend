@@ -46,10 +46,15 @@ const initialState = {
 
     //changer
     change: 'change',
-    new: 'new',
-    current: 'current',
-    confirm: 'confirm',
-    email_c: 'email',
+    new_p: 'new',
+    current_p: 'current',
+    confirm_p: 'confirm',
+    new_e: 'new',
+    current_e: 'current',
+    confirm_e: 'confirm',
+    email_e: 'email',
+    email_e_t: 'email',
+    email_e_f: 'email',
 
     // userHistory
     empty: 'empty',
@@ -104,13 +109,17 @@ const initialState = {
     g_2_off: 'Отримай 20% знижку',
     b_s_t_n: 'Підписавшись на нашу розсилку',
 
-
     //changer
     change: 'змінити',
-    new: 'нова',
-    current: 'поточна',
-    confirm: 'підтвердіть',
-    email_c: 'електронну пошту',
+    new_p: 'новий',
+    current_p: 'поточний',
+    confirm_p: 'підтвердіть',
+    new_e: 'нова',
+    current_e: 'поточна',
+    confirm_e: 'підтвердіть',
+    email_e: 'електронну пошту',
+    email_e_t: 'поштa',
+    email_e_f: 'пошту',
 
     // userHistory
     empty: 'пусто',

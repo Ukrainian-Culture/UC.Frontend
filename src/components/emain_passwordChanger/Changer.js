@@ -164,12 +164,12 @@ const Changer = (props) => {
     return (
         <div className="Changer_Section">
             <IonIcon onClick={() => {props.setIsPopup(false)}} className="popup_icon" size="large" icon={closeOutline} />
-            <div className="Changer_Title">{(props.content==='email')?`${interfaceLang[language].change} ${interfaceLang[language].email_c}`:`${interfaceLang[language].change} ${interfaceLang[language][props.content]}`}</div>
-            <input placeholder={`${interfaceLang[language].current} ${interfaceLang[language][props.content]}`} onChange={OnChangeCurrent} className="Changer_Input Changer_New_Input"/>
+            <div className="Changer_Title">{(props.content==='email')?`${interfaceLang[language].change} ${interfaceLang[language].email_e}`:`${interfaceLang[language].change} ${interfaceLang[language][props.content]}`}</div>
+            <input placeholder={(props.content==='email')?`${interfaceLang[language].current_e}`:`${interfaceLang[language].current_p}`} onChange={OnChangeCurrent} className="Changer_Input Changer_New_Input"/>
             <div className="Error_Message">{state.startSettings.validation && currentError.message[language]}</div>
-            <input placeholder={`${interfaceLang[language].new} ${interfaceLang[language][props.content]}`} onChange={OnChangeNew} className="Changer_Input Changer_New_Input"/>
+            <input placeholder={(props.content==='email')?`${interfaceLang[language].new_e}`:`${interfaceLang[language].new_p}`} onChange={OnChangeNew} className="Changer_Input Changer_New_Input"/>
             <div className="Error_Message">{state.startSettings.validation && newError.message[language]}</div>
-            <input placeholder={(props.content==='email')?`${interfaceLang[language].change} ${interfaceLang[language].email_c}`:`${interfaceLang[language].change} ${interfaceLang[language][props.content]}`} onChange={OnChangeConfirm} className="Changer_Input Changer_Confirm_Input"/>
+            <input placeholder={(props.content==='email')?`${interfaceLang[language].confirm_e}`:`${interfaceLang[language].confirm_p}`} onChange={OnChangeConfirm} className="Changer_Input Changer_Confirm_Input"/>
             <div className="Error_Message">{state.startSettings.validation && confirmError.message[language]}</div>
             <button onClick={Change} className="Changer_Button">{interfaceLang[language].change}</button>
         </div>
