@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import PopupBlock from '../../popupBlock/PopupBlock'
 import PopupWindow from '../popupWindow/PopupWindow'
 import '../userProfileTab/userProfileTab.scss'
-import PopupBlock from "../../popupBlock/PopupBlock";
 import Changer from "../../emain_passwordChanger/Changer";
 
 function UserProfileTab() {
