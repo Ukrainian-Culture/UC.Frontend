@@ -204,6 +204,7 @@ const Changer = (props) => {
       <div className="Changer_Button_wrap">
         <div onClick={Change} className="Changer_Button">
           {interfaceLang[language].change}
+
         </div>
       </div>
     </div>
