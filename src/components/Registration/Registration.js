@@ -1,4 +1,5 @@
 import { IonIcon } from '@ionic/react'
+import axios from 'axios'
 // import axios from 'axios'
 import { eyeOffOutline, eyeOutline, navigate } from 'ionicons/icons'
 import React from 'react'
@@ -13,6 +14,7 @@ import { EmailValidation, PasswordValidation } from '../../hooks/Validation'
 import {
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
+  LOCALE_STORAGE_CONGIRM_TOKEN,
   USER_CLEAR_ERROR,
   USER_REGISTRATION_CALL,
 } from '../../redux-store/fetchUser/fetchUserConst'
@@ -178,6 +180,37 @@ function Registration() {
 
   //////////////////////////////////////////////////////
 
+  const sendConfirmEmail = () => {
+    const url = `${state.startSettings.confirmDomain}/api/account/sendEmailConfirmToken`
+
+    const objSubmit = {
+      email: locEmail,
+      url: state.startSettings.emailNavLink,
+    }
+    // const objSubmit = {
+    //   email: 'owarriso@gmail.com',
+    //   url: emailNavLink,
+    // }
+    
+    axios
+      .post(url, objSubmit, {
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      .then((res) => {
+        console.log(res)
+
+        const def = {
+          token: res.data,
+          email: locEmail,
+        }
+
+        localStorage.setItem(LOCALE_STORAGE_CONGIRM_TOKEN, JSON.stringify(def))
+      })
+      .then((res) => navigate('/confirm'))
+  }
+
   // registration request
   useEffect(() => {
     if (submitData != null) {
@@ -194,18 +227,16 @@ function Registration() {
         .then((res) => res.json())
         .then((res) => {
           if (typeof res === 'boolean') {
-            // console.log('registration request ', res)
-
-            // writeLocalStorage()
             setIsSubmit(false)
             dispatch({
               type: USER_REGISTRATION_CALL,
               payload: {
-                daysAmount: daysAmount,
                 email: locEmail,
               },
             })
-            // navigate('/login')
+
+            // send mail with confirm link
+            sendConfirmEmail()
           } else {
             console.log('error registration request', res.status)
             dispatch({
@@ -250,13 +281,13 @@ function Registration() {
           <StartAppRequests />
           <LoadingPage main={true} />
 
-          {isVisible ? (
+          {/* {isVisible ? (
             <PopupSubs
               setIsSubmit={setIsSubmit}
               setIsVisible={setIsVisible}
               setDaysAmount={setDaysAmount}
             />
-          ) : null}
+          ) : null} */}
 
           <GradientCircle colorClass={'registration'} />
 
