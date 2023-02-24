@@ -217,7 +217,7 @@ function Registration() {
       const url = `${state.startSettings.domain}/api/account/signup`
       const url_2 = 'https://localhost:7219/api/account/signup'
 
-      fetch(url, {
+      fetch(url_2, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

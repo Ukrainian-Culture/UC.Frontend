@@ -56,12 +56,19 @@ $element_width_button_margin: 110px;
       justify-content: center;
       align-items: center;
       width: $element_width_button;
+      height: 65px;
       background-color: $g_1;
       color: $g_0;
       font-weight: 600;
       font-size: 18px;
       border-radius: 100px;
-      padding: 20px 20px;
+      padding: 0px 20px;
+
+      .loadingPageSection_wrap{
+        .loadingPageSection_wrap_el{
+          background-color: $g_0;
+        }
+      }
     }
   }
 
@@ -70,5 +77,16 @@ $element_width_button_margin: 110px;
     color: $r_0;
     font-weight: 500;
     text-align: center;
+  }
+}
+
+.Changer_donePopup{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .Changer_donePopup_el{
+    margin: 40px;
+    font-size: 40px;
   }
 }

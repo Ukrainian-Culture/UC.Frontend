@@ -2,9 +2,13 @@ import {
   FETCH_USER_ERROR,
   FETCH_USER_SUCCESS,
   USER_CHANGE_CONFIRM_TOKEN,
+  USER_CHANGE_EMAIL,
+  USER_CHANGE_EMAIL_PASSWORD_ERROR,
+  USER_CLEAR_EMAIL_PASSWORD_ERROR,
   USER_CLEAR_ERROR,
   USER_LOGOUT,
   USER_REGISTRATION_CALL,
+  USER_UPDATE_TOKENS,
 } from './fetchUserConst'
 
 const initialState = {
@@ -113,6 +117,17 @@ const fetchUserReducer = (state = initialState, action) => {
         },
         error: '',
       }
+    case USER_UPDATE_TOKENS:
+      return {
+        ...state,
+        loading: false,
+        data: {
+          ...state.data,
+          accessToken: action.payload.accessToken,
+          refreshToken: action.payload.refreshToken,
+        },
+        error: '',
+      }
     case USER_CHANGE_CONFIRM_TOKEN:
       return {
         ...state,
@@ -121,6 +136,30 @@ const fetchUserReducer = (state = initialState, action) => {
           ...state.data,
           confirmToken: action.payload,
         },
+        error: '',
+      }
+    case USER_CHANGE_EMAIL:
+      return {
+        ...state,
+        loading: false,
+        data: {
+          ...state.data,
+          email: action.payload,
+        },
+        error: '',
+      }
+    case USER_CHANGE_EMAIL_PASSWORD_ERROR:
+      return {
+        ...state,
+        loading: false,
+        data: { ...state.data },
+        error: action.error,
+      }
+    case USER_CLEAR_EMAIL_PASSWORD_ERROR:
+      return {
+        ...state,
+        loading: false,
+        data: { ...state.data },
         error: '',
       }
     case FETCH_USER_ERROR:
