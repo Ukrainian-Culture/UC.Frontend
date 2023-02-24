@@ -16,7 +16,7 @@ function Tutorial() {
       },
       {
         title: 'Statistics',
-        target: '.statisticSection',
+        target: '.mainPage_scrollWrap_el_statistic',
         content: 'Here you can see a cool statistics about Ukraine',
       },
       {
