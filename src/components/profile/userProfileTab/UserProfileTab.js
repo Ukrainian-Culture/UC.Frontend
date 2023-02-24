@@ -18,12 +18,11 @@ function UserProfileTab() {
 
   return (
     <>
-
       {
-        isPopup ?
+        isPopup?
             <div className="UserProfileChangerPopup">
               <PopupBlock closeBtn={true} setIsPopup={setIsPopup}  setIsVisible={setIsPopup}>
-                <Changer content={popupContent}/>
+                <Changer content={popupContent} setIsVisible={setIsPopup}/>
               </PopupBlock>
             </div>
             :null
@@ -82,4 +81,4 @@ function UserProfileTab() {
   )
 }
 
-export default UserProfileTab
+export default React.memo(UserProfileTab)

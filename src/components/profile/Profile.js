@@ -18,6 +18,8 @@ import {
 } from '../../redux-store/fetchUser/fetchUserConst'
 import PopupBlock from '../popupBlock/PopupBlock'
 import { useLocation } from 'react-router-dom'
+import useLogout from '../../hooks/useLogout'
+import Login from '../Login/Login'
 
 function Profile() {
   const dispatch = useDispatch()
@@ -38,6 +40,8 @@ function Profile() {
   const categoryParent = useRef()
 
   const location = useLocation(0)
+
+  const [isLoguot, setIsLogout] = useState(false)
   //------------------------------------------------
 
   // function which calls when category button pressed
@@ -61,12 +65,13 @@ function Profile() {
     }
   }
   //////////////////////////////////////////////////////////////////////
-  const cliclLogOut = () => {
-    dispatch({
-      type: USER_LOGOUT,
-    })
-    localStorage.removeItem(LS_USER)
-  }
+  useLogout(isLoguot)
+  // const cliclLogOut = () => {
+  //   dispatch({
+  //     type: USER_LOGOUT,
+  //   })
+  //   localStorage.removeItem(LS_USER)
+  // }
   //////////////////////////////////////////////////////////////////////
 
   //------------------------------------------------
@@ -129,7 +134,7 @@ function Profile() {
                     </div>
 
                     <div
-                      onClick={cliclLogOut}
+                      onClick={()=>setIsLogout(true)}
                       className="ProfileSection_mainBody_wrapper_head_right"
                     >
                       {interfaceLang.logout}
@@ -150,10 +155,10 @@ function Profile() {
           </div>
         </>
       ) : (
-        <Registration />
+        <Login />
       )}
     </>
   )
 }
 
-export default Profile
+export default React.memo(Profile)
