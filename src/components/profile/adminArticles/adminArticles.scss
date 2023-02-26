@@ -107,7 +107,7 @@
 
         .subtextArea {
           width: 34vw;
-          height: 29vh;
+          height: 31vh;
           border: none;
           border-radius: 5px;
           resize: vertical;
@@ -150,6 +150,464 @@
         font-weight: 500;
         font-size: 15px;
         cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: $ADAPTIVE_M_1) {
+  .AdminArticles_Section {
+    .AdminArticles_Wrap {
+      .AdminArticles_Section_articleIdWrap {
+      }
+      .articleIdWrap {
+        height: 60px;
+        font-size: 16px;
+
+        .articleId {
+          gap: 25px;
+
+
+          Button {
+            text-align: center;
+            background-color: $g_1;
+            width: 7vw;
+            height: 6vh;
+            color: $g_0;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .mainWrap {
+        display: flex;
+        padding:20px 0px 0px 60px;
+
+        .leftWrap {
+          .tittleWrap {
+            .tittleText {
+              padding-top: 20px;
+              padding-bottom: 10px;
+            }
+          }
+        }
+
+        .subtextWrap {
+          width: fit-content;
+          padding: 10px 60px 0px 40px;
+
+          .subtextText {
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+
+          .subtextArea {
+            width: 34vw;
+            height: 30vh;
+          }
+        }
+      }
+
+      .contentWrap {
+        width: fit-content;
+        padding: 0px 0px 40px 60px;
+
+        .contentText {
+          padding-top: 5px;
+          padding-bottom: 10px;
+          font-weight: 500;
+          color: $g_1;
+        }
+
+        .contentArea {
+          width: 72vw;
+          height: 18vh;
+          border: none;
+          border-radius: 5px;
+          resize: vertical;
+        }
+      }
+
+      .submitWrap {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+
+        .submitWrap_button {
+          text-align: center;
+          background-color: $g_1;
+          width: 8vw;
+          height: 6vh;
+          color: $g_0;
+          border: none;
+          border-radius: 5px;
+          font-weight: 500;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $ADAPTIVE_M_2) {
+  .AdminArticles_Section {
+    .AdminArticles_Wrap {
+      .articleIdWrap {
+        padding: 30px 0px 10px 60px;
+        height: 50px;
+        font-size: 14px;
+
+        .articleId {
+          gap: 20px;
+
+          input {
+            height: 5vh;
+            width: 25vw;
+            border: none;
+            border-radius: 5px;
+          }
+
+          Button {
+            text-align: center;
+            background-color: $g_1;
+            width: 7vw;
+            height: 5vh;
+            color: $g_0;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .mainWrap {
+        display: flex;
+        padding: 20px 0px 0px 60px;
+        font-size: 14px;
+
+        .leftWrap {
+          .tittleWrap {
+
+            .tittleText {
+              padding-top: 25px;
+              padding-bottom: 10px;
+              font-weight: 500;
+              color: $g_1;
+            }
+
+            .tittleArea {
+              width: 34vw;
+              height: 7vh;
+              border: none;
+              border-radius: 5px;
+              resize: vertical;
+            }
+          }
+        }
+        .subtextWrap {
+
+          padding: 10px 60px 0px 40px;
+
+          .subtextText {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 500;
+            color: $g_1;
+          }
+
+          .subtextArea {
+            width: 34vw;
+            height: 29vh;
+            border: none;
+            border-radius: 5px;
+            resize: vertical;
+          }
+        }
+      }
+
+      .contentWrap {
+        font-size: 14px;
+
+        .contentText {
+          //padding-top: 5px;
+          padding-bottom: 10px;
+          font-weight: 500;
+          color: $g_1;
+        }
+
+        .contentArea {
+          width: 72vw;
+          height: 18vh;
+          border: none;
+          border-radius: 5px;
+          resize: vertical;
+        }
+      }
+
+      .submitWrap {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+
+        .submitWrap_button {
+          text-align: center;
+          background-color: $g_1;
+          width: 8vw;
+          height: 6vh;
+          color: $g_0;
+          border: none;
+          border-radius: 5px;
+          font-weight: 500;
+          font-size: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $ADAPTIVE_S_1){
+  .AdminArticles_Section {
+    .AdminArticles_Wrap {
+      .articleIdWrap {
+        padding: 30px 0px 0px 60px;
+        height: 50px;
+        font-size: 13px;
+
+        .articleId {
+          gap: 20px;
+
+          input {
+            height: 4vh;
+            width: 25vw;
+            border: none;
+            border-radius: 5px;
+          }
+
+          Button {
+            text-align: center;
+            background-color: $g_1;
+            width: 8vw;
+            height: 4vh;
+            color: $g_0;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 12px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .mainWrap {
+        display: flex;
+        padding: 10px 0px 0px 60px;
+        font-size: 13px;
+
+
+        .subtextWrap {
+
+          padding: 10px 60px 0px 30px;
+
+          .subtextText {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 500;
+            color: $g_1;
+          }
+
+          .subtextArea {
+            width: 34vw;
+            height: 29vh;
+            border: none;
+            border-radius: 5px;
+            resize: vertical;
+          }
+        }
+      }
+
+      .contentWrap {
+        font-size: 13px;
+
+        .contentText {
+          //padding-top: 5px;
+          padding-bottom: 10px;
+          font-weight: 500;
+          color: $g_1;
+        }
+
+        .contentArea {
+          width: 72vw;
+          height: 18vh;
+          border: none;
+          border-radius: 5px;
+          resize: vertical;
+        }
+      }
+
+      .submitWrap {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+
+        .submitWrap_button {
+          text-align: center;
+          background-color: $g_1;
+          width: 9.5vw;
+          height: 4.5vh;
+          color: $g_0;
+          border: none;
+          border-radius: 5px;
+          font-weight: 500;
+          font-size: 12px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $ADAPTIVE_S_2){
+  .AdminArticles_Section {
+    .AdminArticles_Wrap {
+      .articleIdWrap {
+        padding: 30px 0px 0px 60px;
+        height: 50px;
+        font-size: 12px;
+
+        .articleId {
+          gap: 20px;
+
+          input {
+            height: 4vh;
+            width: 25vw;
+            border: none;
+            border-radius: 5px;
+          }
+
+          Button {
+            text-align: center;
+            background-color: $g_1;
+            width: 14vw;
+            height: 4vh;
+            color: $g_0;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 11.5px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .mainWrap {
+        display: flex;
+        padding: 10px 0px 0px 60px;
+        font-size: 12px;
+
+        .leftWrap {
+          .tittleWrap {
+
+            .tittleText {
+              padding-top: 10px;
+              padding-bottom: 10px;
+              font-weight: 500;
+              color: $g_1;
+            }
+
+            .tittleArea {
+              width: 34vw;
+              height: 7vh;
+              border: none;
+              border-radius: 5px;
+              resize: vertical;
+            }
+          }
+
+          .shortDescriptionWrap {
+
+            .shortDescriptionText {
+              height: 20px;
+              width: 90px;
+              padding: 10px 0px 10px 0px;
+              font-weight: 500;
+              color: $g_1;
+            }
+
+            .shortDescriptionArea {
+              width: 34vw;
+              height: 11vh;
+              border: none;
+              border-radius: 5px;
+              resize: vertical;
+            }
+          }
+        }
+
+        .subtextWrap {
+
+          padding: 0px 60px 0px 30px;
+
+          .subtextText {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 500;
+            color: $g_1;
+          }
+
+          .subtextArea {
+            width: 34vw;
+            height: 23.5vh;
+            border: none;
+            border-radius: 5px;
+            resize: vertical;
+          }
+        }
+      }
+
+      .contentWrap {
+        font-size: 12px;
+
+        .contentText {
+          //padding-top: 5px;
+          padding-bottom: 10px;
+          font-weight: 500;
+          color: $g_1;
+        }
+
+        .contentArea {
+          width: 76vw;
+          height: 18vh;
+          border: none;
+          border-radius: 5px;
+          resize: vertical;
+        }
+      }
+
+      .submitWrap {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+
+        .submitWrap_button {
+          text-align: center;
+          background-color: $g_1;
+          width: 17vw;
+          height: 4.5vh;
+          color: $g_0;
+          border: none;
+          border-radius: 5px;
+          font-weight: 500;
+          font-size: 11.5px;
+          cursor: pointer;
+        }
       }
     }
   }
