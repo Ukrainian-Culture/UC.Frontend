@@ -1,6 +1,6 @@
 import { IonIcon } from '@ionic/react'
 import { enterOutline, createOutline, pencilOutline } from 'ionicons/icons'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import PopupBlock from '../../popupBlock/PopupBlock'
 import PopupWindow from '../popupWindow/PopupWindow'
@@ -21,7 +21,6 @@ function UserProfileTab() {
 
   const [isSubPopup, setIsSubPopup] = useState(false)
   const [subscriptionDate,setSubscriptionDate] = useState("00:00")
-  const [popupContent, setPopupContent] = useState('');
   //=====================================
 
   const addButton = () => {
