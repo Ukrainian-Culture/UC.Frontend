@@ -3,14 +3,18 @@ import './subscription.scss'
 import useGetScreenWidth from '../../hooks/useGetScreenWidth'
 import { useDispatch, useSelector } from 'react-redux'
 import { FETCH_USER_SUCCESS } from '../../redux-store/fetchUser/fetchUserConst'
+import { useNavigate } from 'react-router-dom'
 
-const Subscription = ({ subsPage, popup, setIsVisible, setDaysAmount }) => {
+const Subscription = ({linkToReg, subsPage, popup, setIsVisible, setDaysAmount }) => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
   // current language
   const language = state.changeLanguage.lang
   //variable for text in  interface in different language
   const interfaceLang = state.interfaceLang[language]
+
+    // hook that handle navigation between pages
+    const navigate = useNavigate()
 
   //====================================
   const array = [
@@ -54,6 +58,7 @@ const Subscription = ({ subsPage, popup, setIsVisible, setDaysAmount }) => {
   ]
 
   const cardClick = (e, val) => {
+   if(!linkToReg){
     if (['some_el0', 'some_el_el0'].includes(e.target.className.split(' ')[1])) {
       // if popup block
       if (popup || subsPage) {
@@ -65,6 +70,9 @@ const Subscription = ({ subsPage, popup, setIsVisible, setDaysAmount }) => {
     try {
       if (val.url[language] !== ' ') window.open(val.url[language])
     } catch (e) {}
+   }else{
+    navigate("/registration")
+   }
   }
 
   const profileWrap = useRef()

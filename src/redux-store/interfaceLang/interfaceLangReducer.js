@@ -95,7 +95,7 @@ const initialState = {
     new_user: 'Новий користувач?',
 
     //subscription
-    history: 'історія',
+    history: 'історії',
     download_f_a: 'скачування',
     full_article: 'повної статті',
     article_f_t: 'переклад',

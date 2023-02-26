@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import StartAppRequests from '../../../hooks/StartAppRequests'
+import useChangeEndDate from '../../../hooks/useChangeEndDate'
 import useGetScreenWidth from '../../../hooks/useGetScreenWidth'
 import {
   LOCALE_STORAGE_CONGIRM_TOKEN,
@@ -27,6 +28,8 @@ function SubscriptionPage() {
 
   const [daysAmount, setDaysAmount] = useState(0)
   const [isConfirm, setIsConfirm] = useState(false)
+
+  const [isChange, setIsChange] = useState(false)
   //===============================================
 
   /////////////////////////////////////////////////////////////////////
@@ -72,6 +75,8 @@ function SubscriptionPage() {
     if (daysAmount !== 0) {
       confirmEmail()
 
+      setIsChange(true)
+
       dispatch({
         type: USER_REGISTRATION_CALL,
         payload: {
@@ -80,6 +85,8 @@ function SubscriptionPage() {
       })
     }
   }, [daysAmount])
+
+  useChangeEndDate(isChange, daysAmount)
 
   /////////////////////////////////////////////////////////////////////
 

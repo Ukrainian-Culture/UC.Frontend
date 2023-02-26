@@ -84,7 +84,7 @@ function Card(props) {
         title: data.title,
         category: data.category,
       }
-      console.log(' writen in history', reqBody)
+      // console.log(' writen in history', reqBody)
 
       fetch(url, {
         method: 'POST',

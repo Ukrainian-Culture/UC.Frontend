@@ -39,6 +39,20 @@ $s1_input_width: 100%;
   top: 0;
   left: 0;
 }
+.UserProfileChangerSubPopup {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+
+  .UserProfileChangerSubPopup_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: fit-content;
+  }
+}
 
 .UserProfileTab_section {
   width: 100%;
@@ -255,6 +269,15 @@ $s1_input_width: 100%;
         padding: 5% 9vw;
         cursor: pointer;
       }
+    }
+  }
+}
+
+@media screen and (max-width: $ADAPTIVE_S_1) {
+  .UserProfileChangerSubPopup {
+    margin-top: 220px;
+    .UserProfileChangerSubPopup_wrap {
+      width: fit-content;
     }
   }
 }
