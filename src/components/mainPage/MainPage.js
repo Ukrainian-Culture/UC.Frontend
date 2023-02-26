@@ -90,7 +90,7 @@ function MainPage() {
             {/* <h1>{state.screenWidth.width}</h1> */}
             <StatisticSection />
           </div>
-          <div className="mainPage_scrollWrap_el ">
+          <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_subscription">
             <Subscription />
           </div>
           <div className="mainPage_scrollWrap_el">

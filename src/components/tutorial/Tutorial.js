@@ -21,7 +21,7 @@ function Tutorial() {
       },
       {
         title: 'Subscriptions',
-        target: '.subscription',
+        target: '.mainPage_scrollWrap_el_subscription',
         content: 'Here you can buy subscription to help our project',
       },
       {

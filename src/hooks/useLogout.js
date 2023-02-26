@@ -10,7 +10,7 @@ function useLogout(isLoguot) {
       dispatch({
         type: USER_LOGOUT,
       })
-      console.log("shit logout")
+      console.log("logout")
       localStorage.removeItem(LS_USER)
     }
   }, [isLoguot])
