@@ -191,7 +191,7 @@ function Registration() {
     //   email: 'owarriso@gmail.com',
     //   url: emailNavLink,
     // }
-    
+
     axios
       .post(url, objSubmit, {
         headers: {
@@ -199,7 +199,7 @@ function Registration() {
         },
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
 
         const def = {
           token: res.data,
@@ -280,14 +280,6 @@ function Registration() {
         <>
           <StartAppRequests />
           <LoadingPage main={true} />
-
-          {/* {isVisible ? (
-            <PopupSubs
-              setIsSubmit={setIsSubmit}
-              setIsVisible={setIsVisible}
-              setDaysAmount={setDaysAmount}
-            />
-          ) : null} */}
 
           <GradientCircle colorClass={'registration'} />
 

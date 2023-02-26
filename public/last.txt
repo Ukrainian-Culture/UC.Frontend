@@ -1,2 +1,6 @@
-> footer:
- - change styles;
+> articlePage:
+ - add account limits;
+> popupBlock:
+ - add enter/exit animation;
+> Profile:
+ - add subscription;

@@ -1,32 +1,53 @@
 import { IonIcon } from '@ionic/react'
 import { enterOutline, createOutline, pencilOutline } from 'ionicons/icons'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import PopupBlock from '../../popupBlock/PopupBlock'
 import PopupWindow from '../popupWindow/PopupWindow'
 import '../userProfileTab/userProfileTab.scss'
-import Changer from "../../emain_passwordChanger/Changer";
+import Changer from '../../emain_passwordChanger/Changer'
+import axios from 'axios'
+import useChangeEndDate from '../../../hooks/useChangeEndDate'
+import Subscription from '../../subscription/Subscription'
 
 function UserProfileTab() {
   const state = useSelector((state) => state)
   const language = state.changeLanguage.lang
   const interfaceLang = state.interfaceLang
   const user = state.user
-  const [isPopup, setIsPopup] = useState(false);
-  const [popupContent,setPopupContent] = useState('');
+  const [isPopup, setIsPopup] = useState(false)
+  const [popupContent, setPopupContent] = useState('')
+
+  const [isSubPopup, setIsSubPopup] = useState(false)
   //=====================================
+
+  const addButton = () => {
+    setIsSubPopup(true)
+  }
 
   return (
     <>
-      {
-        isPopup?
-            <div className="UserProfileChangerPopup">
-              <PopupBlock closeBtn={true} setIsPopup={setIsPopup}  setIsVisible={setIsPopup}>
-                <Changer content={popupContent} setIsVisible={setIsPopup}/>
-              </PopupBlock>
+      {isPopup ? (
+        <div className="UserProfileChangerPopup">
+          <PopupBlock
+            closeBtn={true}
+            setIsPopup={setIsPopup}
+            setIsVisible={setIsPopup}
+          >
+            <Changer content={popupContent} setIsVisible={setIsPopup} />
+          </PopupBlock>
+        </div>
+      ) : null}
+
+      {isSubPopup ? (
+        <div className="UserProfileChangerSubPopup">
+          <PopupBlock closeBtn={true} setIsVisible={setIsSubPopup}>
+            <div className="UserProfileChangerSubPopup_wrap">
+              <Subscription />
             </div>
-            :null
-      }
+          </PopupBlock>
+        </div>
+      ) : null}
 
       <div className="UserProfileTab_section">
         <div className="UserProfileTab_section_left UserProfileTab_section_el">
@@ -35,7 +56,13 @@ function UserProfileTab() {
               {interfaceLang[language].email}
             </div>
 
-            <div onClick={() => {setIsPopup(true); setPopupContent('email')}} className="UserProfileTab_section_left_inputWrap">
+            <div
+              onClick={() => {
+                setIsPopup(true)
+                setPopupContent('email')
+              }}
+              className="UserProfileTab_section_left_inputWrap"
+            >
               <div className="UserProfileTab_section_left_inputWrap_input">
                 {user.data.email}
               </div>
@@ -47,12 +74,18 @@ function UserProfileTab() {
             </div>
           </div>
 
-          <div  className="UserProfileTab_section_left_inp">
+          <div className="UserProfileTab_section_left_inp">
             <div className="UserProfileTab_section_left_title">
               {interfaceLang[language].password}
             </div>
 
-            <div onClick={() => {setIsPopup(true); setPopupContent('password')}} className="UserProfileTab_section_left_inputWrap">
+            <div
+              onClick={() => {
+                setIsPopup(true)
+                setPopupContent('password')
+              }}
+              className="UserProfileTab_section_left_inputWrap"
+            >
               <div className="UserProfileTab_section_left_inputWrap_input">
                 ***************
               </div>
@@ -72,7 +105,10 @@ function UserProfileTab() {
 
           <div className="UserProfileTab_section_right_time">00:00:00</div>
 
-          <div className="UserProfileTab_section_right_addButton">
+          <div
+            onClick={addButton}
+            className="UserProfileTab_section_right_addButton"
+          >
             {interfaceLang[language].add_subscription}
           </div>
         </div>

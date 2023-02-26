@@ -19,6 +19,7 @@ import {
 } from '../../redux-store/fetchArticle/fetchArticleConst'
 import StartAppRequests from '../../hooks/StartAppRequests'
 import LoadingPage from '../loadingPage/LoadingPage'
+import Subscription from '../subscription/Subscription.js'
 
 function ArticlePage() {
   //-------------------------------------------------------------
@@ -29,6 +30,7 @@ function ArticlePage() {
     dispatch({ type: CHANGE_SIDEHEIGHT, payload: `${param}` })
   }
 
+  const symbolLimit = 3500
   const state = useSelector((state) => state)
 
   // current language
@@ -55,42 +57,26 @@ function ArticlePage() {
   const [endtLoad, setEndLoad] = useState(false)
   const [openDownloadCard, setDownloadCard] = useState(false)
 
+  // const [articleContent, setArticleContent] = useState()
   const [test, setTest] = useState([])
+
+  // used to to show or hide proposal to read entire text
+  const [ShowDeprecation, setShowDeprecation] = useState(false)
+
+  // ===========================================================
 
   // redirect to previous page when button "back" pressed
   function backClick() {
     navigate(-1)
   }
-  // ===========================================================
 
-  // -----------------------------------------------------------
+  const formatingContent = () => {
+    return user.data.role !== 'notuser'
+      ? fetchArticle.data.content || 'no content 🤯'
+      : `${fetchArticle.data.content.slice(0, symbolLimit)} ` || 'no content 🤯'
+  }
 
   //////////////////////////////////////////////////////////////////
-
-  // const addArticleToHistory = (data) => {
-  //   if (location.state !== null) {
-  //     const { articleId, title, subText, category, region } = location.state.el
-  //     const url = `${state.startSettings.userRequestDomain}/api/${user.data.email}/UserHistory`
-
-  //     // const date = new Date()
-  //     const reqBody = {
-  //       articleId: data.articleId,
-  //       region: region,
-  //       subText: data.subText,
-  //       title: data.title,
-  //       category: category,
-  //     }
-  //     console.log(' writen in history', reqBody)
-
-  //     fetch(url, {
-  //       method: 'POST',
-  //       headers: {
-  //         'content-type': 'application/json',
-  //       },
-  //       body: JSON.stringify(reqBody),
-  //     })
-  //   }
-  // }
 
   useEffect(() => {
     // console.log('oh shit', articleId, id)
@@ -121,8 +107,6 @@ function ArticlePage() {
 
       //   return [...el, '1']
       // })
-
-      
     }
   }, [culture])
   //////////////////////////////////////////////////////////////////
@@ -132,6 +116,10 @@ function ArticlePage() {
     // resume scroll when selected some region
     // stopScroll("hidden")
   }, [])
+
+  useEffect(() => {
+    if (!fetchArticle.loading &&fetchArticle?.data?.content.length >= symbolLimit) setShowDeprecation(true)
+  }, [fetchArticle?.data?.content])
 
   // variable which contain referense on main screen blocks
   const refWidth = useRef()
@@ -181,7 +169,19 @@ function ArticlePage() {
             <div className="articlePage_wrap_content">
               <div className="articlePage_wrap_content_side"></div>
               <div className="articlePage_wrap_content_text">
-                {fetchArticle.data.content || 'no content 🤯'}
+                <div className="articlePage_wrap_content_text_main">
+                  {formatingContent()}
+                </div>
+
+                {user.data.role === 'notuser' && ShowDeprecation ? (
+                  <>
+                    <div className="articlePage_wrap_content_text_deprecated_wrapper">
+                      <div className="articlePage_wrap_content_text_deprecated">
+                        <Subscription linkToReg={true} />
+                      </div>
+                    </div>
+                  </>
+                ) : null}
               </div>
               <div className="articlePage_wrap_content_side"></div>
             </div>
