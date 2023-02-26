@@ -9,6 +9,7 @@ import Changer from '../../emain_passwordChanger/Changer'
 import axios from 'axios'
 import useChangeEndDate from '../../../hooks/useChangeEndDate'
 import Subscription from '../../subscription/Subscription'
+import getUserSubscription from "../../../hooks/getUserSubscription";
 
 function UserProfileTab() {
   const state = useSelector((state) => state)
@@ -19,11 +20,20 @@ function UserProfileTab() {
   const [popupContent, setPopupContent] = useState('')
 
   const [isSubPopup, setIsSubPopup] = useState(false)
+  const [subscriptionDate,setSubscriptionDate] = useState("00:00")
+  const [popupContent, setPopupContent] = useState('');
   //=====================================
 
   const addButton = () => {
     setIsSubPopup(true)
   }
+
+  useEffect(() => {
+    if (user?.data) {
+        //getUserSubscription("Bohdan@gmail.com", state).then(value => setSubscriptionDate(value))
+        getUserSubscription(user?.data?.email, state).then(value => setSubscriptionDate(value))
+    }
+}, [user])
 
   return (
     <>
@@ -103,7 +113,7 @@ function UserProfileTab() {
             {interfaceLang[language].subscription}
           </div>
 
-          <div className="UserProfileTab_section_right_time">00:00:00</div>
+          <div className="UserProfileTab_section_right_time">{subscriptionDate}</div>
 
           <div
             onClick={addButton}
