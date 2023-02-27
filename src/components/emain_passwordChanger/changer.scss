@@ -1,40 +1,40 @@
 @import '../../settings/settings.scss';
 
 $padding_content: 20px;
+
 $element_width_input: 70%;
-$element_width_exit: 300px;
+
 $element_width_button: 120px;
-$element_width_button_margin: 110px;
+
+$element_font-size_title: 30px;
+
+$element_font-size_content: 18px;
+
+////////////////////////////////////////////////////////////////////////////
 
 .Changer_Section {
-  padding: $padding_content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
 
   .Changer_Title {
     align-self: center;
-    font-size: 30px;
     font-weight: 600;
     margin-bottom: 20px;
   }
 
   .Changer_Input {
     align-self: center;
-    width: $element_width_input;
     padding: 25px 0;
     margin-top: 15px;
     border: 0;
     border-radius: 100px;
     background-color: $g_4;
-    font-size: 18px;
     font-weight: 600;
     color: $g_1_2;
     text-align: center;
 
     &::placeholder {
-      font-size: 18px;
       color: $g_5;
       text-align: center;
     }
@@ -48,19 +48,16 @@ $element_width_button_margin: 110px;
     margin: 25px 0px ;
     display: flex;
     justify-content: flex-end;
-    width: $element_width_input;
 
     .Changer_Button {
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: $element_width_button;
       height: 65px;
       background-color: $g_1;
       color: $g_0;
       font-weight: 600;
-      font-size: 18px;
       border-radius: 100px;
       padding: 0px 20px;
 
@@ -73,7 +70,6 @@ $element_width_button_margin: 110px;
   }
 
   .Error_Message {
-    // margin-bottom: 10px;
     color: $r_0;
     font-weight: 500;
     text-align: center;
@@ -88,5 +84,175 @@ $element_width_button_margin: 110px;
   .Changer_donePopup_el{
     margin: 40px;
     font-size: 40px;
+  }
+}
+
+@media (max-width: $ADAPTIVE_M_-1){
+  .Changer_Section{
+    padding: $padding_content;
+    width: 500px;
+
+    .Changer_Title{
+      font-size: $element_font-size_title;
+    }
+    .Changer_Button_wrap{
+      width: $element_width_input;
+
+      .Changer_Button {
+        width: $element_width_button;
+        font-size: $element_font-size_content;
+      }
+    }
+    .Changer_Input{
+      width: $element_width_input;
+      font-size: $element_font-size_content;
+
+      &::placeholder {
+        font-size: $element_font-size_content;
+      }
+    }
+  }
+}
+
+@media (max-width: $ADAPTIVE_M_1){
+  .Changer_Section{
+    padding: $padding_content;
+    width: 500px;
+
+    .Changer_Title{
+      font-size: $element_font-size_title;
+    }
+    .Changer_Button_wrap{
+      width: $element_width_input;
+
+      .Changer_Button {
+        width: $element_width_button;
+        font-size: $element_font-size_content;
+      }
+    }
+    .Changer_Input{
+      width: $element_width_input;
+      font-size: $element_font-size_content;
+
+      &::placeholder {
+        font-size: $element_font-size_content;
+      }
+    }
+  }
+}
+@media (max-width: $ADAPTIVE_M_2){
+  .Changer_Section{
+    padding: $padding_content - 10;
+    width: 450px;
+
+    .Changer_Title{
+      font-size: $element_font-size_title;
+    }
+    .Changer_Button_wrap{
+      width: $element_width_input;
+
+      .Changer_Button {
+        width: $element_width_button;
+        font-size: $element_font-size_content;
+      }
+    }
+    .Changer_Input{
+      width: $element_width_input;
+      font-size: $element_font-size_content;
+
+      &::placeholder {
+        font-size: $element_font-size_content;
+      }
+    }
+  }
+}
+@media (max-width: $ADAPTIVE_M_3){
+  .Changer_Section{
+    padding: $padding_content - 13;
+    width: 400px;
+
+    .Changer_Title{
+      font-size: $element_font-size_title - 10;
+      margin-bottom: 10px;
+    }
+    .Changer_Button_wrap{
+      width: $element_width_input;
+      margin: 20px 0px ;
+
+      .Changer_Button {
+        width: $element_width_button - 30;
+        font-size: $element_font-size_content - 6;
+        height: 50px;
+      }
+    }
+    .Changer_Input{
+      width: $element_width_input - 10;
+      font-size: $element_font-size_content - 6;
+      padding: 20px 0;
+
+      &::placeholder {
+        font-size: $element_font-size_content - 6;
+      }
+    }
+  }
+}
+@media (max-width: $ADAPTIVE_S_1){
+  .Changer_Section{
+    padding: $padding_content - 15;
+    width: 350px;
+
+    .Changer_Title{
+      font-size: $element_font-size_title - 10;
+      margin-bottom: 10px;
+    }
+    .Changer_Button_wrap{
+      width: $element_width_input - 10;
+      margin: 20px 0px ;
+
+      .Changer_Button {
+        width: $element_width_button - 50;
+        font-size: $element_font-size_content - 6;
+        height: 50px;
+      }
+    }
+    .Changer_Input{
+      width: $element_width_input - 10;
+      font-size: $element_font-size_content - 6;
+      padding: 20px 0;
+
+      &::placeholder {
+        font-size: $element_font-size_content - 6;
+      }
+    }
+  }
+}
+@media (max-width: $ADAPTIVE_S_2){
+  .Changer_Section{
+    padding: $padding_content - 18;
+    width: 300px;
+
+    .Changer_Title{
+      font-size: $element_font-size_title - 10;
+      margin-bottom: 5px;
+    }
+    .Changer_Button_wrap{
+      width: $element_width_input - 10;
+      margin: 20px 0px;
+
+      .Changer_Button {
+        width: $element_width_button - 60;
+        font-size: $element_font-size_content - 6;
+        height: 50px;
+      }
+    }
+    .Changer_Input{
+      width: $element_width_input - 10;
+      font-size: $element_font-size_content - 6;
+      padding: 20px 0;
+
+      &::placeholder {
+        font-size: $element_font-size_content - 6;
+      }
+    }
   }
 }
