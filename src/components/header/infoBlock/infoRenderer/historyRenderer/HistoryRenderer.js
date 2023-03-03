@@ -340,46 +340,46 @@ function HistoryRenderer() {
       return () => ctx.revert()
     }
 
-    useEffect(() => {
-      // animation with gsap
-      const ctx = gsap.context(() => {
-        // console.log('creating timeline')
-        tl.current && tl.current.progress(0).kill()
-        tl_2.current && tl_2.current.progress(0).kill()
+    // useEffect(() => {
+    //   // animation with gsap
+    //   const ctx = gsap.context(() => {
+    //     // console.log('creating timeline')
+    //     tl.current && tl.current.progress(0).kill()
+    //     tl_2.current && tl_2.current.progress(0).kill()
 
-        tl.current = gsap
-          .timeline()
-          .from('.historyRenderer_wrapper_section_sideContainer', {
-            scaleY: 0,
-            transformOrigin: 'top',
-          })
-          .from(
-            '.historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine',
-            {
-              scaleX: 0,
-              transformOrigin: 'left',
-              stagger: 0.04,
-            },
-            '-=0.5',
-          )
-          .from(
-            '.historyRenderer_wrapper_section_mainContainer_wrap',
+    //     tl.current = gsap
+    //       .timeline()
+    //       .from('.historyRenderer_wrapper_section_sideContainer', {
+    //         scaleY: 0,
+    //         transformOrigin: 'top',
+    //       })
+    //       .from(
+    //         '.historyRenderer_wrapper_section_mainContainer_sub_subWrap_subLine',
+    //         {
+    //           scaleX: 0,
+    //           transformOrigin: 'left',
+    //           stagger: 0.04,
+    //         },
+    //         '-=0.5',
+    //       )
+    //       .from(
+    //         '.historyRenderer_wrapper_section_mainContainer_wrap',
 
-            {
-              x: -30,
-              stagger: 0.03,
-              opacity: 0,
-            },
-            '',
-          )
+    //         {
+    //           x: -30,
+    //           stagger: 0.03,
+    //           opacity: 0,
+    //         },
+    //         '',
+    //       )
 
-        tl_2.current = gsap.timeline().from('.historyRenderer_wrapper_year', {
-          opacity: 0.5,
-          stagger: 0.04,
-        })
-      }, historyWrapper)
-      return () => ctx.revert()
-    }, [])
+    //     tl_2.current = gsap.timeline().from('.historyRenderer_wrapper_year', {
+    //       opacity: 0.5,
+    //       stagger: 0.04,
+    //     })
+    //   }, historyWrapper)
+    //   return () => ctx.revert()
+    // }, [])
     return (
       <>
         {grouped_arr.map((el, index) => {
@@ -452,4 +452,4 @@ function HistoryRenderer() {
   )
 }
 
-export default HistoryRenderer
+export default React.memo(HistoryRenderer)

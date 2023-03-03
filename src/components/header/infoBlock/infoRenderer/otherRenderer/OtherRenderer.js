@@ -87,4 +87,4 @@ function OtherRenderer() {
   )
 }
 
-export default OtherRenderer
+export default React.memo(OtherRenderer)

@@ -1,21 +1,24 @@
-@import "../../../settings/settings.scss";
+@import '../../../settings/settings.scss';
 
-.Mailing_Section{
+$input_width: 50px;
+$input_height: 40px;
+
+.Mailing_Section {
   display: flex;
   width: 100%;
   height: 100%;
   justify-content: center;
-  .Mailing_Wrap{
+  .Mailing_Wrap {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    .Mail_Wrap{
+    .Mail_Wrap {
       padding: 30px 60px 100px 60px;
       .to {
         padding: 30px 0px 0px 0px;
         font-size: 15px;
 
-        .toText{
+        .toText {
           font-weight: 500;
           color: $g_1;
         }
@@ -25,8 +28,7 @@
           border: none;
           border-radius: 5px;
         }
-        input[type="text"]::placeholder {
-
+        input[type='text']::placeholder {
           /* Firefox, Chrome, Opera */
           text-align: right;
           font-weight: 500;
@@ -34,14 +36,13 @@
           font-size: 15px;
           padding-right: 10px;
         }
-
       }
 
       .Subject {
         padding: 15px 0px 0px 0px;
         font-size: 15px;
 
-        .subjectText{
+        .subjectText {
           font-weight: 500;
           color: $g_1;
         }
@@ -56,7 +57,7 @@
         padding: 15px 0px 0px 0px;
         font-size: 15px;
 
-        .bodyText{
+        .bodyText {
           font-weight: 500;
           color: $g_1;
         }
@@ -68,7 +69,7 @@
           resize: none;
         }
       }
-      .bodyWrap{
+      .bodyWrap {
         display: flex;
         flex-direction: row;
         gap: 30px;
@@ -76,7 +77,7 @@
       .Attachments {
         padding-top: 20px;
 
-        .attachmentsText{
+        .attachmentsText {
           font-weight: 500;
           color: $g_1;
         }
@@ -86,31 +87,79 @@
           border-radius: 5px;
           height: 20vh;
           width: 22vw;
+          padding-top: 20px;
+          padding-left: 20px;
           background-color: $g_0;
-          justify-content: flex-end;
-          .but{
-            position: absolute;
-            bottom: 0;
-            padding-right:15px;
+          // justify-content: center;
+
+          // background-color: red;
+          .but {
+            display: flex;
+            align-items: center;
             padding-bottom: 15px;
             width: fit-content;
-            height:  5vh;
-          }
-          Button{
             height: 5vh;
-            width: 6vw;
-            text-align: center;
-            background-color:$g_3;
-            color: $g_1;
-            border: none;
-            border-radius: 5px;
-            font-weight: 500;
-            font-size: 25px;
-            cursor: pointer;
+            // background-color: pink;
+
+            .fake {
+              pointer-events: none;
+              position: absolute;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              width: $input_width;
+              height: $input_height;
+              background-color: $g_3;
+              border-radius: 5px;
+              font-weight: 600;
+            }
+
+            .but_input {
+              &::-webkit-file-upload-button {
+                color: transparent;
+                cursor: pointer;
+                width: $input_width;
+                height: $input_height;
+                background-color: transparent;
+           
+                outline: none;
+                border: none;
+              }
+
+              // width: $input_width;
+              // height: fit-content;
+
+              // &::before {
+              //   background-color: $g_3;
+              //   height: $input_height;
+              //   width: $input_width;
+              //   padding: 0px 20px;
+              //   content: '+';
+              //   border-radius: 3px;
+              //   outline: none;
+              //   white-space: nowrap;
+              //   cursor: pointer;
+              //   font-weight: 700;
+              //   font-size: 18px;
+              // }
+            }
           }
+          // Button{
+          //   height: 5vh;
+          //   width: 6vw;
+          //   text-align: center;
+          //   background-color:$g_3;
+          //   color: $g_1;
+          //   border: none;
+          //   border-radius: 5px;
+          //   font-weight: 500;
+          //   font-size: 25px;
+          //   cursor: pointer;
+          // }
         }
       }
-      .button{
+      .button {
         padding-top: 15px;
         Button {
           text-align: center;
@@ -130,9 +179,9 @@
 }
 
 @media (max-width: $ADAPTIVE_S_1) {
-  .Mailing_Section{
-    .Mailing_Wrap{
-      .Mail_Wrap{
+  .Mailing_Section {
+    .Mailing_Wrap {
+      .Mail_Wrap {
         .to {
           padding: 30px 0px 0px 0px;
           font-size: 13px;
@@ -143,8 +192,7 @@
             border: none;
             border-radius: 5px;
           }
-          input[type="text"]::placeholder {
-
+          input[type='text']::placeholder {
             /* Firefox, Chrome, Opera */
             text-align: right;
             font-weight: 500;
@@ -152,7 +200,6 @@
             font-size: 15px;
             padding-right: 10px;
           }
-
         }
 
         .Subject {
@@ -178,15 +225,17 @@
             resize: none;
           }
         }
-        .bodyWrap{
+        .bodyWrap {
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           gap: 20px;
         }
         .Attachments {
+          display: block;
+          flex-direction: column;
           padding-top: 15px;
 
-          .attachmentsText{
+          .attachmentsText {
             font-size: 13px;
           }
           .attachments {
@@ -194,32 +243,32 @@
             display: flex;
             border-radius: 5px;
             height: 17vh;
-            width: 22vw;
+
+            width: 45vw;
             background-color: $g_0;
             justify-content: flex-end;
-            .but{
-              position: absolute;
-              bottom: 0;
-              padding-right:15px;
+            .but {
+              display: flex;
+              align-items: center;
               padding-bottom: 15px;
               width: fit-content;
-              height:  4vh;
+              height: 5vh;
             }
-            Button{
-              height: 4vh;
-              width: 5vw;
-              text-align: center;
-              background-color:$g_3;
-              color: $g_1;
-              border: none;
-              border-radius: 5px;
-              font-weight: 500;
-              font-size: 20px;
-              cursor: pointer;
-            }
+            // Button {
+            //   height: 4vh;
+            //   width: 5vw;
+            //   text-align: center;
+            //   background-color: $g_3;
+            //   color: $g_1;
+            //   border: none;
+            //   border-radius: 5px;
+            //   font-weight: 500;
+            //   font-size: 20px;
+            //   cursor: pointer;
+            // }
           }
         }
-        .button{
+        .button {
           padding-top: 15px;
           Button {
             text-align: center;
@@ -237,13 +286,12 @@
       }
     }
   }
-
 }
 
 @media (max-width: $ADAPTIVE_S_2) {
-  .Mailing_Section{
-    .Mailing_Wrap{
-      .Mail_Wrap{
+  .Mailing_Section {
+    .Mailing_Wrap {
+      .Mail_Wrap {
         .to {
           padding: 30px 0px 0px 0px;
           font-size: 10px;
@@ -253,8 +301,7 @@
             border: none;
             border-radius: 5px;
           }
-          input[type="text"]::placeholder {
-
+          input[type='text']::placeholder {
             /* Firefox, Chrome, Opera */
             text-align: right;
             font-weight: 500;
@@ -262,7 +309,6 @@
             font-size: 10px;
             padding-right: 10px;
           }
-
         }
 
         .Subject {
@@ -270,7 +316,7 @@
           font-size: 10px;
 
           input {
-            height:6vh;
+            height: 6vh;
             width: 45vw;
             border: none;
             border-radius: 5px;
@@ -288,7 +334,7 @@
             resize: none;
           }
         }
-        .bodyWrap{
+        .bodyWrap {
           display: flex;
           flex-direction: row;
           gap: 15px;
@@ -296,7 +342,7 @@
         .Attachments {
           padding-top: 15px;
 
-          .attachmentsText{
+          .attachmentsText {
             font-size: 10px;
           }
           .attachments {
@@ -305,26 +351,27 @@
             border-radius: 5px;
             height: 14vh;
             width: 25vw;
-            .but{
-              padding-right:15px;
+            .but {
+              display: flex;
+              align-items: center;
               padding-bottom: 15px;
               width: fit-content;
-              height:  4vh;
+              height: 5vh;
             }
-            Button{
-              height: 4vh;
-              width: 5vw;
-              text-align: center;
-              background-color:$g_3;
-              color: $g_1;
-              border: none;
-              border-radius: 5px;
-              font-weight: 500;
-              font-size: 15px;
-            }
+            // Button {
+            //   height: 4vh;
+            //   width: 5vw;
+            //   text-align: center;
+            //   background-color: $g_3;
+            //   color: $g_1;
+            //   border: none;
+            //   border-radius: 5px;
+            //   font-weight: 500;
+            //   font-size: 15px;
+            // }
           }
         }
-        .button{
+        .button {
           padding-top: 15px;
           Button {
             text-align: center;
@@ -342,5 +389,4 @@
       }
     }
   }
-
 }
