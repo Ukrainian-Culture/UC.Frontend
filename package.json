@@ -16,7 +16,6 @@
     "bcryptjs": "^2.4.3",
     "file-saver": "^2.0.5",
     "form-data": "^4.0.0",
-    "fs": "^0.0.1",
     "gsap": "^3.11.3",
     "ionicons": "^6.1.1",
     "lodash.debounce": "^4.0.8",
