@@ -1,0 +1,245 @@
+@import "../../settings/settings.scss";
+
+.AboutUs_section{
+  vertical-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-left: 80px;
+  justify-content: center;
+  .OurTeamText {
+    padding-bottom: 20px;
+    span {
+      font-size: 80px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+  }
+  .TeamLead_Wrap {
+    display: flex;
+    flex-direction: row;
+    .TeamLead {
+      border-radius: 100px;
+      width: 70px;
+      height: 70px;
+      background-image: url("team/2_petro.png");
+      background-size: contain;
+    }
+    .PetroDescr{
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      span{
+        font-weight:600;
+        font-size: 20px;
+        color: $g_2;
+      }
+      .petro{
+        font-size: 25px;
+        color:$g_1;
+      }
+    }
+  }
+  .Main_Wrap {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    padding: 50px 150px 70px 70px;
+    justify-content: center;
+    .Left_Wrap {
+
+      .Misha_Wrap {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 30px;
+
+        .Misha {
+          border-radius: 100px;
+          width: 70px;
+          height: 70px;
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          //line-height: 70px;
+          font-size: 55px;
+          color: $g_1;
+          font-weight:400;
+          background-color: $g_4;
+        }
+
+        .MishaDescr {
+          padding-left: 15px;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            color: $g_2;
+          }
+
+          .misha {
+            font-size: 25px;
+            color: $g_1;
+          }
+        }
+      }
+
+
+      .Katya_Wrap {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 30px;
+
+        .Katya {
+          border-radius: 100px;
+          width: 70px;
+          height: 70px;
+          background-image: url("team/2_kateryna.png");
+          background-size: contain;
+        }
+
+        .KatyaDescr {
+          padding-left: 15px;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            color: $g_2;
+          }
+
+          .katya {
+            font-size: 25px;
+            color: $g_1;
+          }
+        }
+      }
+
+      .Sophia_Wrap {
+        display: flex;
+        flex-direction: row;
+
+        .Sophia {
+          border-radius: 100px;
+          width: 70px;
+          height: 70px;
+          background-image: url("team/2_sophia.png");
+          background-size: contain;
+        }
+
+        .SophiaDescr {
+          padding-left: 15px;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            color: $g_2;
+          }
+
+          .sophia {
+            font-size: 25px;
+            color: $g_1;
+          }
+        }
+      }
+    }
+    .Right_Wrap {
+      padding-left: 120px;
+      .Denys_Wrap {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 30px;
+
+        .Denys {
+          border-radius: 100px;
+          width: 70px;
+          height: 70px;
+          background-image: url("team/2_denys.png");
+          background-size: contain;
+        }
+
+        .DenysDescr {
+          padding-left: 15px;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            color: $g_2;
+          }
+
+          .denys {
+            font-size: 25px;
+            color: $g_1;
+          }
+        }
+      }
+
+
+      .Bohdan_Wrap {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 30px;
+
+        .Bohdan {
+          border-radius: 100px;
+          width: 70px;
+          height: 70px;
+          background-image: url("team/2_bogdan.png");
+          background-size: contain;
+        }
+
+        .BohdanDescr {
+          padding-left: 15px;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            color: $g_2;
+          }
+
+          .bohdan {
+            font-size: 25px;
+            color: $g_1;
+          }
+        }
+      }
+
+      .Khrystyna_Wrap {
+        display: flex;
+        flex-direction: row;
+
+        .Khrystyna {
+          border-radius: 100px;
+          width: 70px;
+          height: 70px;
+          background-image: url("team/2_khrystyna.png");
+          background-size: contain;
+        }
+
+        .KhrystynaDescr {
+          padding-left: 15px;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-weight: 600;
+            font-size: 20px;
+            color: $g_2;
+          }
+
+          .khrystyna {
+            font-size: 25px;
+            color: $g_1;
+          }
+        }
+      }
+    }
+  }
+}
