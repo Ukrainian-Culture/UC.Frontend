@@ -1,17 +1,17 @@
 import { STATISTIC_TRIGGER } from './startSettingsReducerConst'
 
 const initialState = {
-  // domain: 'https://ucbackend.azurewebsites.net',
-  domain: "https://localhost:7219",
+  domain: 'https://ucbackend.azurewebsites.net',
+  // domain: "https://localhost:7219",
 
-  userRequestDomain: 'https://localhost:7219',
-  // userRequestDomain: 'https://ucbackend.azurewebsites.net',
+  // userRequestDomain: 'https://localhost:7219',
+  userRequestDomain: 'https://ucbackend.azurewebsites.net',
 
-  confirmDomain: 'https://localhost:7219',
-  // confirmDomain: "https://ucbackend.azurewebsites.net",
+  // confirmDomain: 'https://localhost:7219',
+  confirmDomain: "https://ucbackend.azurewebsites.net",
 
-  emailNavLink: "http://localhost:3000/subscription",
-  // emailNavLink: "https://uculture.github.io/subscription",
+  // emailNavLink: "http://localhost:3000/subscription",
+  emailNavLink: "https://uculture.github.io/subscription",
 
   validation: false,
 
