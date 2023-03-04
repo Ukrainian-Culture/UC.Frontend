@@ -52,6 +52,7 @@ $back_arrow_width: 8px;
 
         .articlePage_wrap_navigation_helpers_download {
           cursor: pointer;
+          font-size: 25px;
         }
       }
     }
@@ -93,7 +94,7 @@ $back_arrow_width: 8px;
           justify-content: center;
           align-items: center;
           width: 100%;
-          padding: 60px 0px;
+          // padding: 60px 0px;
           background-color: $g_0;
           
           border-radius: 20px;
@@ -103,7 +104,7 @@ $back_arrow_width: 8px;
           .articlePage_wrap_content_text_deprecated {
             display: flex;
             justify-content: center;
-            background-color: pink;
+            // background-color: pink;
             align-items: center;
             height: fit-content;
             width: 50vw;

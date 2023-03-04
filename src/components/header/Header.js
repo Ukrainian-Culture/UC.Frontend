@@ -357,7 +357,7 @@ function Header(props) {
   const HoverProfileBlock = () => {
     return (
       <>
-        {hoverProfile ? (
+        {hoverProfile && location.pathname !== '/profile' ? (
           <div
             onMouseLeave={() => setHoverProfile(false)}
             className={`header_HoverProfileBlock header_HoverProfileBlock${
