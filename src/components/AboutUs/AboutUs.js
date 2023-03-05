@@ -11,7 +11,7 @@ function AboutUs() {
                 <div className='TeamLead'></div>
                 <div className='PetroDescr'>
                     <span className='petro'>Petro Horoh</span>
-                    <span>team leader, backend, microsoft azure manager</span>
+                    <span>team leader, microsoft azure manager, fullstack</span>
                 </div>
             </div>
             <div className='Main_Wrap'>
@@ -43,21 +43,21 @@ function AboutUs() {
                         <div className='Denys'></div>
                         <div className='DenysDescr'>
                             <span className='denys'>Muzyka Denys</span>
-                            <span>frontend, designer  </span>
+                            <span>Lead frontend, designer  </span>
                         </div>
                     </div>
                     <div className='Bohdan_Wrap'>
                         <div className='Bohdan'></div>
                         <div className='BohdanDescr'>
                             <span className='bohdan'>Bohdan Vivchar</span>
-                            <span>backend, devOps </span>
+                            <span>devOps, fullstack </span>
                         </div>
                     </div>
                     <div className='Khrystyna_Wrap'>
                         <div className='Khrystyna'></div>
                         <div className='KhrystynaDescr'>
                             <span className='khrystyna'>Khrystyna Hihliuk </span>
-                            <span>backend, translation </span>
+                            <span>translation, fullstack </span>
                         </div>
                     </div>
                 </div>
