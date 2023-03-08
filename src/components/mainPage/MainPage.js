@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import '../mainPage/mainPage.scss'
+import '../../settings/settings.scss'
 import Header from '../header/Header'
 import InfoBlock from '../header/infoBlock/InfoBlock'
 import MapSection from '../mapSection/MapSection'

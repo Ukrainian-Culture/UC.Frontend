@@ -1,57 +1,56 @@
-
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-Thin.ttf');
-    font-style: normal;
-    font-weight: 100;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-Thin.ttf');
+  font-style: normal;
+  font-weight: 100;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-ExtraLight.ttf');
-    font-style: normal;
-    font-weight: 200;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-ExtraLight.ttf');
+  font-style: normal;
+  font-weight: 200;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-Light.ttf');
-    font-style: normal;
-    font-weight: 300;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-Light.ttf');
+  font-style: normal;
+  font-weight: 300;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-Regular.ttf');
-    font-style: normal;
-    font-weight: 400;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-Regular.ttf');
+  font-style: normal;
+  font-weight: 400;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-Medium.ttf');
-    font-style: normal;
-    font-weight: 500;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-Medium.ttf');
+  font-style: normal;
+  font-weight: 500;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-SemiBold.ttf');
-    font-style: normal;
-    font-weight: 600;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-SemiBold.ttf');
+  font-style: normal;
+  font-weight: 600;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-Bold.ttf');
-    font-style: normal;
-    font-weight: 700;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-Bold.ttf');
+  font-style: normal;
+  font-weight: 700;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-ExtraBold.ttf');
-    font-style: normal;
-    font-weight: 800;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-ExtraBold.ttf');
+  font-style: normal;
+  font-weight: 800;
 }
 @font-face {
-    font-family: Fixel;
-    src: url('../../public/font/MacPawFixelDisplay-Black.ttf');
-    font-style: normal;
-    font-weight: 900;
+  font-family: Fixel;
+  src: url('../../public/font/MacPawFixelDisplay-Black.ttf');
+  font-style: normal;
+  font-weight: 900;
 }
 
 // ========================================================
@@ -63,30 +62,32 @@ $c_3: #8a3434;
 $c_3: #8a3434;
 $c_4: #e6fcff;
 
-@mixin border_test{
-    border: 1px solid black;
+@mixin border_test {
+  border: 1px solid black;
 }
 // * test code * ---------------
 
 //========================================================
 
 $g_0: white;
+// $g_0: var(--g_0);
 $g_1: rgb(0, 0, 0);
+// $g_1: var(--g_1);
 $g_1_2: #262626;
 $g_1_3: #3f3f3f;
-$g_2:#BABABA;
+$g_2: #bababa;
 $g_2_1: #d3d3d3;
-$g_3:rgb(232, 232, 232);
-$g_4:rgb(242, 242, 242);
-$g_5:#8B8D8C;
+$g_3: rgb(232, 232, 232);
+$g_4: rgb(242, 242, 242);
+$g_5: #8b8d8c;
 
-$b_1: #0294A9;
-$b_2: #12AFC2;
+$b_1: #0294a9;
+$b_2: #12afc2;
 $b_3: #4acdf9;
 $b_4: #dbfbff;
 
 $r_0: #ff7777;
-$r_1:  #fff8fa;
+$r_1: #fff8fa;
 
 $gr_0: #caff89;
 $gr_1: #f5ffe9;
@@ -105,65 +106,75 @@ $ADAPTIVE_S_1: 781px;
 $ADAPTIVE_S_2: 450px;
 
 //========================================================
+// .light{
+//     --g_0: #{#ffffff};
+// }
+// .dark{
+//     --g_0: #{#010101};
+//     --g_1: #{#fdfdfd};
+// }
+//========================================================
 
 // make background of block blury kind of like glass
-@mixin glass_background{
-    // background-color: rgba(255, 255, 255, 0.309); 
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(100px);
+@mixin glass_background {
+  // background-color: rgba(255, 255, 255, 0.309);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(100px);
 }
 
-@mixin scroll_thumb_horizontal{
-    ::-webkit-scrollbar{
-        height: 8px;
-        background-color: $g_0;
-    }
-    ::-webkit-scrollbar-thumb{
-        background-color: $g_3;
-    }  
+@mixin scroll_thumb_horizontal {
+  ::-webkit-scrollbar {
+    height: 8px;
+    background-color: $g_0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $g_3;
+  }
 }
 @mixin scroll_thumb_vertical {
-    // scrollbar road
-    ::-webkit-scrollbar{
-        width: 8px;
-        background-color: $g_0;
-        transition: all 0.6s ease-in-out;
-        border-radius: 6px;
-    }
-    //scrollbar slider
-    ::-webkit-scrollbar-thumb{
-        background-color: $g_2_1;
-        border-radius: 6px;
-        transition: all 0.6s ease-in-out;
-    }
+  // scrollbar road
+  ::-webkit-scrollbar {
+    width: 8px;
+    background-color: $g_0;
+    transition: all 0.6s ease-in-out;
+    border-radius: 6px;
+  }
+  //scrollbar slider
+  ::-webkit-scrollbar-thumb {
+    background-color: $g_2_1;
+    border-radius: 6px;
+    transition: all 0.6s ease-in-out;
+  }
 }
-@mixin scroll_thumb_hide{
-    // scrollbar road
-    ::-webkit-scrollbar{
-        visibility: hidden;
-    }
-    //scrollbar slider
-    ::-webkit-scrollbar-thumb{
-        visibility: hidden;
-    }  
+@mixin scroll_thumb_hide {
+  // scrollbar road
+  ::-webkit-scrollbar {
+    visibility: hidden;
+  }
+  //scrollbar slider
+  ::-webkit-scrollbar-thumb {
+    visibility: hidden;
+  }
 }
 
 // ================================================================
 
-#root, body, html{
-    font-family: Fixel;
-    margin: 0px;
-    padding: 0px;
-    scroll-behavior: smooth;
-    ::selection{
-        // color:  $b_1;
-        background-color: $b_3;    
-    }
-    // overflow-y: hidden;
-    overflow-x: hidden;
-    @include scroll_thumb_vertical;
+#root,
+body,
+html {
+  font-family: Fixel;
+  margin: 0px;
+  padding: 0px;
+  scroll-behavior: smooth;
+  ::selection {
+    // color:  $b_1;
+    background-color: $b_3;
+  }
+  // overflow-y: hidden;
+  overflow-x: hidden;
+  @include scroll_thumb_vertical;
 }
 
-.App{
-    height: 100vh;
+.App {
+  height: 100vh;
 }

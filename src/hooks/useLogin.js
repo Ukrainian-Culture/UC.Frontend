@@ -29,7 +29,7 @@ async function useLogin(submitData) {
         .then((res) => {
           if (res['accessToken']) {
             const role =
-              submitData.email === 'admin@gmail.com' &&
+              submitData.email.toLowerCase() === 'admin@gmail.com' &&
               submitData.password === 'AdminPassword'
                 ? 'admin'
                 : 'user'

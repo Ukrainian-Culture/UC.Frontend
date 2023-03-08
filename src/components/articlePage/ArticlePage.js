@@ -20,6 +20,12 @@ import {
 import StartAppRequests from '../../hooks/StartAppRequests'
 import LoadingPage from '../loadingPage/LoadingPage'
 import Subscription from '../subscription/Subscription.js'
+import { IonIcon } from '@ionic/react'
+import {
+  closeOutline,
+  arrowDownOutline,
+  arrowDownCircleOutline,
+} from 'ionicons/icons'
 
 function ArticlePage() {
   //-------------------------------------------------------------
@@ -73,10 +79,32 @@ function ArticlePage() {
   const formatingContent = () => {
     return user.data.role !== 'notuser'
       ? fetchArticle.data.content || 'no content 🤯'
-      : `${fetchArticle.data.content.slice(0, symbolLimit)} ` || 'no content 🤯'
+      : `${fetchArticle.data.content} ` || 'no content 🤯'
   }
 
   //////////////////////////////////////////////////////////////////
+
+  const downloadArticle = () => {
+    const loc_id = location.pathname.replace('/article/', '')
+    const loc_lang = `${state.culture.data[language]['id']}`
+    const url = `${domain}/api/${loc_lang}/ArticlesLocale/ArticleLocalePDFById?id=${loc_id}`
+
+    fetch(url, {
+      method: 'GET',
+    })
+      .then((res) => res.blob())
+      .then((res) => {
+        const fileURL = window.URL.createObjectURL(res)
+        // console.log(fileURL)
+        let alink = document.createElement('a')
+        alink.href = fileURL
+        alink.download = `some.pdf`
+        alink.click()
+      })
+      .catch((e) => {
+        console.log('error: download article', e)
+      })
+  }
 
   useEffect(() => {
     // console.log('oh shit', articleId, id)
@@ -85,6 +113,7 @@ function ArticlePage() {
       const loc_id = location.pathname.replace('/article/', '')
 
       const loc_lang = `${state.culture.data[language]['id']}`
+      // const urlArticle = `https://localhost:7219/api/${loc_lang}/ArticlesLocale/${loc_id}`
       const urlArticle = `${domain}/api/${loc_lang}/ArticlesLocale/${loc_id}`
 
       axios
@@ -118,7 +147,11 @@ function ArticlePage() {
   }, [])
 
   useEffect(() => {
-    if (!fetchArticle.loading &&fetchArticle?.data?.content.length >= symbolLimit) setShowDeprecation(true)
+    if (
+      !fetchArticle.loading &&
+      fetchArticle?.data?.content.length >= symbolLimit
+    )
+      setShowDeprecation(true)
   }, [fetchArticle?.data?.content])
 
   // variable which contain referense on main screen blocks
@@ -147,25 +180,19 @@ function ArticlePage() {
               </div>
 
               <div className="articlePage_wrap_navigation_helpers">
-                {/* <div
-              className="articlePage_wrap_navigation_helpers_download"
-              onClick={() => {
-                downloadPDF()
-              }}
-            >
-              download
-              {
-                startLoad ? <PDFDownloadLink document={<PDFFormer />} fileName={"FORM"}>
-                {({ loading }) => (loading ? 'loading...' : <div>dick</div>)}
-              </PDFDownloadLink>
-              :null
-              }
-            </div> */}
+                <div
+                  onClick={downloadArticle}
+                  className="articlePage_wrap_navigation_helpers_download"
+                >
+                  <IonIcon className="" icon={arrowDownCircleOutline} />
+                </div>
               </div>
             </div>
+
             <div className="articlePage_wrap_navigation_title">
               {fetchArticle.data.title}
             </div>
+
             <div className="articlePage_wrap_content">
               <div className="articlePage_wrap_content_side"></div>
               <div className="articlePage_wrap_content_text">
