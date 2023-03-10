@@ -39,6 +39,10 @@ $max_width_of_subText: 70%;
             font-size: $font_size_of_year;  
             font-weight: 500;
             text-align: center;
+
+            .historyRenderer_wrapper_year_text{
+                color: $g_0;
+            }
         }
 
         .historyRenderer_wrapper_section{

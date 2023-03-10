@@ -50,14 +50,14 @@ $mob_input_height: 60px;
       align-items: center;
 
       .RegistrationSection_mainBlock_wrapper_title {
-        color: $g_0;
+        color: white;
         font-size: $title_font_size;
         font-weight: 700;
       }
 
       .RegistrationSection_mainBlock_wrapper_subTitle {
         display: flex;
-        color: $g_0;
+        color: white;
         font-weight: 600;
         font-size: $subTitle_font_size;
         margin-top: 30px;
@@ -67,7 +67,8 @@ $mob_input_height: 60px;
         }
 
         .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
-          color: $g_0;
+          font-weight: 400;
+          color: white;
         }
       }
 
@@ -75,7 +76,7 @@ $mob_input_height: 60px;
         margin-top: 15px;
         cursor: pointer;
         font-size: 28px;
-        color: $g_0;
+        color: white;
       }
 
       .RegistrationSection_mainBlock_wrapper_input_wrapper {
@@ -99,7 +100,7 @@ $mob_input_height: 60px;
           border-radius: 100px;
           border: 1px solid $g_0;
           padding: 0px $input_paddings;
-          color: $g_0;
+          color: white;
           text-align: center;
           font-size: $input_font_size;
           font-weight: 600;
@@ -113,7 +114,7 @@ $mob_input_height: 60px;
 
           &::placeholder {
             text-align: center;
-            color: $g_0;
+            color: white;
           }
         }
 
@@ -122,7 +123,7 @@ $mob_input_height: 60px;
           color: $r_0;
 
           &:focus {
-            background-color: $r_1;
+            background-color: $g_0;
             color: $g_1;
             outline: none;
           }
@@ -190,14 +191,14 @@ $mob_input_height: 60px;
         align-items: center;
 
         .RegistrationSection_mainBlock_wrapper_title {
-          color: $g_0;
+          // color: $g_0;
           font-size: $mob_title_font_size;
           font-weight: 700;
         }
 
         .RegistrationSection_mainBlock_wrapper_subTitle {
           display: flex;
-          color: $g_0;
+          // color: $g_0;
           font-weight: 600;
           font-size: $mob_subTitle_font_size;
           margin-top: 30px;
@@ -207,7 +208,7 @@ $mob_input_height: 60px;
           }
 
           .RegistrationSection_mainBlock_wrapper_subTitle_linkToLogin {
-            color: $g_0;
+            // color: $g_0;
           }
         }
 
@@ -215,7 +216,7 @@ $mob_input_height: 60px;
           margin-top: 15px;
           cursor: pointer;
           font-size: 28px;
-          color: $g_0;
+          // color: $g_0;
         }
 
         .RegistrationSection_mainBlock_wrapper_input_wrapper {
@@ -253,7 +254,7 @@ $mob_input_height: 60px;
 
             &::placeholder {
               text-align: center;
-              color: $g_0;
+              // color: $g_0;
             }
           }
 

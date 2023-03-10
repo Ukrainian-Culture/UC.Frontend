@@ -14,13 +14,20 @@ import {
 } from '../../redux-store/sideHeight/sideHeightConst'
 import { useLayoutEffect } from 'react'
 import { IonIcon } from '@ionic/react'
-import { personCircleOutline, enterOutline, globeOutline } from 'ionicons/icons'
+import {
+  personCircleOutline,
+  enterOutline,
+  globeOutline,
+  moon,
+  sunny,
+} from 'ionicons/icons'
 import LoadingEmoji from '../loadingPage/loadingEmoji/LoadingEmoji'
 import {
   CHANGE_LANGUAGE,
   LS_LANGUAGE,
 } from '../../redux-store/changeLanguage/changeLanguageConst'
 import PopupBlock from '../popupBlock/PopupBlock'
+import { CHANGE_THEME } from '../../redux-store/startSettings/startSettingsReducerConst'
 
 gsap.config({ nullTargetWarn: false })
 
@@ -44,6 +51,7 @@ function Header(props) {
 
   const user = state.user
   const profileCategory = state.profileCategory
+  const theme = state.startSettings.theme
   //variable for text in  interface in different language
   const interfaceLang = state.interfaceLang[language]
   const culture = state.culture
@@ -134,15 +142,15 @@ function Header(props) {
         <>
           <div className="mainHeader_oblastName">
             <div className="mainHeader_oblastName_emoji mainHeader_oblastName_el">
-              {aboutOblast.aboutOblast[redionId].emoji || ""}
+              {aboutOblast.aboutOblast[redionId].emoji || ''}
             </div>
             <div className="mainHeader_oblastName_name mainHeader_oblastName_el">
-              {aboutOblast.aboutOblast[redionId][language] || ""}
+              {aboutOblast.aboutOblast[redionId][language] || ''}
             </div>
 
             {aboutOblast.aboutOblast[redionId][0] !== 'Crimea' ? (
               <div className="mainHeader_oblastName_region mainHeader_oblastName_el">
-                {aboutOblast.region[language] || ""}
+                {aboutOblast.region[language] || ''}
               </div>
             ) : null}
           </div>
@@ -165,6 +173,13 @@ function Header(props) {
 
   // header template for basic(big) size
   function ScreenBasicSize() {
+    const changeTheme = () => {
+      dispatch({
+        type: CHANGE_THEME,
+        payload: theme == 'dark' ? 'light' : 'dark',
+      })
+    }
+
     return (
       <>
         <div className="mainHeader">
@@ -189,6 +204,17 @@ function Header(props) {
           <CentreTextRenderer />
 
           <div className="headerRight">
+            <div
+              onClick={changeTheme}
+              className="headerRight_theme headerRight_el"
+            >
+              {theme !== 'dark' ? (
+                <IonIcon icon={moon} className="moonIcon headerIcon" />
+              ) : (
+                <IonIcon icon={sunny} className="moonIcon headerIcon" />
+              )}
+            </div>
+
             <div
               onClick={() => setshowLangBox((el) => !el)}
               className="headerRight_language headerRight_el"
@@ -502,7 +528,9 @@ function Header(props) {
                 </PopupBlock>
               ) : null}
 
-              <div className={`headerSection_burgerBackground ${burgerHeight}`}>
+              <div
+                className={`headerSection_burgerBackground ${burgerHeight} ${theme}`}
+              >
                 <div className="headerSection_burgerBackground_navigation">
                   <div className="headerSection_burgerBackground_navigation_top">
                     <div

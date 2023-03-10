@@ -34,8 +34,11 @@ $padding_content: 15px;
       border-radius: 100px;
       cursor: pointer;
 
+      color: $g_2;
+      background-color: $g_4;
+
       &:hover {
-        background-color: $g_4;
+        background-color: $g_3;
       }
     }
   }

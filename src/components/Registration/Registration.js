@@ -33,6 +33,7 @@ function Registration() {
   const language = state.changeLanguage.lang
   const interfaceLang = state.interfaceLang
   const user = state.user
+  const theme = state.startSettings.theme
 
   // hook that handle navigation between pages
   const navigate = useNavigate()
@@ -217,7 +218,7 @@ function Registration() {
       const url = `${state.startSettings.domain}/api/account/signup`
       const url_2 = 'https://localhost:7219/api/account/signup'
 
-      fetch(url_2, {
+      fetch(url, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -283,7 +284,7 @@ function Registration() {
 
           <GradientCircle colorClass={'registration'} />
 
-          <div className="RegistrationSection" ref={profileWrap}>
+          <div className={`RegistrationSection ${theme}`} ref={profileWrap}>
             <div className="RegistrationSection_header">
               <Header />
             </div>

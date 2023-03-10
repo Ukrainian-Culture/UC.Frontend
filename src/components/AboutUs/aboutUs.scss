@@ -7,11 +7,12 @@
   padding-left: 80px;
   justify-content: center;
   .OurTeamText {
+    color: $g_1;
     padding-bottom: 20px;
     span {
       font-size: 80px;
       text-transform: uppercase;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
   .TeamLead_Wrap {

@@ -34,6 +34,7 @@ $width_of_main_info_mobile: 100vw;
         overflow-x: auto;
 
         .infoBlock_wrapper_categories_el {
+          color: $g_1;
           padding: 10px $padding_categories_el;
           text-align: center;
           font-size: 13px;
@@ -42,7 +43,8 @@ $width_of_main_info_mobile: 100vw;
           cursor: pointer;
         }
         .active_iwce {
-          background-color: $g_0;
+          background-color: $g_1;
+          color: $g_0;
         }
       }
       ::-webkit-scrollbar {
@@ -155,10 +157,13 @@ $width_of_main_info_mobile: 100vw;
           margin: 0px $margin_horizontal_categories;
 
           .infoBlock_wrapper_categories_el {
+            // background-color: $g_1;
+            color: $g_1;
             padding: 10px $padding_categories_el;
           }
           .active_iwce {
             background-color: $g_0;
+            color: $g_1;
           }
         }
       }

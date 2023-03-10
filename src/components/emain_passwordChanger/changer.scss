@@ -16,6 +16,7 @@ $element_font-size_content: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 500px;
 
   .Changer_Title {
     align-self: center;
@@ -34,6 +35,8 @@ $element_font-size_content: 18px;
     color: $g_1_2;
     text-align: center;
 
+    width: $element_width_input;
+
     &::placeholder {
       color: $g_5;
       text-align: center;
@@ -45,11 +48,13 @@ $element_font-size_content: 18px;
   }
 
   .Changer_Button_wrap {
-    margin: 25px 0px ;
+    margin: 25px 0px;
     display: flex;
     justify-content: flex-end;
+    width: $element_width_input;
 
     .Changer_Button {
+      width: $element_width_button;
       cursor: pointer;
       display: flex;
       justify-content: center;
@@ -61,8 +66,8 @@ $element_font-size_content: 18px;
       border-radius: 100px;
       padding: 0px 20px;
 
-      .loadingPageSection_wrap{
-        .loadingPageSection_wrap_el{
+      .loadingPageSection_wrap {
+        .loadingPageSection_wrap_el {
           background-color: $g_0;
         }
       }
@@ -76,26 +81,26 @@ $element_font-size_content: 18px;
   }
 }
 
-.Changer_donePopup{
+.Changer_donePopup {
   position: fixed;
   top: 0;
   left: 0;
 
-  .Changer_donePopup_el{
+  .Changer_donePopup_el {
     margin: 40px;
     font-size: 40px;
   }
 }
 
-@media (max-width: $ADAPTIVE_M_-1){
-  .Changer_Section{
+@media (max-width: $ADAPTIVE_M_-1) {
+  .Changer_Section {
     padding: $padding_content;
     width: 500px;
 
-    .Changer_Title{
+    .Changer_Title {
       font-size: $element_font-size_title;
     }
-    .Changer_Button_wrap{
+    .Changer_Button_wrap {
       width: $element_width_input;
 
       .Changer_Button {
@@ -103,7 +108,7 @@ $element_font-size_content: 18px;
         font-size: $element_font-size_content;
       }
     }
-    .Changer_Input{
+    .Changer_Input {
       width: $element_width_input;
       font-size: $element_font-size_content;
 
@@ -114,15 +119,15 @@ $element_font-size_content: 18px;
   }
 }
 
-@media (max-width: $ADAPTIVE_M_1){
-  .Changer_Section{
+@media (max-width: $ADAPTIVE_M_1) {
+  .Changer_Section {
     padding: $padding_content;
     width: 500px;
 
-    .Changer_Title{
+    .Changer_Title {
       font-size: $element_font-size_title;
     }
-    .Changer_Button_wrap{
+    .Changer_Button_wrap {
       width: $element_width_input;
 
       .Changer_Button {
@@ -130,7 +135,7 @@ $element_font-size_content: 18px;
         font-size: $element_font-size_content;
       }
     }
-    .Changer_Input{
+    .Changer_Input {
       width: $element_width_input;
       font-size: $element_font-size_content;
 
@@ -140,15 +145,15 @@ $element_font-size_content: 18px;
     }
   }
 }
-@media (max-width: $ADAPTIVE_M_2){
-  .Changer_Section{
+@media (max-width: $ADAPTIVE_M_2) {
+  .Changer_Section {
     padding: $padding_content - 10;
     width: 450px;
 
-    .Changer_Title{
+    .Changer_Title {
       font-size: $element_font-size_title;
     }
-    .Changer_Button_wrap{
+    .Changer_Button_wrap {
       width: $element_width_input;
 
       .Changer_Button {
@@ -156,7 +161,7 @@ $element_font-size_content: 18px;
         font-size: $element_font-size_content;
       }
     }
-    .Changer_Input{
+    .Changer_Input {
       width: $element_width_input;
       font-size: $element_font-size_content;
 
@@ -166,18 +171,18 @@ $element_font-size_content: 18px;
     }
   }
 }
-@media (max-width: $ADAPTIVE_M_3){
-  .Changer_Section{
+@media (max-width: $ADAPTIVE_M_3) {
+  .Changer_Section {
     padding: $padding_content - 13;
     width: 400px;
 
-    .Changer_Title{
+    .Changer_Title {
       font-size: $element_font-size_title - 10;
       margin-bottom: 10px;
     }
-    .Changer_Button_wrap{
+    .Changer_Button_wrap {
       width: $element_width_input;
-      margin: 20px 0px ;
+      margin: 20px 0px;
 
       .Changer_Button {
         width: $element_width_button - 30;
@@ -185,7 +190,7 @@ $element_font-size_content: 18px;
         height: 50px;
       }
     }
-    .Changer_Input{
+    .Changer_Input {
       width: $element_width_input - 10;
       font-size: $element_font-size_content - 6;
       padding: 20px 0;
@@ -196,18 +201,18 @@ $element_font-size_content: 18px;
     }
   }
 }
-@media (max-width: $ADAPTIVE_S_1){
-  .Changer_Section{
+@media (max-width: $ADAPTIVE_S_1) {
+  .Changer_Section {
     padding: $padding_content - 15;
     width: 350px;
 
-    .Changer_Title{
+    .Changer_Title {
       font-size: $element_font-size_title - 10;
       margin-bottom: 10px;
     }
-    .Changer_Button_wrap{
+    .Changer_Button_wrap {
       width: $element_width_input - 10;
-      margin: 20px 0px ;
+      margin: 20px 0px;
 
       .Changer_Button {
         width: $element_width_button - 50;
@@ -215,7 +220,7 @@ $element_font-size_content: 18px;
         height: 50px;
       }
     }
-    .Changer_Input{
+    .Changer_Input {
       width: $element_width_input - 10;
       font-size: $element_font-size_content - 6;
       padding: 20px 0;
@@ -226,16 +231,16 @@ $element_font-size_content: 18px;
     }
   }
 }
-@media (max-width: $ADAPTIVE_S_2){
-  .Changer_Section{
+@media (max-width: $ADAPTIVE_S_2) {
+  .Changer_Section {
     padding: $padding_content - 18;
     width: 300px;
 
-    .Changer_Title{
+    .Changer_Title {
       font-size: $element_font-size_title - 10;
       margin-bottom: 5px;
     }
-    .Changer_Button_wrap{
+    .Changer_Button_wrap {
       width: $element_width_input - 10;
       margin: 20px 0px;
 
@@ -245,7 +250,7 @@ $element_font-size_content: 18px;
         height: 50px;
       }
     }
-    .Changer_Input{
+    .Changer_Input {
       width: $element_width_input - 10;
       font-size: $element_font-size_content - 6;
       padding: 20px 0;

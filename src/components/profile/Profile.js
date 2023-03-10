@@ -24,6 +24,7 @@ import Login from '../Login/Login'
 function Profile() {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
+  const theme = state.startSettings.theme
   // user data
   const user = state.user
   // current language
@@ -105,7 +106,7 @@ function Profile() {
           <StartAppRequests />
           <LoadingPage main={true} />
 
-          <div className="ProfileSection" ref={profileWrap}>
+          <div className={`ProfileSection ${theme}`} ref={profileWrap}>
             <div className="ProfileSection_header">
               <Header basic={true} />
             </div>

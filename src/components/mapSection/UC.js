@@ -7,7 +7,7 @@ import {
   NO_SIDEHEIGHT,
   SIDEHEIGHT,
 } from '../../redux-store/sideHeight/sideHeightConst'
-import stopScroll from "../../hooks/scrolHandler"
+import stopScroll from '../../hooks/scrolHandler'
 import { CHANGE_OBLAST } from '../../redux-store/selectedOblast/selectedOblastConst'
 import { useLocation } from 'react-router-dom'
 import { ADAPTIVE_M_1 } from '../../settings/screenSizes'
@@ -30,10 +30,12 @@ export function UC(props) {
   const changeOblast = (param) => {
     dispatch({ type: CHANGE_OBLAST, payload: `${param}` })
   }
+  //-------------------------------------------------------------
 
   const state = useSelector((state) => state)
   // width of screen
   const screenWidth = state.screenWidth.width
+  const theme = state.startSettings.theme
   //-------------------------------------------------------------
 
   // variable contain last clickable oblast
@@ -42,7 +44,9 @@ export function UC(props) {
   const [cNow, setcNow] = useState('')
 
   // basic color of oblast
-  const [baseColor, setbaseColor] = useState('#fff')
+  const [baseColor, setbaseColor] = useState(
+    theme === 'light' ? '#fff' : '#262626',
+  )
   // const [baseColor, setbaseColor] = useState('#262626')
   const [arrBaseColor, setarrBaseColor] = useState([
     { color: baseColor },
@@ -73,7 +77,9 @@ export function UC(props) {
     { color: baseColor },
   ])
   // color when oblast is selected
-  const [selectColor, setselectColor] = useState('#2e333b')
+  const [selectColor, setselectColor] = useState(
+    theme === 'light' ? '#2e333b' : '#8B8D8C',
+  )
   // const [selectColor, setselectColor] = useState('#8B8D8C')
   const [arrSelectColor, setarrSelectColor] = useState([
     { color: selectColor },
@@ -136,7 +142,7 @@ export function UC(props) {
   // var fromPlaceZ = -0.35;
   const [fromPlaceZ, setFromPlaceZ] = useState(20)
   // position to which the oblast should move
-  const [toPlace, setToPlace] = useState([-0.65, 0.5, 1.66]);
+  const [toPlace, setToPlace] = useState([-0.65, 0.5, 1.66])
   // array with animation of mooving from original position to particular point <toPlace>
   const oblMove = [
     useSpring({
@@ -223,57 +229,48 @@ export function UC(props) {
     return parseInt(temp) - 1
   }
 
-  useEffect(()=>{
-    if(screenWidth >= 1536) {
+  useEffect(() => {
+    setbaseColor(theme === 'light' ? '#fff' : '#262626')
+    setselectColor(theme === 'light' ? '#2e333b' : '#8B8D8C')
+  }, [theme])
+
+  useEffect(() => {
+    if (screenWidth >= 1536) {
       setFromPlaceZ(-0.35)
       setToPlace([-0.65, 0.5, 1.66])
-    }
-    else if(screenWidth >= 1200) {
+    } else if (screenWidth >= 1200) {
       setToPlace([-0.6, 0.5, 1.4])
       setFromPlaceZ(-0.65)
-    }
-    else if(screenWidth >= 1000) {
+    } else if (screenWidth >= 1000) {
       setToPlace([-0.55, 0.5, 1.2])
       setFromPlaceZ(-1.35)
-    }
-    else if(screenWidth >= 821) {
-      setFromPlaceZ(-2) 
+    } else if (screenWidth >= 821) {
+      setFromPlaceZ(-2)
       setToPlace([-0.53, 0.5, 0.8])
-    }
-
-    else if(screenWidth >= 781) {
+    } else if (screenWidth >= 781) {
       setFromPlaceZ(-4.35)
       setToPlace([-0.55, 0.5, 0.1])
-    }
-    else if(screenWidth >= 615) {
+    } else if (screenWidth >= 615) {
       setFromPlaceZ(-4.35)
       setToPlace([0, -0.55, -0.5])
-    }
-    else if(screenWidth >= 480) {
+    } else if (screenWidth >= 480) {
       setFromPlaceZ(-4.35)
       setToPlace([0, -0.55, -0.5])
-    }
-    else if(screenWidth >= 370) {
+    } else if (screenWidth >= 370) {
       setFromPlaceZ(-8.35)
       setToPlace([0, -0.55, -0.5])
-    }
-    else if(screenWidth >= 320) {
+    } else if (screenWidth >= 320) {
       setFromPlaceZ(-9.35)
       setToPlace([0, -0.55, -0.5])
-    }
-    else if(screenWidth >= 280) {
+    } else if (screenWidth >= 280) {
       setFromPlaceZ(-10.35)
       setToPlace([0, -0.55, -0.5])
-    }
-    else if(screenWidth >= 150) {
+    } else if (screenWidth >= 150) {
       setFromPlaceZ(-15.35)
       setToPlace([0, -0.55, -0.5])
+    } else {
     }
-    else{
-      
-    }
-
-  },[screenWidth])
+  }, [screenWidth])
 
   return (
     <a.group
@@ -295,7 +292,7 @@ export function UC(props) {
 
           changeSideHeight(NO_SIDEHEIGHT)
           // resume scroll when selected some region
-          stopScroll("scroll")
+          stopScroll('scroll')
 
           changeOblast('')
         } else {
@@ -305,7 +302,7 @@ export function UC(props) {
 
           changeSideHeight(SIDEHEIGHT)
           // stop scroll when selected some region
-          stopScroll("hidden")
+          stopScroll('hidden')
 
           changeOblast(getNumberOfSelectedOblast(materialName))
         }

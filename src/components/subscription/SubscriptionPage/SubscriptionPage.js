@@ -25,6 +25,7 @@ function SubscriptionPage() {
   const state = useSelector((state) => state)
   const language = state.changeLanguage.lang
   const user = state.user
+  const theme = state.startSettings.theme
 
   const [daysAmount, setDaysAmount] = useState(0)
   const [isConfirm, setIsConfirm] = useState(false)
@@ -100,7 +101,7 @@ function SubscriptionPage() {
       <LoadingPage main={true} />
 
       {isConfirm ? (
-        <div className="confirmEmail_confirm">
+        <div className={`confirmEmail_confirm ${theme}`}>
           <PopupBlock setIsVisible={(e) => {}}>
             <div className="confirmEmail_confirm_wrap">
               <div className="confirmEmail_confirm_text">🎉 Varifyed 🎉</div>
@@ -110,7 +111,7 @@ function SubscriptionPage() {
         </div>
       ) : null}
 
-      <div className="SubscriptionPage_Section" ref={refWidth}>
+      <div className={`SubscriptionPage_Section ${theme}`} ref={refWidth}>
         {/* <Header/> */}
         <Subscription setDaysAmount={setDaysAmount} subsPage={true} />
       </div>

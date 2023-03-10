@@ -79,6 +79,7 @@ $s1_input_width: 100%;
       flex-direction: column;
 
       .UserProfileTab_section_left_title {
+        color: $g_1;
         font-size: 20px;
         font-weight: 600;
         margin-left: $input_title_margin;
@@ -106,6 +107,7 @@ $s1_input_width: 100%;
         }
 
         .UserProfileTab_section_left_inputWrap_icon {
+          color: $g_1;
           margin-right: $input_title_margin;
           font-size: 18px;
           font-weight: 600;

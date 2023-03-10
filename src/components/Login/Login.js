@@ -29,6 +29,7 @@ function Login() {
   const user = state.user
   // current language
   const language = state.changeLanguage.lang
+  const theme = state.startSettings.theme
 
   // hook that handle navigation between pages
   const navigate = useNavigate()
@@ -179,7 +180,7 @@ function Login() {
       {/* <GradientBackground/> */}
       <GradientCircle />
 
-      <div className="LoginSection" ref={profileWrap}>
+      <div className={`LoginSection ${theme}`} ref={profileWrap}>
         <div className="LoginSection_header">
           <Header />
         </div>
