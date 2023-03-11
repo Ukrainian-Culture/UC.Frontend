@@ -35,8 +35,10 @@ function ExplorePage() {
     state.selectedCategory.filter,
   )
 
+
   const fetchExplore = state.fetchExplore
   const domain = state.startSettings.domain
+  const theme = state.startSettings.theme
   const categoryLocale = state.categoryLocale
   const culture = state.culture
 
@@ -126,7 +128,7 @@ function ExplorePage() {
       <StartAppRequests />
       <LoadingPage main={true} />
 
-      <div className="explorePage" ref={exploreWrap}>
+      <div className={`explorePage ${theme}`} ref={exploreWrap}>
         <div className=" explorePage_wrap">
           <div className="explorePage_header">
             <Header centreText={filterCategory} explore={true} />

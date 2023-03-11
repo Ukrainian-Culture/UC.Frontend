@@ -1,4 +1,2 @@
-> Header:
- - dont show hover profile block in Profile page;
-> useLogin:
- - lower all letters in admin@gmail.com identefication;
+> subscription:
+ - add routing to '/registration'

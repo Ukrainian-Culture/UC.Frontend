@@ -28,6 +28,8 @@
         gap: 30px;
 
         input {
+          background-color: $g_0;
+          color: $g_1;
           height: 6vh;
           width: 25vw;
           border: none;
@@ -65,6 +67,8 @@
           }
 
           .tittleArea {
+            background-color: $g_0;
+            color: $g_1;
             width: 34vw;
             height: 10vh;
             border: none;
@@ -85,6 +89,8 @@
           }
 
           .shortDescriptionArea {
+            background-color: $g_0;
+            color: $g_1;
             width: 34vw;
             height: 14vh;
             border: none;
@@ -106,6 +112,8 @@
         }
 
         .subtextArea {
+          background-color: $g_0;
+          color: $g_1;
           width: 34vw;
           height: 31vh;
           border: none;
@@ -126,6 +134,8 @@
       }
 
       .contentArea {
+        background-color: $g_0;
+        color: $g_1;
         width: 70.5vw;
         height: 18vh;
         border: none;
@@ -167,7 +177,6 @@
         .articleId {
           gap: 25px;
 
-
           Button {
             text-align: center;
             background-color: $g_1;
@@ -185,7 +194,7 @@
 
       .mainWrap {
         display: flex;
-        padding:20px 0px 0px 60px;
+        padding: 20px 0px 0px 60px;
 
         .leftWrap {
           .tittleWrap {
@@ -294,7 +303,6 @@
 
         .leftWrap {
           .tittleWrap {
-
             .tittleText {
               padding-top: 25px;
               padding-bottom: 10px;
@@ -312,7 +320,6 @@
           }
         }
         .subtextWrap {
-
           padding: 10px 60px 0px 40px;
 
           .subtextText {
@@ -373,7 +380,7 @@
   }
 }
 
-@media (max-width: $ADAPTIVE_S_1){
+@media (max-width: $ADAPTIVE_S_1) {
   .AdminArticles_Section {
     .AdminArticles_Wrap {
       .articleIdWrap {
@@ -411,9 +418,7 @@
         padding: 10px 0px 0px 60px;
         font-size: 13px;
 
-
         .subtextWrap {
-
           padding: 10px 60px 0px 30px;
 
           .subtextText {
@@ -474,7 +479,7 @@
   }
 }
 
-@media (max-width: $ADAPTIVE_S_2){
+@media (max-width: $ADAPTIVE_S_2) {
   .AdminArticles_Section {
     .AdminArticles_Wrap {
       .articleIdWrap {
@@ -514,7 +519,6 @@
 
         .leftWrap {
           .tittleWrap {
-
             .tittleText {
               padding-top: 10px;
               padding-bottom: 10px;
@@ -532,7 +536,6 @@
           }
 
           .shortDescriptionWrap {
-
             .shortDescriptionText {
               height: 20px;
               width: 90px;
@@ -552,7 +555,6 @@
         }
 
         .subtextWrap {
-
           padding: 0px 60px 0px 30px;
 
           .subtextText {

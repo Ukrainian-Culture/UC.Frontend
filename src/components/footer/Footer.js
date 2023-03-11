@@ -228,7 +228,7 @@ const Footer = () => {
                 className="footerInput"
                 placeholder={interfaceLang.your_email}
               />
-              <button className="footerButton">📬</button>
+              <div className="footerButton">📬</div>
             </form>
           </div>
         </div>

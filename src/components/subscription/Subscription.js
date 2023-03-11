@@ -5,16 +5,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FETCH_USER_SUCCESS } from '../../redux-store/fetchUser/fetchUserConst'
 import { useNavigate } from 'react-router-dom'
 
-const Subscription = ({linkToReg, subsPage, popup, setIsVisible, setDaysAmount }) => {
+const Subscription = ({
+  linkToReg,
+  subsPage,
+  popup,
+  setIsVisible,
+  setDaysAmount,
+}) => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
   // current language
   const language = state.changeLanguage.lang
   //variable for text in  interface in different language
   const interfaceLang = state.interfaceLang[language]
+  const theme = state.startSettings.theme
 
-    // hook that handle navigation between pages
-    const navigate = useNavigate()
+  // hook that handle navigation between pages
+  const navigate = useNavigate()
 
   //====================================
   const array = [
@@ -58,28 +65,30 @@ const Subscription = ({linkToReg, subsPage, popup, setIsVisible, setDaysAmount }
   ]
 
   const cardClick = (e, val) => {
-   if(!linkToReg){
-    if (['some_el0', 'some_el_el0'].includes(e.target.className.split(' ')[1])) {
-      // if popup block
-      if (popup || subsPage) {
-        console.log('subscription days setted!')
-        // setIsVisible((el) => !el)
-        setDaysAmount(val.days)
+    if (!linkToReg) {
+      if (
+        ['some_el0', 'some_el_el0'].includes(e.target.className.split(' ')[1])
+      ) {
+        // if popup block
+        if (popup || subsPage) {
+          console.log('subscription days setted!')
+          // setIsVisible((el) => !el)
+          setDaysAmount(val.days)
+        }
       }
+      try {
+        if (val.url[language] !== ' ') window.open(val.url[language])
+      } catch (e) {}
+    } else {
+      navigate('/registration')
     }
-    try {
-      if (val.url[language] !== ' ') window.open(val.url[language])
-    } catch (e) {}
-   }else{
-    navigate("/registration")
-   }
   }
 
   const profileWrap = useRef()
   // getting screen size from current page
   useGetScreenWidth({ refWidth: profileWrap })
   return (
-    <div ref={profileWrap} className="subscription">
+    <div ref={profileWrap} className={`subscription ${theme}`}>
       <div className="subscriptionHeader">
         <p>{interfaceLang.subscription}</p>
       </div>

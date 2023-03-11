@@ -44,6 +44,7 @@ function ArticlePage() {
 
   const user = state.user
   const fetchArticle = state.fetchArticle
+  const theme = state.startSettings.theme
   const domain = state.startSettings.domain
   const categoryLocale = state.categoryLocale
   const culture = state.culture
@@ -165,7 +166,7 @@ function ArticlePage() {
       <LoadingPage main={true} />
 
       {!fetchArticle.loading ? (
-        <div className="articlePage" ref={refWidth}>
+        <div className={`articlePage ${theme}`} ref={refWidth}>
           <Header article={true} articleRegion={fetchArticle.data.region} />
           <div className="articlePage_wrap">
             <div className="articlePage_wrap_navigation">

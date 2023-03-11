@@ -94,37 +94,29 @@ function InfoBlock() {
     if (selectedOblast && sideHeight === SIDEHEIGHT) {
       setTimeout(() => {
         const loc_lang = `${state.culture.data[language]['id']}`
-        const loc_oblast = `${aboutOblast[selectedOblast]["0"]}`
+        const loc_oblast = `${aboutOblast[selectedOblast]['0']}`
 
         const urlHistory = `${domain}/api/${loc_lang}/History/${loc_oblast}`
         // ​/api​/{cultureId}​/ArticlesTile​/{regionName}​/{categoryId}
 
-        const urlPeople = `${domain}/api/${
-          loc_lang
-        }/ArticlesTile/${
-          loc_oblast
-        }/${getCategoryId('people')}`
+        const urlPeople = `${domain}/api/${loc_lang}/ArticlesTile/${loc_oblast}/${getCategoryId(
+          'people',
+        )}`
         // console.log(urlPeople)
 
-        const urlDishes = `${domain}/api/${
-          loc_lang
-        }/ArticlesTile/${
-          loc_oblast
-        }/${getCategoryId('dishes')}`
+        const urlDishes = `${domain}/api/${loc_lang}/ArticlesTile/${loc_oblast}/${getCategoryId(
+          'dishes',
+        )}`
         // console.log(urlDishes)
 
-        const urlMusic = `${domain}/api/${
-          loc_lang
-        }/ArticlesTile/${
-          loc_oblast
-        }/${getCategoryId('music')}`
+        const urlMusic = `${domain}/api/${loc_lang}/ArticlesTile/${loc_oblast}/${getCategoryId(
+          'music',
+        )}`
         // console.log(urlMusic)
-        
-        const urlScience = `${domain}/api/${
-          loc_lang
-        }/ArticlesTile/${
-          loc_oblast
-        }/${getCategoryId('science')}`
+
+        const urlScience = `${domain}/api/${loc_lang}/ArticlesTile/${loc_oblast}/${getCategoryId(
+          'science',
+        )}`
         // console.log(urlScience)
 
         let isCanseled = false
@@ -207,9 +199,7 @@ function InfoBlock() {
             // setSelected(
             //   corelateCategories(childrenClasses[i].innerText, language),
             // )
-            setSelected(
-              childrenClasses[i].innerText
-            )
+            setSelected(childrenClasses[i].innerText)
           }
         }
       }
