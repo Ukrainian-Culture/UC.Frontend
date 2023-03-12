@@ -8,6 +8,8 @@ $back_arrow_width: 8px;
 
 .articlePage {
   overflow-y: hidden;
+  background-color: $g_0;
+  min-height: 100vh;
 
   .articlePage_wrap {
     display: flex;
@@ -32,6 +34,7 @@ $back_arrow_width: 8px;
         justify-content: center;
         align-items: center;
         font-weight: 500;
+        color: $g_1;
         cursor: pointer;
 
         .articlePage_wrap_navigation_back_el:nth-child(1) {
@@ -49,6 +52,7 @@ $back_arrow_width: 8px;
         // background-color: chocolate;
         display: flex;
         justify-content: center;
+        color: $g_1;
 
         .articlePage_wrap_navigation_helpers_download {
           cursor: pointer;
@@ -63,10 +67,13 @@ $back_arrow_width: 8px;
       width: $width_of_content;
       font-weight: 700;
       margin-bottom: 20px;
+      
+      color: $g_1;
     }
 
     .articlePage_wrap_content {
-      // background-color: pink;
+      
+      color: $g_1;
       width: 100%;
       display: grid;
       grid-template-columns: $width_of_sides_of_content $width_of_content $width_of_sides_of_content;

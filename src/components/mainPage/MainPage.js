@@ -38,6 +38,8 @@ function MainPage() {
   // variable which contain referense on main screen blocks
   const refWidth = useRef()
 
+  const theme = state.startSettings.theme
+
   const tl = useRef()
   const mainRef = useRef()
 
@@ -72,7 +74,7 @@ function MainPage() {
       <StartAppRequests />
       <LoadingPage main={true} />
 
-      <div className="mainPage" ref={refWidth}>
+      <div className={`mainPage ${theme}`} ref={refWidth}>
         <GradientCircle colorClass={'registration'} />
 
         <Header centreText={selectedOblast} main={true} />
@@ -92,7 +94,7 @@ function MainPage() {
             <StatisticSection />
           </div>
           <div className="mainPage_scrollWrap_el mainPage_scrollWrap_el_subscription">
-            <Subscription />
+            <Subscription linkToReg={true}/>
           </div>
           <div className="mainPage_scrollWrap_el">
             <Footer />

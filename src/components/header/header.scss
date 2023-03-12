@@ -62,7 +62,7 @@ $width_of_logo: 24px;
           margin-top: -5px;
           height: 1.2px;
           width: 0%;
-          background-color: black;
+          background-color: $g_1;
         }
 
         &:hover {
@@ -80,6 +80,7 @@ $width_of_logo: 24px;
     }
 
     .mainHeader_oblastName {
+      color: $g_1;
       display: flex;
       align-items: center;
       font-size: 14px;
@@ -144,6 +145,10 @@ $width_of_logo: 24px;
     cursor: pointer;
     color: $g_1;
     margin-left: 10px;
+  }
+
+  .headerRight_theme{
+    margin-right: 5px;
   }
 }
 
@@ -411,6 +416,7 @@ $burger_menu_height: 13px;
 
 .headerRight_language_drawer {
   background-color: $g_0;
+  color: $g_1;
   border-radius: 10px;
   padding: 10px 15px;
   position: fixed;
@@ -458,6 +464,7 @@ $burger_menu_height: 13px;
   margin-right: $header_padding;
   padding: 10px 20px;
   background-color: $g_0;
+  color: $g_1;
   border-radius: 7px;
   width: fit-content;
   // font-size: 16px;

@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom'
 
 function ConfirmEmailPage() {
   const state = useSelector((state) => state)
+  
+  const theme = state.startSettings.theme
   const language = state.changeLanguage.lang
 
   // hook that handle navigation between pages
@@ -38,7 +40,7 @@ function ConfirmEmailPage() {
       <LoadingPage main={true} />
 
       {isWaitForConfirm() ? (
-        <div className="ConfirmEmailPage_section" ref={refWidth}>
+        <div className={`ConfirmEmailPage_section ${theme}`} ref={refWidth}>
           <div className="ConfirmEmailPage_section_text1">
             {state.interfaceLang[language].v_y_e_t_c_r} 📬
           </div>

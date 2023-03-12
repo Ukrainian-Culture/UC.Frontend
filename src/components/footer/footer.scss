@@ -32,6 +32,8 @@
 }
 
 .footerFormWrap {
+  
+  color: $g_1;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -70,6 +72,10 @@
 }
 
 .footerButton {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 22px;
   height: 60px;
   min-width: 60px;
@@ -188,17 +194,15 @@
   height: 100vh;
 
   .popupFootRender {
+    color: $g_1;
     // background-color: pink;
     max-width: 80vw;
     max-height: 60vh;
     margin: 40px;
     overflow: auto;
 
-    .popupFootRender_title {
-    }
-
     .popupFootRender_content {
-      white-space: pre-line
+      white-space: pre-line;
     }
   }
 }
@@ -256,5 +260,3 @@
     min-width: 40px;
   }
 }
-
-

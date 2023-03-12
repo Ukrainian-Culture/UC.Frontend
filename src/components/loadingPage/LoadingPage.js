@@ -8,6 +8,8 @@ function LoadingPage(props) {
   const { main } = props
   const state = useSelector((state) => state)
 
+  const theme = state.startSettings.theme
+
   const culture = state.culture
   const categoryLocale = state.categoryLocale
 
@@ -49,7 +51,7 @@ function LoadingPage(props) {
   return (
     <>
       {isLoading ? (
-        <div className="loadingPageSection" ref={loadWrap}>
+        <div className={`loadingPageSection ${theme}`} ref={loadWrap}>
           <LoadingEmoji/>
         </div>
       ) : null}

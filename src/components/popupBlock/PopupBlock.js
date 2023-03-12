@@ -2,12 +2,16 @@ import { IonIcon } from '@ionic/react'
 import gsap from 'gsap'
 import { closeOutline } from 'ionicons/icons'
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import '../popupBlock/popupBlock.scss'
 
 function PopupBlock({ closeBtn, setIsVisible, children, ...rest }) {
   const tl = useRef()
   const popupRef = useRef()
   const dura = 0.3
+
+  const state = useSelector((state) => state)
+  const theme = state.startSettings.theme
 
   const [visible, setVisible] = useState(true)
   //===============================================================

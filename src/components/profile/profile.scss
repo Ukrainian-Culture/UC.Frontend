@@ -5,7 +5,9 @@ $head_font_size: 15px;
 // ===================================
 
 .ProfileSection {
+  background-color: $g_0;
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
@@ -34,6 +36,7 @@ $head_font_size: 15px;
           display: flex;
 
           .ProfileSection_mainBody_wrapper_head_left_el {
+            color: $g_1;
             font-size: $head_font_size;
             font-weight: 500;
             padding: 4px 0px;
@@ -47,6 +50,7 @@ $head_font_size: 15px;
         }
 
         .ProfileSection_mainBody_wrapper_head_right {
+          color: $g_1;
           display: flex;
           flex-direction: column;
           align-items: center;

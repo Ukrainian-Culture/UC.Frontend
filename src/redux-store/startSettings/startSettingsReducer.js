@@ -1,4 +1,4 @@
-import { STATISTIC_TRIGGER } from './startSettingsReducerConst'
+import { CHANGE_THEME, STATISTIC_TRIGGER } from './startSettingsReducerConst'
 
 const initialState = {
   // domain: "https://localhost:7219",
@@ -17,6 +17,9 @@ const initialState = {
   validation: false,
 
   enterStatistic: false,
+
+  // theme: 'dark',
+  theme: 'light',
 }
 
 const startSettingsReducer = (state = initialState, action) => {
@@ -25,6 +28,11 @@ const startSettingsReducer = (state = initialState, action) => {
       return {
         ...state,
         enterStatistic: action.payload,
+      }
+    case CHANGE_THEME:
+      return {
+        ...state,
+        theme: action.payload,
       }
     default:
       return state
