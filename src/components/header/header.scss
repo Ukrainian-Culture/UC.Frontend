@@ -147,7 +147,7 @@ $width_of_logo: 24px;
     margin-left: 10px;
   }
 
-  .headerRight_theme{
+  .headerRight_theme {
     margin-right: 5px;
   }
 }
@@ -304,6 +304,11 @@ $burger_menu_height: 13px;
         // background-color: pink;
         font-size: 23px;
         color: $g_1;
+
+        .headerRight_theme {
+          display: flex;
+          align-items: center;
+        }
 
         .headerLeft_language {
           display: flex;
