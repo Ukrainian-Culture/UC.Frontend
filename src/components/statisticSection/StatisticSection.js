@@ -83,7 +83,9 @@ function StatisticSection({ enterStatistic }) {
                 <div className="statisticBlockHeader">
                   {interfaceLang[language].peopleOnline}
                 </div>
-                <div className="statisticBigNumber">{userOnline.data}</div>
+                <div className="statisticBigNumber">
+                  {userOnline.data == 0 ? 1 : userOnline.data}
+                </div>
               </div>
 
               <div className="statisticWrap">
@@ -91,7 +93,9 @@ function StatisticSection({ enterStatistic }) {
                   {interfaceLang[language].nationalMonuments}
                 </div>
                 <div className="statisticBigNumber statisticBigNumber_national">
-                  {state.startSettings.enterStatistic ? statistic.data.monuments : 0}
+                  {state.startSettings.enterStatistic
+                    ? statistic.data.monuments
+                    : 0}
                 </div>
               </div>
 
@@ -100,7 +104,9 @@ function StatisticSection({ enterStatistic }) {
                   {interfaceLang[language].usencoHerritage}
                 </div>
                 <div className="statisticBigNumber">
-                  {state.startSettings.enterStatistic ? statistic.data.unescoHeritage : 0}
+                  {state.startSettings.enterStatistic
+                    ? statistic.data.unescoHeritage
+                    : 0}
                 </div>
               </div>
             </div>
@@ -114,7 +120,9 @@ function StatisticSection({ enterStatistic }) {
                     </div>
                   </div>
                   <div className="statisticBigNumber">
-                    {state.startSettings.enterStatistic ? statistic.data.ukrainePopulation : 0}
+                    {state.startSettings.enterStatistic
+                      ? statistic.data.ukrainePopulation
+                      : 0}
                   </div>
                 </div>
               </div>

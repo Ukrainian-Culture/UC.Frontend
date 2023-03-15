@@ -14,7 +14,7 @@ const initialState = {
 
   emailNavLink: 'https://uculture.github.io/subscription',
 
-  validation: false,
+  validation: true,
 
   enterStatistic: false,
 
