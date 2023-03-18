@@ -14,6 +14,7 @@ const Subscription = ({
 }) => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
+  const user = state.user
   // current language
   const language = state.changeLanguage.lang
   //variable for text in  interface in different language
@@ -65,7 +66,7 @@ const Subscription = ({
   ]
 
   const cardClick = (e, val) => {
-    if (!linkToReg) {
+    if (!linkToReg || user.data.role != 'notuser') {
       if (
         ['some_el0', 'some_el_el0'].includes(e.target.className.split(' ')[1])
       ) {

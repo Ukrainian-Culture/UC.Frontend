@@ -18,12 +18,16 @@ import {
   FETCH_STATISTIC_ERROR,
   FETCH_STATISTIC_SUCCESS,
 } from '../redux-store/fetchStatistic/fetchStatisticConst'
+import { CHANGE_THEME } from '../redux-store/startSettings/startSettingsReducerConst'
 import useLocalToken from './useLocalToken'
 
 function StartAppRequests() {
   const dispatch = useDispatch()
   const chnge_Language = (value) => {
     dispatch({ type: CHANGE_LANGUAGE, payload: value })
+  }
+  const chnge_Theme = (value) => {
+    dispatch({ type: CHANGE_THEME, payload: value })
   }
 
   // --------------------------------------------------
@@ -114,8 +118,14 @@ function StartAppRequests() {
 
   useEffect(() => {
     const def = localStorage.getItem(LS_LANGUAGE)
+    const loc_theme = localStorage.getItem('theme')
+
     if (def) {
       chnge_Language(def)
+    }
+    if(loc_theme){
+      console.log("shiiiit", loc_theme)
+      chnge_Theme(loc_theme)
     }
    
     

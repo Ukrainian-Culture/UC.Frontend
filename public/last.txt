@@ -1,0 +1,2 @@
+theme:
+- add save to localStorage;

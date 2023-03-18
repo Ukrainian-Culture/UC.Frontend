@@ -176,6 +176,8 @@ function Header(props) {
       type: CHANGE_THEME,
       payload: theme == 'dark' ? 'light' : 'dark',
     })
+
+    localStorage.setItem("theme", theme == 'dark' ? 'light' : 'dark')
   }
 
   // header template for basic(big) size
