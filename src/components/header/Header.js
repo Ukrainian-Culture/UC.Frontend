@@ -171,15 +171,15 @@ function Header(props) {
     }
   }
 
+  const changeTheme = () => {
+    dispatch({
+      type: CHANGE_THEME,
+      payload: theme == 'dark' ? 'light' : 'dark',
+    })
+  }
+
   // header template for basic(big) size
   function ScreenBasicSize() {
-    const changeTheme = () => {
-      dispatch({
-        type: CHANGE_THEME,
-        payload: theme == 'dark' ? 'light' : 'dark',
-      })
-    }
-
     return (
       <>
         <div className="mainHeader">
@@ -533,6 +533,17 @@ function Header(props) {
               >
                 <div className="headerSection_burgerBackground_navigation">
                   <div className="headerSection_burgerBackground_navigation_top">
+                    <div
+                      onClick={changeTheme}
+                      className="headerRight_theme headerRight_el"
+                    >
+                      {theme !== 'dark' ? (
+                        <IonIcon icon={moon} className="moonIcon headerIcon" />
+                      ) : (
+                        <IonIcon icon={sunny} className="moonIcon headerIcon" />
+                      )}
+                    </div>
+
                     <div
                       onClick={() => {
                         setIsLangPopupVisible((el) => !el)

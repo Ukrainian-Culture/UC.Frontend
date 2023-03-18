@@ -85,7 +85,7 @@ function useChangeEndDate(isCall, days) {
         },
       })
       .then((res) => {
-        // console.log('success', res)
+        console.log('success', res)
       })
       .catch((e) => {
         console.log('error: update subscription date', e)
