@@ -104,7 +104,7 @@ function SubscriptionPage() {
         <div className={`confirmEmail_confirm ${theme}`}>
           <PopupBlock setIsVisible={(e) => {}}>
             <div className="confirmEmail_confirm_wrap">
-              <div className="confirmEmail_confirm_text">🎉 Varifyed 🎉</div>
+              <div className="confirmEmail_confirm_text">🎉 Verified 🎉</div>
               <div className="confirmEmail_confirm_mark">✅</div>
             </div>
           </PopupBlock>
